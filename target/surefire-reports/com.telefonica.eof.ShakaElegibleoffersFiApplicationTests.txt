@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.telefonica.eof.ShakaElegibleoffersFiApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 11.905 s <<< FAILURE! - in com.telefonica.eof.ShakaElegibleoffersFiApplicationTests
+RelationOffersXPlanRepositoryTest  Time elapsed: 0.134 s  <<< ERROR!
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at com.telefonica.eof.ShakaElegibleoffersFiApplicationTests.RelationOffersXPlanRepositoryTest(ShakaElegibleoffersFiApplicationTests.java:86)
+
+RelationMasterRepositoryTest  Time elapsed: 0.058 s  <<< ERROR!
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at com.telefonica.eof.ShakaElegibleoffersFiApplicationTests.RelationMasterRepositoryTest(ShakaElegibleoffersFiApplicationTests.java:104)
+
+OffersPropertiesRepositoryTest  Time elapsed: 0.027 s  <<< ERROR!
+org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.telefonica.eof.entity.OffersProperties]: No default constructor found; nested exception is java.lang.NoSuchMethodException: com.telefonica.eof.entity.OffersProperties.<init>()
+	at com.telefonica.eof.ShakaElegibleoffersFiApplicationTests.OffersPropertiesRepositoryTest(ShakaElegibleoffersFiApplicationTests.java:68)
+Caused by: java.lang.NoSuchMethodException: com.telefonica.eof.entity.OffersProperties.<init>()
+	at com.telefonica.eof.ShakaElegibleoffersFiApplicationTests.OffersPropertiesRepositoryTest(ShakaElegibleoffersFiApplicationTests.java:68)
+
+GetAditionalComponentTest  Time elapsed: 0.034 s  <<< ERROR!
+org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.telefonica.eof.entity.OffersProperties]: No default constructor found; nested exception is java.lang.NoSuchMethodException: com.telefonica.eof.entity.OffersProperties.<init>()
+	at com.telefonica.eof.ShakaElegibleoffersFiApplicationTests.GetAditionalComponentTest(ShakaElegibleoffersFiApplicationTests.java:162)
+Caused by: java.lang.NoSuchMethodException: com.telefonica.eof.entity.OffersProperties.<init>()
+	at com.telefonica.eof.ShakaElegibleoffersFiApplicationTests.GetAditionalComponentTest(ShakaElegibleoffersFiApplicationTests.java:162)
+
