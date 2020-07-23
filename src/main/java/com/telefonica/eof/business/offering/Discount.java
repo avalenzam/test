@@ -1,4 +1,4 @@
-package com.telefonica.eof.business;
+package com.telefonica.eof.business.offering;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -97,7 +97,7 @@ public class Discount {
 	    benefitType.setId(discountOffer.getBenefitsComponentCid());
 	    benefitType.setName(nameComp);
 	    benefitType.setDownloadSpeed(discountOffer.getSpeed());
-//	    benefitType.set
+	    benefitType.setType(discountOffer.getLob());
 	    characteristics1.setKey("spsId");
 	    characteristics1.setValue(discountOffer.getBenefitThemePackSpsCid());
 	    characteristics2.setKey("spsName");
@@ -136,8 +136,6 @@ public class Discount {
 	    benefitTypeList.add(benefitType);
 	});
 
-	
-	
 
 	return null;
     }

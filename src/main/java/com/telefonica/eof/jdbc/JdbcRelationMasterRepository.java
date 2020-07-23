@@ -46,6 +46,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
     public List<String> getBoByBoType (String cidBo) {
 	String query = "select DISTINCT pibo.CID_BO" 
 		+ " from RELATIONS_MASTER rm"
+		+ " inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  = pibo.CID_BO"
 		+ " WHERE pibo.CID_BO IN (?)"
 		+ " AND pibo.PROPERTY_NAME = 'BO Type'"
 		+ " AND pibo.PROPERTY_VALUE !=  'Retention'";

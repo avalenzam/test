@@ -1,28 +1,21 @@
 package com.telefonica.eof;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.dto.DiscountParamsDto;
-import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
-import com.telefonica.eof.entity.MasterOfOffers;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
 import com.telefonica.eof.entity.VasBenefits;
 import com.telefonica.eof.entity.WirelineServiceBenefits;
-import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
 import com.telefonica.eof.repository.ComponentsMasterRepository;
 import com.telefonica.eof.repository.MasterOfOffersRepository;
@@ -72,8 +65,26 @@ class ShakaElegibleoffersFiApplicationTests {
 
     @Test
     void OffersPropertiesRepositoryTest() {
-	List<OffersProperties> offersProperties = offersPropertiesRepository.getByOfferCid(productOfferingCatalogId);
-	System.out.println(offersProperties);
+	List<OffersProperties> offersProperties = offersPropertiesRepository.getPropertyValue(productOfferingCatalogId);
+	
+	String retention = offersProperties.stream()
+		.filter(x -> x.getNameOfProperty().equalsIgnoreCase("Retention"))
+		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+
+	String lobType = offersProperties.stream()
+		.filter(x -> x.getNameOfProperty().equalsIgnoreCase("LOB type"))
+		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	
+	System.out.println(retention);
+	
+	if ("Y".equalsIgnoreCase(retention)) {
+	    
+	    System.out.println("logica get retention :" + lobType);
+	}else {
+	    System.out.println("logica get idcomponent :" + lobType);
+	}
+	
+	
 	String spsId = offersPropertiesRepository.getSpsId("34488365");
 	String arr[] = spsId.split(";", 0);
 	String firstWord = arr[0];
@@ -193,7 +204,7 @@ class ShakaElegibleoffersFiApplicationTests {
 
 	String offerCaption = masterOfOffersRepository.findByOfferCid(productOfferingCatalogId);
 
-	String propertyValueLT = offersPropertiesRepository.getByOfferCid(productOfferingCatalogId).stream()
+	String propertyValueLT = offersPropertiesRepository.getPropertyValue(productOfferingCatalogId).stream()
 		.filter(x -> x.getNameOfProperty().equals("LOB Type")).map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
 	System.out.println(propertyValueLT);
@@ -316,25 +327,6 @@ class ShakaElegibleoffersFiApplicationTests {
     @Test
     void Test() {
 
-	List<OffersProperties> numbers = new ArrayList<OffersProperties>();
-	OffersProperties of1 = new OffersProperties("prop1", "1");
-	OffersProperties of2 = new OffersProperties("prop2", "2");
-	OffersProperties of3 = new OffersProperties("prop3", "3");
-	OffersProperties of4 = new OffersProperties("prop4", "4");
-	numbers.add(of1);
-	numbers.add(of2);
-	numbers.add(of3);
-	numbers.add(of4);
-
-	List<String> numbersToremove = new ArrayList<String>();
-	numbersToremove.add("prop1");
-	numbersToremove.add("prop2");
-
-	numbersToremove.forEach(y -> {
-	    numbers.removeIf(x -> x.getNameOfProperty().contains(y));
-	});
-
-	System.out.println(numbers);
 	
 	BigDecimal price = new BigDecimal("10");
 	BigDecimal igv = new BigDecimal(0.18);

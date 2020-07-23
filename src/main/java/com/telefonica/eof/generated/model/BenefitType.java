@@ -1,24 +1,22 @@
 package com.telefonica.eof.generated.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.telefonica.eof.generated.model.CharacteristicBenefitType;
-import com.telefonica.eof.generated.model.PriceBenefitType;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.validation.annotation.Validated;
+import java.util.Objects;
+
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * BenefitType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-07-23T14:31:29.634Z")
 
 public class BenefitType   {
   @JsonProperty("id")
@@ -26,6 +24,9 @@ public class BenefitType   {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("type")
+  private String type = null;
 
   @JsonProperty("value")
   private String value = null;
@@ -79,6 +80,26 @@ public class BenefitType   {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public BenefitType type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Es el tipo de beneficio
+   * @return type
+  **/
+  @ApiModelProperty(value = "Es el tipo de beneficio")
+
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public BenefitType value(String value) {
@@ -191,6 +212,7 @@ public class BenefitType   {
     BenefitType benefitType = (BenefitType) o;
     return Objects.equals(this.id, benefitType.id) &&
         Objects.equals(this.name, benefitType.name) &&
+        Objects.equals(this.type, benefitType.type) &&
         Objects.equals(this.value, benefitType.value) &&
         Objects.equals(this.downloadSpeed, benefitType.downloadSpeed) &&
         Objects.equals(this.characteristics, benefitType.characteristics) &&
@@ -199,7 +221,7 @@ public class BenefitType   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, value, downloadSpeed, characteristics, priceBenefits);
+    return Objects.hash(id, name, type, value, downloadSpeed, characteristics, priceBenefits);
   }
 
   @Override
@@ -209,6 +231,7 @@ public class BenefitType   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    downloadSpeed: ").append(toIndentedString(downloadSpeed)).append("\n");
     sb.append("    characteristics: ").append(toIndentedString(characteristics)).append("\n");

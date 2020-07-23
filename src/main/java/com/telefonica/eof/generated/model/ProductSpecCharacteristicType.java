@@ -1,19 +1,19 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.telefonica.eof.generated.model.TimePeriodType;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
  * ProductSpecCharacteristicType
@@ -23,12 +23,12 @@ import javax.validation.constraints.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "valueType", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = ModelBoolean.class, name = "_boolean"),
-  @JsonSubTypes.Type(value = String.class, name = "string"),
-  @JsonSubTypes.Type(value = Numeric.class, name = "numeric"),
-  @JsonSubTypes.Type(value = Decimal.class, name = "decimal"),
-  @JsonSubTypes.Type(value = Object.class, name = "object"),
-  @JsonSubTypes.Type(value = Text.class, name = "text"),
-  @JsonSubTypes.Type(value = Integer.class, name = "integer"),
+  @JsonSubTypes.Type(value = StringWrapper.class, name = "string"),
+  @JsonSubTypes.Type(value = NumericWrapper.class, name = "numeric"),
+  @JsonSubTypes.Type(value = DecimalWrapper.class, name = "decimal"),
+  @JsonSubTypes.Type(value = ObjectWrapper.class, name = "object"),
+  @JsonSubTypes.Type(value = TextWrapper.class, name = "text"),
+  @JsonSubTypes.Type(value = IntegerWrapper.class, name = "integer"),
 })
 
 public class ProductSpecCharacteristicType   {

@@ -17,12 +17,12 @@ public class JdbcOffersPropertiesRepository implements OffersPropertiesRepositor
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<OffersProperties> getByOfferCid(String productOfferingCatalogId) {
+    public List<OffersProperties> getPropertyValue(String productOfferingCatalogId) {
 	
-	 String query = "select PROPERTY_VALUE, NAME_OF_PROPERTY "
-	 	+ "from OFFERS_PROPERTIES "
-	 	+ "where OFFER_CID = ?"
-	 	+ "and NAME_OF_PROPERTY in ('LOB Type', 'Retention') ";
+	 String query = "select PROPERTY_VALUE, NAME_OF_PROPERTY"
+	 	+ " from OFFERS_PROPERTIES "
+	 	+ " where OFFER_CID = ?"
+	 	+ " and NAME_OF_PROPERTY in ('LOB Type', 'Retention') ";
 	 
 	 List<OffersProperties> offersProperties = jdbcTemplate.query(query,
 			new Object[]{productOfferingCatalogId },

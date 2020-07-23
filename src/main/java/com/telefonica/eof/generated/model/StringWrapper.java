@@ -1,39 +1,34 @@
 package com.telefonica.eof.generated.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
-import com.telefonica.eof.generated.model.ProductSpecCharacteristicValueType;
-import com.telefonica.eof.generated.model.TimePeriodType;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.validation.annotation.Validated;
+import java.util.Objects;
+
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Decimal
+ * StringWrapper
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-07-23T14:31:29.634Z")
 
-public class Decimal extends ProductSpecCharacteristicType  {
+public class StringWrapper extends ProductSpecCharacteristicType  {
   @JsonProperty("productSpecCharacteristicValue")
   @Valid
   private List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue = null;
 
-  public Decimal productSpecCharacteristicValue(List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue) {
+  public StringWrapper productSpecCharacteristicValue(List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue) {
     this.productSpecCharacteristicValue = productSpecCharacteristicValue;
     return this;
   }
 
-  public Decimal addProductSpecCharacteristicValueItem(ProductSpecCharacteristicValueType productSpecCharacteristicValueItem) {
+  public StringWrapper addProductSpecCharacteristicValueItem(ProductSpecCharacteristicValueType productSpecCharacteristicValueItem) {
     if (this.productSpecCharacteristicValue == null) {
       this.productSpecCharacteristicValue = new ArrayList<ProductSpecCharacteristicValueType>();
     }
@@ -66,8 +61,8 @@ public class Decimal extends ProductSpecCharacteristicType  {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Decimal decimal = (Decimal) o;
-    return Objects.equals(this.productSpecCharacteristicValue, decimal.productSpecCharacteristicValue) &&
+    StringWrapper stringWrapper = (StringWrapper) o;
+    return Objects.equals(this.productSpecCharacteristicValue, stringWrapper.productSpecCharacteristicValue) &&
         super.equals(o);
   }
 
@@ -79,7 +74,7 @@ public class Decimal extends ProductSpecCharacteristicType  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Decimal {\n");
+    sb.append("class StringWrapper {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    productSpecCharacteristicValue: ").append(toIndentedString(productSpecCharacteristicValue)).append("\n");
     sb.append("}");
