@@ -13,6 +13,7 @@ public class RelationMaster {
     private String nameParent;
     private String propertyValue;
     private String durationValue;
+    private String nameBo;
     
     
 

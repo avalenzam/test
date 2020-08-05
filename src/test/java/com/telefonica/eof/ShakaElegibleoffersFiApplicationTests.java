@@ -1,6 +1,8 @@
 package com.telefonica.eof;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,23 +10,33 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.dto.DiscountParamsDto;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
+import com.telefonica.eof.entity.BillingOfferMaster;
+import com.telefonica.eof.entity.InstallationFee;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
+import com.telefonica.eof.entity.Upfront;
 import com.telefonica.eof.entity.VasBenefits;
 import com.telefonica.eof.entity.WirelineServiceBenefits;
+import com.telefonica.eof.jdbc.InstalFeeNoRiskRepository;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
 import com.telefonica.eof.repository.ComponentsMasterRepository;
+import com.telefonica.eof.repository.DomainWithValidValuesRepository;
+import com.telefonica.eof.repository.EquipmentRepository;
+import com.telefonica.eof.repository.InstallationFeeRepository;
 import com.telefonica.eof.repository.MasterOfOffersRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.repository.PricePropertiesRepository;
 import com.telefonica.eof.repository.PropertyInBillingOfferRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.RelationOffersXPlanRepository;
+import com.telefonica.eof.repository.StbSettingRepository;
 import com.telefonica.eof.repository.SvaOfferingRepository;
+import com.telefonica.eof.repository.UpfrontRepository;
 import com.telefonica.eof.repository.VasBenefitsRepository;
 import com.telefonica.eof.repository.WirelineServiceBenefitsRepository;
 
@@ -53,9 +65,25 @@ class ShakaElegibleoffersFiApplicationTests {
     private BillingOfferMasterRepository      billingOfferMasterRepository;
     @Autowired
     private WirelineServiceBenefitsRepository wirelineServiceBenefitsRepository;
+    @Autowired
+    private EquipmentRepository equipmentRepository;
+    @Autowired
+    private StbSettingRepository stbSettingRepository;
+    @Autowired
+    private DomainWithValidValuesRepository domainWithValidValuesRepository;
+    @Autowired
+    private UpfrontRepository upfrontRepository;
+    @Autowired
+    private InstallationFeeRepository installationFeeRepository;
+    @Autowired
+    private InstalFeeNoRiskRepository instalFeeNoRiskRepository;
+   
 
     private String productOfferingCatalogId = "34459665";
     private String broadbandMinDlDataRate   = null;
+    private String networkTecnology = "FTTH";
+    private String currentOffering = "3240962";
+    private String vProductOfferingID = "34418915";
 
     @Test
     void MasterOfOffersRepositoryTest() {
@@ -74,6 +102,8 @@ class ShakaElegibleoffersFiApplicationTests {
 	String lobType = offersProperties.stream()
 		.filter(x -> x.getNameOfProperty().equalsIgnoreCase("LOB type"))
 		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	
+
 	
 	System.out.println(retention);
 	
@@ -103,12 +133,12 @@ class ShakaElegibleoffersFiApplicationTests {
     void RelationOffersXPlanRepositoryTest() {
 	Integer maxSTBsallowed = relationOffersXPlanRepository.getMxSTBsallowed(productOfferingCatalogId);
 	System.out.println(maxSTBsallowed);
-	System.out.println("hola mundo");
     }
 
     @Test
     void RelationMasterRepositoryTest() {
-	
+	List<RelationMaster> svas = relationMasterRepository.getSvas("34325311");
+	System.out.println(svas);
 	String  discoutnSpsName = relationMasterRepository.getDiscountSpsName("32979711");
 	System.out.println(discoutnSpsName);
 	List<RelationMaster> cidBoList = relationMasterRepository.getBoActive(productOfferingCatalogId, "3196671");
@@ -145,7 +175,7 @@ class ShakaElegibleoffersFiApplicationTests {
 
     @Test
     void BillingOfferMasterRepositoryTest() {
-	String billingOfferMaster = billingOfferMasterRepository.getBillingOfferName("33145411");
+	BillingOfferMaster billingOfferMaster = billingOfferMasterRepository.getBillingOfferName("33145411");
 	System.out.println(billingOfferMaster);
     }
 
@@ -198,7 +228,28 @@ class ShakaElegibleoffersFiApplicationTests {
 	List<WirelineServiceBenefits> discount = wirelineServiceBenefitsRepository.getDiscount(discountParamsDto);
 	System.out.println(discount);
     }
-
+    
+    @Test
+    void DomainWithValidValuesRepositoryTest() {
+	String stbSetting = domainWithValidValuesRepository.getStbSetting(2);
+		System.out.println(stbSetting);
+	String nameComponent = domainWithValidValuesRepository.getNameComponent(stbSetting);
+	System.out.println(nameComponent);
+    }
+    
+    @Test
+    void UpfrontRepositoryRepositoryTest() {
+	Integer score = 1234%10;
+	System.out.println(score);
+	List<Upfront> upfront = upfrontRepository.getUpfront();
+	System.out.println(upfront);
+	String uf = upfront.stream()
+	.filter(x -> x.getUpfrontIndDesc().contains(score.toString())).map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+	System.out.println(uf);
+	System.out.println("1,2,3,4".contains("4"));
+    }
+    
+    
     @Test
     void GetAditionalComponentTest() {
 
@@ -323,18 +374,296 @@ class ShakaElegibleoffersFiApplicationTests {
 	// });
 	//
     }
+    
+    
+    @SuppressWarnings("unused")
+    @Test
+    void aditionalSvaTest() {
+//	productOfferingCatalogId;
+//	lob bb = 34456865
+//	bundleLob tv= 34483865
+	
+	String field = "DownloadSpeed:120,DownloadSpeed:200";
+	Integer velocidad = 200;
+	System.out.println(field.split(","));
+	
+	Boolean flagModemPremium;
+	Boolean flagUltraWifi;
+	//TODO debe ir el parametro VProductOfferingID
+	List<OffersProperties> offersProperties = offersPropertiesRepository.getPropertyValue("34483865");
+	
+	String lob;
+	
+	lob= offersProperties.stream()
+		.filter(x -> x.getNameOfProperty().equalsIgnoreCase("LOB"))
+		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	
+	System.out.println(lob);
+	
+	
+	if ("null".equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob)) {
+
+	    lob = offersProperties.stream()
+			.filter(x -> x.getNameOfProperty().equalsIgnoreCase("Bundle LOBs"))
+			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	    System.out.println(lob);  
+	}
+	
+	if (lob.matches("Internet|BB")) {
+	    
+	    String minSpeedPremium = offersProperties.stream()
+			.filter(x -> x.getNameOfProperty().equalsIgnoreCase("Minimum Download Speed for Premium"))
+			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	    
+	    System.out.println("minSpeedPremium :" + minSpeedPremium);
+	    
+	    if (Integer.parseInt(minSpeedPremium) <= velocidad ) {
+		flagModemPremium = true;
+	    }else {
+		flagModemPremium = false;
+	    }
+	    System.out.println("flagModemPremium :" + flagModemPremium);
+	    
+	    String minSpeedWifi = offersProperties.stream()
+			.filter(x -> x.getNameOfProperty().equalsIgnoreCase("Minimum Speed for Loaned Ultra WiFi"))
+			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	    
+	    System.out.println("minSpeedWifi :" + minSpeedWifi);
+	    
+	    if (Integer.parseInt(minSpeedWifi) <= velocidad ) {
+		flagUltraWifi = true;
+	    }else {
+		flagUltraWifi = false;
+	    }
+	    
+	    System.out.println("flagUltraWifi :" + flagUltraWifi); 
+	}else {
+	    flagModemPremium = false;
+	    flagUltraWifi = false;
+	}
+	
+	String defSpsId = offersProperties.stream()
+		.filter(x -> x.getNameOfProperty().equalsIgnoreCase("DEF_SPS_ID"))
+		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+    
+	System.out.println("defSpsId :" + defSpsId);
+    
+	String defSpsBo = offersProperties.stream()
+		.filter(x -> x.getNameOfProperty().equalsIgnoreCase("DEF_SPS_BO"))
+		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+    
+	System.out.println("defSpsBo :" + defSpsBo);
+	System.out.println("lob :"+lob);
+	
+	//	Obtener Tipo de Modem
+	
+	String equipmentCid = equipmentRepository.getEquipmentCid(networkTecnology, lob);
+	System.out.println(equipmentCid);
+	
+	if (!"null".equalsIgnoreCase(equipmentCid) || !StringUtil.isNullOrEmpty(equipmentCid)) {
+	    System.out.println("equipmentCid existe");
+	    
+	    String nameComp = componentsMasterRepository.getComponentName(equipmentCid);
+	    System.out.println(nameComp);
+
+	}
+	
+	if (flagModemPremium = true) {
+	    System.out.println("llenar response");
+
+	}else {
+	    
+	}
+	
+	// 	Obtener STB (Decodificadores)
+	
+	if (lob.contains("TV")) {
+	    System.out.println("entro tv");
+	    String stbNewOffer;
+	    
+	    if (velocidad != null) {
+		stbNewOffer = stbSettingRepository.getStbSettingWithSpeed(null, vProductOfferingID, velocidad);
+		System.out.println(stbNewOffer);
+	    } else {
+		stbNewOffer = stbSettingRepository.getStbSettingWithoutSpeed(null, vProductOfferingID);
+		System.out.println(stbNewOffer);
+	    }
+	    
+	    List<String> stbNewOfferList = Arrays.asList(stbNewOffer.split(","));
+	    
+	    List<OffersProperties> propertyValue = offersPropertiesRepository.getPropertyValue(currentOffering);
+	    
+	    String currentOfferLob = propertyValue.stream()
+			.filter(x -> x.getNameOfProperty().equalsIgnoreCase("LOB"))
+			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	    System.out.println(currentOfferLob);
+	    
+	    String currentOfferBundleLob = propertyValue.stream()
+			.filter(x -> x.getNameOfProperty().equalsIgnoreCase("Bundle LOBs"))
+			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	    System.out.println(currentOfferBundleLob);
+	    
+	    if (!currentOfferBundleLob.contains("TV") && !currentOfferLob.contains("TV")) {
+		System.out.println("cumple condicion");
+		String stbCurrentOffer;
+		if (currentOffering != null) {
+		    stbCurrentOffer = stbSettingRepository.getStbSettingWithSpeed(null, vProductOfferingID, velocidad);
+		    System.out.println(stbNewOffer);
+		} else {
+		    stbCurrentOffer = stbSettingRepository.getStbSettingWithoutSpeed(null, vProductOfferingID);
+		    System.out.println(stbNewOffer);
+		}
+		
+		List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(","));
+		
+		Integer rankSTB = 0;
+		Integer currentRankSTB = 0;
+		
+		for (String stbSettingNew : stbNewOfferList ) {
+		    Integer caption = domainWithValidValuesRepository.getCaption(stbSettingNew.trim());    
+		    if (caption > rankSTB) {
+			rankSTB = caption;
+		    }
+		}
+		
+		for (String stbSettingCurrent : stbCurrentOfferList ) {
+		    Integer caption = domainWithValidValuesRepository.getCaption(stbSettingCurrent.trim());    
+		    if (caption > rankSTB) {
+			currentRankSTB = caption;
+		    }
+		}
+		
+		if (rankSTB > currentRankSTB) {
+//		    llenar response
+		} else {
+//		    llenar response
+		}
+		    		    
+	    }
+	    
+	}
+	
+//	Obtener bloque de canales de la oferta 
+	
+	if (!"null".equalsIgnoreCase(defSpsBo) || !StringUtil.isNullOrEmpty(defSpsBo)) {
+	    
+	    Sps idAndNameComponent = relationMasterRepository.getIdAndNameComponent(defSpsBo, vProductOfferingID);
+	    List<String> defSpsBoList = Arrays.asList(defSpsBo.split(","));
+	    List<String> defSpsIdList = Arrays.asList(defSpsId.split(","));
+	    
+	    defSpsBoList.forEach(bo -> {
+		BillingOfferMaster billingOffer = billingOfferMasterRepository.getBillingOfferName(bo);
+		PriceProperties valueAbp = pricePropertiesRepository.getPriceInfo(billingOffer.getCidBo());
+		
+//		llenar response
+		
+	    });
+	    
+	    defSpsIdList.forEach(id -> {
+		String nameParent = relationMasterRepository.getDiscountSpsName(id);
+//		llenar response
+	    });
+	    
+	}
+	
+//	5.	Obtener otros SVAs (Multidestino y MCafee)
+	
+	List<RelationMaster> svas = relationMasterRepository.getSvas(vProductOfferingID);
+	svas.forEach(sva -> {
+	    String nameComp = componentsMasterRepository.getComponentName(sva.getParentId());
+	});
+	
+	 
+	
+    }
+    
+    
+    @Test
+    void getUpfrontFija() {
+	
+	Integer score = 1230%10;
+	System.out.println(score);
+	List<Upfront> upfront = upfrontRepository.getUpfront();
+	System.out.println(upfront);
+	String uf = upfront.stream()
+	.filter(x -> x.getUpfrontIndDesc().contains(score.toString())).map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+	System.out.println(uf);
+
+	
+	InstallationFee installationFee = installationFeeRepository.getBoUpfront("2228", "Voice+Internet+TV", uf);
+	System.out.println(installationFee);
+	
+	BigDecimal upfrontPrice;
+	
+	
+	String cidBo = billingOfferMasterRepository.getCidBo(installationFee.getInstallationFeeBo());
+	System.out.println(cidBo);
+	
+	if ("Y".equalsIgnoreCase(uf)) {
+	    
+	    upfrontPrice = pricePropertiesRepository.getUpfrontPrice(installationFee.getInstallationFeeBo());
+	    System.out.println("upfront Y : " + upfrontPrice);
+	}else {
+	    upfrontPrice = instalFeeNoRiskRepository.getUpfrontPrice(null, null);
+	    System.out.println("upfront N : " + upfrontPrice);
+	}
+    }
+  
+    
 
     @Test
     void Test() {
 
 	
-	BigDecimal price = new BigDecimal("10");
-	BigDecimal igv = new BigDecimal(0.18);
-	BigDecimal total = price.multiply(igv).add(price);
+	String field = "DownloadSpeed: 120,DownloadSpeed: 200";
 	
-	System.out.println(total);
-
-
+	
+	if (field.contains("DownloadSpeed")) {
+	   List<String> items = Arrays.asList(field.split(","));
+	   List<String> items2 = new ArrayList<String>();
+	   items.forEach(item->{
+	   items2.add(Arrays.asList(item.split(":")).get(1));
+	});
+	
+	items2.forEach(item->{
+	  
+	    System.out.println(item.trim());
+	});
+	   }
+	
+	
+	
+	
+	
+//	String sps1 = "HD, SMART HD";
+//	List<String> sps1list = Arrays.asList(sps1.split(","));
+//	System.out.println(sps1list);
+//	String sps2 = "HD, SMART HD";
+//	List<String> sps2list = Arrays.asList(sps2.split(","));
+//	System.out.println(sps1list);
+//	
+//	List<Integer> numberList = new ArrayList<>();
+//	numberList.add(1);
+//	numberList.add(10);
+//	
+//	System.err.println(numberList);
+////	 Integer rankSTB = Collections.max(numberList);
+//	
+//	Integer rankSTB = 0;
+//	
+//	for (String x : sps1list ) {
+//	    System.out.println(x.trim());
+//	    Integer caption = domainWithValidValuesRepository.getCaption(x.trim());
+//	    System.out.println("caption :" + caption);
+//	    if (caption > rankSTB) {
+//		System.out.println("caption if :" + caption);
+//		rankSTB = caption;
+//	    }
+//	}
+//	
+//	
+//	System.out.println("rankSTB = " + rankSTB);
+	
     }
 
 }

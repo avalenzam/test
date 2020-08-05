@@ -118,6 +118,45 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
    	
        }
     
+    @Override
+    public Sps getIdAndNameComponent (String defSpsBo, String vProductOfferingID ) {
+   	String query = "select rm.parent_id, rm.name_parent"
+   		+ " from relations_master rm, BILLING_OFFER_MASTER bim, MASTER_CHANN_PACK_WITH_PROPERT mcp"
+   		+ " where rm.child_id = bim.cid_bo"
+   		+ " and caption_bo = substr( ? ,1,"
+   		+ " decode(instr(?,';')-1,-1,"
+   		+ " length(?),"
+   		+ " instr(?,';')-1))"
+   		+ " and rm.root_cid = ?"
+   		+ " and ROWNUM = 1";
+   	
+  
+   	List<Sps> idAndNameComponent = jdbcTemplate.query(query,
+   		new Object[]{defSpsBo, defSpsBo, defSpsBo, defSpsBo, vProductOfferingID},
+		new BeanPropertyRowMapper<>(Sps.class));
+	
+	return idAndNameComponent.get(0);
+   	
+       }
+    
+    @Override
+    public List<RelationMaster> getSvas (String vProductOfferingID ) {
+   	String query = "select rm.PARENT_ID, bom.CID_BO, bom.NAME_BO "
+   		+ " from relations_master rm, BILLING_OFFER_MASTER bom" 
+   		+ " where rm.root_cid = ?" 
+   		+ " and rm.is_mandatory = '1'"  
+   		+ " and rm.PARENT_ID in ('2723922', '3239962')"  
+   		+ " and bom.CID_BO = rm.CHILD_ID";
+   	
+  
+   	return jdbcTemplate.query(query,
+		new Object[]{vProductOfferingID},
+		new BeanPropertyRowMapper<>(RelationMaster.class));
+	
+	
+   	
+       }
+    
     
     
     

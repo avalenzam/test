@@ -1,5 +1,6 @@
 package com.telefonica.eof.jdbc;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,21 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
 	return jdbcTemplate.query(query,
 		new Object[]{benefitBillingOfferCid},
 		new BeanPropertyRowMapper<>(PriceProperties.class));
+	  
+    }
+    
+    @Override
+    public BigDecimal getUpfrontPrice (String installationFeeBo) {
+	
+	String query = "select VALUE_ABP"
+		+ " from PRICE_PROPERTIES pp, BILLING_OFFER_MASTER bom"
+		+ " where pp.NAME_PROP_ABP = 'Rate'"
+		+ " and pp.BILLING_OFFER_CID = bom.CID_BO"
+		+ " and bom.CAPTION_BO = ?";
+	 
+	return jdbcTemplate.queryForObject(query,
+		new Object[]{installationFeeBo},
+		BigDecimal.class);
 	  
     }
 

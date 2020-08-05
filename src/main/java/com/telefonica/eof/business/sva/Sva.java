@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
+import com.telefonica.eof.entity.InstallationFee;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
@@ -18,6 +19,7 @@ import com.telefonica.eof.generated.model.BenefitType;
 import com.telefonica.eof.generated.model.CharacteristicBenefitType;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType.PriceTypeEnum;
+import com.telefonica.eof.pojo.upfrontFija.UpfrontFijaResponse;
 import com.telefonica.eof.generated.model.ComposingProductType;
 import com.telefonica.eof.generated.model.MoneyType;
 import com.telefonica.eof.generated.model.OfferingType;
@@ -34,6 +36,7 @@ import com.telefonica.eof.repository.PropertyInBillingOfferRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.RelationOffersXPlanRepository;
 import com.telefonica.eof.repository.SvaOfferingRepository;
+import com.telefonica.eof.repository.UpfrontRepository;
 import com.telefonica.eof.repository.VasBenefitsRepository;
 
 @Component
@@ -59,6 +62,8 @@ public class Sva {
     private ComponentsMasterRepository	     componentsMasterRepository;
     @Autowired
     private BillingOfferMasterRepository     billingOfferMasterRepository;
+    @Autowired
+    private UpfrontRepository		     upfrontRepository;
 
     public List<OfferingType> GetSvaTypeSva(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
@@ -67,6 +72,19 @@ public class Sva {
 
 	String offerCaption = masterOfOffersRepository.findByOfferCid(offersBenefitsRequestDto.getProductOfferingCatalogId());
 	Integer maxSTBsallowed = relationOffersXPlanRepository.getMxSTBsallowed(offersBenefitsRequestDto.getProductOfferingCatalogId());
+
+
+//	String upfront = upfrontRepository.getUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
+//		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+//
+//
+//	if ("Y".equalsIgnoreCase(upfront)) {
+//
+//	  
+//	} else {
+//	  
+//	}
+
 	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getProductOfferingCatalogId(),
 		offersBenefitsRequestDto.getAction(), query);
 
@@ -78,7 +96,6 @@ public class Sva {
 		    flagType);
 
 	    OfferingType offeringType = new OfferingType();
-	  
 
 	    List<ComposingProductType> productSpecificationList = new ArrayList<>();
 	    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
@@ -90,9 +107,18 @@ public class Sva {
 		PriceTypeEnum priceType;
 
 		BigDecimal amount;
-		
+
 		Sps spsIdAndName = getSpsIdAndName(billingOffer.getChildId());
 
+		String upfront = upfrontRepository.getUpfront().stream()
+			.filter(x -> x.getUpfrontIndDesc().contains(offersBenefitsRequestDto.getCreditScore().toString()))
+			.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+	
+		if ("Y".equalsIgnoreCase(upfront) && billingOffer.getParentId().contains("3192682|3192742|3192652") ) {
+		  // TODO remuevo esos sva  
+		}
+		
+		
 		PriceProperties priceInfo = pricePropertiesRepository.getPriceInfo(billingOffer.getChildId());
 
 		if ("OC".equalsIgnoreCase(priceInfo.getRevenueType())) {
@@ -130,12 +156,14 @@ public class Sva {
 		VasBenefits vasBenefits = vasBenefitsRepository.getSvaBenefits(svaBenefitParamsDto, dataRateFrom, dataRateTo);
 		String nameComp = componentsMasterRepository.getComponentName(vasBenefits.getBenefitComponentCid());
 		String parentName = relationMasterRepository.getSpsIdAndName(vasBenefits.getBenefitThemePackSpsCid()).getParentName();
-		String nameBo = billingOfferMasterRepository.getBillingOfferName(idComponent);
+		String nameBo = billingOfferMasterRepository.getBillingOfferName(idComponent).getNameBo();
 
 		ComposingProductType productSpecification = new ComposingProductType();
-//		ProductSpecCharacteristicType productCharacteristics1 = new ProductSpecCharacteristicType();
-//		ProductSpecCharacteristicType productCharacteristics2 = new ProductSpecCharacteristicType();
-		
+		// ProductSpecCharacteristicType productCharacteristics1 = new
+		// ProductSpecCharacteristicType();
+		// ProductSpecCharacteristicType productCharacteristics2 = new
+		// ProductSpecCharacteristicType();
+
 		ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
 		BenefitType benefitType = new BenefitType();
 		List<CharacteristicBenefitType> characteristicsList = new ArrayList<>();
@@ -153,13 +181,13 @@ public class Sva {
 		if ("3197701".equals(idComponent)) {
 		    productSpecification.setMaxCardinality(maxSTBsallowed);
 		}
-//
-//		productCharacteristics1.setName("SPSID");
-//		productCharacteristics1.setDescription("String");
-		
+		//
+		// productCharacteristics1.setName("SPSID");
+		// productCharacteristics1.setDescription("String");
+
 		StringWrapper productCharacteristics1 = new StringWrapper();
 		List<ProductSpecCharacteristicValueType> productSpecCharacteristicValueTypeList1 = new ArrayList<>();
-		ProductSpecCharacteristicValueType productSpecCharacteristicValue1 = new ProductSpecCharacteristicValueType();	
+		ProductSpecCharacteristicValueType productSpecCharacteristicValue1 = new ProductSpecCharacteristicValueType();
 		productCharacteristics1.setName("SPSID");
 		productCharacteristics1.setDescription("String");
 		productSpecCharacteristicValue1.setValue(spsIdAndName.getParentId());
@@ -168,7 +196,7 @@ public class Sva {
 
 		StringWrapper productCharacteristics2 = new StringWrapper();
 		List<ProductSpecCharacteristicValueType> productSpecCharacteristicValueTypeList2 = new ArrayList<>();
-		ProductSpecCharacteristicValueType productSpecCharacteristicValue2 = new ProductSpecCharacteristicValueType();	
+		ProductSpecCharacteristicValueType productSpecCharacteristicValue2 = new ProductSpecCharacteristicValueType();
 		productCharacteristics2.setName("SPSID");
 		productCharacteristics2.setDescription("String");
 		productSpecCharacteristicValue1.setValue(spsIdAndName.getParentId());
@@ -208,13 +236,13 @@ public class Sva {
 		benefitTypeList.add(benefitType);
 		productPriceList.add(productPrice);
 		productSpecificationList.add(productSpecification);
-		
+
 		offeringType.setName(billingOffer.getNameParent());
 
 	    });
 
 	    offeringType.setId(idComponent);
-	    
+
 	    offeringType.setBenefits(benefitTypeList);
 	    offeringType.setProductOfferingPrice(productPriceList);
 	    offeringType.setProductSpecification(productSpecificationList);
@@ -244,7 +272,6 @@ public class Sva {
 	    OfferingType offeringType = new OfferingType();
 	    List<ComposingProductType> productSpecificationList = new ArrayList<>();
 	    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
-	    
 
 	    billingOfferList.forEach(billingOffer -> {
 
@@ -267,9 +294,7 @@ public class Sva {
 		productCharacteristicsList.add(productCharacteristics2);
 		refinedProductType.setProductCharacteristics(productCharacteristicsList);
 		productSpecification.setRefinedProduct(refinedProductType);
-		
-		
-		
+
 		productSpecificationList.add(productSpecification);
 		offeringType.setName(billingOffer.getNameParent());
 		offeringType.setProductSpecification(productSpecificationList);

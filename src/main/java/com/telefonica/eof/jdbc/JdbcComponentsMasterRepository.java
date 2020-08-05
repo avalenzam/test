@@ -21,4 +21,6 @@ public class JdbcComponentsMasterRepository implements ComponentsMasterRepositor
 		new Object[]{benefitComponentCid},
 		String.class);
     }
+    
+
 }

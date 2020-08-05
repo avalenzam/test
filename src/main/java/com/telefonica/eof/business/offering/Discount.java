@@ -81,7 +81,7 @@ public class Discount {
 	    BigDecimal value = new BigDecimal(valueAbp);
 	    BigDecimal valueIgv = igvCalculator(valueAbp);
 	    String spsName = relationMasterRepository.getDiscountSpsName(discountOffer.getBenefitThemePackSpsCid());
-	    String boName = billingOfferMasterRepository.getBillingOfferName(discountOffer.getBenefitBillingOfferCid());
+	    String nameBo = billingOfferMasterRepository.getBillingOfferName(discountOffer.getBenefitBillingOfferCid()).getNameBo();
 	    
 	    BenefitType benefitType = new BenefitType();
 	    PriceBenefitType priceBenefit = new PriceBenefitType();
@@ -105,7 +105,7 @@ public class Discount {
 	    characteristics3.setKey("BOID");
 	    characteristics3.setValue(discountOffer.getBenefitBillingOfferCid());
 	    characteristics4.setKey("BOName");
-	    characteristics4.setValue(boName);
+	    characteristics4.setValue(nameBo);
 	    characteristics5.setKey("duration");
 	    characteristics5.setValue(discountOffer.getDuration());
 	    characteristics6.setKey("NightInd");

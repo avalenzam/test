@@ -13,5 +13,7 @@ public interface RelationMasterRepository {
     public List<String> getParentId(String billingOfferId );
     public Sps getSpsIdAndName(String parentId );
     public String getDiscountSpsName (String benefitThemePackSpsCid );
+    public Sps getIdAndNameComponent (String defSpsBo, String vProductOfferingID );
+    public List<RelationMaster> getSvas (String vProductOfferingID );
 
 }
