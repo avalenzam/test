@@ -2,6 +2,6 @@ package com.telefonica.eof.repository;
 
 public interface MasterOfOffersRepository {
       
-    public String findByOfferCid(String productOfferingCatalogId);
+    public String findOfferCaption(String productOfferingCatalogId);
 
 }

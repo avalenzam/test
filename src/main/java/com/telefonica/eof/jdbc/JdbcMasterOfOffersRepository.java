@@ -13,7 +13,7 @@ public class JdbcMasterOfOffersRepository implements MasterOfOffersRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String findByOfferCid(String productOfferingCatalogId) {
+    public String findOfferCaption(String productOfferingCatalogId) {
 	
 	String query = "select OFFER_CAPTION"
 		+ " from MASTER_OF_OFFERS"

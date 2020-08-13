@@ -22,11 +22,13 @@ import com.telefonica.eof.entity.Sps;
 import com.telefonica.eof.entity.Upfront;
 import com.telefonica.eof.entity.VasBenefits;
 import com.telefonica.eof.entity.WirelineServiceBenefits;
-import com.telefonica.eof.jdbc.InstalFeeNoRiskRepository;
+import com.telefonica.eof.pojo.productInventory.ProductInventoryResponseDto;
+import com.telefonica.eof.proxy.productInventory.ParqueUnificadoConnection;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
 import com.telefonica.eof.repository.ComponentsMasterRepository;
 import com.telefonica.eof.repository.DomainWithValidValuesRepository;
 import com.telefonica.eof.repository.EquipmentRepository;
+import com.telefonica.eof.repository.InstalFeeNoRiskRepository;
 import com.telefonica.eof.repository.InstallationFeeRepository;
 import com.telefonica.eof.repository.MasterOfOffersRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
@@ -77,6 +79,8 @@ class ShakaElegibleoffersFiApplicationTests {
     private InstallationFeeRepository installationFeeRepository;
     @Autowired
     private InstalFeeNoRiskRepository instalFeeNoRiskRepository;
+    @Autowired
+    private ParqueUnificadoConnection parqueUnificadoConnection;
    
 
     private String productOfferingCatalogId = "34459665";
@@ -84,10 +88,21 @@ class ShakaElegibleoffersFiApplicationTests {
     private String networkTecnology = "FTTH";
     private String currentOffering = "3240962";
     private String vProductOfferingID = "34418915";
+    
+    @Test
+    void parqueUnificadoConnectionTest() {
+	try {
+	    List<ProductInventoryResponseDto> x = parqueUnificadoConnection.callRestService("14318987", "landline");
+	System.out.println(x);
+	} catch (Exception e) {
+	   System.out.println(e.getCause());
+	}
+	
+    }
 
     @Test
     void MasterOfOffersRepositoryTest() {
-	String offerCaption = masterOfOffersRepository.findByOfferCid(productOfferingCatalogId);
+	String offerCaption = masterOfOffersRepository.findOfferCaption(productOfferingCatalogId);
 	System.out.println(offerCaption);
     }
 
@@ -131,7 +146,7 @@ class ShakaElegibleoffersFiApplicationTests {
 
     @Test
     void RelationOffersXPlanRepositoryTest() {
-	Integer maxSTBsallowed = relationOffersXPlanRepository.getMxSTBsallowed(productOfferingCatalogId);
+	Integer maxSTBsallowed = relationOffersXPlanRepository.findPlanCid(productOfferingCatalogId);
 	System.out.println(maxSTBsallowed);
     }
 
@@ -253,7 +268,7 @@ class ShakaElegibleoffersFiApplicationTests {
     @Test
     void GetAditionalComponentTest() {
 
-	String offerCaption = masterOfOffersRepository.findByOfferCid(productOfferingCatalogId);
+	String offerCaption = masterOfOffersRepository.findOfferCaption(productOfferingCatalogId);
 
 	String propertyValueLT = offersPropertiesRepository.getPropertyValue(productOfferingCatalogId).stream()
 		.filter(x -> x.getNameOfProperty().equals("LOB Type")).map(p -> p.getPropertyValue()).collect(Collectors.joining());

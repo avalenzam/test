@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
-import com.telefonica.eof.entity.InstallationFee;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
@@ -19,7 +18,6 @@ import com.telefonica.eof.generated.model.BenefitType;
 import com.telefonica.eof.generated.model.CharacteristicBenefitType;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType.PriceTypeEnum;
-import com.telefonica.eof.pojo.upfrontFija.UpfrontFijaResponse;
 import com.telefonica.eof.generated.model.ComposingProductType;
 import com.telefonica.eof.generated.model.MoneyType;
 import com.telefonica.eof.generated.model.OfferingType;
@@ -32,7 +30,6 @@ import com.telefonica.eof.repository.ComponentsMasterRepository;
 import com.telefonica.eof.repository.MasterOfOffersRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.repository.PricePropertiesRepository;
-import com.telefonica.eof.repository.PropertyInBillingOfferRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.RelationOffersXPlanRepository;
 import com.telefonica.eof.repository.SvaOfferingRepository;
@@ -52,8 +49,8 @@ public class Sva {
     private RelationMasterRepository	     relationMasterRepository;
     @Autowired
     private RelationOffersXPlanRepository    relationOffersXPlanRepository;
-    @Autowired
-    private PropertyInBillingOfferRepository propertyInBillingOfferRepository;
+//    @Autowired
+//    private PropertyInBillingOfferRepository propertyInBillingOfferRepository;
     @Autowired
     private PricePropertiesRepository	     pricePropertiesRepository;
     @Autowired
@@ -70,13 +67,14 @@ public class Sva {
 	String query = "'*'," + offersBenefitsRequestDto.getIsRetention().toString();
 	String flagType = "sva";
 
-	String offerCaption = masterOfOffersRepository.findByOfferCid(offersBenefitsRequestDto.getProductOfferingCatalogId());
-	Integer maxSTBsallowed = relationOffersXPlanRepository.getMxSTBsallowed(offersBenefitsRequestDto.getProductOfferingCatalogId());
+	String offerCaption = masterOfOffersRepository.findOfferCaption(offersBenefitsRequestDto.getProductOfferingCatalogId());
+	Integer maxSTBsallowed = relationOffersXPlanRepository.findPlanCid(offersBenefitsRequestDto.getProductOfferingCatalogId());
 
 
-//	String upfront = upfrontRepository.getUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
-//		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
-//
+	Integer score = offersBenefitsRequestDto.getCreditScore()%10;
+	String upfront = upfrontRepository.getUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
+		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+
 //
 //	if ("Y".equalsIgnoreCase(upfront)) {
 //
@@ -110,13 +108,13 @@ public class Sva {
 
 		Sps spsIdAndName = getSpsIdAndName(billingOffer.getChildId());
 
-		String upfront = upfrontRepository.getUpfront().stream()
-			.filter(x -> x.getUpfrontIndDesc().contains(offersBenefitsRequestDto.getCreditScore().toString()))
-			.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
-	
-		if ("Y".equalsIgnoreCase(upfront) && billingOffer.getParentId().contains("3192682|3192742|3192652") ) {
-		  // TODO remuevo esos sva  
-		}
+//		String upfront = upfrontRepository.getUpfront().stream()
+//			.filter(x -> x.getUpfrontIndDesc().contains(offersBenefitsRequestDto.getCreditScore().toString()))
+//			.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+//	
+//		if ("Y".equalsIgnoreCase(upfront) && billingOffer.getParentId().contains("3192682|3192742|3192652") ) {
+//		  // TODO remuevo esos sva  
+//		}
 		
 		
 		PriceProperties priceInfo = pricePropertiesRepository.getPriceInfo(billingOffer.getChildId());
@@ -260,7 +258,7 @@ public class Sva {
 	String flagType = "retention";
 	List<OfferingType> offeringTypeList = new ArrayList<>();
 
-	String offerCaption = masterOfOffersRepository.findByOfferCid(offersBenefitsRequestDto.getProductOfferingCatalogId());
+	String offerCaption = masterOfOffersRepository.findOfferCaption(offersBenefitsRequestDto.getProductOfferingCatalogId());
 
 	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getProductOfferingCatalogId(),
 		offersBenefitsRequestDto.getAction(), query);

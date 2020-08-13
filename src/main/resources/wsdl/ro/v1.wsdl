@@ -1,0 +1,62 @@
+<WL5G3N0:definitions xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://telefonica.com/globalIntegration/services/retrieveOfferings/v1" xmlns:WL5G3N2="http://telefonica.com/globalIntegration/fault" xmlns:WL5G3N3="http://telefonica.com/globalIntegration/header" xmlns:WL5G3N4="http://telefonica.com/globalIntegration/services/SOAP/retrieveOfferings/v1" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" name="retrieveOfferings" targetNamespace="http://telefonica.com/globalIntegration/services/SOAP/retrieveOfferings/v1">
+<WL5G3N0:documentation>retrieveOfferings - - Generado por TER - 2020.01.30 02:53:40 - NO MODIFICAR A MANO</WL5G3N0:documentation>
+<WL5G3N0:types>
+<xsd:schema xmlns:cab="http://telefonica.com/globalIntegration/header" xmlns:flt="http://telefonica.com/globalIntegration/fault" xmlns:p1="http://telefonica.com/globalIntegration/services/retrieveOfferings/v1" xmlns:serv="http://telefonica.com/globalIntegration/services/SOAP/retrieveOfferings/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telefonica.com/globalIntegration/services/SOAP/retrieveOfferings/v1">
+<xsd:import namespace="http://telefonica.com/globalIntegration/services/retrieveOfferings/v1" schemaLocation="http://172.28.104.35:7002/retrieveOfferings_v1/retrieveOfferings/ProxyServices/retrieveOfferingsSOAP_v1?SCHEMA%2FretrieveOfferings_v1%2Fcommon%2FResources%2FretrieveOfferings_v1"/>
+<xsd:import namespace="http://telefonica.com/globalIntegration/header" schemaLocation="http://172.28.104.35:7002/retrieveOfferings_v1/retrieveOfferings/ProxyServices/retrieveOfferingsSOAP_v1?SCHEMA%2FArchitectureServices%2Fcommon%2FResources%2FHeader_DOCLIT"/>
+<xsd:import namespace="http://telefonica.com/globalIntegration/fault" schemaLocation="http://172.28.104.35:7002/retrieveOfferings_v1/retrieveOfferings/ProxyServices/retrieveOfferingsSOAP_v1?SCHEMA%2FArchitectureServices%2Fcommon%2FResources%2FMessageFault_DOCLIT"/>
+</xsd:schema>
+</WL5G3N0:types>
+<WL5G3N0:message name="retrieveOfferingsRequest">
+<WL5G3N0:documentation>retrieveOfferingsRequest Message Type</WL5G3N0:documentation>
+<WL5G3N0:part element="WL5G3N1:retrieveOfferingsRequest" name="retrieveOfferingsBodyReq"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="retrieveOfferingsResponse">
+<WL5G3N0:documentation>retrieveOfferingsResponse Message Type</WL5G3N0:documentation>
+<WL5G3N0:part element="WL5G3N1:retrieveOfferingsResponse" name="retrieveOfferingsBodyRes"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="MessageFault">
+<WL5G3N0:documentation>The definition of message fault is unique</WL5G3N0:documentation>
+<WL5G3N0:part element="WL5G3N2:MessageFault" name="MessageCommonFault"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="retrieveOfferingsHeaderReq">
+<WL5G3N0:documentation>retrieveOfferingsHeaderReq is the common definition of request header</WL5G3N0:documentation>
+<WL5G3N0:part element="WL5G3N3:HeaderIn" name="retrieveOfferingsHeaderReq"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="retrieveOfferingsHeaderRes">
+<WL5G3N0:documentation>retrieveOfferingsHeaderRes is the common definition of response header</WL5G3N0:documentation>
+<WL5G3N0:part element="WL5G3N3:HeaderOut" name="retrieveOfferingsHeaderRes"/>
+</WL5G3N0:message>
+<WL5G3N0:portType name="retrieveOfferings_v1">
+<WL5G3N0:documentation>retrieveOfferings -</WL5G3N0:documentation>
+<WL5G3N0:operation name="retrieveOfferings">
+<WL5G3N0:documentation> </WL5G3N0:documentation>
+<WL5G3N0:input message="WL5G3N4:retrieveOfferingsRequest" name="retrieveOfferingsRequest"/>
+<WL5G3N0:output message="WL5G3N4:retrieveOfferingsResponse" name="retrieveOfferingsResponse"/>
+<WL5G3N0:fault message="WL5G3N4:MessageFault" name="MessageFault"/>
+</WL5G3N0:operation>
+</WL5G3N0:portType>
+<WL5G3N0:binding name="retrieveOfferingsBinding" type="WL5G3N4:retrieveOfferings_v1">
+<WL5G3N5:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<WL5G3N0:operation name="retrieveOfferings">
+<WL5G3N5:operation soapAction="http://telefonica.com/globalIntegration/services/soap1.1/retrieveOfferings"/>
+<WL5G3N0:input name="retrieveOfferingsRequest">
+<WL5G3N5:header message="WL5G3N4:retrieveOfferingsHeaderReq" part="retrieveOfferingsHeaderReq" use="literal"/>
+<WL5G3N5:body parts="retrieveOfferingsBodyReq" use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output name="retrieveOfferingsResponse">
+<WL5G3N5:header message="WL5G3N4:retrieveOfferingsHeaderRes" part="retrieveOfferingsHeaderRes" use="literal"/>
+<WL5G3N5:body parts="retrieveOfferingsBodyRes" use="literal"/>
+</WL5G3N0:output>
+<WL5G3N0:fault name="MessageFault">
+<WL5G3N5:fault name="MessageFault" use="literal"/>
+</WL5G3N0:fault>
+</WL5G3N0:operation>
+</WL5G3N0:binding>
+<WL5G3N0:service name="retrieveOfferings_v1">
+<WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+<WL5G3N0:port binding="WL5G3N4:retrieveOfferingsBinding" name="retrieveOfferings_v1">
+<WL5G3N5:address location="http://172.28.104.35:7002/retrieveOfferings_v1/retrieveOfferings/ProxyServices/retrieveOfferingsSOAP_v1"/>
+</WL5G3N0:port>
+</WL5G3N0:service>
+</WL5G3N0:definitions>

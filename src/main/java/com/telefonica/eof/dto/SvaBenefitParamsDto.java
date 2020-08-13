@@ -8,7 +8,7 @@ public class SvaBenefitParamsDto {
     private String channelId;
     private String offerCaption; 
     private String action;
-    private String isPortability;
+    private Boolean isPortability;
     private String orderSubType ;
     private String broadbandConnection;
     private String networkTechnology;

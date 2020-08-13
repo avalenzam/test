@@ -2,5 +2,6 @@ package com.telefonica.eof.repository;
 
 public interface PropertyInBillingOfferRepository {
 
-    public String getPropertyValue(String planCid);
+    public Integer getPropertyValue(Integer planCid);
+
 }

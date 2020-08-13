@@ -13,12 +13,12 @@ public class JdbcPropertyInBillingOfferRepository implements PropertyInBillingOf
     private JdbcTemplate jdbcTemplate;
     
     @Override
-    public String getPropertyValue(String planCid) {
+    public Integer getPropertyValue(Integer planCid) {
 	String query = "SELECT PROPERTY_VALUE FROM PROPERTY_IN_BILLING_OFFER"
 		+ " WHERE  CID_BO = ? "
 		+ " and PROPERTY_NAME ='Max STBs allowed'" ;
 	
-	String propertyValue = jdbcTemplate.queryForObject(query, new Object[]{planCid},String.class);
+	Integer propertyValue = jdbcTemplate.queryForObject(query, new Object[]{planCid},Integer.class);
 	
 	return propertyValue;
     }

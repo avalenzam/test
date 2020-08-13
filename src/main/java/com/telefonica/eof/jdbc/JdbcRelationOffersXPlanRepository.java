@@ -13,7 +13,7 @@ public class JdbcRelationOffersXPlanRepository implements RelationOffersXPlanRep
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Integer getMxSTBsallowed  (String productOfferingCatalogId) {
+    public Integer findPlanCid  (String productOfferingCatalogId) {
 	String query = "select rop.PLAN_CID "  
 		+ "from  RELATION_OFFERS_X_PLAN rop "  
 		+ "inner join RELATIONS_MASTER rm on  rop.RELATION_ID= rm.RELATION_ID "  
