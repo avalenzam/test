@@ -47,9 +47,16 @@ public class Offerings {
 	rort.setChannelId(offersBenefitsRequestDto.getChannelId());
 	rort.setCustomerId(new BigDecimal(offersBenefitsRequestDto.getCustomerId()));
 
-	List<ProductTypeEnumType> productType = new ArrayList<>();
-	productType.add(ProductTypeEnumType.fromValue(offersBenefitsRequestDto.getProduct().getType()));
-	rort.setProductType(productType);
+	List<ProductTypeEnumType> productTypeEnumList = new ArrayList<>();
+	
+	List<String> productTypeList = Arrays.asList(offersBenefitsRequestDto.getProduct().getType().split(","));
+	
+	productTypeList.forEach(productType->{
+	  
+	    productTypeEnumList.add(ProductTypeEnumType.fromValue(productType));
+	});
+	
+	rort.setProductType(productTypeEnumList);
 
 	rort.setProductId(offersBenefitsRequestDto.getProduct().getId());
 	rort.setProductOfferingCatalogId(Arrays.asList(offersBenefitsRequestDto.getProductOfferingCatalogId()));

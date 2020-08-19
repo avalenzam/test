@@ -19,17 +19,20 @@ import io.swagger.annotations.ApiModelProperty;
  * ProductSpecCharacteristicType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "valueType", visible = true )
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = ModelBoolean.class, name = "_boolean"),
-  @JsonSubTypes.Type(value = StringWrapper.class, name = "string"),
-  @JsonSubTypes.Type(value = NumericWrapper.class, name = "numeric"),
-  @JsonSubTypes.Type(value = DecimalWrapper.class, name = "decimal"),
-  @JsonSubTypes.Type(value = ObjectWrapper.class, name = "object"),
-  @JsonSubTypes.Type(value = TextWrapper.class, name = "text"),
-  @JsonSubTypes.Type(value = IntegerWrapper.class, name = "integer"),
+  @JsonSubTypes.Type(value = BooleanWrapper.class, name = "booleanWrapper"),
+  @JsonSubTypes.Type(value = NumericWrapper.class, name = "numericWrapper"),
+  @JsonSubTypes.Type(value = DecimalWrapper.class, name = "decimalWrapper"),
+  @JsonSubTypes.Type(value = ObjectWrapper.class, name = "objectWrapper"),
+  @JsonSubTypes.Type(value = StringWrapper.class, name = "stringWrapper"),
+  @JsonSubTypes.Type(value = TextWrapper.class, name = "textWrapper"),
+  @JsonSubTypes.Type(value = IntegerWrapper.class, name = "integerWrapper"),
 })
+
+
+
 
 public class ProductSpecCharacteristicType   {
   @JsonProperty("id")
@@ -45,19 +48,19 @@ public class ProductSpecCharacteristicType   {
    * Indicates the kind of value that the characteristic can take
    */
   public enum ValueTypeEnum {
-    INTEGER("integer"),
+    INTEGERWRAPPER("integerWrapper"),
     
-    DECIMAL("decimal"),
+    DECIMALWRAPPER("decimalWrapper"),
     
-    STRING("string"),
+    STRINGWRAPPER("stringWrapper"),
     
-    BOOLEAN("boolean"),
+    BOOLEANWRAPPER("booleanWrapper"),
     
-    NUMERIC("numeric"),
+    NUMERICWRAPPER("numericWrapper"),
     
-    TEXT("text"),
+    TEXTWRAPPER("textWrapper"),
     
-    OBJECT("object");
+    OBJECTWRAPPER("objectWrapper");
 
     private String value;
 

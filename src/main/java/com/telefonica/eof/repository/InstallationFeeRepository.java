@@ -4,6 +4,6 @@ import com.telefonica.eof.entity.InstallationFee;
 
 public interface InstallationFeeRepository {
     
-    public InstallationFee getBoUpfront(String action, String lob, String upfrontIndId);
+    public InstallationFee findBoUpfront(String action, String lob, String upfrontIndId);
 
 }

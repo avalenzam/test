@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,8 @@ public class JdbcVasBenefitsRepository implements VasBenefitsRepository {
     private JdbcTemplate jdbcTemplate;
     
    @Override
-    public  VasBenefits  getSvaBenefits(SvaBenefitParamsDto svaBenefitParamsDto, String dataRateFrom, String dataRateTo) {
+    public  VasBenefits  findSvaBenefits(SvaBenefitParamsDto svaBenefitParamsDto, String dataRateFrom, String dataRateTo) {
+       try {
 	
 	 String query = "SELECT BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
 	 	+ " BENEFIT_BILLING_OFFER_CID, SPEED, \"DURATION\""
@@ -53,7 +55,11 @@ public class JdbcVasBenefitsRepository implements VasBenefitsRepository {
 				svaBenefitParamsDto.getIDcomponente()},
 			new BeanPropertyRowMapper<>(VasBenefits.class));
 	  
-	return svaBenefits.get(0);
+	 return svaBenefits.size()>0 ? svaBenefits.get(0):null;
+       } catch (EmptyResultDataAccessException e) {
+		return null;
+       }
+	
     }
 
 }

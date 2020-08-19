@@ -19,7 +19,10 @@ import io.swagger.annotations.ApiModelProperty;
  * OfferingType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+
+
+
 
 public class OfferingType   {
   @JsonProperty("id")
@@ -37,8 +40,45 @@ public class OfferingType   {
   @JsonProperty("description")
   private String description = null;
 
+  /**
+   * Indica el tipo de oferta a obtener  Puede tomar dos valores: elegibles ,  sugeridas
+   */
+  public enum TypeEnum {
+    ELEGIBLES("elegibles"),
+    
+    SUGERIDAS("sugeridas");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("type")
+  private TypeEnum type = null;
+
   @JsonProperty("currentPlanRelationID")
   private String currentPlanRelationID = null;
+
+  @JsonProperty("productOfferingProductSpecID")
+  private String productOfferingProductSpecID = null;
 
   @JsonProperty("category")
   @Valid
@@ -277,6 +317,26 @@ public class OfferingType   {
     this.description = description;
   }
 
+  public OfferingType type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Indica el tipo de oferta a obtener  Puede tomar dos valores: elegibles ,  sugeridas
+   * @return type
+  **/
+  @ApiModelProperty(value = "Indica el tipo de oferta a obtener  Puede tomar dos valores: elegibles ,  sugeridas")
+
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
   public OfferingType currentPlanRelationID(String currentPlanRelationID) {
     this.currentPlanRelationID = currentPlanRelationID;
     return this;
@@ -295,6 +355,26 @@ public class OfferingType   {
 
   public void setCurrentPlanRelationID(String currentPlanRelationID) {
     this.currentPlanRelationID = currentPlanRelationID;
+  }
+
+  public OfferingType productOfferingProductSpecID(String productOfferingProductSpecID) {
+    this.productOfferingProductSpecID = productOfferingProductSpecID;
+    return this;
+  }
+
+  /**
+   * Identificador de la relación entre el producto    en sí (como WirelessMain) y sus especificaciones    de producto (como Wireless).
+   * @return productOfferingProductSpecID
+  **/
+  @ApiModelProperty(value = "Identificador de la relación entre el producto    en sí (como WirelessMain) y sus especificaciones    de producto (como Wireless).")
+
+
+  public String getProductOfferingProductSpecID() {
+    return productOfferingProductSpecID;
+  }
+
+  public void setProductOfferingProductSpecID(String productOfferingProductSpecID) {
+    this.productOfferingProductSpecID = productOfferingProductSpecID;
   }
 
   public OfferingType category(List<CategoryTreeType> category) {
@@ -776,7 +856,9 @@ public class OfferingType   {
         Objects.equals(this.correlationId, offeringType.correlationId) &&
         Objects.equals(this.name, offeringType.name) &&
         Objects.equals(this.description, offeringType.description) &&
+        Objects.equals(this.type, offeringType.type) &&
         Objects.equals(this.currentPlanRelationID, offeringType.currentPlanRelationID) &&
+        Objects.equals(this.productOfferingProductSpecID, offeringType.productOfferingProductSpecID) &&
         Objects.equals(this.category, offeringType.category) &&
         Objects.equals(this.isPromotion, offeringType.isPromotion) &&
         Objects.equals(this.billingMethod, offeringType.billingMethod) &&
@@ -800,7 +882,7 @@ public class OfferingType   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, href, correlationId, name, description, currentPlanRelationID, category, isPromotion, billingMethod, channel, frameworkAgreement, customerId, compatibleProducts, isBundle, offeringUrl, validFor, bundledProductOffering, productSpecification, isDowngrade, productOfferingPrice, lifeCycleStatus, offeringPenalties, upFront, benefits, additionalData);
+    return Objects.hash(id, href, correlationId, name, description, type, currentPlanRelationID, productOfferingProductSpecID, category, isPromotion, billingMethod, channel, frameworkAgreement, customerId, compatibleProducts, isBundle, offeringUrl, validFor, bundledProductOffering, productSpecification, isDowngrade, productOfferingPrice, lifeCycleStatus, offeringPenalties, upFront, benefits, additionalData);
   }
 
   @Override
@@ -813,7 +895,9 @@ public class OfferingType   {
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    currentPlanRelationID: ").append(toIndentedString(currentPlanRelationID)).append("\n");
+    sb.append("    productOfferingProductSpecID: ").append(toIndentedString(productOfferingProductSpecID)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    isPromotion: ").append(toIndentedString(isPromotion)).append("\n");
     sb.append("    billingMethod: ").append(toIndentedString(billingMethod)).append("\n");

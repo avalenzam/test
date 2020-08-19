@@ -1,32 +1,29 @@
 package com.telefonica.eof.generated.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.telefonica.eof.generated.model.BenefitType;
-import com.telefonica.eof.generated.model.EntityRefType;
-import com.telefonica.eof.generated.model.KeyValueType;
-import com.telefonica.eof.generated.model.MoneyType;
-import com.telefonica.eof.generated.model.ProdOfferPriceAlterationType;
-import com.telefonica.eof.generated.model.QuantityType;
-import com.telefonica.eof.generated.model.TimePeriodType;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.validation.annotation.Validated;
+import java.util.Objects;
+
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ComponentProdOfferPriceType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+
+
+
 
 public class ComponentProdOfferPriceType   {
   @JsonProperty("id")
@@ -37,6 +34,12 @@ public class ComponentProdOfferPriceType   {
 
   @JsonProperty("description")
   private String description = null;
+
+  @JsonProperty("productSpecContainmentID")
+  private String productSpecContainmentID = null;
+
+  @JsonProperty("pricePlanSpecContainmentID")
+  private String pricePlanSpecContainmentID = null;
 
   @JsonProperty("isMandatory")
   private Boolean isMandatory = null;
@@ -233,6 +236,46 @@ public class ComponentProdOfferPriceType   {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public ComponentProdOfferPriceType productSpecContainmentID(String productSpecContainmentID) {
+    this.productSpecContainmentID = productSpecContainmentID;
+    return this;
+  }
+
+  /**
+   * Esta es la relación entre el componente del padre y el componente principal.  Seran usados para la creación de orden (UPC)
+   * @return productSpecContainmentID
+  **/
+  @ApiModelProperty(value = "Esta es la relación entre el componente del padre y el componente principal.  Seran usados para la creación de orden (UPC)")
+
+
+  public String getProductSpecContainmentID() {
+    return productSpecContainmentID;
+  }
+
+  public void setProductSpecContainmentID(String productSpecContainmentID) {
+    this.productSpecContainmentID = productSpecContainmentID;
+  }
+
+  public ComponentProdOfferPriceType pricePlanSpecContainmentID(String pricePlanSpecContainmentID) {
+    this.pricePlanSpecContainmentID = pricePlanSpecContainmentID;
+    return this;
+  }
+
+  /**
+   * Identificador de la relación entre el componente padre y la billingOffer.    Seran usados para la creación de orden (UPC)
+   * @return pricePlanSpecContainmentID
+  **/
+  @ApiModelProperty(value = "Identificador de la relación entre el componente padre y la billingOffer.    Seran usados para la creación de orden (UPC)")
+
+
+  public String getPricePlanSpecContainmentID() {
+    return pricePlanSpecContainmentID;
+  }
+
+  public void setPricePlanSpecContainmentID(String pricePlanSpecContainmentID) {
+    this.pricePlanSpecContainmentID = pricePlanSpecContainmentID;
   }
 
   public ComponentProdOfferPriceType isMandatory(Boolean isMandatory) {
@@ -725,6 +768,8 @@ public class ComponentProdOfferPriceType   {
     return Objects.equals(this.id, componentProdOfferPriceType.id) &&
         Objects.equals(this.name, componentProdOfferPriceType.name) &&
         Objects.equals(this.description, componentProdOfferPriceType.description) &&
+        Objects.equals(this.productSpecContainmentID, componentProdOfferPriceType.productSpecContainmentID) &&
+        Objects.equals(this.pricePlanSpecContainmentID, componentProdOfferPriceType.pricePlanSpecContainmentID) &&
         Objects.equals(this.isMandatory, componentProdOfferPriceType.isMandatory) &&
         Objects.equals(this.validFor, componentProdOfferPriceType.validFor) &&
         Objects.equals(this.priceType, componentProdOfferPriceType.priceType) &&
@@ -750,7 +795,7 @@ public class ComponentProdOfferPriceType   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, isMandatory, validFor, priceType, recurringChargePeriod, unitOfMeasure, price, minPrice, maxPrice, taxAmount, priceWithTax, originalAmount, originalTaxAmount, taxIncluded, taxRate, taxType, productOfferPriceAlteration, pricedComponents, priceLocation, priceConsumer, benefits, additionalData);
+    return Objects.hash(id, name, description, productSpecContainmentID, pricePlanSpecContainmentID, isMandatory, validFor, priceType, recurringChargePeriod, unitOfMeasure, price, minPrice, maxPrice, taxAmount, priceWithTax, originalAmount, originalTaxAmount, taxIncluded, taxRate, taxType, productOfferPriceAlteration, pricedComponents, priceLocation, priceConsumer, benefits, additionalData);
   }
 
   @Override
@@ -761,6 +806,8 @@ public class ComponentProdOfferPriceType   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    productSpecContainmentID: ").append(toIndentedString(productSpecContainmentID)).append("\n");
+    sb.append("    pricePlanSpecContainmentID: ").append(toIndentedString(pricePlanSpecContainmentID)).append("\n");
     sb.append("    isMandatory: ").append(toIndentedString(isMandatory)).append("\n");
     sb.append("    validFor: ").append(toIndentedString(validFor)).append("\n");
     sb.append("    priceType: ").append(toIndentedString(priceType)).append("\n");

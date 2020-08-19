@@ -1,6 +1,7 @@
 package com.telefonica.eof.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +14,9 @@ public class JdbcStbSettingRepository implements StbSettingRepository{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String getStbSettingWithSpeed (String channelId, String vProductOfferingID, Integer velocidad ) {
-	String query = "select STB_SETTINGS"
+    public String findStbSettingWithSpeed (String channelId, String vProductOfferingID, Integer velocidad ) {
+	try {
+	    String query = "select STB_SETTINGS"
 		+ " from STB_SETTING"
 		+ " where SALES_CHANNEL in (?, 'All')"
 		+ " and PO_CODE = ?"
@@ -24,11 +26,16 @@ public class JdbcStbSettingRepository implements StbSettingRepository{
 	return jdbcTemplate.queryForObject(query,
 		new Object[]{channelId, vProductOfferingID, velocidad, velocidad },
 		String.class);
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
     }
     
     @Override
-    public String getStbSettingWithoutSpeed (String channelId, String vProductOfferingID) {
-	String query = "select STB_SETTINGS"
+    public String findStbSettingWithoutSpeed (String channelId, String vProductOfferingID) {
+	try {
+	    String query = "select STB_SETTINGS"
 		+ " from STB_SETTING"
 		+ " where SALES_CHANNEL in (?, 'All')"
 		+ " and PO_CODE = ?"
@@ -38,6 +45,10 @@ public class JdbcStbSettingRepository implements StbSettingRepository{
 	return jdbcTemplate.queryForObject(query,
 		new Object[]{channelId, vProductOfferingID },
 		String.class);
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
     }
     
 

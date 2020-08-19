@@ -2,7 +2,7 @@ package com.telefonica.eof.generated.api;
 
 import javax.xml.bind.annotation.XmlTransient;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-07-17T17:23:53.051Z")
 
 @javax.xml.bind.annotation.XmlRootElement
 public class ApiResponseMessage {

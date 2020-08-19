@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,14 +18,19 @@ public class JdbcUpfrontRepository implements UpfrontRepository{
     private JdbcTemplate jdbcTemplate;
     
     @Override
-    public List<Upfront> getUpfront () {
-	String query = "select UPFRONT_IND_DESC, UPFRONT_IND_ID"
+    public List<Upfront> findUpfront () {
+	try {
+	    String query = "select UPFRONT_IND_DESC, UPFRONT_IND_ID"
 		+ " from UPFRONT_IND";
 	
-	List<Upfront> upfront = jdbcTemplate.query(query,
+	 return jdbcTemplate.query(query,
 		new BeanPropertyRowMapper<>(Upfront.class));
 	
-	return upfront;
+	
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
 
     }
 }

@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,9 +19,10 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
     private JdbcTemplate jdbcTemplate;
     
     @Override
-    public List<RelationMaster> getBoActive (String productOfferingCatalogId, String svaIdComponente) {
-	String query = "select DISTINCT pibo.CID_BO, rm.CHILD_ID, bom.CAPTION_BO,"
-		+ " rm.NAME_CHILD, rm.PARENT_ID, rm.NAME_PARENT, pibo.DURATION_VALUE " 
+    public List<RelationMaster> findBillingOfferActive (String productOfferingCatalogId, String svaIdComponente) {
+	try {
+	  String query = "select DISTINCT pibo.CID_BO, rm.CHILD_ID, bom.CAPTION_BO,"
+		+ " rm.NAME_CHILD, rm.PARENT_ID, rm.NAME_PARENT, pibo.DURATION_VALUE, rm.RELATION_ID " 
 		+ " from RELATIONS_MASTER rm"
 		+ " inner join BILLING_OFFER_MASTER bom on rm.CHILD_ID = bom.CID_BO"
 		+ " inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  = pibo.CID_BO"
@@ -38,13 +40,18 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		new Object[]{productOfferingCatalogId, svaIdComponente },
 		RelationMaster.class);
 	
-	return cidBoActive;
+	return cidBoActive;  
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
 
     }
     
     @Override
-    public List<String> getBoByBoType (String cidBo) {
-	String query = "select DISTINCT pibo.CID_BO" 
+    public List<String> findBillingOfferByBoType (String cidBo) {
+	try {
+	    String query = "select DISTINCT pibo.CID_BO" 
 		+ " from RELATIONS_MASTER rm"
 		+ " inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  = pibo.CID_BO"
 		+ " WHERE pibo.CID_BO IN (?)"
@@ -56,13 +63,19 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		String.class);
 	
 	return cidBoBoType;
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
 
     }
     
     @Override
     public List<RelationMaster> validateIdComponente ( String cidBo, String propertyValue ) {
-	String query = "select DISTINCT pibo.CID_BO, rm.CHILD_ID, bom.CAPTION_BO,"
-		+ " rm.NAME_CHILD, rm.PARENT_ID, rm.NAME_PARENT, pibo.DURATION_VALUE " 
+	
+	try {
+	    String query = "select DISTINCT pibo.CID_BO, rm.CHILD_ID, bom.CAPTION_BO,"
+		+ " rm.NAME_CHILD, rm.PARENT_ID, rm.NAME_PARENT, pibo.DURATION_VALUE, rm.RELATION_ID " 
 		+ " from RELATIONS_MASTER rm"
 		+ " inner join BILLING_OFFER_MASTER bom on rm.CHILD_ID = bom.CID_BO"
 		+ " inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  = pibo.CID_BO"
@@ -75,12 +88,17 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		new BeanPropertyRowMapper<>(RelationMaster.class));
 	
 	return billingOfferList;
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
 
     }
     
     @Override
-    public List<String> getParentId(String billingOfferId ) {
-	String query = "select parent_id "
+    public List<String> findParentIdByChildId(String billingOfferId ) {
+	try {
+	    String query = "select parent_id "
 		+ "from relations_master b "
 		+ "where b.child_id = ? ";
 	
@@ -89,25 +107,36 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		String.class);
 	
 	return parentId;
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
     }
     
     @Override
-    public Sps getSpsIdAndName(String parentId ) {
-	String query = "select a.parent_id, a.name_parent"
+    public Sps findSpsIdAndName(String parentId ) {
+	try {
+	    String query = "select a.parent_id, a.name_parent"
 		+ " from relations_master a"
 		+ " where a.child_id in (?)"
 		+ " and a.parente_is = 'PR'";
 	
-	List<Sps> spsIdAndName = jdbcTemplate.query(query,
+	List<Sps> spsList = jdbcTemplate.query(query,
 		new Object[]{parentId},
 		new BeanPropertyRowMapper<>(Sps.class));
 	
-	return spsIdAndName.get(0);
+	return spsList.size()>0 ? spsList.get(0):null;
+	
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
     }
     
     @Override
-    public String getDiscountSpsName (String benefitThemePackSpsCid ) {
-   	String query = "select name_parent"
+    public String findSpsDiscountName (String benefitThemePackSpsCid ) {
+	try {
+	    String query = "select name_parent"
    		+ " from relations_master"
    		+ " where parent_id = ?"
    		+ " and parente_is = 'PR'";
@@ -115,12 +144,17 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
    	 return jdbcTemplate.queryForObject(query,
    		new Object[]{benefitThemePackSpsCid},
    		String.class);
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+   	
    	
        }
     
     @Override
-    public Sps getIdAndNameComponent (String defSpsBo, String vProductOfferingID ) {
-   	String query = "select rm.parent_id, rm.name_parent"
+    public Sps findComponentIdAndName (String defSpsBo, String vProductOfferingID ) {
+	try {
+	    String query = "select rm.parent_id, rm.name_parent"
    		+ " from relations_master rm, BILLING_OFFER_MASTER bim, MASTER_CHANN_PACK_WITH_PROPERT mcp"
    		+ " where rm.child_id = bim.cid_bo"
    		+ " and caption_bo = substr( ? ,1,"
@@ -129,19 +163,24 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
    		+ " instr(?,';')-1))"
    		+ " and rm.root_cid = ?"
    		+ " and ROWNUM = 1";
-   	
-  
-   	List<Sps> idAndNameComponent = jdbcTemplate.query(query,
+
+   	List<Sps> spsList = jdbcTemplate.query(query,
    		new Object[]{defSpsBo, defSpsBo, defSpsBo, defSpsBo, vProductOfferingID},
 		new BeanPropertyRowMapper<>(Sps.class));
-	
-	return idAndNameComponent.get(0);
+   
+   	return spsList.size()>0 ? spsList.get(0):null;
    	
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+   	
+	
        }
     
     @Override
-    public List<RelationMaster> getSvas (String vProductOfferingID ) {
-   	String query = "select rm.PARENT_ID, bom.CID_BO, bom.NAME_BO "
+    public List<RelationMaster> findSvasByRootCid (String vProductOfferingID ) {
+	try {
+	    String query = "select rm.PARENT_ID, bom.CID_BO, bom.NAME_BO "
    		+ " from relations_master rm, BILLING_OFFER_MASTER bom" 
    		+ " where rm.root_cid = ?" 
    		+ " and rm.is_mandatory = '1'"  
@@ -152,10 +191,50 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
    	return jdbcTemplate.query(query,
 		new Object[]{vProductOfferingID},
 		new BeanPropertyRowMapper<>(RelationMaster.class));
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+   	
 	
-	
+       }
+    
+    @Override
+    public List<String> findRelationId (String productOfferingCatalogId, String parentId ) {
+	try {
+	    String query = "select RELATION_ID"
+   		+ " from relations_master"
+   		+ " where regexp_replace(ROOT_CID, '\\W','') = TRIM(?)"
+   		+ " and CHILD_ID = ?";
+   	
+	    return jdbcTemplate.queryForList(query,
+   		new Object[]{productOfferingCatalogId, parentId },
+   		String.class);
+   	
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
    	
        }
+    @Override
+    public List<String> findRelationIdByrelationCidRoot (String parentId, String productOfferingCatalogId) {
+	try {
+	    String query = "select DISTINCT relation_id"
+	    	+ " from relations_master where CHILD_ID = ?"
+	    	+ " and regexp_replace(ROOT_CID, '\\W','')"
+	    	+ " in (SELECT TRIM(TO_CHAR(CID_CHILD))"
+	    	+ " from RELATION_ROOT_CID where ROOT_CID = ? )";
+   	
+	    return jdbcTemplate.queryForList(query,
+   		new Object[]{parentId, productOfferingCatalogId},
+   		String.class);
+   	
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+   	
+       }
+    
+    
     
     
     

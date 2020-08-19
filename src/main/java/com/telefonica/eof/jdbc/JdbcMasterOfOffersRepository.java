@@ -1,6 +1,7 @@
 package com.telefonica.eof.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,14 +15,19 @@ public class JdbcMasterOfOffersRepository implements MasterOfOffersRepository {
 
     @Override
     public String findOfferCaption(String productOfferingCatalogId) {
-	
-	String query = "select OFFER_CAPTION"
+	try {
+	  String query = "select OFFER_CAPTION"
 		+ " from MASTER_OF_OFFERS"
 		+ " where OFFER_CID = ? ";
 	
 	return	jdbcTemplate.queryForObject(query,
 		new Object[]{productOfferingCatalogId},
-		String.class);
+		String.class);  
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+   }
+	
+	
 	
     }
     

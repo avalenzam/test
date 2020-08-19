@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hazelcast.internal.util.StringUtil;
+import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.entity.OffersProperties;
-import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
 import com.telefonica.eof.pojo.aditionalSva.AditionalSvaResponse;
@@ -24,7 +24,6 @@ import com.telefonica.eof.repository.ComponentsMasterRepository;
 import com.telefonica.eof.repository.DomainWithValidValuesRepository;
 import com.telefonica.eof.repository.EquipmentRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
-import com.telefonica.eof.repository.PricePropertiesRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.StbSettingRepository;
 
@@ -34,8 +33,6 @@ public class AditionalSva {
     private OffersPropertiesRepository	    offersPropertiesRepository;
     @Autowired
     private RelationMasterRepository	    relationMasterRepository;
-    @Autowired
-    private PricePropertiesRepository	    pricePropertiesRepository;
     @Autowired
     private ComponentsMasterRepository	    componentsMasterRepository;
     @Autowired
@@ -58,14 +55,14 @@ public class AditionalSva {
 
 	List<DecosResponse> decos = null;
 
-	if (offerData.getLob().contains("TV")) {
+	if (offerData.getLob().contains(Constant.TV)) {
 
 	    decos = getDecos(velocidad, vProductOfferingID, currentOffering, channelId, field);
 	}
 
 	List<ChannelBlockResponse> channelBlock = null;
 
-	if ("null".equalsIgnoreCase(offerData.getDefSpsBo()) || StringUtil.isNullOrEmpty(offerData.getDefSpsBo())) {
+	if (!(Constant.NULL.equalsIgnoreCase(offerData.getDefSpsBo()) || StringUtil.isNullOrEmpty(offerData.getDefSpsBo()))) {
 
 	    channelBlock = getChannelBlock(offerData.getDefSpsBo(), offerData.getDefSpsId(), vProductOfferingID);
 
@@ -89,21 +86,21 @@ public class AditionalSva {
 	Boolean flagUltraWifi;
 	String lob;
 
-	List<OffersProperties> offersProperties = offersPropertiesRepository.getPropertyValue(vProductOfferingID);
+	List<OffersProperties> offersProperties = offersPropertiesRepository.findPropertyValue(vProductOfferingID);
 
-	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase("LOB")).map(p -> p.getPropertyValue())
+	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB)).map(p -> p.getPropertyValue())
 		.collect(Collectors.joining());
 
-	if ("null".equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob)) {
+	if (Constant.NULL.equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob)) {
 
-	    lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase("Bundle LOBs"))
+	    lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
 	}
 
 	if (lob.matches("Internet|BB")) {
 
 	    String minSpeedPremium = offersProperties.stream()
-		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase("Minimum Download Speed for Premium"))
+		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_PREMIUM))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
 	    if (Integer.parseInt(minSpeedPremium) <= velocidad) {
@@ -113,7 +110,7 @@ public class AditionalSva {
 	    }
 
 	    String minSpeedWifi = offersProperties.stream()
-		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase("Minimum Speed for Loaned Ultra WiFi"))
+		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_WIFI))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
 	    if (Integer.parseInt(minSpeedWifi) <= velocidad) {
@@ -127,10 +124,10 @@ public class AditionalSva {
 	    flagUltraWifi = false;
 	}
 
-	String defSpsId = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase("DEF_SPS_ID"))
+	String defSpsId = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_ID))
 		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
-	String defSpsBo = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase("DEF_SPS_BO"))
+	String defSpsBo = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_BO))
 		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
 	offerDataResponse.setLob(lob);
@@ -147,13 +144,13 @@ public class AditionalSva {
 
 	ModemResponse modemResponse = new ModemResponse();
 
-	String equipmentCid = equipmentRepository.getEquipmentCid(networkTecnology, lob);
+	String equipmentCid = equipmentRepository.findEquipmentCid(networkTecnology, lob);
 
 	String nameComp = null;
 
-	if (!"null".equalsIgnoreCase(equipmentCid) || !StringUtil.isNullOrEmpty(equipmentCid)) {
+	if (!(Constant.NULL.equalsIgnoreCase(equipmentCid) || StringUtil.isNullOrEmpty(equipmentCid))) {
 
-	    nameComp = componentsMasterRepository.getComponentName(equipmentCid);
+	    nameComp = componentsMasterRepository.findNameComponentByCidComponent(equipmentCid);
 	}
 
 	modemResponse.setEquipmentCid(equipmentCid);
@@ -171,60 +168,60 @@ public class AditionalSva {
 	DecosResponse decosResponse = new DecosResponse();
 
 	if (velocidad != null) {
-	    stbNewOffer = stbSettingRepository.getStbSettingWithSpeed(null, vProductOfferingID, velocidad);
+	    stbNewOffer = stbSettingRepository.findStbSettingWithSpeed(null, vProductOfferingID, velocidad);
 	    System.out.println(stbNewOffer);
 	} else {
-	    stbNewOffer = stbSettingRepository.getStbSettingWithoutSpeed(null, vProductOfferingID);
+	    stbNewOffer = stbSettingRepository.findStbSettingWithoutSpeed(null, vProductOfferingID);
 	    System.out.println(stbNewOffer);
 	}
 
-	List<String> stbNewOfferList = Arrays.asList(stbNewOffer.split(","));
+	List<String> stbNewOfferList = Arrays.asList(stbNewOffer.split(Constant.COMMA));
 
-	if (!"null".equalsIgnoreCase(currentOffering) || !StringUtil.isNullOrEmpty(currentOffering)) {
+	if (!(Constant.NULL.equalsIgnoreCase(currentOffering) || StringUtil.isNullOrEmpty(currentOffering))) {
 
-	    List<OffersProperties> propertyValue = offersPropertiesRepository.getPropertyValue(currentOffering);
+	    List<OffersProperties> propertyValue = offersPropertiesRepository.findPropertyValue(currentOffering);
 
-	    String currentOfferLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase("LOB"))
+	    String currentOfferLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
 	    System.out.println(currentOfferLob);
 
-	    String currentOfferBundleLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase("Bundle LOBs"))
+	    String currentOfferBundleLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
 	    System.out.println(currentOfferBundleLob);
 
-	    if (!currentOfferBundleLob.contains("TV") && !currentOfferLob.contains("TV")) {
+	    if (!(currentOfferBundleLob.contains(Constant.TV) && currentOfferLob.contains(Constant.TV))) {
 
-		if (field.contains("DownloadSpeed")) {
-		    List<String> fielList = Arrays.asList(field.split(","));
+		if (field.contains(Constant.DOWNLOAD_SPEED)) {
+		    List<String> fielList = Arrays.asList(field.split(Constant.COMMA));
 		    List<String> downloadSpeedList = new ArrayList<String>();
 		    fielList.forEach(item -> {
-			downloadSpeedList.add(Arrays.asList(item.split(":")).get(1));
+			downloadSpeedList.add(Arrays.asList(item.split(Constant.DOBLEPOINT)).get(1));
 		    });
 
 		    downloadSpeedList.forEach(downloadSpeed -> {
 			String stbCurrentOffer;
 			if (currentOffering != null) {
-			    stbCurrentOffer = stbSettingRepository.getStbSettingWithSpeed(channelId, vProductOfferingID,
+			    stbCurrentOffer = stbSettingRepository.findStbSettingWithSpeed(channelId, vProductOfferingID,
 				    Integer.parseInt(downloadSpeed.trim()));
 			    System.out.println(stbNewOffer);
 			} else {
-			    stbCurrentOffer = stbSettingRepository.getStbSettingWithoutSpeed(channelId, vProductOfferingID);
+			    stbCurrentOffer = stbSettingRepository.findStbSettingWithoutSpeed(channelId, vProductOfferingID);
 			    System.out.println(stbNewOffer);
 			}
-			List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(","));
+			List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(Constant.COMMA));
 
 			Integer rankSTB = 0;
 			Integer currentRankSTB = 0;
 
 			for (String stbSettingNew : stbNewOfferList) {
-			    Integer caption = domainWithValidValuesRepository.getCaption(stbSettingNew.trim());
+			    Integer caption = domainWithValidValuesRepository.findCaptionByvalidValue(stbSettingNew.trim());
 			    if (caption > rankSTB) {
 				rankSTB = caption;
 			    }
 			}
 
 			for (String stbSettingCurrent : stbCurrentOfferList) {
-			    Integer caption = domainWithValidValuesRepository.getCaption(stbSettingCurrent.trim());
+			    Integer caption = domainWithValidValuesRepository.findCaptionByvalidValue(stbSettingCurrent.trim());
 			    if (caption > rankSTB) {
 				currentRankSTB = caption;
 			    }
@@ -234,13 +231,13 @@ public class AditionalSva {
 
 			if (rankSTB > currentRankSTB) {
 
-			    stbSettings = domainWithValidValuesRepository.getStbSetting(rankSTB);
+			    stbSettings = domainWithValidValuesRepository.findValidValueByCaption(rankSTB);
 
 			} else {
 			    stbSettings = null;
 			}
 
-			String caption = domainWithValidValuesRepository.getNameComponent(stbSettings);
+			String caption = domainWithValidValuesRepository.findNameComponentByvalidValue(stbSettings);
 			decosResponse.setCaption(caption);
 			decosResponse.setStbSetting(stbSettings);
 			decosResponseList.add(decosResponse);
@@ -252,7 +249,7 @@ public class AditionalSva {
 
 	    stbNewOfferList.forEach(stbSettings -> {
 
-		String caption = domainWithValidValuesRepository.getNameComponent(stbSettings);
+		String caption = domainWithValidValuesRepository.findNameComponentByvalidValue(stbSettings);
 		decosResponse.setCaption(caption);
 		decosResponse.setStbSetting(stbSettings);
 		decosResponseList.add(decosResponse);
@@ -269,14 +266,13 @@ public class AditionalSva {
 	List<ChannelBlockResponse> channelBlocklist = new ArrayList<>();
 	ChannelBlockResponse channelBlockResponse = new ChannelBlockResponse();
 
-	List<String> defSpsBoList = Arrays.asList(defSpsBo.split(","));
-	List<String> defSpsIdList = Arrays.asList(defSpsId.split(","));
+	List<String> defSpsBoList = Arrays.asList(defSpsBo.split(Constant.COMMA));
+	List<String> defSpsIdList = Arrays.asList(defSpsId.split(Constant.COMMA));
 
 	defSpsBoList.forEach(bo -> {
-	    Sps sps = relationMasterRepository.getIdAndNameComponent(defSpsBo, vProductOfferingID);
-	    BillingOfferMaster billingOffer = billingOfferMasterRepository.getBillingOfferName(bo);
-	    PriceProperties valueAbp = pricePropertiesRepository.getPriceInfo(billingOffer.getCidBo());
-	    
+	    Sps sps = relationMasterRepository.findComponentIdAndName(defSpsBo, vProductOfferingID);
+	    BillingOfferMaster billingOffer = billingOfferMasterRepository.findBillingOfferBycidBo(bo);
+	   
 	    channelBlockResponse.setFdIdParent(sps.getParentId());
 	    channelBlockResponse.setFdNameParent(sps.getParentId());
 	    channelBlockResponse.setCidBo(billingOffer.getCidBo());
@@ -285,7 +281,7 @@ public class AditionalSva {
 	});
 
 	defSpsIdList.forEach(id -> {
-	    String nameParent = relationMasterRepository.getDiscountSpsName(id);
+	    String nameParent = relationMasterRepository.findSpsDiscountName(id);
 	    channelBlockResponse.setCNameParent(nameParent);
 	    channelBlockResponse.setDefSpsId(id);
 	    channelBlocklist.add(channelBlockResponse);
@@ -299,9 +295,9 @@ public class AditionalSva {
 	List<OtherSvasResponse> otherSvaList = new ArrayList<>();
 	OtherSvasResponse otherSvasResponse = new OtherSvasResponse();
 
-	List<RelationMaster> svas = relationMasterRepository.getSvas(vProductOfferingID);
+	List<RelationMaster> svas = relationMasterRepository.findSvasByRootCid(vProductOfferingID);
 	svas.forEach(sva -> {
-	    String nameComp = componentsMasterRepository.getComponentName(sva.getParentId());
+	    String nameComp = componentsMasterRepository.findNameComponentByCidComponent(sva.getParentId());
 	    otherSvasResponse.setNameComp(nameComp);
 	    otherSvasResponse.setCidBo(sva.getCidBo());
 	    otherSvasResponse.setNameBo(sva.getNameBo());

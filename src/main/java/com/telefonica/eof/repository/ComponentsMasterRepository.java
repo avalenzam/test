@@ -2,6 +2,6 @@ package com.telefonica.eof.repository;
 
 public interface ComponentsMasterRepository {
     
-    public String getComponentName(String benefitComponentCid);
+    public String findNameComponentByCidComponent(String benefitComponentCid);
 
 }

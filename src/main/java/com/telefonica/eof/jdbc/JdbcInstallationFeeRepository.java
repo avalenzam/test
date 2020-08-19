@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,9 +17,9 @@ public class JdbcInstallationFeeRepository implements InstallationFeeRepository{
     private JdbcTemplate jdbcTemplate;
     
     @Override
-    public InstallationFee getBoUpfront(String action, String lob, String upfrontIndId) {
-	
-	String query = "select INSTALLATION_FEE_BO, PRODUCT_FOR_INST_FEE"
+    public InstallationFee findBoUpfront(String action, String lob, String upfrontIndId) {
+	try {
+	    String query = "select INSTALLATION_FEE_BO, PRODUCT_FOR_INST_FEE"
 		+ " from INSTALLATION_FEE"
 		+ " where ORDER_ACTION_TYPE = ?"
 		+ " and OFFER_TYPE  = ?"
@@ -30,7 +31,12 @@ public class JdbcInstallationFeeRepository implements InstallationFeeRepository{
 			new BeanPropertyRowMapper<>(InstallationFee.class));
 
 	
-	return  boUpfront.get(0);
+	 return boUpfront.size()>0 ? boUpfront.get(0):null;
+	   } catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+	
+	
     }
 
 }

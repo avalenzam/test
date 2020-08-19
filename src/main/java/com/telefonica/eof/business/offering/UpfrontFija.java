@@ -5,10 +5,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.telefonica.eof.commons.Constant;
+import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.entity.InstallationFee;
-import com.telefonica.eof.jdbc.InstalFeeNoRiskRepository;
 import com.telefonica.eof.pojo.upfrontFija.UpfrontFijaResponse;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
+import com.telefonica.eof.repository.InstalFeeNoRiskRepository;
 import com.telefonica.eof.repository.InstallationFeeRepository;
 import com.telefonica.eof.repository.PricePropertiesRepository;
 import com.telefonica.eof.repository.UpfrontRepository;
@@ -26,28 +28,28 @@ public class UpfrontFija {
     @Autowired
     private BillingOfferMasterRepository billingOfferMasterRepository;
 
-    public UpfrontFijaResponse getUpfrontFija (Integer score, String action, String lob) {
+    public UpfrontFijaResponse getUpfrontFija (OffersBenefitsRequestDto offersBenefitsRequestDto, String lob) {
 	
 	UpfrontFijaResponse upfrontFijaResponse = new UpfrontFijaResponse();
 	
-	String upfront = upfrontRepository.getUpfront().stream()
-		.filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
+	String upfront = upfrontRepository.findUpfront().stream()
+		.filter(x -> x.getUpfrontIndDesc().contains(offersBenefitsRequestDto.getCreditScore().toString()))
     		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
 
-	InstallationFee installationFee = installationFeeRepository.getBoUpfront(action, lob, upfront);
+	InstallationFee installationFee = installationFeeRepository.findBoUpfront(offersBenefitsRequestDto.getAction(), lob, upfront);
 
 	BigDecimal upfrontPrice;
 	
-	if ("Y".equalsIgnoreCase(upfront)) {
+	if (Constant.YES.equalsIgnoreCase(upfront)) {
 	    
-	    upfrontPrice = pricePropertiesRepository.getUpfrontPrice(installationFee.getInstallationFeeBo());
+	    upfrontPrice = pricePropertiesRepository.findUpfrontPrice(installationFee.getInstallationFeeBo());
 	  
 	}else {
-	    upfrontPrice = instalFeeNoRiskRepository.getUpfrontPrice(null, null);
+	    upfrontPrice = instalFeeNoRiskRepository.findRate(offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getInstallationAddressDepartment());
 	
 	}
 	
-	String cidBo = billingOfferMasterRepository.getCidBo(installationFee.getInstallationFeeBo());
+	String cidBo = billingOfferMasterRepository.findCidBoBycaptionBo(installationFee.getInstallationFeeBo());
 	
 	upfrontFijaResponse.setCidBo(cidBo);
 	upfrontFijaResponse.setProductForInstFee(installationFee.getProductForInstFee());

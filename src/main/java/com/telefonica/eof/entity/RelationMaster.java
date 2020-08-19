@@ -14,6 +14,7 @@ public class RelationMaster {
     private String propertyValue;
     private String durationValue;
     private String nameBo;
+    private String relationId;
     
     
 

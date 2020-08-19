@@ -7,6 +7,6 @@ import com.telefonica.eof.entity.WirelineServiceBenefits;
 
 public interface WirelineServiceBenefitsRepository {
     
-    public  List<WirelineServiceBenefits>  getDiscount(DiscountParamsDto discountParamsDto );
+    public  List<WirelineServiceBenefits>  findBenefits(DiscountParamsDto discountParamsDto );
 
 }

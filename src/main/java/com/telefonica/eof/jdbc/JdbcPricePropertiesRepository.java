@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,9 +19,9 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
     private JdbcTemplate jdbcTemplate;
     
     @Override
-    public PriceProperties getPriceInfo(String childId) {
-	
-	String query = "select VALUE_ABP , REVENUE_TYPE , NAME_PROP_ABP"
+    public PriceProperties findPriceInfo(String childId) {
+	try {
+	   String query = "select VALUE_ABP , REVENUE_TYPE , NAME_PROP_ABP"
 		+ " from PRICE_PROPERTIES"
 		+ " where NAME_PROP_ABP = 'Rate'"
 		+ " and BILLING_OFFER_CID = ?";
@@ -30,27 +31,37 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
 			new BeanPropertyRowMapper<>(PriceProperties.class));
 
 	
-	return  priceInfo.get(0);
-    }
+	return priceInfo.size()>0 ? priceInfo.get(0):null;
+    
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+   }
+	} 
+	
     
     @Override
-    public List<PriceProperties> getDiscountPriceDetail (String benefitBillingOfferCid) {
-	
-	String query = "select VALUE_ABP , NAME_PROP_ABP"
+    public List<PriceProperties> findDiscountPriceDetail (String benefitBillingOfferCid) {
+	try {
+	   String query = "select VALUE_ABP , NAME_PROP_ABP"
 		+ " from PRICE_PROPERTIES"
 		+ " where NAME_PROP_ABP in ('Discount type','Discount value')"
 		+ " and BILLING_OFFER_CID = ?";
 	 
 	return jdbcTemplate.query(query,
 		new Object[]{benefitBillingOfferCid},
-		new BeanPropertyRowMapper<>(PriceProperties.class));
+		new BeanPropertyRowMapper<>(PriceProperties.class)); 
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+   }
+	
+	
 	  
     }
     
     @Override
-    public BigDecimal getUpfrontPrice (String installationFeeBo) {
-	
-	String query = "select VALUE_ABP"
+    public BigDecimal findUpfrontPrice (String installationFeeBo) {
+	try {
+	    String query = "select VALUE_ABP"
 		+ " from PRICE_PROPERTIES pp, BILLING_OFFER_MASTER bom"
 		+ " where pp.NAME_PROP_ABP = 'Rate'"
 		+ " and pp.BILLING_OFFER_CID = bom.CID_BO"
@@ -60,6 +71,11 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
 		new Object[]{installationFeeBo},
 		BigDecimal.class);
 	  
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+   }
+	
+	
     }
 
 }

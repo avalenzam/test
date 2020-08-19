@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,9 +19,9 @@ public class JdbcWirelineServiceBenefitsRepository implements WirelineServiceBen
     private JdbcTemplate jdbcTemplate;
     
    @Override
-    public  List<WirelineServiceBenefits>  getDiscount(DiscountParamsDto discountParamsDto ) {
-	
-	 String query = "select  BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
+    public  List<WirelineServiceBenefits>  findBenefits(DiscountParamsDto discountParamsDto ) {
+       try {
+	String query = "select  BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
 	 	+ " BENEFIT_BILLING_OFFER_CID, SPEED, DURATION, NIGHT_IND, LOB"
 	 	+ " from WIRELINE_SERVICE_BENEFITS"
 	 	+ " where EFFECTIVE_START_DATE <= current_date"
@@ -76,6 +77,11 @@ public class JdbcWirelineServiceBenefitsRepository implements WirelineServiceBen
 				discountParamsDto.getDownloadSpeed(),
 				discountParamsDto.getDownloadSpeed()},
 			new BeanPropertyRowMapper<>(WirelineServiceBenefits.class));
+       } catch (EmptyResultDataAccessException e) {
+		return null;
+       }
+	
+	 
 
     }
 

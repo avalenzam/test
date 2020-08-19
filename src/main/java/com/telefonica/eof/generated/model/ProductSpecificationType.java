@@ -1,32 +1,28 @@
 package com.telefonica.eof.generated.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.telefonica.eof.generated.model.CategoryTreeType;
-import com.telefonica.eof.generated.model.ComposingProductType;
-import com.telefonica.eof.generated.model.EntityRefType;
-import com.telefonica.eof.generated.model.InfoAttachmentType;
-import com.telefonica.eof.generated.model.MoneyType;
-import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
-import com.telefonica.eof.generated.model.ProductSpecificationRelationshipType;
-import com.telefonica.eof.generated.model.TimePeriodType;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.validation.annotation.Validated;
+import java.util.Objects;
+
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ProductSpecificationType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+
+
+
 
 public class ProductSpecificationType   {
   @JsonProperty("id")

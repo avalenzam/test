@@ -1,6 +1,7 @@
 package com.telefonica.eof.pojo.sva;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
@@ -20,5 +21,6 @@ public class BillingOfferResponse {
     private String nameComp;
     private String parentName;
     private String nameBo;
+    private List<String> relationId;
 
 }

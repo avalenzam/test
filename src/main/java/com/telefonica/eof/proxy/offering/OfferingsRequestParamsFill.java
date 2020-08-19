@@ -36,44 +36,45 @@ public class OfferingsRequestParamsFill {
 
     public FilterInfoType getFilterInfo(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
-	FilterInfoType fit = new FilterInfoType();
+   	FilterInfoType fit = new FilterInfoType();
+   	
+   	fit.setName(offersBenefitsRequestDto.getName());
 
-	if (offersBenefitsRequestDto.getFields() != null) {
-	    fit.setFilterFacets(this.getFilterFacets(offersBenefitsRequestDto.getFields()));
-	} // no se autogenero el setter !!!
-	
-	fit.setCreditScore(String.valueOf(offersBenefitsRequestDto.getCreditScore()));
-	fit.setDepartament(offersBenefitsRequestDto.getRegion());
-	fit.setCustomerType(offersBenefitsRequestDto.getCustomerSegment());
-	fit.setPortInFlag(String.valueOf(offersBenefitsRequestDto.getIsPortability())); // ??? preguntar por request - equivalencia
-	fit.setDealerCode(offersBenefitsRequestDto.getDealerId());
-	fit.setOfferMinInternetSpeed(String.valueOf(offersBenefitsRequestDto.getBroadband().getMinDlDataRate()));
-	fit.setOfferMaxInternetSpeed(String.valueOf(offersBenefitsRequestDto.getBroadband().getMaxDlDataRate()));
-	fit.setServiceTechnology(offersBenefitsRequestDto.getBroadband().getConnection());
-	fit.setRetentionFlag(String.valueOf(offersBenefitsRequestDto.getIsRetention())); // ??? preguntar por request - equivalencia
-	fit.setActionType(offersBenefitsRequestDto.getAction());
-	fit.setCommercialZoneId(offersBenefitsRequestDto.getCommercialAreaId());
-	fit.setStoreId(offersBenefitsRequestDto.getSiteId());
-	// fit.setProduct(planType); ??? no se encuentra este campo
-	fit.setSourceProductOfferingId(offersBenefitsRequestDto.getCurrentOffering());
-	fit.setSourceType(offersBenefitsRequestDto.getSourceType());
-	fit.setNetworkTechnology(offersBenefitsRequestDto.getNetworkTechnology());
-	fit.setMaxSpeed(offersBenefitsRequestDto.getServiceabilityMaxSpeed());
-	fit.setServiceabilityID(offersBenefitsRequestDto.getServiceabilityId());
-	fit.setPlanGroup(offersBenefitsRequestDto.getPlan().getGroup());
-	fit.setPlanRank(offersBenefitsRequestDto.getPlan().getRank());
-	fit.setPlanCommitmentDuration(offersBenefitsRequestDto.getPlan().getCommitmentDuration());
-	fit.setInvoiceCompany(offersBenefitsRequestDto.getInvoiceCompany());
-	fit.setPaginationInfo(
-		this.getPaginationInfo(offersBenefitsRequestDto.getPaginationInfo().getSize(),
-		offersBenefitsRequestDto.getPaginationInfo().getPageCount(),
-		offersBenefitsRequestDto.getPaginationInfo().getPage(),
-		offersBenefitsRequestDto.getPaginationInfo().getMaxResultCount()));
-	fit.setSortCriteria(
-		this.getSortCriteria(offersBenefitsRequestDto.getSortCriteriaName(), offersBenefitsRequestDto.getSortCriteriaAscending()));
+   	if (offersBenefitsRequestDto.getFields() != null) {
+   	    fit.setFilterFacets(this.getFilterFacets(offersBenefitsRequestDto.getFields()));
+   	} 
+   	
+   	fit.setCreditScore(String.valueOf(offersBenefitsRequestDto.getCreditScore()));
+   	fit.setDepartament(offersBenefitsRequestDto.getRegion());
+   	fit.setCustomerType(offersBenefitsRequestDto.getCustomerSegment());
+   	fit.setPortInFlag(String.valueOf(offersBenefitsRequestDto.getIsPortability())); // ??? preguntar por request - equivalencia
+   	fit.setDealerCode(offersBenefitsRequestDto.getDealerId());
+   	fit.setOfferMinInternetSpeed(String.valueOf(offersBenefitsRequestDto.getBroadband().getMinDlDataRate()));
+   	fit.setOfferMaxInternetSpeed(String.valueOf(offersBenefitsRequestDto.getBroadband().getMaxDlDataRate()));
+   	fit.setServiceTechnology(offersBenefitsRequestDto.getBroadband().getConnection());
+   	fit.setRetentionFlag(String.valueOf(offersBenefitsRequestDto.getIsRetention())); // ??? preguntar por request - equivalencia
+   	fit.setActionType(offersBenefitsRequestDto.getAction());
+   	fit.setCommercialZoneId(offersBenefitsRequestDto.getCommercialAreaId());
+   	fit.setStoreId(offersBenefitsRequestDto.getSiteId());
+   	fit.setSourceProductOfferingId(offersBenefitsRequestDto.getCurrentOffering());
+   	fit.setSourceType("OFFER");
+   	fit.setNetworkTechnology(offersBenefitsRequestDto.getNetworkTechnology());
+   	fit.setMaxSpeed(offersBenefitsRequestDto.getServiceabilityMaxSpeed());
+   	fit.setServiceabilityID(offersBenefitsRequestDto.getServiceabilityId());
+   	fit.setPlanGroup(offersBenefitsRequestDto.getPlan().getGroup());
+   	fit.setPlanRank(offersBenefitsRequestDto.getPlan().getRank());
+   	fit.setPlanCommitmentDuration(offersBenefitsRequestDto.getPlan().getCommitmentDuration());
+   	fit.setInvoiceCompany(offersBenefitsRequestDto.getInvoiceCompany());
+   	fit.setPaginationInfo(
+   		this.getPaginationInfo(offersBenefitsRequestDto.getPaginationInfo().getSize(),
+   		offersBenefitsRequestDto.getPaginationInfo().getPageCount(),
+   		offersBenefitsRequestDto.getPaginationInfo().getPage(),
+   		offersBenefitsRequestDto.getPaginationInfo().getMaxResultCount()));
+   	fit.setSortCriteria(
+   		this.getSortCriteria(offersBenefitsRequestDto.getSortCriteriaName(), offersBenefitsRequestDto.getSortCriteriaAscending()));
 
-	return fit;
-    }
+   	return fit;
+       }
 
     private List<UNIKeyValueType> getFilterFacets(String fields) {
 

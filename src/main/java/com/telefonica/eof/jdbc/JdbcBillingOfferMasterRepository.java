@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,8 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
     private JdbcTemplate jdbcTemplate;
 
    @Override
-    public BillingOfferMaster getBillingOfferName(String benefitBillingOfferCid) {
+    public BillingOfferMaster findBillingOfferBycidBo(String benefitBillingOfferCid) {
+       try {
 	String query = "select CID_BO, NAME_BO, DESCRIPTION_TEXT"
 		+ " from BILLING_OFFER_MASTER"
 		+ " where CID_BO = ?" ;
@@ -27,12 +29,17 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
 		 new Object[]{benefitBillingOfferCid},
 			new BeanPropertyRowMapper<>(BillingOfferMaster.class));
 		
-		return billingOfferName.get(0);
+	 return billingOfferName.size()>0 ? billingOfferName.get(0):null;
+       } catch (EmptyResultDataAccessException e) {
+		return null;
+       }
+	
 		 
     }
    
    @Override
-   public String getCidBo(String installationFeeBo) {
+   public String findCidBoBycaptionBo(String installationFeeBo) {
+       try {
 	String query = "select CID_BO"
 		+ " from BILLING_OFFER_MASTER"
 		+ " where CAPTION_BO = ?" ;
@@ -41,6 +48,9 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
 	return jdbcTemplate.queryForObject(query,
 		 new Object[]{installationFeeBo},
 		 String.class);
+       } catch (EmptyResultDataAccessException e) {
+		return null;
+	}	
 		
 		 
    }

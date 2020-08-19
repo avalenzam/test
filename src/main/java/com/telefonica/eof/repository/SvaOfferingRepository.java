@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface SvaOfferingRepository {
 
-    public List<String> getIdComponent( String lobType, String tipoOperation, String flagRetencion);
+    public List<String> findIdComponent( String lobType, String tipoOperation, String flagRetencion);
     
     
 }

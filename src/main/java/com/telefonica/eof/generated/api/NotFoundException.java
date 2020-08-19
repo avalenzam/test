@@ -1,6 +1,6 @@
 package com.telefonica.eof.generated.api;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-07-17T17:23:53.051Z")
 
 public class NotFoundException extends ApiException {
     private int code;

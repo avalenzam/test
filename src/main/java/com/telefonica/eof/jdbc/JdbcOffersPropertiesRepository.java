@@ -3,6 +3,7 @@ package com.telefonica.eof.jdbc;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,32 +18,41 @@ public class JdbcOffersPropertiesRepository implements OffersPropertiesRepositor
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<OffersProperties> getPropertyValue(String productOfferingCatalogId) {
+    public List<OffersProperties> findPropertyValue(String productOfferingCatalogId) {
 	
-	 String query = "select PROPERTY_VALUE, NAME_OF_PROPERTY"
+	try {
+	    String query = "select PROPERTY_VALUE, NAME_OF_PROPERTY"
 	 	+ " from OFFERS_PROPERTIES "
 	 	+ " where OFFER_CID = ?";
 	 
-	 List<OffersProperties> offersProperties = jdbcTemplate.query(query,
+	 return jdbcTemplate.query(query,
 			new Object[]{productOfferingCatalogId },
 			new BeanPropertyRowMapper<>(OffersProperties.class));
-
+	 	
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+   }
 	
-	return offersProperties;
     }
     
     @Override
-    public String getSpsId(String productOfferingCatalogId) {
+    public String findSpsIdByofferCid(String productOfferingCatalogId) {
 	
-	 String query = "select property_value"
+	try {
+	    String query = "select property_value"
 	 	+ " from OFFERS_PROPERTIES"
 	 	+ " where OFFER_CID = ?"
 	 	+ " and name_of_property = 'DEF_SPS_ID'";
 	 
-	 String spsId = jdbcTemplate.queryForObject(query,
+	return jdbcTemplate.queryForObject(query,
 			new Object[]{productOfferingCatalogId },
 			String.class);
-	return spsId;
+	 
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+   }
+	
+	 
     }
 
 }

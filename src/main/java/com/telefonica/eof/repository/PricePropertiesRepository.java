@@ -7,9 +7,9 @@ import com.telefonica.eof.entity.PriceProperties;
 
 public interface PricePropertiesRepository {
     
-    public PriceProperties getPriceInfo(String childId);
-    public List<PriceProperties> getDiscountPriceDetail (String benefitBillingOfferCid);
-    public BigDecimal getUpfrontPrice (String installationFeeBo);
+    public PriceProperties findPriceInfo(String childId);
+    public List<PriceProperties> findDiscountPriceDetail (String benefitBillingOfferCid);
+    public BigDecimal findUpfrontPrice (String installationFeeBo);
     
 
 }

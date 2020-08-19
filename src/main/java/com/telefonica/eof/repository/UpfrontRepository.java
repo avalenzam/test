@@ -6,5 +6,5 @@ import com.telefonica.eof.entity.Upfront;
 
 public interface UpfrontRepository {
 
-    public List<Upfront> getUpfront ();
+    public List<Upfront> findUpfront ();
 }

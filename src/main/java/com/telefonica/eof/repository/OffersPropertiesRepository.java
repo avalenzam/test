@@ -6,7 +6,7 @@ import com.telefonica.eof.entity.OffersProperties;
 
 public interface OffersPropertiesRepository {
     
-    public List<OffersProperties> getPropertyValue(String productOfferingCatalogId);
-    public String getSpsId(String productOfferingCatalogId);
+    public List<OffersProperties> findPropertyValue(String productOfferingCatalogId);
+    public String findSpsIdByofferCid(String productOfferingCatalogId);
 
 }

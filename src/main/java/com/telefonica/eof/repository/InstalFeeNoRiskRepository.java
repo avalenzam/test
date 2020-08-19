@@ -4,6 +4,6 @@ import java.math.BigDecimal;
 
 public interface InstalFeeNoRiskRepository {
     
-    public BigDecimal getUpfrontPrice(String channelId, String installationAddressDepartment);
+    public BigDecimal findRate(String channelId, String installationAddressDepartment);
 
 }

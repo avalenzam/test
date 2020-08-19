@@ -16,7 +16,10 @@ import io.swagger.annotations.ApiModelProperty;
  * DecimalWrapper
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-07-23T14:31:29.634Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+
+
+
 
 public class DecimalWrapper extends ProductSpecCharacteristicType  {
   @JsonProperty("productSpecCharacteristicValue")

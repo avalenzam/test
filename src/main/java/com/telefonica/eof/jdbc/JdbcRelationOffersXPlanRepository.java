@@ -1,6 +1,7 @@
 package com.telefonica.eof.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,8 @@ public class JdbcRelationOffersXPlanRepository implements RelationOffersXPlanRep
 
     @Override
     public Integer findPlanCid  (String productOfferingCatalogId) {
-	String query = "select rop.PLAN_CID "  
+	try {
+	    String query = "select rop.PLAN_CID "  
 		+ "from  RELATION_OFFERS_X_PLAN rop "  
 		+ "inner join RELATIONS_MASTER rm on  rop.RELATION_ID= rm.RELATION_ID "  
 		+ "inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  =  pibo.CID_BO "
@@ -25,10 +27,13 @@ public class JdbcRelationOffersXPlanRepository implements RelationOffersXPlanRep
 		+ "and pibo.PROPERTY_NAME = 'Plan BO Indicator' " 
 		+ "and pibo.PROPERTY_VALUE = 'Y'" ;
 	
-	Integer maxstBallowed  = jdbcTemplate.queryForObject(query,
+	return jdbcTemplate.queryForObject(query,
 		new Object[]{productOfferingCatalogId},
 		Integer.class);
-	return maxstBallowed;
+	} catch (EmptyResultDataAccessException e) {
+		return null;
+	}
+	
 	 
 
     }

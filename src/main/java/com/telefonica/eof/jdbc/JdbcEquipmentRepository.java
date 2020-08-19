@@ -1,6 +1,7 @@
 package com.telefonica.eof.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +13,9 @@ public class JdbcEquipmentRepository implements EquipmentRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String getEquipmentCid (String networkTechnology,String lob) {
-	String query = "select CID"
+    public String findEquipmentCid (String networkTechnology,String lob) {
+	try {
+	    String query = "select CID"
 		+ " from  EQUIPMENT"
 		+ " where NETWORK_TECHNOLOGY = ?"
 		+ " and LOB = ?"
@@ -22,6 +24,10 @@ public class JdbcEquipmentRepository implements EquipmentRepository {
 	return jdbcTemplate.queryForObject(query,
 		new Object[]{networkTechnology, lob},
 		String.class);
+	   } catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+	
     }
 
 }

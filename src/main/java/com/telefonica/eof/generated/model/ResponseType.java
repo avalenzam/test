@@ -16,7 +16,10 @@ import io.swagger.annotations.ApiModelProperty;
  * ResponseType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-04T16:40:09.794Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+
+
+
 
 public class ResponseType   {
   @JsonProperty("offerings")

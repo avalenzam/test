@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -15,7 +15,7 @@ import com.telefonica.eof.pojo.productInventory.ProductInventoryResponseDto;
 
 
 
-@Service
+@Component
 public class ParqueUnificadoConnection {
 
     public List<ProductInventoryResponseDto> callRestService(String publicId, String type) {

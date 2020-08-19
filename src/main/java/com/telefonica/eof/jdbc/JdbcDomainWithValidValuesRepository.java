@@ -1,6 +1,7 @@
 package com.telefonica.eof.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +14,9 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Integer getCaption (String spsSetting) {
-	String query = "select CAPTION"
+    public Integer findCaptionByvalidValue (String spsSetting) {
+	try {
+	    String query = "select CAPTION"
 		+ " from DOMAIN_WITH_VALID_VALUES"
 		+ " where VALID_VALUE = ?"
 		+ " and DOMAIN_NAME = 'AbsSTBsRank'";
@@ -22,11 +24,16 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
 	return jdbcTemplate.queryForObject(query,
 		new Object[]{spsSetting},
 		Integer.class);
+	   } catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+	
     }
     
     @Override
-    public String getStbSetting (Integer rankSTB) {
-	String query = "select VALID_VALUE"
+    public String findValidValueByCaption (Integer rankSTB) {
+	try {
+	    String query = "select VALID_VALUE"
 		+ " from DOMAIN_WITH_VALID_VALUES"
 		+ " where CAPTION = ?"
 		+ " and DOMAIN_NAME = 'AbsSTBsRank'";
@@ -34,11 +41,16 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
 	return jdbcTemplate.queryForObject(query,
 		new Object[]{rankSTB},
 		String.class);
+	   } catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+	
     }
     
     @Override
-    public String getNameComponent (String stbSetting) {
-	String query = "select CAPTION"
+    public String findNameComponentByvalidValue (String stbSetting) {
+	try {
+	    String query = "select CAPTION"
 		+ " from DOMAIN_WITH_VALID_VALUES"
 		+ " where VALID_VALUE = ?"
 		+ " and DOMAIN_NAME = 'AbsSTBType'";
@@ -46,5 +58,9 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
 	return jdbcTemplate.queryForObject(query,
 		new Object[]{stbSetting},
 		String.class);
+	   } catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+	
     }
 }

@@ -64,6 +64,7 @@ public class OffersBenefitsRequestDto {
     private String orderSubType;
     private String subscriberGroupValue;
     private String excludeOffersId;
+    private String installationAddressDepartment;
     private PaginationInfo paginationInfo;
     private String sortCriteriaName;
     private Boolean sortCriteriaAscending;
