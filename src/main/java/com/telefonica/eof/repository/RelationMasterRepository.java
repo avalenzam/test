@@ -15,7 +15,7 @@ public interface RelationMasterRepository {
     public String findSpsDiscountName (String benefitThemePackSpsCid );
     public Sps findComponentIdAndName (String defSpsBo, String vProductOfferingID );
     public List<RelationMaster> findSvasByRootCid (String vProductOfferingID );
-    public List<String> findRelationId (String productOfferingCatalogId, String parentId );
-    public List<String> findRelationIdByrelationCidRoot (String parentId, String productOfferingCatalogId) ;
+    public String findRelationId (String productOfferingCatalogId, String parentId );
+    public String findRelationIdByrelationCidRoot (String parentId, String productOfferingCatalogId) ;
 
 }

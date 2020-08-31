@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.commons.Util;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
@@ -32,6 +34,16 @@ import com.telefonica.eof.repository.TbconfigItemRepository;
 import com.telefonica.eof.repository.UpfrontRepository;
 import com.telefonica.eof.repository.VasBenefitsRepository;
 
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: Sva.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: El servicio obtiene los sva adicionales
+ */
+@Component
 public class Sva {
     @Autowired
     private MasterOfOffersRepository	     masterOfOffersRepository;
@@ -57,6 +69,10 @@ public class Sva {
     private PropertyInBillingOfferRepository propertyInBillingOfferRepository;
     @Autowired
     private TbconfigItemRepository	     tbconfigItemRepository;
+    
+    /**
+     * El metodo obtiene los sva adicionales sin retencion
+     */
 
     public List<SvaResponse> getSvaTypeSva(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
@@ -108,11 +124,11 @@ public class Sva {
 			PriceProperties priceInfo = pricePropertiesRepository.findPriceInfo(billingOffer.getChildId());
 			BigDecimal valueAbp = new BigDecimal(priceInfo.getValueAbp());
 			
-			List<String> relationId;
+			String relationId;
 			
 			relationId = relationMasterRepository.findRelationId(offersBenefitsRequestDto.getProductOfferingCatalogId(), billingOffer.getParentId());
 			
-			if (relationId.size() == 0) {
+			if (StringUtil.isNullOrEmpty(relationId) && StringUtil.isNullOrEmpty(relationId)) {
 			   relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(), offersBenefitsRequestDto.getProductOfferingCatalogId());
 			}
 
@@ -180,6 +196,10 @@ public class Sva {
 	return svaResponseList;
 
     }
+    
+    /**
+     * El metodo obtiene los sva adicionales de retencion
+     */
 
     public List<SvaResponse> getSvaTypeRetention(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
@@ -199,11 +219,11 @@ public class Sva {
 	    
 	    billingOfferList.forEach(billingOffer -> {
 		
-		List<String> relationId;
+		String relationId;
 		
 		relationId = relationMasterRepository.findRelationId(offersBenefitsRequestDto.getProductOfferingCatalogId(), billingOffer.getParentId());
 		
-		if (relationId.size() == 0) {
+		if (StringUtil.isNullOrEmpty(relationId) && StringUtil.isNullOrEmpty(relationId)) {
 		   relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(), offersBenefitsRequestDto.getProductOfferingCatalogId());
 		}
 
@@ -226,6 +246,9 @@ public class Sva {
 
     }
 
+    /**
+     * El metodo obtiene los componentes adicionales 
+     */
     private List<String> getAditionalComponent(String productOfferingCatalogId, String action, String query) {
 
 	String propertyValueLT = offersPropertiesRepository.findPropertyValue(productOfferingCatalogId).stream()
@@ -237,6 +260,9 @@ public class Sva {
 	return idComponentList;
     }
 
+    /**
+     * El metodo obtiene las billing offers filtradas de cada componente
+     */
     private List<RelationMaster> getBillingOffer(String productOfferingCatalogId, String idComponent, String flagType) {
 
 	List<RelationMaster> billingOfferList = null;

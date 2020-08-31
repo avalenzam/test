@@ -21,8 +21,8 @@ import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOf
 
 /**
  * 
- * @Author: Freddy Ipanaque Castillo
- * @Datecreation: June 2020
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
  * @FileName: Offerings.java
  * @AuthorCompany: Telefonica
  * @version: 0.1
@@ -39,8 +39,8 @@ public class Offerings {
     OfferingsRequestParamsFill offeringsRequestParamsFill;
 
     public RetrieveOfferingsResponseType consult(OffersBenefitsRequestDto offersBenefitsRequestDto) {
-
-	RetrieveOfferingsRequestType rort = new RetrieveOfferingsRequestType();
+	
+	    RetrieveOfferingsRequestType rort = new RetrieveOfferingsRequestType();
 
 	
 	rort.setCategory(offeringsRequestParamsFill.getCategory(offersBenefitsRequestDto));
@@ -83,6 +83,8 @@ public class Offerings {
 		Constant.METHOD_OFFERINGS_SERVICE, headerInType);
 
 	return response.getValue();
+
+	
     }
 
 }

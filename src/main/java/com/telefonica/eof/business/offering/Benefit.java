@@ -20,6 +20,16 @@ import com.telefonica.eof.repository.PricePropertiesRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.WirelineServiceBenefitsRepository;
 
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: Benefit.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: El servicio obtiene los beneficios de la oferta fija
+ */
+
 @Component
 public class Benefit {
 

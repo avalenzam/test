@@ -199,14 +199,14 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
        }
     
     @Override
-    public List<String> findRelationId (String productOfferingCatalogId, String parentId ) {
+    public String findRelationId (String productOfferingCatalogId, String parentId ) {
 	try {
 	    String query = "select RELATION_ID"
    		+ " from relations_master"
    		+ " where regexp_replace(ROOT_CID, '\\W','') = TRIM(?)"
    		+ " and CHILD_ID = ?";
    	
-	    return jdbcTemplate.queryForList(query,
+	    return jdbcTemplate.queryForObject(query,
    		new Object[]{productOfferingCatalogId, parentId },
    		String.class);
    	
@@ -216,7 +216,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
    	
        }
     @Override
-    public List<String> findRelationIdByrelationCidRoot (String parentId, String productOfferingCatalogId) {
+    public String findRelationIdByrelationCidRoot (String parentId, String productOfferingCatalogId) {
 	try {
 	    String query = "select DISTINCT relation_id"
 	    	+ " from relations_master where CHILD_ID = ?"
@@ -224,7 +224,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 	    	+ " in (SELECT TRIM(TO_CHAR(CID_CHILD))"
 	    	+ " from RELATION_ROOT_CID where ROOT_CID = ? )";
    	
-	    return jdbcTemplate.queryForList(query,
+	    return jdbcTemplate.queryForObject(query,
    		new Object[]{parentId, productOfferingCatalogId},
    		String.class);
    	

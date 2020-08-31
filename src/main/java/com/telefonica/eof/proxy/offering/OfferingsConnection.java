@@ -15,13 +15,15 @@ public class OfferingsConnection {
 
     @SuppressWarnings("unchecked")
     public JAXBElement<RetrieveOfferingsResponseType> callWebService(String url, RetrieveOfferingsRequestType request, String metodrequest,
-	    HeaderInType headerInType) {
-	
+	    HeaderInType headerInType){
+
 	WebServiceTemplate webServiceTemplate = new WebServiceTemplate();
 
 	return (JAXBElement<RetrieveOfferingsResponseType>) webServiceTemplate.marshalSendAndReceive(
 		new JAXBElement<RetrieveOfferingsRequestType>(new QName(url, metodrequest), RetrieveOfferingsRequestType.class, request),
 		new SoapHeaders(headerInType));
-
+    
+	
+	
     }
 }

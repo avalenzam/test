@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.business.offering.AditionalSva;
@@ -46,6 +47,7 @@ import com.telefonica.eof.pojo.upfrontFija.UpfrontFijaResponse;
 import com.telefonica.eof.proxy.offering.Offerings;
 import com.telefonica.eof.proxy.productInventory.ParqueUnificadoConnection;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
+import com.telefonica.eof.repository.OffilterBundleRepository;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.OfferingTypeOfferType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.PlanBODetailsType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.PriceDetailsType;
@@ -53,7 +55,18 @@ import com.telefonica.globalintegration.services.retrieveofferings.v1.PriceTypeP
 import com.telefonica.globalintegration.services.retrieveofferings.v1.ProductTypeEnumType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOfferingsResponseType;
 
-public class OffersBenefitsService {
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: OffersBenefitsService.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: El servicio obtiene todas las listas de las ofertas
+ */
+
+@Service
+public class OffersBenefitsService implements OfferBenefitsServiceI {
 
     @Autowired
     private AditionalSva	       aditionalSva;
@@ -64,39 +77,45 @@ public class OffersBenefitsService {
     @Autowired
     private Benefit		       benefit;
     @Autowired
-    private Sva		       sva;
+    private Sva			       sva;
     @Autowired
     private ParqueUnificadoConnection  parqueUnificadoConnection;
     @Autowired
     private OffersPropertiesRepository offersPropertiesRepository;
+    @Autowired
+    private OffilterBundleRepository   offilterBundleRepository;
 
-    public List<OfferingType> getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) {
+    public List<OfferingType> getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws Exception {
+	try {
+	    ResponseType responseType = new ResponseType();
 
-	ResponseType responseType = new ResponseType();
+	    List<OfferingType> offeringTypeList = new ArrayList<>();
 
-	List<OfferingType> offeringTypeList = new ArrayList<>();
-	
-	
-	List<OfferingType> svaList = getSva(offersBenefitsRequestDto);
-	svaList.forEach(offeringSva -> {
-	    offeringTypeList.add(offeringSva);
-	});
+	    List<OfferingType> svaList = getSva(offersBenefitsRequestDto);
+	    svaList.forEach(offeringSva -> {
+		offeringTypeList.add(offeringSva);
+	    });
 
-	List<OfferingType> offerBenefitsList = getOfferAndBenefit(offersBenefitsRequestDto).getOfferings();
+	    List<OfferingType> offerBenefitsList = getOfferAndBenefit(offersBenefitsRequestDto).getOfferings();
 
-	PaginationInfoType paginationInfo = getOfferAndBenefit(offersBenefitsRequestDto).getPaginationInfo();
-	
-	offerBenefitsList.forEach(offering -> {
-	    offeringTypeList.add(offering);
-	});
-	
-	responseType.setOfferings(offeringTypeList);
-	responseType.setPaginationInfo(paginationInfo);
+	    PaginationInfoType paginationInfo = getOfferAndBenefit(offersBenefitsRequestDto).getPaginationInfo();
 
-	return offeringTypeList;
+	    offerBenefitsList.forEach(offering -> {
+		offeringTypeList.add(offering);
+	    });
 
+	    responseType.setOfferings(offeringTypeList);
+	    responseType.setPaginationInfo(paginationInfo);
+
+	    return offeringTypeList;
+	} catch (Exception e) {
+	    throw new Exception(e);
+	}
     }
 
+    /**
+     * El metodo obtiene las ofertas y beneficios de la oferta obtenida de AMDOCS
+     */
     private ResponseType getOfferAndBenefit(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
 	RetrieveOfferingsResponseType rort = offerings.consult(offersBenefitsRequestDto);
@@ -123,180 +142,136 @@ public class OffersBenefitsService {
 
 	    for (OfferingTypeOfferType offering : categories.getOfferings()) {
 
-		ComposingProductType productSpecification = new ComposingProductType();
-		RefinedProductType refinedProduct = new RefinedProductType();
-		List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
-		List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
-		List<ComposingProductType> subProductsList = new ArrayList<>();
+		// TODO ANEXO 3, FILTRAR LAS OFERTA.
 
-		offeringType.setId(offering.getCatalogItemId());
-		offeringType.setHref(Constant.HREF_OFFERING);
-		offeringType.setProductOfferingProductSpecID(offering.getProductOfferingProductSpecID());
+		String offer = offilterBundleRepository.findPlanCid(offering.getCatalogItemId(),
+			offersBenefitsRequestDto.getInstallationAddressDepartment(), offersBenefitsRequestDto.getDealerId(),
+			offersBenefitsRequestDto.getSiteId());
 
-		ProductTypeEnumType productType = null;
-		BigDecimal amount = null;
-		String vProductOfferingID = offering.getCatalogItemId();
+		if (!(StringUtil.isNullOrEmpty(offer) && StringUtil.isNullOrEmpty(offer))) {
 
-		for (OfferingTypeOfferType children : offering.getChildren()) {
-		    productType = children.getProductType().get(0);
-		    if (ProductTypeEnumType.BROADBAND.equals(children.getProductType())) {
-			isInternet = true;
-			downloadSpeed = children.getPlanBoList().get(0).getPriceList().get(0).getDownloadSpeed();
-			amount = children.getPlanBoList().get(0).getPriceList().get(0).getPrice().getAmount();
+		    ComposingProductType productSpecification = new ComposingProductType();
+		    RefinedProductType refinedProduct = new RefinedProductType();
+		    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
+		    List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
+		    List<ComposingProductType> subProductsList = new ArrayList<>();
+
+		    offeringType.setId(offering.getCatalogItemId());
+		    offeringType.setHref(Constant.HREF_OFFERING);
+		    offeringType.setProductOfferingProductSpecID(offering.getProductOfferingProductSpecID());
+
+		    ProductTypeEnumType productType = null;
+		    BigDecimal amount = null;
+		    String vProductOfferingID = offering.getCatalogItemId();
+
+		    for (OfferingTypeOfferType children : offering.getChildren()) {
+			productType = children.getProductType().get(0);
+			if (ProductTypeEnumType.BROADBAND.equals(children.getProductType().get(0))) {
+			    isInternet = true;
+			    downloadSpeed = children.getPlanBoList().get(0).getPriceList().get(0).getDownloadSpeed();
+			    amount = children.getPlanBoList().get(0).getPriceList().get(0).getPrice().getAmount();
+			}
+
 		    }
-
-		}
-
-		if (ProductTypeEnumType.BROADBAND.equals(productType)) {
-		    String offeringName = offering.getName() + downloadSpeed + Constant.MBPS;
-		    offeringType.setName(offeringName);
-		} else {
-		    offeringType.setName(offering.getName());
-		}
-
-		offeringType.setDescription(offering.getDescription());
-		BillingMethodEnum billingMethodEnum = BillingMethodEnum.fromValue(offering.getPlanType());
-		offeringType.setBillingMethod(billingMethodEnum);
-		offeringType.setIsBundle(offering.getIsBundle());
-
-		offering.getBundledDetails().forEach(bundle -> {
-
-		    ComposingOfferingType bundledProductOffering = new ComposingOfferingType();
-
-		    bundledProductOffering.setName(bundle.getOfferingName());
-		    bundledProductOffering.setPlanName(bundle.getPlanName());
-		    bundledProductOffering.setDisplayName(bundle.getDisplayName());
-		    bundledProductOffering.setImage(bundle.getImage());
-
-		    bundledProductOfferingList.add(bundledProductOffering);
-		});
-
-		for (OfferingTypeOfferType children : offering.getChildren()) {
-
-		    productSpecification.setId(children.getCatalogItemId());
-		    productSpecification.setHref(Constant.HREF_PRODUCTSPECIFICATION);
 
 		    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
-			productSpecification.setName(children.getName() + downloadSpeed + Constant.MBPS);
+			String offeringName = offering.getName() + downloadSpeed + Constant.MBPS;
+			offeringType.setName(offeringName);
 		    } else {
-			productSpecification.setName(children.getName());
+			offeringType.setName(offering.getName());
 		    }
 
-		    String childreProductType; 
-		    if (ProductTypeEnumType.SH_EQ.equals(children.getProductType().get(0))) {
-			productSpecification.setProductType(ProductTypeEnum.DEVICE);
-		    }else {
-			childreProductType =children.getProductType().get(0).toString(); 
-			productSpecification.setProductType(ProductTypeEnum.fromValue(childreProductType));
-		    }
-		      
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.BUSINESS_TYPE, ValueTypeEnum.STRINGWRAPPER, children.getBusinessType()));
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.DISPLAY_NAME, ValueTypeEnum.STRINGWRAPPER, children.getDisplayName()));
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.RELATION_ID, ValueTypeEnum.STRINGWRAPPER, children.getRelationId()));
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.CORRELATION_ID, ValueTypeEnum.STRINGWRAPPER, children.getCorrelationId()));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.PARENT_CATALOG_ITEM_ID, ValueTypeEnum.STRINGWRAPPER, children.getParentCatalogItemID()));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.PARENT_CATALOG_ITEM_NAME, ValueTypeEnum.STRINGWRAPPER, children.getParentCatalogItemName()));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.PARENT_CURRENT_STATUS, ValueTypeEnum.STRINGWRAPPER, children.getParentCurrentStatus()));
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.PARENT_ASSIGNED_ID, ValueTypeEnum.STRINGWRAPPER, children.getParentAssignedID()));
-		    productCharacteristicsList.add(fillProductCharacteristics(Constant.PLAN_TYPE, ValueTypeEnum.STRINGWRAPPER, children.getPlanType()));
-		    productCharacteristicsList.add(fillProductCharacteristics(Constant.TOP_RECOMMENDED, ValueTypeEnum.STRINGWRAPPER,
-			    Boolean.toString(children.getTopRecommended())));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.COMPATIBLE_WITH_DEVICE, ValueTypeEnum.STRINGWRAPPER, children.getCompatibleWithDevice()));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.MIN_NUM_SUBSCRIBERS, ValueTypeEnum.STRINGWRAPPER, children.getMinNumOfSubscribers()));
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.NUM_SUBSCRIBERS, ValueTypeEnum.STRINGWRAPPER, children.getNumOfSubscribers()));
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.SHARED_PLAN, ValueTypeEnum.STRINGWRAPPER, children.getSharedPlan()));
-		    productCharacteristicsList.add(fillProductCharacteristics(Constant.IMAGE, ValueTypeEnum.STRINGWRAPPER, children.getImage()));
-		    productCharacteristicsList.add(fillProductCharacteristics(Constant.BANNER, ValueTypeEnum.STRINGWRAPPER, children.getBanner()));
+		    offeringType.setDescription(offering.getDescription());
+		    BillingMethodEnum billingMethodEnum = BillingMethodEnum.fromValue(offering.getPlanType());
+		    offeringType.setBillingMethod(billingMethodEnum);
+		    offeringType.setIsBundle(offering.getIsBundle());
 
-		    children.getAdditionalData().forEach(additionalData -> {
-			productCharacteristicsList
-				.add(fillProductCharacteristics(additionalData.getKey(), ValueTypeEnum.STRINGWRAPPER, additionalData.getValue()));
+		    offering.getBundledDetails().forEach(bundle -> {
 
+			ComposingOfferingType bundledProductOffering = new ComposingOfferingType();
+
+			bundledProductOffering.setName(bundle.getOfferingName());
+			bundledProductOffering.setPlanName(bundle.getPlanName());
+			bundledProductOffering.setDisplayName(bundle.getDisplayName());
+			bundledProductOffering.setImage(bundle.getImage());
+
+			bundledProductOfferingList.add(bundledProductOffering);
 		    });
 
-		    children.getPriceDetails().forEach(priceDetail -> {
+		    for (OfferingTypeOfferType children : offering.getChildren()) {
 
-			ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
-			MoneyType price = new MoneyType();
-			MoneyType minPrice = new MoneyType();
-			MoneyType maxPrice = new MoneyType();
-			MoneyType taxAmount = new MoneyType();
-			MoneyType priceWithTax = new MoneyType();
-			MoneyType originalAmount = new MoneyType();
-			MoneyType originalTaxAmount = new MoneyType();
-
-			if (PriceTypeProdAltType.RECURRING_ALLOWANCE.equals(priceDetail.getPriceType())) {
-			    productPrice.setPriceType(PriceTypeEnum.RECURRING);
-			}else if (PriceTypeProdAltType.ONE_TIME_ALLOWANCE.equals(priceDetail.getPriceType())) {
-			    productPrice.setPriceType(PriceTypeEnum.ONE_TIME); 
-			}
-
-			price.setAmount(priceDetail.getPrice().getAmount());
-			price.setUnits(priceDetail.getPrice().getUnits());
-			minPrice.setAmount(priceDetail.getMinPrice().getAmount());
-			minPrice.setUnits(priceDetail.getMinPrice().getUnits());
-			maxPrice.setAmount(priceDetail.getMaxPrice().getAmount());
-			maxPrice.setUnits(priceDetail.getMaxPrice().getUnits());
-			taxAmount.setAmount(priceDetail.getTaxAmount().getAmount());
-			taxAmount.setUnits(priceDetail.getTaxAmount().getUnits());
-			priceWithTax.setAmount(priceDetail.getPriceWithTax().getAmount());
-			priceWithTax.setUnits(priceDetail.getPriceWithTax().getUnits());
-			originalAmount.setAmount(priceDetail.getOriginalAmount().getAmount());
-			originalAmount.setUnits(priceDetail.getOriginalAmount().getUnits());
-			originalTaxAmount.setAmount(priceDetail.getOriginalTaxAmount().getAmount());
-			originalTaxAmount.setUnits(priceDetail.getOriginalTaxAmount().getUnits());
-
-			productPrice.setPrice(price);
-			productPrice.setMinPrice(minPrice);
-			productPrice.setMaxPrice(maxPrice);
-			productPrice.setTaxAmount(taxAmount);
-			productPrice.setPriceWithTax(priceWithTax);
-			productPrice.setOriginalAmount(originalAmount);
-			productPrice.setOriginalTaxAmount(originalTaxAmount);
-			productPriceList.add(productPrice);
-
-		    });
-
-		    for (PlanBODetailsType planBo : children.getPlanBoList()) {
-
-			ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
-			MoneyType price = new MoneyType();
-			MoneyType minPrice = new MoneyType();
-			MoneyType maxPrice = new MoneyType();
-			MoneyType taxAmount = new MoneyType();
-			MoneyType priceWithTax = new MoneyType();
-			MoneyType originalAmount = new MoneyType();
-			MoneyType originalTaxAmount = new MoneyType();
-			List<KeyValueType> additionalDataPlanBoList = new ArrayList<>();
-
-			productPrice.setId(planBo.getBillingOfferId());
-			productPrice.setName(planBo.getBillingOfferName());
-			productPrice.setProductSpecContainmentID(planBo.getProductSpecContainmentID());
-			productPrice.setPricePlanSpecContainmentID(planBo.getPricePlanSpecContainmentID());
+			productSpecification.setId(children.getCatalogItemId());
+			productSpecification.setHref(Constant.HREF_PRODUCTSPECIFICATION);
 
 			if (ProductTypeEnumType.BROADBAND.equals(productType)) {
-			    productPrice.setDescription(Constant.PLAN_INTERNET);
-			} else if (ProductTypeEnumType.CABLE_TV.equals(productType)) {
-			    productPrice.setDescription(Constant.PLAN_TV);
-			} else if (ProductTypeEnumType.LANDLINE.equals(productType)) {
-			    productPrice.setDescription(Constant.PLAN_VOZ);
-			} else if (ProductTypeEnumType.SH_EQ.equals(productType)) {
-			    productPrice.setDescription(Constant.PLAN_EQ_COMPARTIDO);
+			    productSpecification.setName(children.getName() + downloadSpeed + Constant.MBPS);
+			} else {
+			    productSpecification.setName(children.getName());
 			}
 
-			planBo.getPriceDetails().forEach(priceDetail -> {
+			String childreProductType;
+			if (ProductTypeEnumType.SH_EQ.equals(children.getProductType().get(0))) {
+			    productSpecification.setProductType(ProductTypeEnum.DEVICE);
+			} else {
+			    childreProductType = children.getProductType().get(0).toString();
+			    productSpecification.setProductType(ProductTypeEnum.fromValue(childreProductType));
+			}
+
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.BUSINESS_TYPE, ValueTypeEnum.STRINGWRAPPER,
+				children.getBusinessType()));
+			productCharacteristicsList.add(
+				fillProductCharacteristics(Constant.DISPLAY_NAME, ValueTypeEnum.STRINGWRAPPER, children.getDisplayName()));
+			productCharacteristicsList.add(
+				fillProductCharacteristics(Constant.RELATION_ID, ValueTypeEnum.STRINGWRAPPER, children.getRelationId()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.CORRELATION_ID, ValueTypeEnum.STRINGWRAPPER,
+				children.getCorrelationId()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.PARENT_CATALOG_ITEM_ID,
+				ValueTypeEnum.STRINGWRAPPER, children.getParentCatalogItemID()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.PARENT_CATALOG_ITEM_NAME,
+				ValueTypeEnum.STRINGWRAPPER, children.getParentCatalogItemName()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.PARENT_CURRENT_STATUS,
+				ValueTypeEnum.STRINGWRAPPER, children.getParentCurrentStatus()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.PARENT_ASSIGNED_ID, ValueTypeEnum.STRINGWRAPPER,
+				children.getParentAssignedID()));
+			productCharacteristicsList
+				.add(fillProductCharacteristics(Constant.PLAN_TYPE, ValueTypeEnum.STRINGWRAPPER, children.getPlanType()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.TOP_RECOMMENDED, ValueTypeEnum.STRINGWRAPPER,
+				Boolean.toString(children.getTopRecommended())));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.COMPATIBLE_WITH_DEVICE,
+				ValueTypeEnum.STRINGWRAPPER, children.getCompatibleWithDevice()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.MIN_NUM_SUBSCRIBERS, ValueTypeEnum.STRINGWRAPPER,
+				children.getMinNumOfSubscribers()));
+			productCharacteristicsList.add(fillProductCharacteristics(Constant.NUM_SUBSCRIBERS, ValueTypeEnum.STRINGWRAPPER,
+				children.getNumOfSubscribers()));
+			productCharacteristicsList.add(
+				fillProductCharacteristics(Constant.SHARED_PLAN, ValueTypeEnum.STRINGWRAPPER, children.getSharedPlan()));
+			productCharacteristicsList
+				.add(fillProductCharacteristics(Constant.IMAGE, ValueTypeEnum.STRINGWRAPPER, children.getImage()));
+			productCharacteristicsList
+				.add(fillProductCharacteristics(Constant.BANNER, ValueTypeEnum.STRINGWRAPPER, children.getBanner()));
+
+			children.getAdditionalData().forEach(additionalData -> {
+			    productCharacteristicsList.add(fillProductCharacteristics(additionalData.getKey(), ValueTypeEnum.STRINGWRAPPER,
+				    additionalData.getValue()));
+
+			});
+
+			children.getPriceDetails().forEach(priceDetail -> {
+
+			    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
+			    MoneyType price = new MoneyType();
+			    MoneyType minPrice = new MoneyType();
+			    MoneyType maxPrice = new MoneyType();
+			    MoneyType taxAmount = new MoneyType();
+			    MoneyType priceWithTax = new MoneyType();
+			    MoneyType originalAmount = new MoneyType();
+			    MoneyType originalTaxAmount = new MoneyType();
+
+			    if (PriceTypeProdAltType.RECURRING_ALLOWANCE.equals(priceDetail.getPriceType())) {
+				productPrice.setPriceType(PriceTypeEnum.RECURRING);
+			    } else if (PriceTypeProdAltType.ONE_TIME_ALLOWANCE.equals(priceDetail.getPriceType())) {
+				productPrice.setPriceType(PriceTypeEnum.ONE_TIME);
+			    }
 
 			    price.setAmount(priceDetail.getPrice().getAmount());
 			    price.setUnits(priceDetail.getPrice().getUnits());
@@ -320,172 +295,232 @@ public class OffersBenefitsService {
 			    productPrice.setPriceWithTax(priceWithTax);
 			    productPrice.setOriginalAmount(originalAmount);
 			    productPrice.setOriginalTaxAmount(originalTaxAmount);
+			    productPriceList.add(productPrice);
 
 			});
 
-			planBo.getPlanInfo().forEach(planInfo -> {
+			for (PlanBODetailsType planBo : children.getPlanBoList()) {
 
-			    KeyValueType additionalData = new KeyValueType();
-			    additionalData.setKey(planInfo.getKey());
-			    additionalData.setValue(planInfo.getValue());
-			    additionalDataPlanBoList.add(additionalData);
-			    productPrice.setAdditionalData(additionalDataPlanBoList);
-			});
+			    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
+			    MoneyType price = new MoneyType();
+			    MoneyType minPrice = new MoneyType();
+			    MoneyType maxPrice = new MoneyType();
+			    MoneyType taxAmount = new MoneyType();
+			    MoneyType priceWithTax = new MoneyType();
+			    MoneyType originalAmount = new MoneyType();
+			    MoneyType originalTaxAmount = new MoneyType();
+			    List<KeyValueType> additionalDataPlanBoList = new ArrayList<>();
 
-			productPriceList.add(productPrice);
+			    productPrice.setId(planBo.getBillingOfferId());
+			    productPrice.setName(planBo.getBillingOfferName());
+			    productPrice.setProductSpecContainmentID(planBo.getProductSpecContainmentID());
+			    productPrice.setPricePlanSpecContainmentID(planBo.getPricePlanSpecContainmentID());
 
-			if (ProductTypeEnumType.BROADBAND.equals(productType)) {
+			    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
+				productPrice.setDescription(Constant.PLAN_INTERNET);
+			    } else if (ProductTypeEnumType.CABLE_TV.equals(productType)) {
+				productPrice.setDescription(Constant.PLAN_TV);
+			    } else if (ProductTypeEnumType.LANDLINE.equals(productType)) {
+				productPrice.setDescription(Constant.PLAN_VOZ);
+			    } else if (ProductTypeEnumType.SH_EQ.equals(productType)) {
+				productPrice.setDescription(Constant.PLAN_EQ_COMPARTIDO);
+			    }
 
-			    planBo.getPriceList().forEach(priceList -> {
+			    planBo.getPriceDetails().forEach(priceDetail -> {
 
-				ComponentProdOfferPriceType productPrice1 = new ComponentProdOfferPriceType();
-				MoneyType price1 = new MoneyType();
-				MoneyType priceWithTax1 = new MoneyType();
-				List<KeyValueType> additionalDataPriceList = new ArrayList<>();
+				price.setAmount(priceDetail.getPrice().getAmount());
+				price.setUnits(priceDetail.getPrice().getUnits());
+				minPrice.setAmount(priceDetail.getMinPrice().getAmount());
+				minPrice.setUnits(priceDetail.getMinPrice().getUnits());
+				maxPrice.setAmount(priceDetail.getMaxPrice().getAmount());
+				maxPrice.setUnits(priceDetail.getMaxPrice().getUnits());
+				taxAmount.setAmount(priceDetail.getTaxAmount().getAmount());
+				taxAmount.setUnits(priceDetail.getTaxAmount().getUnits());
+				priceWithTax.setAmount(priceDetail.getPriceWithTax().getAmount());
+				priceWithTax.setUnits(priceDetail.getPriceWithTax().getUnits());
+				originalAmount.setAmount(priceDetail.getOriginalAmount().getAmount());
+				originalAmount.setUnits(priceDetail.getOriginalAmount().getUnits());
+				originalTaxAmount.setAmount(priceDetail.getOriginalTaxAmount().getAmount());
+				originalTaxAmount.setUnits(priceDetail.getOriginalTaxAmount().getUnits());
 
-				productPrice1.setName(Constant.PRECIO_VELOCIDAD + priceList.getDownloadSpeed() + Constant.MBPS);
-				productPrice1.setPriceType(PriceTypeEnum.RECURRING);
-				productPrice1.setRecurringChargePeriod(RecurringChargePeriodEnum.MONTHLY);
-
-				price1.setAmount(priceList.getPrice().getAmount());
-				price1.setUnits(priceList.getPrice().getUnits());
-				priceWithTax1.setAmount(Util.igvCalculator(priceList.getPrice().getAmount()));
-				priceWithTax1.setUnits(priceList.getPrice().getUnits());
-
-				KeyValueType additionalData = new KeyValueType();
-				additionalData.setKey(Constant.TECNOLOGY);
-				additionalData.setValue(priceList.getTechnology());
-
-				additionalDataPriceList.add(additionalData);
-				productPrice1.setAdditionalData(additionalDataPriceList);
-				productPrice1.setPrice(price);
-				productPrice1.setMinPrice(minPrice);
-				productPrice1.setMaxPrice(maxPrice);
-				productPrice1.setTaxAmount(taxAmount);
-				productPrice1.setPriceWithTax(priceWithTax);
-				productPrice1.setOriginalAmount(originalAmount);
-				productPrice1.setOriginalTaxAmount(originalTaxAmount);
-
-				productPriceList.add(productPrice1);
+				productPrice.setPrice(price);
+				productPrice.setMinPrice(minPrice);
+				productPrice.setMaxPrice(maxPrice);
+				productPrice.setTaxAmount(taxAmount);
+				productPrice.setPriceWithTax(priceWithTax);
+				productPrice.setOriginalAmount(originalAmount);
+				productPrice.setOriginalTaxAmount(originalTaxAmount);
 
 			    });
+
+			    planBo.getPlanInfo().forEach(planInfo -> {
+
+				KeyValueType additionalData = new KeyValueType();
+				additionalData.setKey(planInfo.getKey());
+				additionalData.setValue(planInfo.getValue());
+				additionalDataPlanBoList.add(additionalData);
+				productPrice.setAdditionalData(additionalDataPlanBoList);
+			    });
+
+			    productPriceList.add(productPrice);
+
+			    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
+
+				planBo.getPriceList().forEach(priceList -> {
+
+				    ComponentProdOfferPriceType productPrice1 = new ComponentProdOfferPriceType();
+				    MoneyType price1 = new MoneyType();
+				    MoneyType priceWithTax1 = new MoneyType();
+				    List<KeyValueType> additionalDataPriceList = new ArrayList<>();
+
+				    productPrice1.setName(Constant.PRECIO_VELOCIDAD + priceList.getDownloadSpeed() + Constant.MBPS);
+				    productPrice1.setPriceType(PriceTypeEnum.RECURRING);
+				    productPrice1.setRecurringChargePeriod(RecurringChargePeriodEnum.MONTHLY);
+
+				    price1.setAmount(priceList.getPrice().getAmount());
+				    price1.setUnits(priceList.getPrice().getUnits());
+				    priceWithTax1.setAmount(Util.igvCalculator(priceList.getPrice().getAmount()));
+				    priceWithTax1.setUnits(priceList.getPrice().getUnits());
+
+				    KeyValueType additionalData = new KeyValueType();
+				    additionalData.setKey(Constant.TECNOLOGY);
+				    additionalData.setValue(priceList.getTechnology());
+
+				    additionalDataPriceList.add(additionalData);
+				    productPrice1.setAdditionalData(additionalDataPriceList);
+				    productPrice1.setPrice(price);
+				    productPrice1.setMinPrice(minPrice);
+				    productPrice1.setMaxPrice(maxPrice);
+				    productPrice1.setTaxAmount(taxAmount);
+				    productPrice1.setPriceWithTax(priceWithTax);
+				    productPrice1.setOriginalAmount(originalAmount);
+				    productPrice1.setOriginalTaxAmount(originalTaxAmount);
+
+				    productPriceList.add(productPrice1);
+
+				});
+			    }
+
 			}
+			;
 
 		    }
 		    ;
 
-		}
-		;
+		    for (PriceDetailsType priceDetail : offering.getPriceDetails()) {
 
-		for (PriceDetailsType priceDetail : offering.getPriceDetails()) {
+			ComponentProdOfferPriceType productOfferingPrice = new ComponentProdOfferPriceType();
+			MoneyType price = new MoneyType();
+			MoneyType minPrice = new MoneyType();
+			MoneyType maxPrice = new MoneyType();
+			MoneyType taxAmount = new MoneyType();
+			MoneyType priceWithTax = new MoneyType();
+			MoneyType originalAmount = new MoneyType();
+			MoneyType originalTaxAmount = new MoneyType();
 
-		    ComponentProdOfferPriceType productOfferingPrice = new ComponentProdOfferPriceType();
-		    MoneyType price = new MoneyType();
-		    MoneyType minPrice = new MoneyType();
-		    MoneyType maxPrice = new MoneyType();
-		    MoneyType taxAmount = new MoneyType();
-		    MoneyType priceWithTax = new MoneyType();
-		    MoneyType originalAmount = new MoneyType();
-		    MoneyType originalTaxAmount = new MoneyType();
+			productOfferingPrice.setName(priceDetail.getDescription());
+			productOfferingPrice.setDescription("");
 
-		    productOfferingPrice.setName(priceDetail.getDescription());
-		    productOfferingPrice.setDescription("");
+			if (PriceTypeProdAltType.RECURRING_ALLOWANCE.equals(priceDetail.getPriceType())) {
+			    productOfferingPrice.setPriceType(PriceTypeEnum.RECURRING);
+			} else if (PriceTypeProdAltType.ONE_TIME_ALLOWANCE.equals(priceDetail.getPriceType())) {
+			    productOfferingPrice.setPriceType(PriceTypeEnum.ONE_TIME);
+			}
 
-		    // TODO NECESITO UN TIPO PriceTypeEnum Y EL RESPONSE ME DEVUELVE UN
-		    // PriceTypeProdAltType
-		    // productOfferingPrice.setPriceType(PriceTypeEnum.fromValue(priceDetail.getPriceType()));
+			if (ProductTypeEnumType.BROADBAND.equals(productType)) {
 
-		    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
+			    price.setAmount(priceDetail.getPrice().getAmount().add(amount));
+			    priceWithTax.setAmount(priceDetail.getPriceWithTax().getAmount().add(amount));
+			    originalAmount.setAmount(priceDetail.getOriginalAmount().getAmount().add(amount));
+			    originalTaxAmount.setAmount(priceDetail.getOriginalTaxAmount().getAmount().add(amount));
+			} else {
+			    price.setAmount(priceDetail.getPrice().getAmount());
+			    priceWithTax.setAmount(priceDetail.getPriceWithTax().getAmount());
+			    originalAmount.setAmount(priceDetail.getOriginalAmount().getAmount());
+			    originalTaxAmount.setAmount(priceDetail.getOriginalTaxAmount().getAmount());
+			}
 
-			price.setAmount(priceDetail.getPrice().getAmount().add(amount));
-			priceWithTax.setAmount(priceDetail.getPriceWithTax().getAmount().add(amount));
-			originalAmount.setAmount(priceDetail.getOriginalAmount().getAmount().add(amount));
-			originalTaxAmount.setAmount(priceDetail.getOriginalTaxAmount().getAmount().add(amount));
-		    } else {
-			price.setAmount(priceDetail.getPrice().getAmount());
-			priceWithTax.setAmount(priceDetail.getPriceWithTax().getAmount());
-			originalAmount.setAmount(priceDetail.getOriginalAmount().getAmount());
-			originalTaxAmount.setAmount(priceDetail.getOriginalTaxAmount().getAmount());
+			price.setUnits(priceDetail.getPrice().getUnits());
+			minPrice.setAmount(priceDetail.getMinPrice().getAmount());
+			minPrice.setUnits(priceDetail.getMinPrice().getUnits());
+			maxPrice.setAmount(priceDetail.getMaxPrice().getAmount());
+			maxPrice.setUnits(priceDetail.getMaxPrice().getUnits());
+			taxAmount.setAmount(priceDetail.getTaxAmount().getAmount());
+			taxAmount.setUnits(priceDetail.getTaxAmount().getUnits());
+			priceWithTax.setUnits(priceDetail.getPriceWithTax().getUnits());
+			originalAmount.setUnits(priceDetail.getOriginalAmount().getUnits());
+			originalTaxAmount.setUnits(priceDetail.getOriginalTaxAmount().getUnits());
+
+			productOfferingPrice.setPrice(price);
+			productOfferingPrice.setMinPrice(minPrice);
+			productOfferingPrice.setMaxPrice(maxPrice);
+			productOfferingPrice.setTaxAmount(taxAmount);
+			productOfferingPrice.setPriceWithTax(priceWithTax);
+			productOfferingPrice.setOriginalAmount(originalAmount);
+			productOfferingPrice.setOriginalTaxAmount(originalTaxAmount);
+
+			productOfferingPriceList.add(productOfferingPrice);
+
 		    }
+		    ;
 
-		    price.setUnits(priceDetail.getPrice().getUnits());
-		    minPrice.setAmount(priceDetail.getMinPrice().getAmount());
-		    minPrice.setUnits(priceDetail.getMinPrice().getUnits());
-		    maxPrice.setAmount(priceDetail.getMaxPrice().getAmount());
-		    maxPrice.setUnits(priceDetail.getMaxPrice().getUnits());
-		    taxAmount.setAmount(priceDetail.getTaxAmount().getAmount());
-		    taxAmount.setUnits(priceDetail.getTaxAmount().getUnits());
-		    priceWithTax.setUnits(priceDetail.getPriceWithTax().getUnits());
-		    originalAmount.setUnits(priceDetail.getOriginalAmount().getUnits());
-		    originalTaxAmount.setUnits(priceDetail.getOriginalTaxAmount().getUnits());
+		    additionalDataList.add(fillAdittionalData(Constant.IMAGE, offering.getImage()));
+		    additionalDataList.add(fillAdittionalData(Constant.BANNER, offering.getBanner()));
+		    additionalDataList.add(fillAdittionalData(Constant.DISPLAY_NAME, offering.getDisplayName()));
+		    additionalDataList.add(fillAdittionalData(Constant.RELATION_ID, offering.getRelationId()));
+		    additionalDataList.add(fillAdittionalData(Constant.ID_ASSIGNED_ITEM, offering.getCorrelationId()));
+		    additionalDataList.add(fillAdittionalData(Constant.PARENT_CATALOG_ITEM_ID, offering.getParentCatalogItemID()));
+		    additionalDataList.add(fillAdittionalData(Constant.PARENT_CATALOG_ITEM_NAME, offering.getParentCatalogItemName()));
+		    additionalDataList.add(fillAdittionalData(Constant.PARENT_CURRENT_STATUS, offering.getParentCurrentStatus()));
+		    additionalDataList.add(fillAdittionalData(Constant.PARENT_ASSIGNED_ID, offering.getParentAssignedID()));
+		    additionalDataList.add(fillAdittionalData(Constant.TOP_RECOMMENDED, Boolean.toString(offering.getTopRecommended())));
+		    additionalDataList.add(fillAdittionalData(Constant.PRODUCRT_TYPE, productType.toString()));
+		    additionalDataList.add(fillAdittionalData(Constant.COMPATIBLE_WITH_DEVICE, offering.getCompatibleWithDevice()));
+		    additionalDataList.add(fillAdittionalData(Constant.MIN_NUM_SUBSCRIBERS, offering.getMinNumOfSubscribers()));
+		    additionalDataList.add(fillAdittionalData(Constant.NUM_SUBSCRIBERS, offering.getNumOfSubscribers()));
+		    additionalDataList.add(fillAdittionalData(Constant.SHARED_PLAN, offering.getSharedPlan()));
 
-		    productOfferingPrice.setPrice(price);
-		    productOfferingPrice.setMinPrice(minPrice);
-		    productOfferingPrice.setMaxPrice(maxPrice);
-		    productOfferingPrice.setTaxAmount(taxAmount);
-		    productOfferingPrice.setPriceWithTax(priceWithTax);
-		    productOfferingPrice.setOriginalAmount(originalAmount);
-		    productOfferingPrice.setOriginalTaxAmount(originalTaxAmount);
+		    offering.getAdditionalData().forEach(additionalData -> {
+			additionalDataList.add(fillAdittionalData(additionalData.getKey(), additionalData.getValue()));
+		    });
 
-		    productOfferingPriceList.add(productOfferingPrice);
+		    // TODO ANEXO 1 SVA INCLUIDOS
+
+		    subProductsList.add(svsincluding(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed, productType));
+
+		    // TODO ANEXO 2 UPFRONT
+
+		    Integer velocidad = Integer.parseInt(downloadSpeed);
+		    AditionalSvaResponse aditionalSvaResponse = aditionalSva.getAditionalSva(vProductOfferingID, velocidad,
+			    offersBenefitsRequestDto.getNetworkTechnology(), offersBenefitsRequestDto.getCurrentOffering(),
+			    offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getFields());
+
+		    UpfrontFijaResponse upfrontFijaResponse = upfrontFija.getUpfrontFija(offersBenefitsRequestDto,
+			    aditionalSvaResponse.getOfferData().getLob());
+
+		    UpFrontType upFront = new UpFrontType();
+		    MoneyType price = new MoneyType();
+
+		    price.setAmount(upfrontFijaResponse.getValueAbp());
+		    price.setUnits(Constant.PERUVIAN_COIN);
+
+		    additionalDataList.add(fillAdittionalData(Constant.INSTALLATION_FEE_BO, upfrontFijaResponse.getCidBo()));
+		    additionalDataList.add(fillAdittionalData(Constant.PRODUCT_FOR_INST_FEE, upfrontFijaResponse.getProductForInstFee()));
+		    upFront.setPrice(price);
+
+		    refinedProduct.setSubProducts(subProductsList);
+		    refinedProduct.setProductCharacteristics(productCharacteristicsList);
+		    productSpecification.setRefinedProduct(refinedProduct);
+		    productSpecification.setProductPrice(productPriceList);
+		    productSpecificationList.add(productSpecification);
+		    offeringType.setUpFront(upFront);
+
+		    // TODO BENEFICIOS
+		    offeringType.setBenefits(fillBenefits(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed));
 
 		}
-		;
-
-		additionalDataList.add(fillAdittionalData(Constant.IMAGE, offering.getImage()));
-		additionalDataList.add(fillAdittionalData(Constant.BANNER, offering.getBanner()));
-		additionalDataList.add(fillAdittionalData(Constant.DISPLAY_NAME, offering.getDisplayName()));
-		additionalDataList.add(fillAdittionalData(Constant.RELATION_ID, offering.getRelationId()));
-		additionalDataList.add(fillAdittionalData(Constant.ID_ASSIGNED_ITEM, offering.getCorrelationId()));
-		additionalDataList.add(fillAdittionalData(Constant.PARENT_CATALOG_ITEM_ID, offering.getParentCatalogItemID()));
-		additionalDataList.add(fillAdittionalData(Constant.PARENT_CATALOG_ITEM_NAME, offering.getParentCatalogItemName()));
-		additionalDataList.add(fillAdittionalData(Constant.PARENT_CURRENT_STATUS, offering.getParentCurrentStatus()));
-		additionalDataList.add(fillAdittionalData(Constant.PARENT_ASSIGNED_ID, offering.getParentAssignedID()));
-		additionalDataList.add(fillAdittionalData(Constant.TOP_RECOMMENDED, Boolean.toString(offering.getTopRecommended())));
-		additionalDataList.add(fillAdittionalData(Constant.PRODUCRT_TYPE, productType.toString()));
-		additionalDataList.add(fillAdittionalData(Constant.COMPATIBLE_WITH_DEVICE, offering.getCompatibleWithDevice()));
-		additionalDataList.add(fillAdittionalData(Constant.MIN_NUM_SUBSCRIBERS, offering.getMinNumOfSubscribers()));
-		additionalDataList.add(fillAdittionalData(Constant.NUM_SUBSCRIBERS, offering.getNumOfSubscribers()));
-		additionalDataList.add(fillAdittionalData(Constant.SHARED_PLAN, offering.getSharedPlan()));
-
-		offering.getAdditionalData().forEach(additionalData -> {
-		    additionalDataList.add(fillAdittionalData(additionalData.getKey(), additionalData.getValue()));
-		});
-
-		// TODO ANEXO 1 SVA INCLUIDOS
-
-		subProductsList.add(svsincluding(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed, productType));
-
-		// TODO ANEXO 2 UPFRONT
-
-		Integer velocidad = Integer.parseInt(downloadSpeed);
-		AditionalSvaResponse aditionalSvaResponse = aditionalSva.getAditionalSva(vProductOfferingID, velocidad,
-			offersBenefitsRequestDto.getNetworkTechnology(), offersBenefitsRequestDto.getCurrentOffering(),
-			offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getFields());
-
-		UpfrontFijaResponse upfrontFijaResponse = upfrontFija.getUpfrontFija(offersBenefitsRequestDto, aditionalSvaResponse.getOfferData().getLob());
-
-		UpFrontType upFront = new UpFrontType();
-		MoneyType price = new MoneyType();
-
-		price.setAmount(upfrontFijaResponse.getValueAbp());
-		price.setUnits(Constant.PERUVIAN_COIN);
-
-		additionalDataList.add(fillAdittionalData(Constant.INSTALLATION_FEE_BO, upfrontFijaResponse.getCidBo()));
-		additionalDataList.add(fillAdittionalData(Constant.PRODUCT_FOR_INST_FEE, upfrontFijaResponse.getProductForInstFee()));
-		upFront.setPrice(price);
-
-		refinedProduct.setSubProducts(subProductsList);
-		refinedProduct.setProductCharacteristics(productCharacteristicsList);
-		productSpecification.setRefinedProduct(refinedProduct);
-		productSpecification.setProductPrice(productPriceList);
-		productSpecificationList.add(productSpecification);
-		offeringType.setUpFront(upFront);
-
-		// TODO BENEFICIOS
-		offeringType.setBenefits(fillBenefits(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed));
-
 	    }
+
 	    ;
 
 	    offeringType.setCurrentPlanRelationID(categories.getCurrentPlanRelationId());
@@ -525,10 +560,10 @@ public class OffersBenefitsService {
 	    categoryList.add(category);
 	    if (offersBenefitsRequestDto.getPaginationInfo().getPage() == 1) {
 		paginationInfo.setFirst(true);
-	    }else {
+	    } else {
 		paginationInfo.setFirst(false);
 	    }
-	    
+
 	});
 
 	offeringType.setCustomerId(offersBenefitsRequestDto.getCustomerId());
@@ -810,8 +845,6 @@ public class OffersBenefitsService {
 		List<ComposingProductType> productSpecificationList = new ArrayList<>();
 
 		sva.getBillingOffer().forEach(billingOffer -> {
-		    
-		    //TODO POBLAR CAMPOS NUEVOS DEL SPECT RELATIONID
 
 		    ComposingProductType productSpecification = new ComposingProductType();
 		    RefinedProductType refinedProductType = new RefinedProductType();
@@ -822,28 +855,23 @@ public class OffersBenefitsService {
 		    productSpecification.setId(billingOffer.getBillingOffer().getChildId());
 		    productSpecification.setName(billingOffer.getBillingOffer().getNameChild());
 
-		    // TODO FALTA CORREGIR el enum debe ser SVA RETENCION
 		    productSpecification.setProductType(ProductTypeEnum.SVA);
 		    productSpecification.setPeriodDuration(billingOffer.getBillingOffer().getDurationValue());
 
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.SPSID, ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentId()));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.NOMBRE_SPS, ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentName()));
+		    productCharacteristicsList.add(fillProductCharacteristics(Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
+			    billingOffer.getSpsIdAndName().getParentId()));
+		    productCharacteristicsList.add(fillProductCharacteristics(Constant.NOMBRE_SPS, ValueTypeEnum.STRINGWRAPPER,
+			    billingOffer.getSpsIdAndName().getParentName()));
 
 		    refinedProductType.setProductCharacteristics(productCharacteristicsList);
 		    productSpecification.setRefinedProduct(refinedProductType);
 
 		    productPrice.setName(Constant.PRECIO_SVA);
 		    productPrice.setProductSpecContainmentID(billingOffer.getBillingOffer().getRelationId());
-			   
-//		    TODO EL FOREACH VA A CHANCAR AL DE ARRIBA
-//		    billingOffer.getRelationId().forEach(relationId -> {
-//			productPrice.setProductSpecContainmentID(relationId);
-//		    });
+		    productPrice.setPricePlanSpecContainmentID(billingOffer.getRelationId());
 		    productPriceList.add(productPrice);
 		    productSpecification.setProductPrice(productPriceList);
-		    
+
 		    productSpecificationList.add(productSpecification);
 		    offeringType.setName(billingOffer.getBillingOffer().getNameParent());
 
@@ -865,9 +893,6 @@ public class OffersBenefitsService {
 		List<BenefitType> benefitTypeList = new ArrayList<>();
 
 		sva.getBillingOffer().forEach(billingOffer -> {
-		    
-		    //TODO POBLAR CAMPOS NUEVOS DEL SPECT RELATIONID
-
 
 		    ComposingProductType productSpecification = new ComposingProductType();
 		    RefinedProductType refinedProductType = new RefinedProductType();
@@ -885,26 +910,20 @@ public class OffersBenefitsService {
 			productSpecification.setMaxCardinality(billingOffer.getMaxSTBsallowed());
 		    }
 
-		    productCharacteristicsList
-			    .add(fillProductCharacteristics(Constant.SPSID, ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentId()));
-		    productCharacteristicsList.add(
-			    fillProductCharacteristics(Constant.NOMBRE_SPS, ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentName()));
+		    productCharacteristicsList.add(fillProductCharacteristics(Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
+			    billingOffer.getSpsIdAndName().getParentId()));
+		    productCharacteristicsList.add(fillProductCharacteristics(Constant.NOMBRE_SPS, ValueTypeEnum.STRINGWRAPPER,
+			    billingOffer.getSpsIdAndName().getParentName()));
 
 		    refinedProductType.setProductCharacteristics(productCharacteristicsList);
 		    productSpecification.setRefinedProduct(refinedProductType);
 
-		    
-		    
 		    productPrice.setName(Constant.PRECIO_SVA);
 		    productPrice.setPriceType(billingOffer.getPriceType());
 		    productPrice.setPrice(fillMoneyType(billingOffer.getAmount(), Constant.PERUVIAN_COIN));
 		    productPrice.setProductSpecContainmentID(billingOffer.getBillingOffer().getRelationId());
-		   
-//		    TODO EL FOREACH VA A CHANCAR AL DE ARRIBA
-//		    billingOffer.getRelationId().forEach(relationId -> {
-//			productPrice.setProductSpecContainmentID(relationId);
-//		    });
-		    
+		    productPrice.setPricePlanSpecContainmentID(billingOffer.getRelationId());
+
 		    BigDecimal amoutIgv = Util.igvCalculator(billingOffer.getAmount());
 		    productPrice.setTaxAmount(fillMoneyType(amoutIgv, Constant.PERUVIAN_COIN));
 
@@ -915,7 +934,8 @@ public class OffersBenefitsService {
 		    benefitType.setName(billingOffer.getNameComp());
 		    benefitType.setDownloadSpeed(billingOffer.getVasBenefits().getSpeed());
 
-		    characteristicsList.add(fillCharacteristics(Constant.SPS_ID, billingOffer.getVasBenefits().getBenefitThemePackSpsCid()));
+		    characteristicsList
+			    .add(fillCharacteristics(Constant.SPS_ID, billingOffer.getVasBenefits().getBenefitThemePackSpsCid()));
 		    characteristicsList.add(fillCharacteristics(Constant.SPS_NAME, billingOffer.getParentName()));
 		    characteristicsList.add(fillCharacteristics(Constant.BO_NAME, billingOffer.getNameBo()));
 		    characteristicsList.add(fillCharacteristics(Constant.DURATION, billingOffer.getVasBenefits().getDuration()));
@@ -923,13 +943,12 @@ public class OffersBenefitsService {
 
 		    benefitTypeList.add(benefitType);
 
-
 		    productSpecificationList.add(productSpecification);
-		    
+
 		    offeringType.setName(billingOffer.getBillingOffer().getNameParent());
 
 		});
-		
+
 		offeringType.setBenefits(benefitTypeList);
 		offeringType.setId(sva.getIdComponent());
 		offeringType.setProductSpecification(productSpecificationList);
@@ -938,7 +957,7 @@ public class OffersBenefitsService {
 	    });
 
 	}
-	
+
 	return offeringTypeList;
 
     }

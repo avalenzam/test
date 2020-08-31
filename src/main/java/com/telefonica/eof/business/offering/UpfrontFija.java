@@ -1,9 +1,11 @@
 package com.telefonica.eof.business.offering;
 
 import java.math.BigDecimal;
+
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
@@ -15,6 +17,16 @@ import com.telefonica.eof.repository.InstallationFeeRepository;
 import com.telefonica.eof.repository.PricePropertiesRepository;
 import com.telefonica.eof.repository.UpfrontRepository;
 
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: UpfrontFija.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: El servicio obtiene el indicador Upfront de la oferta fija
+ */
+@Component
 public class UpfrontFija {
     
     @Autowired

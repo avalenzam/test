@@ -33,6 +33,7 @@ import com.telefonica.eof.repository.InstalFeeNoRiskRepository;
 import com.telefonica.eof.repository.InstallationFeeRepository;
 import com.telefonica.eof.repository.MasterOfOffersRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
+import com.telefonica.eof.repository.OffilterBundleRepository;
 import com.telefonica.eof.repository.PricePropertiesRepository;
 import com.telefonica.eof.repository.PropertyInBillingOfferRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
@@ -83,6 +84,8 @@ class ShakaElegibleoffersFiApplicationTests {
     private InstalFeeNoRiskRepository	      instalFeeNoRiskRepository;
     @Autowired
     private ParqueUnificadoConnection	      parqueUnificadoConnection;
+    @Autowired
+    private OffilterBundleRepository offilterBundleRepository;
 
     private String productOfferingCatalogId = "34459665";
     private String broadbandMinDlDataRate   = null;
@@ -162,10 +165,10 @@ class ShakaElegibleoffersFiApplicationTests {
 	Sps spsIdAndName = relationMasterRepository.findSpsIdAndName("'7111','7731'");
 	System.out.println(spsIdAndName);
 
-	List<String> relationId;
+	String relationId;
 	relationId = relationMasterRepository.findRelationId("3197521", "34414515");
-	System.out.println(relationId);
-	if (relationId.size() == 0) {
+	System.out.println("relation id " + relationId);
+	if (StringUtil.isNullOrEmpty(relationId) && StringUtil.isNullOrEmpty(relationId)) {
 	    relationId = relationMasterRepository.findRelationIdByrelationCidRoot("34414515", "34325311");
 	    System.out.println("relationId if :" + relationId);
 	}
@@ -264,6 +267,19 @@ class ShakaElegibleoffersFiApplicationTests {
 		.collect(Collectors.joining());
 	System.out.println(uf);
 	System.out.println("1,2,3,4".contains("4"));
+    }
+    
+    @Test
+    void OffilterBundleRepositoryTest() {
+	 List<String> numberList = new ArrayList<>();
+	numberList.add("1");
+	numberList.add("2");
+	numberList.add("34492865");
+	System.out.println(numberList);
+	String planCid = offilterBundleRepository.findPlanCid("34492865", null, null, null);
+	System.out.println(planCid);
+	numberList.removeIf(x -> x.contains(planCid));
+	System.out.println(numberList);
     }
 
     @Test

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
@@ -27,6 +28,17 @@ import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.StbSettingRepository;
 
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: AditionalSva.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Clase que obtiene los servicios adicionales y equipamiento como parte de la oferta
+ */
+
+@Component
 public class AditionalSva {
 
     @Autowired
@@ -78,6 +90,10 @@ public class AditionalSva {
 
 	return aditionalSvaResponse;
     }
+    
+    /**
+     * El metodo obtiene datos de la Oferta 
+     */
 
     private OfferDataResponse getOfferData(String vProductOfferingID, Integer velocidad) {
 
@@ -140,6 +156,9 @@ public class AditionalSva {
 
     }
 
+    /**
+     * El metodo obtiene el tipo del modem
+     */
     private ModemResponse getModem(String networkTecnology, String lob) {
 
 	ModemResponse modemResponse = new ModemResponse();
@@ -160,6 +179,9 @@ public class AditionalSva {
 
     }
 
+    /**
+     *  El metodo obtiene el STB - decodificadores
+     */
     private List<DecosResponse> getDecos(Integer velocidad, String vProductOfferingID, String currentOffering, String channelId,
 	    String field) {
 
@@ -261,6 +283,9 @@ public class AditionalSva {
 	return decosResponseList;
     }
 
+    /**
+     *  El metodo obtiene los bloques de canales de la oferta
+     */
     private List<ChannelBlockResponse> getChannelBlock(String defSpsBo, String defSpsId, String vProductOfferingID) {
 
 	List<ChannelBlockResponse> channelBlocklist = new ArrayList<>();
@@ -289,6 +314,10 @@ public class AditionalSva {
 
 	return channelBlocklist;
     }
+    
+    /**
+     *  El metodo obtiene  otros SVAs (Multidestino y MCafee)
+     */
 
     private List<OtherSvasResponse> getOtherSvas(String vProductOfferingID) {
 

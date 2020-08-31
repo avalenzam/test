@@ -3,9 +3,11 @@ package com.telefonica.eof.jdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.TbconfigItemRepository;
 
+@Repository
 public class JdbcTbconfigItemRepository implements TbconfigItemRepository{
 
     @Autowired

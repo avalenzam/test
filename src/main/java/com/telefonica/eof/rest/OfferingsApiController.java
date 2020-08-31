@@ -121,8 +121,9 @@ public class OfferingsApiController {
 			@ApiParam(value = "Numero maximo de paginas") @Valid @RequestParam(value = "paginationInfo.page", required = false) Integer paginationInfoPage,
 			@ApiParam(value = "Numero maximo de resultados") @Valid @RequestParam(value = "paginationInfo.maxResultCount", required = false) Integer paginationInfoMaxResultCount,
 			@ApiParam(value = "Nombre de una propiedad que se utilizará para ordenar.") @Valid @RequestParam(value = "sortCriteria.name", required = false) String sortCriteriaName,
-			@ApiParam(value = "Indica si esto es ascendente o descendente.") @Valid @RequestParam(value = "sortCriteria.ascending", required = false) Boolean sortCriteriaAscending) {
+			@ApiParam(value = "Indica si esto es ascendente o descendente.") @Valid @RequestParam(value = "sortCriteria.ascending", required = false) Boolean sortCriteriaAscending) throws Exception {
 
+	    try {
 		OffersBenefitsRequestDto offersBenefitsRequestDto = appRequest.fromParamstoBody(correlationId, name, isBundle, lifeCycleStatus,
 				categoryId, categoryName, subcategoryId, subcategoryName, channelId, channelName,
 				productSpecificationId, productSpecificationName, frameworkAgreeementId, customerId, accountId,
@@ -149,6 +150,10 @@ public class OfferingsApiController {
 		offerBenefitsServiceI.getOfferBenefitsFi(offersBenefitsRequestDto);
 
 		return new ResponseEntity<>(new ResponseType(), httpHeaders, HttpStatus.OK);
+	    } catch (Exception e) {
+		throw new Exception(e);
+	    }
+		
 	}
 
 }

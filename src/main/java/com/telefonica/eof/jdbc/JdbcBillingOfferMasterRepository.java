@@ -43,14 +43,13 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
 	String query = "select CID_BO"
 		+ " from BILLING_OFFER_MASTER"
 		+ " where CAPTION_BO = ?" ;
-	
-	 
 	return jdbcTemplate.queryForObject(query,
 		 new Object[]{installationFeeBo},
 		 String.class);
        } catch (EmptyResultDataAccessException e) {
 		return null;
-	}	
+	}
+       
 		
 		 
    }

@@ -6,6 +6,6 @@ import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.generated.model.OfferingType;
 
 public interface OfferBenefitsServiceI {
-    public List<OfferingType> getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto);
+    public List<OfferingType> getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws Exception;
 
 }
