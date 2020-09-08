@@ -41,7 +41,7 @@ import com.telefonica.eof.repository.VasBenefitsRepository;
  * @FileName: Sva.java
  * @AuthorCompany: Telefonica
  * @version: 0.1
- * @Description: El servicio obtiene los sva adicionales
+ * @Description: Clase que obtiene los "servicios de valor agregado"(sva) adicionales
  */
 @Component
 public class Sva {
@@ -71,7 +71,9 @@ public class Sva {
     private TbconfigItemRepository	     tbconfigItemRepository;
     
     /**
-     * El metodo obtiene los sva adicionales sin retencion
+     * El método obtiene los sva adicionales del cliente sin retencion (IsRetention = N)
+     * @param offersBenefitsRequestDto: request  que viene del front
+     * @return retorna los servicios de valor agregado
      */
 
     public List<SvaResponse> getSvaTypeSva(OffersBenefitsRequestDto offersBenefitsRequestDto) {
@@ -198,7 +200,9 @@ public class Sva {
     }
     
     /**
-     * El metodo obtiene los sva adicionales de retencion
+     * El método obtiene los sva adicionales del cliente en retencion (IsRetention = N)
+     * @param offersBenefitsRequestDto: request  que viene del front
+     * @return retorna los servicios de valor agregado
      */
 
     public List<SvaResponse> getSvaTypeRetention(OffersBenefitsRequestDto offersBenefitsRequestDto) {
@@ -247,8 +251,13 @@ public class Sva {
     }
 
     /**
-     * El metodo obtiene los componentes adicionales 
+     * El metodo obtiene los componentes adicionales (idComponente) necesario para el metodo getSvaTypeSva() y getSvaTypeRetention()
+     * @param productOfferingCatalogId: atributo del offersBenefitsRequestDto que viene del front
+     * @param action: atributo del offersBenefitsRequestDto que viene del front
+     * @param query: linea de query que varia dependiendo de si es retencion o no
+     * @return retorna un listado de componentes
      */
+    
     private List<String> getAditionalComponent(String productOfferingCatalogId, String action, String query) {
 
 	String propertyValueLT = offersPropertiesRepository.findPropertyValue(productOfferingCatalogId).stream()
@@ -261,7 +270,12 @@ public class Sva {
     }
 
     /**
-     * El metodo obtiene las billing offers filtradas de cada componente
+     * El método obtiene un listado de billing offers filtradas por cada idComponente,
+     *  necesario para el metodo getSvaTypeSva() y getSvaTypeRetention()
+     * @param productOfferingCatalogId: atributo del offersBenefitsRequestDto que viene del front
+     * @param idComponent: viene del listado del metodo getAditionalComponent()
+     * @param flagType:  atributo del offersBenefitsRequestDto que viene del front (offersBenefitsRequestDto.getProduct().getType())
+     * @return List<RelationMaster>: lista de billing offers
      */
     private List<RelationMaster> getBillingOffer(String productOfferingCatalogId, String idComponent, String flagType) {
 
@@ -306,6 +320,12 @@ public class Sva {
 	return billingOfferList;
 
     }
+    
+    /**
+     * El método obtiene el id y el nombre del sps, necesario para el metodo getSvaTypeSva() y getSvaTypeRetention()
+     * @param billingOfferChildId: atributo de RelationMaster que viene como response del metodo getBillingOffer()
+     * @return Sps: contiene id y nombre del sps
+     */
 
     private Sps getSpsIdAndName(String billingOfferChildId) {
 

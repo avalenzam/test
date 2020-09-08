@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
+import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.RelationMaster;
@@ -35,7 +36,7 @@ import com.telefonica.eof.repository.StbSettingRepository;
  * @FileName: AditionalSva.java
  * @AuthorCompany: Telefonica
  * @version: 0.1
- * @Description: Clase que obtiene los servicios adicionales y equipamiento como parte de la oferta
+ * @Description: Clase que obtiene los servicios de valor agregado como parte de la oferta
  */
 
 @Component
@@ -56,20 +57,27 @@ public class AditionalSva {
     @Autowired
     private DomainWithValidValuesRepository domainWithValidValuesRepository;
 
-    public AditionalSvaResponse getAditionalSva(String vProductOfferingID, Integer velocidad, String networkTecnology,
-	    String currentOffering, String channelId, String field) {
+  
+    /**
+     * Método principal de la clase. Obtiene los sva adicionales como parte de la oferta que viene de AMDOCS
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @param velocidad: se obtiene del response de AMDOCS, es el campo downloadSpeed 
+     * @param offersBenefitsRequestDto: viene del front
+     * @return AditionalSvaResponse : servicios de valor agregado
+     */
+    public AditionalSvaResponse getAditionalSva(String vProductOfferingID, Integer velocidad, OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
 	AditionalSvaResponse aditionalSvaResponse = new AditionalSvaResponse();
 
 	OfferDataResponse offerData = getOfferData(vProductOfferingID, velocidad);
 
-	ModemResponse modem = getModem(networkTecnology, offerData.getLob());
+	ModemResponse modem = getModem(offersBenefitsRequestDto.getNetworkTechnology(), offerData.getLob());
 
 	List<DecosResponse> decos = null;
 
 	if (offerData.getLob().contains(Constant.TV)) {
 
-	    decos = getDecos(velocidad, vProductOfferingID, currentOffering, channelId, field);
+	    decos = getDecos(velocidad, vProductOfferingID, offersBenefitsRequestDto);
 	}
 
 	List<ChannelBlockResponse> channelBlock = null;
@@ -90,9 +98,12 @@ public class AditionalSva {
 
 	return aditionalSvaResponse;
     }
-    
+        
     /**
-     * El metodo obtiene datos de la Oferta 
+     * El método obtiene datos de la Oferta, necesario para el getAditionalSva()
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @param velocidad: se obtiene del response de AMDOCS, es el campo downloadSpeed 
+     * @return OfferDataResponse : Datos de la Oferta
      */
 
     private OfferDataResponse getOfferData(String vProductOfferingID, Integer velocidad) {
@@ -155,9 +166,12 @@ public class AditionalSva {
 	return offerDataResponse;
 
     }
-
+    
     /**
-     * El metodo obtiene el tipo del modem
+     * El metodo obtiene el tipo del modem de la oferta, necesario para el getAditionalSva()
+     * @param networkTecnology atributo del offersBenefitsRequestDto que viene del front
+     * @param lob atributo parte del response del metodo getOfferData() 
+     * @return ModemResponse : id y nombre del quipamiento
      */
     private ModemResponse getModem(String networkTecnology, String lob) {
 
@@ -180,10 +194,13 @@ public class AditionalSva {
     }
 
     /**
-     *  El metodo obtiene el STB - decodificadores
+     * El metodo obtiene Decos como parte de la oferta (STB), necesario para el getAditionalSva()
+     * @param velocidad: se obtiene del response de AMDOCS, es el campo downloadSpeed 
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @param offersBenefitsRequestDto: viene del front
+     * @return List<DecosResponse> : listado de decos
      */
-    private List<DecosResponse> getDecos(Integer velocidad, String vProductOfferingID, String currentOffering, String channelId,
-	    String field) {
+    private List<DecosResponse> getDecos(Integer velocidad, String vProductOfferingID, OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
 	String stbNewOffer;
 	List<DecosResponse> decosResponseList = new ArrayList<>();
@@ -199,9 +216,9 @@ public class AditionalSva {
 
 	List<String> stbNewOfferList = Arrays.asList(stbNewOffer.split(Constant.COMMA));
 
-	if (!(Constant.NULL.equalsIgnoreCase(currentOffering) || StringUtil.isNullOrEmpty(currentOffering))) {
+	if (!(Constant.NULL.equalsIgnoreCase(offersBenefitsRequestDto.getCurrentOffering()) || StringUtil.isNullOrEmpty(offersBenefitsRequestDto.getCurrentOffering()))) {
 
-	    List<OffersProperties> propertyValue = offersPropertiesRepository.findPropertyValue(currentOffering);
+	    List<OffersProperties> propertyValue = offersPropertiesRepository.findPropertyValue(offersBenefitsRequestDto.getCurrentOffering());
 
 	    String currentOfferLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
@@ -213,8 +230,8 @@ public class AditionalSva {
 
 	    if (!(currentOfferBundleLob.contains(Constant.TV) && currentOfferLob.contains(Constant.TV))) {
 
-		if (field.contains(Constant.DOWNLOAD_SPEED)) {
-		    List<String> fielList = Arrays.asList(field.split(Constant.COMMA));
+		if (offersBenefitsRequestDto.getFields().contains(Constant.DOWNLOAD_SPEED)) {
+		    List<String> fielList = Arrays.asList(offersBenefitsRequestDto.getFields().split(Constant.COMMA));
 		    List<String> downloadSpeedList = new ArrayList<String>();
 		    fielList.forEach(item -> {
 			downloadSpeedList.add(Arrays.asList(item.split(Constant.DOBLEPOINT)).get(1));
@@ -222,12 +239,12 @@ public class AditionalSva {
 
 		    downloadSpeedList.forEach(downloadSpeed -> {
 			String stbCurrentOffer;
-			if (currentOffering != null) {
-			    stbCurrentOffer = stbSettingRepository.findStbSettingWithSpeed(channelId, vProductOfferingID,
+			if (offersBenefitsRequestDto.getCurrentOffering() != null) {
+			    stbCurrentOffer = stbSettingRepository.findStbSettingWithSpeed(offersBenefitsRequestDto.getChannelId(), vProductOfferingID,
 				    Integer.parseInt(downloadSpeed.trim()));
 			    System.out.println(stbNewOffer);
 			} else {
-			    stbCurrentOffer = stbSettingRepository.findStbSettingWithoutSpeed(channelId, vProductOfferingID);
+			    stbCurrentOffer = stbSettingRepository.findStbSettingWithoutSpeed(offersBenefitsRequestDto.getChannelId(), vProductOfferingID);
 			    System.out.println(stbNewOffer);
 			}
 			List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(Constant.COMMA));
@@ -282,9 +299,13 @@ public class AditionalSva {
 
 	return decosResponseList;
     }
-
+  
     /**
-     *  El metodo obtiene los bloques de canales de la oferta
+     * El metodo obtiene los bloques de canales de la oferta, necesario para el getAditionalSva()
+     * @param defSpsBo: atributo del response del metodo getOfferData()
+     * @param defSpsId: atributo del response del metodo getOfferData()
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @return List<ChannelBlockResponse> : listado de bloque de canales
      */
     private List<ChannelBlockResponse> getChannelBlock(String defSpsBo, String defSpsId, String vProductOfferingID) {
 
@@ -314,9 +335,11 @@ public class AditionalSva {
 
 	return channelBlocklist;
     }
-    
+
     /**
-     *  El metodo obtiene  otros SVAs (Multidestino y MCafee)
+     * El metodo obtiene otros SVAs (Multidestino y MCafee), necesario para el getAditionalSva()
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @return List<OtherSvasResponse> : listado de otros SVAs
      */
 
     private List<OtherSvasResponse> getOtherSvas(String vProductOfferingID) {

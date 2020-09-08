@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.telefonica.eof.commons.Constant;
@@ -16,7 +17,16 @@ import com.telefonica.globalintegration.services.retrieveofferings.v1.PagingInfo
 import com.telefonica.globalintegration.services.retrieveofferings.v1.SortCriteriaType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.UNIKeyValueType;
 
-@Service
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: OfferingsRequestParamsFill.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Representa los metodos necesarios para poblar el request de AMDOCS con el request que llega del front
+ */
+@Component
 public class OfferingsRequestParamsFill {
 
     public CategoryTreeTypeType getCategory(OffersBenefitsRequestDto offersBenefitsRequestDto) {

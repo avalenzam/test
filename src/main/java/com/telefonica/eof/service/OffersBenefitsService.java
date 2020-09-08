@@ -62,7 +62,7 @@ import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOf
  * @FileName: OffersBenefitsService.java
  * @AuthorCompany: Telefonica
  * @version: 0.1
- * @Description: El servicio obtiene todas las listas de las ofertas
+ * @Description: El servicio obtiene el listado de todas las ofertas y beneficios
  */
 
 @Service
@@ -84,6 +84,12 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
     private OffersPropertiesRepository offersPropertiesRepository;
     @Autowired
     private OffilterBundleRepository   offilterBundleRepository;
+    
+    /**
+     * Metodo principal. Retorna el response poblado con las ofertas, beneficios y SVA's adicionales
+     * @param offersBenefitsRequestDto: request  que viene del front
+     * @return List<OfferingType> : lista de ofertas y beneficios
+     */
 
     public List<OfferingType> getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws Exception {
 	try {
@@ -114,8 +120,11 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
     }
 
     /**
-     * El metodo obtiene las ofertas y beneficios de la oferta obtenida de AMDOCS
+     * El metodo retorna el response poblado de las ofertas y beneficios con respecto a la informacion de AMDOCS
+     * @param: offersBenefitsRequestDto request  que viene del front
+     * @return ResponseType: ofertas y beneficios
      */
+
     private ResponseType getOfferAndBenefit(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
 	RetrieveOfferingsResponseType rort = offerings.consult(offersBenefitsRequestDto);
@@ -491,9 +500,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 		    // TODO ANEXO 2 UPFRONT
 
 		    Integer velocidad = Integer.parseInt(downloadSpeed);
-		    AditionalSvaResponse aditionalSvaResponse = aditionalSva.getAditionalSva(vProductOfferingID, velocidad,
-			    offersBenefitsRequestDto.getNetworkTechnology(), offersBenefitsRequestDto.getCurrentOffering(),
-			    offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getFields());
+		    AditionalSvaResponse aditionalSvaResponse = aditionalSva.getAditionalSva(vProductOfferingID, velocidad,offersBenefitsRequestDto);
 
 		    UpfrontFijaResponse upfrontFijaResponse = upfrontFija.getUpfrontFija(offersBenefitsRequestDto,
 			    aditionalSvaResponse.getOfferData().getLob());
@@ -516,7 +523,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 		    offeringType.setUpFront(upFront);
 
 		    // TODO BENEFICIOS
-		    offeringType.setBenefits(fillBenefits(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed));
+		    offeringType.setBenefits(getBenefits(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed));
 
 		}
 	    }
@@ -601,14 +608,20 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	return responseType;
     }
 
+    /**
+     * El metodo retorna los campos poblados con los SVAS incluidos, obtenidos con en la clase AdditionalSva 
+     * @param offersBenefitsRequestDto: request  que viene del front
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @param downloadSpeed: se obtiene del response de AMDOCS
+     * @param productType: tipo de producto
+     * @return ComposingProductType: campos poblados
+     */
     private ComposingProductType svsincluding(OffersBenefitsRequestDto offersBenefitsRequestDto, String vProductOfferingID,
 	    String downloadSpeed, ProductTypeEnumType productType) {
 
 	Integer velocidad = Integer.parseInt(downloadSpeed);
 
-	AditionalSvaResponse aditionalSvaResponse = aditionalSva.getAditionalSva(vProductOfferingID, velocidad,
-		offersBenefitsRequestDto.getNetworkTechnology(), offersBenefitsRequestDto.getCurrentOffering(),
-		offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getFields());
+	AditionalSvaResponse aditionalSvaResponse = aditionalSva.getAditionalSva(vProductOfferingID, velocidad,offersBenefitsRequestDto);
 
 	ComposingProductType offeringSubProducts = new ComposingProductType();
 	RefinedProductType refinedProductType = new RefinedProductType();
@@ -779,7 +792,14 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	return offeringSubProducts;
     }
 
-    private List<BenefitType> fillBenefits(OffersBenefitsRequestDto offersBenefitsRequestDto, String vProductOfferingID,
+    /**
+     * El metodo retorna los campos poblados con los beneficios obtenidos con en la clase Benefit 
+     * @param offersBenefitsRequestDto: request  que viene del front
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @param downloadSpeed: se obtiene del response de AMDOCS
+     * @return List<BenefitType>: listado con los campos poblados
+     */
+    private List<BenefitType> getBenefits(OffersBenefitsRequestDto offersBenefitsRequestDto, String vProductOfferingID,
 	    String downloadSpeed) {
 
 	List<BenefitsResponse> benefitList = benefit.getBenefitDiscount(offersBenefitsRequestDto, vProductOfferingID, downloadSpeed);
@@ -825,6 +845,12 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	return benefitTypeList;
 
     }
+    
+    /**
+     * El metodo retorna los campos poblados con los SVA's obtenidos con en la clase SVA 
+     * @param offersBenefitsRequestDto: request  que viene del front
+     * @return List<OfferingType>: listado con los campos poblados
+     */
 
     private List<OfferingType> getSva(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
@@ -962,6 +988,13 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
     }
 
+    /**
+     * Metodo para poblar los campos de ProductCharacteristics
+     * @param name: nombre del productCharacteristics 
+     * @param enumValue: valueType del productCharacteristics
+     * @param value: valor del productCharacteristics
+     * @return StringWrapper: atributos poblados
+     */
     private StringWrapper fillProductCharacteristics(String name, ValueTypeEnum enumValue, String value) {
 
 	StringWrapper productCharacteristics = new StringWrapper();
@@ -977,6 +1010,12 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	return productCharacteristics;
     }
 
+    /**
+     * Metodo para poblar los campos de AdittionalData
+     * @param key  
+     * @param value 
+     * @return KeyValueType: atributos poblados
+     */
     private KeyValueType fillAdittionalData(String key, String value) {
 
 	KeyValueType adittionalData = new KeyValueType();
@@ -987,6 +1026,12 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	return adittionalData;
     }
 
+    /**
+     * Metodo para poblar los campos de Characteristics
+     * @param key  
+     * @param value 
+     * @return CharacteristicBenefitType: atributos poblados
+     */
     private CharacteristicBenefitType fillCharacteristics(String key, String value) {
 
 	CharacteristicBenefitType characteristics = new CharacteristicBenefitType();
@@ -995,6 +1040,13 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 	return characteristics;
     }
+    
+    /**
+     * Metodo para poblar el atributo MoneyType 
+     * @param amount: monto
+     * @param units: unidad monetaria 
+     * @return ComposingProductType: atributos poblados
+     */
 
     private MoneyType fillMoneyType(BigDecimal amount, String units) {
 

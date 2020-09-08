@@ -40,6 +40,11 @@ public class UpfrontFija {
     @Autowired
     private BillingOfferMasterRepository billingOfferMasterRepository;
 
+    /**
+     * Método principal de la clase. Obtiene los sva adicionales como parte de la oferta que viene de AMDOCS
+     * @param offersBenefitsRequestDto: viene del front
+     * @return UpfrontFijaResponse: id,producto y precio de instalacion
+     */
     public UpfrontFijaResponse getUpfrontFija (OffersBenefitsRequestDto offersBenefitsRequestDto, String lob) {
 	
 	UpfrontFijaResponse upfrontFijaResponse = new UpfrontFijaResponse();

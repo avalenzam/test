@@ -44,8 +44,15 @@ public class Benefit {
     @Autowired
     private BillingOfferMasterRepository      billingOfferMasterRepository;
 
-    public List<BenefitsResponse> getBenefitDiscount(OffersBenefitsRequestDto offersBenefitsRequestDto, String amdocsCatalogItemID,
-	    String amdocsDownloadSpeed) {
+    /**
+     * Método principal de la clase. Obtiene los beneficios por cada oferta de AMDOCS
+     * @param vProductOfferingID: se obtiene del response de AMDOCS
+     * @param velocidad: se obtiene del response de AMDOCS, es el campo downloadSpeed 
+     * @param offersBenefitsRequestDto: viene del front
+     * @return List<BenefitsResponse> : listado de beneficios
+     */
+    public List<BenefitsResponse> getBenefitDiscount(OffersBenefitsRequestDto offersBenefitsRequestDto, String vProductOfferingID,
+	    String velocidad) {
 
 	List<BenefitsResponse> benefitsResponseList = new ArrayList<>();
 	BenefitsResponse benefitsResponse = new BenefitsResponse();
@@ -68,7 +75,7 @@ public class Benefit {
 	discountParamsDto.setBroadbandConnection(offersBenefitsRequestDto.getBroadband().getConnection());
 	discountParamsDto.setNetworkTechnology(offersBenefitsRequestDto.getNetworkTechnology());
 	discountParamsDto.setCommercialAreaId(offersBenefitsRequestDto.getCommercialAreaId());
-	discountParamsDto.setDownloadSpeed(amdocsDownloadSpeed);
+	discountParamsDto.setDownloadSpeed(velocidad);
 
 	List<WirelineServiceBenefits> discountList = wirelineServiceBenefitsRepository.findBenefits(discountParamsDto);
 

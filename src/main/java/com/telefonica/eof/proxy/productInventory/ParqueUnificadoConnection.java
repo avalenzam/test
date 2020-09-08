@@ -13,6 +13,15 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.pojo.productInventory.ProductInventoryResponseDto;
 
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: ParqueUnificadoConnection.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Representa la conexion con el servicio productInventory
+ */
 
 
 @Component
