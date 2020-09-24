@@ -10,9 +10,21 @@ import com.telefonica.eof.pojo.Portability;
 import com.telefonica.eof.pojo.Product;
 import com.telefonica.eof.pojo.ProductOfferingPrice;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: OffersBenefitsRequestDto.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Request enviado del front
+ */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OffersBenefitsRequestDto {
     
     private String correlationId;
@@ -56,6 +68,8 @@ public class OffersBenefitsRequestDto {
     private String commercialAreaId;
     private String productOrderId;
     private Plan plan;
+    // productPlanType: Hace referencia al campo Product del spect.Recibe Postpaid, Prepaid,...
+    private String productPlanType;
     private String sourceType;
     private String networkTechnology;
     private String serviceabilityMaxSpeed;
@@ -65,6 +79,8 @@ public class OffersBenefitsRequestDto {
     private String subscriberGroupValue;
     private String excludeOffersId;
     private String installationAddressDepartment;
+    private String nationalId;
+    private String nationalIdType;
     private PaginationInfo paginationInfo;
     private String sortCriteriaName;
     private Boolean sortCriteriaAscending;

@@ -8,8 +8,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import lombok.Setter;
-
 
 /**
  * 
@@ -77,6 +75,7 @@ import lombok.Setter;
  *         &lt;element name="paginationInfo" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}PagingInfoType" minOccurs="0"/&gt;
  *         &lt;element name="sortCriteria" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}SortCriteriaType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}offerNameType" minOccurs="0"/&gt;
+ *         &lt;element name="product" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}productType" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -111,7 +110,8 @@ import lombok.Setter;
     "invoiceCompany",
     "paginationInfo",
     "sortCriteria",
-    "name"
+    "name",
+    "product"
 })
 public class FilterInfoType {
 
@@ -125,7 +125,6 @@ public class FilterInfoType {
     protected String networkTechnology;
     protected String maxSpeed;
     protected String serviceabilityID;
-    @Setter
     protected List<UNIKeyValueType> filterFacets;
     protected String creditScore;
     protected String departament;
@@ -140,9 +139,9 @@ public class FilterInfoType {
     protected String offerMaxInternetSpeed;
     protected String invoiceCompany;
     protected PagingInfoType paginationInfo;
-    @Setter
     protected List<SortCriteriaType> sortCriteria;
     protected String name;
+    protected String product;
 
     /**
      * Gets the value of the sourceProductOfferingId property.
@@ -752,6 +751,40 @@ public class FilterInfoType {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the product property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProduct() {
+        return product;
+    }
+
+    /**
+     * Sets the value of the product property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProduct(String value) {
+        this.product = value;
+    }
+
+    public void setFilterFacets(List<UNIKeyValueType> filterFacets2) {
+	// TODO Auto-generated method stub
+	
+    }
+
+    public void setSortCriteria(List<SortCriteriaType> sortCriteria2) {
+	// TODO Auto-generated method stub
+	
     }
 
 }

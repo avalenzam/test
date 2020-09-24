@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class WirelineServiceBenefits {
     
-    private String benefitsComponentCid;
+    private String benefitComponentCid;
     private String benefitThemePackSpsCid;
     private String benefitBillingOfferCid;
     private String speed;

@@ -34,7 +34,7 @@ public class Constant {
     public static final String HREF_OFFERING		 = "/offerings/{categories[i].offerings[j].catalogItemId}";
     public static final String HREF_PRODUCTSPECIFICATION = "/offerings/{categories[i].offerings[j].children[k].catalogItemId}";
 
-    public static final String OFFER_PRICE_DESCRIPTION = "PRECIO DEL PLAN MOVIL";
+    public static final String OFFER_PRICE_DESCRIPTION = "PRECIO TOTAL FIJA";
 
     public static final String EASY_POST_PAYMENT = "postpagoFacil";
     public static final String EXEMPT_PENALTY	 = "exoneraPenalidad";
@@ -135,7 +135,7 @@ public class Constant {
     
     // Product Catalog Management Service - retrieveOfferings operation
     public static final String URL_OFFERINGS_SERVICE	= "http://telefonica.com/globalIntegration/services/retrieveOfferings/v1";
-    public static final String METHOD_OFFERINGS_SERVICE	= "RetrieveOfferingsRequest";
+    public static final String METHOD_OFFERINGS_SERVICE	= "retrieveOfferingsRequest";
     
     //productPrice
     public static final String PRECIO_SVA	= "Precio SVA";
@@ -152,8 +152,9 @@ public class Constant {
     // PARQUE UNIFICADO service
     public static final String PARQUE_UNIFICADO_URL = "http://10.4.43.93:8889/products-0.0.1/products";
 
- // query
-    
+    //HEADER
+    public static final String UNICA_SERVICE_ID	= "UNICA-ServiceId";   
+    public static final String UNICA_TIMESTAMP	= "UNICA-Timestamp";
     
     
     /**

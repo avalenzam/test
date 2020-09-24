@@ -69,4 +69,10 @@ public class RetrieveOfferingsResponseType {
         return this.categories;
     }
 
+    public void setCategories(List<CategoryListType> categories) {
+        this.categories = categories;
+    }
+    
+    
+
 }

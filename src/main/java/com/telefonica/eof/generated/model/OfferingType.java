@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
  * OfferingType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
 
 
 
@@ -27,6 +27,12 @@ import io.swagger.annotations.ApiModelProperty;
 public class OfferingType   {
   @JsonProperty("id")
   private String id = null;
+
+  @JsonProperty("code")
+  private String code = null;
+
+  @JsonProperty("catalogItemType")
+  private String catalogItemType = null;
 
   @JsonProperty("href")
   private String href = null;
@@ -233,6 +239,46 @@ public class OfferingType   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public OfferingType code(String code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Code of Offer reported
+   * @return code
+  **/
+  @ApiModelProperty(value = "Code of Offer reported")
+
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  public OfferingType catalogItemType(String catalogItemType) {
+    this.catalogItemType = catalogItemType;
+    return this;
+  }
+
+  /**
+   * Represents the Catalog item type.
+   * @return catalogItemType
+  **/
+  @ApiModelProperty(value = "Represents the Catalog item type.")
+
+
+  public String getCatalogItemType() {
+    return catalogItemType;
+  }
+
+  public void setCatalogItemType(String catalogItemType) {
+    this.catalogItemType = catalogItemType;
   }
 
   public OfferingType href(String href) {
@@ -852,6 +898,8 @@ public class OfferingType   {
     }
     OfferingType offeringType = (OfferingType) o;
     return Objects.equals(this.id, offeringType.id) &&
+        Objects.equals(this.code, offeringType.code) &&
+        Objects.equals(this.catalogItemType, offeringType.catalogItemType) &&
         Objects.equals(this.href, offeringType.href) &&
         Objects.equals(this.correlationId, offeringType.correlationId) &&
         Objects.equals(this.name, offeringType.name) &&
@@ -882,7 +930,7 @@ public class OfferingType   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, href, correlationId, name, description, type, currentPlanRelationID, productOfferingProductSpecID, category, isPromotion, billingMethod, channel, frameworkAgreement, customerId, compatibleProducts, isBundle, offeringUrl, validFor, bundledProductOffering, productSpecification, isDowngrade, productOfferingPrice, lifeCycleStatus, offeringPenalties, upFront, benefits, additionalData);
+    return Objects.hash(id, code, catalogItemType, href, correlationId, name, description, type, currentPlanRelationID, productOfferingProductSpecID, category, isPromotion, billingMethod, channel, frameworkAgreement, customerId, compatibleProducts, isBundle, offeringUrl, validFor, bundledProductOffering, productSpecification, isDowngrade, productOfferingPrice, lifeCycleStatus, offeringPenalties, upFront, benefits, additionalData);
   }
 
   @Override
@@ -891,6 +939,8 @@ public class OfferingType   {
     sb.append("class OfferingType {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    catalogItemType: ").append(toIndentedString(catalogItemType)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -931,5 +981,25 @@ public class OfferingType   {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+public String getOfferingName() {
+    // TODO Auto-generated method stub
+    return null;
+}
+
+public String getPlanName() {
+    // TODO Auto-generated method stub
+    return null;
+}
+
+public String getDisplayName() {
+    // TODO Auto-generated method stub
+    return null;
+}
+
+public String getImage() {
+    // TODO Auto-generated method stub
+    return null;
+}
 }
 

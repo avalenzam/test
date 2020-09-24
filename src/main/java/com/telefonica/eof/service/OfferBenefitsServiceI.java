@@ -1,11 +1,9 @@
 package com.telefonica.eof.service;
 
-import java.util.List;
-
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
-import com.telefonica.eof.generated.model.OfferingType;
+import com.telefonica.eof.generated.model.ResponseType;
 
 public interface OfferBenefitsServiceI {
-    public List<OfferingType> getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws Exception;
+    public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws Exception;
 
 }

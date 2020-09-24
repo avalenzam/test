@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ComponentProdOfferPriceType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
 
 
 
@@ -28,6 +28,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class ComponentProdOfferPriceType   {
   @JsonProperty("id")
   private String id = null;
+
+  @JsonProperty("code")
+  private String code = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -195,6 +198,26 @@ public class ComponentProdOfferPriceType   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public ComponentProdOfferPriceType code(String code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Code of the billingOffer
+   * @return code
+  **/
+  @ApiModelProperty(value = "Code of the billingOffer")
+
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
   }
 
   public ComponentProdOfferPriceType name(String name) {
@@ -766,6 +789,7 @@ public class ComponentProdOfferPriceType   {
     }
     ComponentProdOfferPriceType componentProdOfferPriceType = (ComponentProdOfferPriceType) o;
     return Objects.equals(this.id, componentProdOfferPriceType.id) &&
+        Objects.equals(this.code, componentProdOfferPriceType.code) &&
         Objects.equals(this.name, componentProdOfferPriceType.name) &&
         Objects.equals(this.description, componentProdOfferPriceType.description) &&
         Objects.equals(this.productSpecContainmentID, componentProdOfferPriceType.productSpecContainmentID) &&
@@ -795,7 +819,7 @@ public class ComponentProdOfferPriceType   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, productSpecContainmentID, pricePlanSpecContainmentID, isMandatory, validFor, priceType, recurringChargePeriod, unitOfMeasure, price, minPrice, maxPrice, taxAmount, priceWithTax, originalAmount, originalTaxAmount, taxIncluded, taxRate, taxType, productOfferPriceAlteration, pricedComponents, priceLocation, priceConsumer, benefits, additionalData);
+    return Objects.hash(id, code, name, description, productSpecContainmentID, pricePlanSpecContainmentID, isMandatory, validFor, priceType, recurringChargePeriod, unitOfMeasure, price, minPrice, maxPrice, taxAmount, priceWithTax, originalAmount, originalTaxAmount, taxIncluded, taxRate, taxType, productOfferPriceAlteration, pricedComponents, priceLocation, priceConsumer, benefits, additionalData);
   }
 
   @Override
@@ -804,6 +828,7 @@ public class ComponentProdOfferPriceType   {
     sb.append("class ComponentProdOfferPriceType {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    productSpecContainmentID: ").append(toIndentedString(productSpecContainmentID)).append("\n");

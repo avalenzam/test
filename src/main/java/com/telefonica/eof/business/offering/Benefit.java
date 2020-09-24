@@ -2,6 +2,7 @@ package com.telefonica.eof.business.offering;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.DiscountParamsDto;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
+import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.WirelineServiceBenefits;
 import com.telefonica.eof.pojo.benefits.BenefitsResponse;
@@ -80,26 +82,28 @@ public class Benefit {
 	List<WirelineServiceBenefits> discountList = wirelineServiceBenefitsRepository.findBenefits(discountParamsDto);
 
 	discountList.forEach(discountOffer -> {
-	    String nameComp = componentsMasterRepository.findNameComponentByCidComponent(discountOffer.getBenefitsComponentCid());
-	    List<PriceProperties> discountDetail = pricePropertiesRepository
-		    .findDiscountPriceDetail(discountOffer.getBenefitBillingOfferCid());
-	    String valueAbp = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_VALUE)).map(p -> p.getValueAbp())
-		    .collect(Collectors.joining());
-	    String valueAbpType = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_TYPE)).map(p -> p.getValueAbp())
-		    .collect(Collectors.joining());
+	    if (discountOffer != null) {
+		 String nameComp = componentsMasterRepository.findNameComponentByCidComponent(discountOffer.getBenefitComponentCid());
+		    List<PriceProperties> discountDetail = pricePropertiesRepository
+			    .findDiscountPriceDetail(discountOffer.getBenefitBillingOfferCid());
+		    String valueAbp = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_VALUE)).map(p -> p.getValueAbp())
+			    .collect(Collectors.joining());
+		    String valueAbpType = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_TYPE)).map(p -> p.getValueAbp())
+			    .collect(Collectors.joining());
 
-	    String spsName = relationMasterRepository.findSpsDiscountName(discountOffer.getBenefitThemePackSpsCid());
-	    String nameBo = billingOfferMasterRepository.findBillingOfferBycidBo(discountOffer.getBenefitBillingOfferCid()).getNameBo();
+		    String spsName = relationMasterRepository.findSpsDiscountName(discountOffer.getBenefitThemePackSpsCid());
+		    BillingOfferMaster billingOfferByCidBo =billingOfferMasterRepository.findBillingOfferBycidBo(discountOffer.getBenefitBillingOfferCid());
+		    String nameBo =  Optional.ofNullable(billingOfferByCidBo).map(x -> billingOfferByCidBo.getNameBo()).orElse(null);
 
-	    benefitsResponse.setBenefits(discountOffer);
-	    benefitsResponse.setNameComp(nameComp);
-	    benefitsResponse.setValueAbpType(valueAbpType);
-	    benefitsResponse.setValueAbp(valueAbp);
-	    benefitsResponse.setSpsName(spsName);
-	    benefitsResponse.setNameBo(nameBo);
-	    
-	    benefitsResponseList.add(benefitsResponse);
-
+		    benefitsResponse.setBenefits(discountOffer);
+		    benefitsResponse.setNameComp(nameComp);
+		    benefitsResponse.setValueAbpType(valueAbpType);
+		    benefitsResponse.setValueAbp(valueAbp);
+		    benefitsResponse.setSpsName(spsName);
+		    benefitsResponse.setNameBo(nameBo);
+		    
+		    benefitsResponseList.add(benefitsResponse);
+	    }
 	    
 	});
 

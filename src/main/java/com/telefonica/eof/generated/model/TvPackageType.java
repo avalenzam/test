@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Information for TV type products, providing details on available TV packages")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-17T23:56:34.536Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
 
 
 

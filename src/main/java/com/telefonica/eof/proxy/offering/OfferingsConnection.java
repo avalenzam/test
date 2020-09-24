@@ -3,36 +3,59 @@ package com.telefonica.eof.proxy.offering;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 import com.telefonica.globalintegration.header.HeaderInType;
+import com.telefonica.globalintegration.header.ObjectFactory;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOfferingsRequestType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOfferingsResponseType;
 
 /**
  * 
  * @Author: Alexandra Valenza Medrano
- * @Datecreation: August 2020
+ * @Datecreation: June. 2020
  * @FileName: OfferingsConnection.java
  * @AuthorCompany: Telefonica
  * @version: 0.1
- * @Description: Representa la conexion con el servicio SOAP
+ * @Description: Representa los metodos necesarios para conectarse al servicio
+ *               soap de ofertas.
+ * 
  */
-@Component
+@Service
 public class OfferingsConnection {
 
+    @Autowired
+    @Qualifier("offeringsWS")
+    private WebServiceTemplate webServiceTemplate;
+
     @SuppressWarnings("unchecked")
-    public JAXBElement<RetrieveOfferingsResponseType> callWebService(String url, RetrieveOfferingsRequestType request, String metodrequest,
-	    HeaderInType headerInType){
 
-	WebServiceTemplate webServiceTemplate = new WebServiceTemplate();
+    /***
+     * Método que envia un request a un servicio soap.
+     * 
+     * @param url
+     *            : Url del servicio soap.
+     * @param request
+     *            : Request que será enviada al servicio soap.
+     * @param metodoRequest
+     *            : Método utilizado para enviar el request.
+     * @return Response del servicio soap.
+     */
+    public JAXBElement<RetrieveOfferingsResponseType> callWebService(String url, 
+	    RetrieveOfferingsRequestType request, String metodrequest,HeaderInType headerInType) {
 
-	return (JAXBElement<RetrieveOfferingsResponseType>) webServiceTemplate.marshalSendAndReceive(
-		new JAXBElement<RetrieveOfferingsRequestType>(new QName(url, metodrequest), RetrieveOfferingsRequestType.class, request),
-		new SoapHeaders(headerInType));
-    
+	    ObjectFactory of =  new ObjectFactory();
 	
+	JAXBElement<HeaderInType> test = of.createHeaderIn(headerInType);
 	
+	JAXBElement<RetrieveOfferingsResponseType> response = (JAXBElement<RetrieveOfferingsResponseType>) webServiceTemplate.marshalSendAndReceive(
+		new JAXBElement<RetrieveOfferingsRequestType>(new QName(url, metodrequest),
+			RetrieveOfferingsRequestType.class, request),
+		new SoapHeaders(test));
+		
+	return response;
     }
 }

@@ -21,7 +21,7 @@ public class JdbcSvaOfferingRepository implements SvaOfferingRepository{
 	  String query = "SELECT IDCOMPONENTE FROM SVAOffering  WHERE"
 		+ " LOB_TYPE= ?"
 		+ " AND TIPO_OPERATION IN ('*', ?)"
-		+ " AND FLAG_RETENCIÓN IN " + flagRetencion
+		+ " AND FLAG_RETENCIÓN IN (" + flagRetencion + ")"
 		+ " AND FECHA_INICIO <= CURRENT_DATE" 
 		+ " AND FECHA_FIN  >=  CURRENT_DATE" ;
 	

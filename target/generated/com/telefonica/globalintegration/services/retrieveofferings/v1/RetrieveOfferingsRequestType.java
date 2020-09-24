@@ -10,8 +10,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
-import lombok.Setter;
-
 
 /**
  * 
@@ -71,7 +69,6 @@ public class RetrieveOfferingsRequestType {
     protected BigDecimal customerId;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
-    @Setter
     protected List<ProductTypeEnumType> productType;
     protected CategoryTreeTypeType category;
     @XmlElement(name = "channel.id")
@@ -80,7 +77,6 @@ public class RetrieveOfferingsRequestType {
     protected String productId;
     protected String productOrderId;
     protected String catalogID;
-    @Setter
     protected List<String> productOfferingCatalogId;
     protected FilterInfoType filterInfo;
 
@@ -308,6 +304,16 @@ public class RetrieveOfferingsRequestType {
      */
     public void setFilterInfo(FilterInfoType value) {
         this.filterInfo = value;
+    }
+
+    public void setProductType(List<ProductTypeEnumType> productTypeEnumList) {
+	// TODO Auto-generated method stub
+	
+    }
+
+    public void setProductOfferingCatalogId(List<String> asList) {
+	// TODO Auto-generated method stub
+	
     }
 
 }

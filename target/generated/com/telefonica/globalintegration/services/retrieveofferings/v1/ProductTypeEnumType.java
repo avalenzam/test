@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="bolton"/&gt;
  *     &lt;enumeration value="dth"/&gt;
  *     &lt;enumeration value="streamingTv"/&gt;
+ *     &lt;enumeration value="accessories"/&gt;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
@@ -61,7 +62,9 @@ public enum ProductTypeEnumType {
     @XmlEnumValue("dth")
     DTH("dth"),
     @XmlEnumValue("streamingTv")
-    STREAMING_TV("streamingTv");
+    STREAMING_TV("streamingTv"),
+    @XmlEnumValue("accessories")
+    ACCESSORIES("accessories");
     private final String value;
 
     ProductTypeEnumType(String v) {

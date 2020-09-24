@@ -1,7 +1,6 @@
 package com.telefonica.eof.business.offering;
 
 import java.math.BigDecimal;
-
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,51 +27,53 @@ import com.telefonica.eof.repository.UpfrontRepository;
  */
 @Component
 public class UpfrontFija {
-    
+
     @Autowired
-    private PricePropertiesRepository	      pricePropertiesRepository;
+    private PricePropertiesRepository	 pricePropertiesRepository;
     @Autowired
-    private UpfrontRepository upfrontRepository;
+    private UpfrontRepository		 upfrontRepository;
     @Autowired
-    private InstallationFeeRepository installationFeeRepository;
+    private InstallationFeeRepository	 installationFeeRepository;
     @Autowired
-    private InstalFeeNoRiskRepository instalFeeNoRiskRepository;
+    private InstalFeeNoRiskRepository	 instalFeeNoRiskRepository;
     @Autowired
     private BillingOfferMasterRepository billingOfferMasterRepository;
 
     /**
-     * Método principal de la clase. Obtiene los sva adicionales como parte de la oferta que viene de AMDOCS
-     * @param offersBenefitsRequestDto: viene del front
+     * Método principal de la clase. Obtiene los sva adicionales como parte de la
+     * oferta que viene de AMDOCS
+     * 
+     * @param offersBenefitsRequestDto:
+     *            viene del front
      * @return UpfrontFijaResponse: id,producto y precio de instalacion
      */
-    public UpfrontFijaResponse getUpfrontFija (OffersBenefitsRequestDto offersBenefitsRequestDto, String lob) {
-	
+    public UpfrontFijaResponse getUpfrontFija(OffersBenefitsRequestDto offersBenefitsRequestDto, String lob) {
+
 	UpfrontFijaResponse upfrontFijaResponse = new UpfrontFijaResponse();
-	
-	String upfront = upfrontRepository.findUpfront().stream()
-		.filter(x -> x.getUpfrontIndDesc().contains(offersBenefitsRequestDto.getCreditScore().toString()))
-    		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+	String crediScore = String.valueOf(offersBenefitsRequestDto.getCreditScore() % 10);
+	String upfront = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(crediScore))
+		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
 
 	InstallationFee installationFee = installationFeeRepository.findBoUpfront(offersBenefitsRequestDto.getAction(), lob, upfront);
 
-	BigDecimal upfrontPrice;
-	
-	if (Constant.YES.equalsIgnoreCase(upfront)) {
-	    
-	    upfrontPrice = pricePropertiesRepository.findUpfrontPrice(installationFee.getInstallationFeeBo());
-	  
-	}else {
-	    upfrontPrice = instalFeeNoRiskRepository.findRate(offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getInstallationAddressDepartment());
-	
+	if (installationFee != null) {
+	    BigDecimal upfrontPrice;
+	    if (Constant.YES.equalsIgnoreCase(upfront)) {
+
+		upfrontPrice = pricePropertiesRepository.findUpfrontPrice(installationFee.getInstallationFeeBo());
+
+	    } else {
+		upfrontPrice = instalFeeNoRiskRepository.findRate(offersBenefitsRequestDto.getChannelId(),
+			offersBenefitsRequestDto.getInstallationAddressDepartment());
+	    }
+	    String cidBo = billingOfferMasterRepository.findCidBoBycaptionBo(installationFee.getInstallationFeeBo());
+
+	    upfrontFijaResponse.setCidBo(cidBo);
+	    upfrontFijaResponse.setProductForInstFee(installationFee.getProductForInstFee());
+	    upfrontFijaResponse.setValueAbp(upfrontPrice);
 	}
-	
-	String cidBo = billingOfferMasterRepository.findCidBoBycaptionBo(installationFee.getInstallationFeeBo());
-	
-	upfrontFijaResponse.setCidBo(cidBo);
-	upfrontFijaResponse.setProductForInstFee(installationFee.getProductForInstFee());
-	upfrontFijaResponse.setValueAbp(upfrontPrice);
-	
+
 	return upfrontFijaResponse;
-	
+
     }
 }

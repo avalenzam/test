@@ -12,7 +12,6 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\ValidFor______________.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ChangeFunPackFault.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\MoneyType.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\Text.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\RetrieveExternalStockUnitRequestDataType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\services\retrieveofferings\v1\PricingType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\aditionalSva\AditionalSvaResponse.java
@@ -94,7 +93,6 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\e
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\sva\SvaResponse.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\sva\BillingOfferResponse.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ValidateTokenFnFFault.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\Object.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\repository\RelationMasterRepository.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\RetrieveFriendsAndFamilyNumbersResponseType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\services\retrieveofferings\v1\AttachmentOfferingsType.java
@@ -117,7 +115,6 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\e
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\services\retrieveofferings\v1\CategoryListType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ActivityInformationUpdateSingleConfigurationOnProductRequest.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\TelephoneNumberQuerySubscriptionGroupValueRequest.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\ModelBoolean.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\ValidFor______.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\AddOrRemoveBillingOfferRequestType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\Category.java
@@ -146,9 +143,7 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonic
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\ProdPriceAlteration.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\Price.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ProductOrderUpdateFriendsAndFamilyNumbersRequest.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\business\sva\Sva2.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\FilterCriterion.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\services\retrieveofferings\v1\BundleSearchResultOfferType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ProductComponent.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\SkuSim.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\ProductSpecCharacteristicValueType.java
@@ -175,8 +170,8 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\e
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\header\HeaderOutType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\entity\OffersProperties.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\repository\InstalFeeNoRiskRepository.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\config\HomeController.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ProductConfigurationActionList.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\api\OfferingsApiController.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\ProdOfferPriceAlterationType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\Product.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\SortCriterionListFilterFilterListRetrieveFriendsAndFamilyNumbersRequest.java
@@ -189,6 +184,7 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\NumbersList.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\Application.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\UpdateSingleConfigurationOnProductFault.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\enums\NameEnum.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\ValidFor_________.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\services\retrieveofferings\v1\PriceTypeProdAltType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\jdbc\JdbcPropertyInBillingOfferRepository.java
@@ -236,6 +232,7 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonic
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ModifyServiceRequestType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\entity\BillingOfferMaster.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\ComposingProductType.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\jdbc\JdbcOffilterBundleRepository.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\RetrieveProductHeaderRequestType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\benefits\BenefitsResponse.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ApplicationsList.java
@@ -363,6 +360,8 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\RetrieveExternalStockUnitResponseType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\InfoAttachmentType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\PenaltyType.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\enums\PropertyValueEnum.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\repository\OffilterBundleRepository.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\tefresponseheader\v1\TefHeaderResType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\ProductInstanceRefType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\RetrieveProductHeaderResponseType.java
@@ -383,6 +382,7 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\AdditionalDatum____.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\PackageType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\repository\BillingOfferMasterRepository.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\mapper\ApplicationRequestMapper.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\Activity.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\FNFBODetailsList.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\RetrieveCommitmentPenaltyResponseType.java
@@ -437,6 +437,7 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ActivityInformationRetrieveExternalStockUnitRequest.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\MobileQuotaCharacteristicTypeVoiceQuota.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\QuerySubscriptionGroupValueResponseType.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\service\OfferBenefitsServiceI.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\SubscriptionType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\Price__.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\UpdateFriendsAndFamilyNumbersFault.java
@@ -466,11 +467,11 @@ D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\OrderItem.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\FilterFilterListRetrieveFriendsAndFamilyNumbersRequest.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ChangeProductStatusRequestDataType.java
+D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\rest\OfferingsApiController.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\FNFComponent.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ResponseType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\pojo\productInventory\ValidFor_____.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\RequestSVADeactivationFault.java
-D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\src\main\java\com\telefonica\eof\generated\model\Numeric.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\header\package-info.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\com\telefonica\globalintegration\header\ArgType.java
 D:\proyectos\NUEVO_MOTOR\shaka-elegiblefoffers-fi\target\generated\pe\telefonica\customerordermanagement\orderservices\v1\types\ProductComponentRetrieveFriendsAndFamilyNumbersRequest.java

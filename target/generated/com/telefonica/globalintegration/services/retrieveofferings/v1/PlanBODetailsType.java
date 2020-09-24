@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="planInfo" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}UNIKeyValueType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="productSpecContainmentID" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}productSpecContainmentIDType" minOccurs="0"/&gt;
  *         &lt;element name="pricePlanSpecContainmentID" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}pricePlanSpecContainmentIDType" minOccurs="0"/&gt;
+ *         &lt;element name="image" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}imageType" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -56,7 +57,8 @@ import javax.xml.bind.annotation.XmlType;
     "priceList",
     "planInfo",
     "productSpecContainmentID",
-    "pricePlanSpecContainmentID"
+    "pricePlanSpecContainmentID",
+    "image"
 })
 public class PlanBODetailsType {
 
@@ -70,6 +72,7 @@ public class PlanBODetailsType {
     protected List<UNIKeyValueType> planInfo;
     protected String productSpecContainmentID;
     protected String pricePlanSpecContainmentID;
+    protected String image;
 
     /**
      * Gets the value of the billingOfferId property.
@@ -276,6 +279,30 @@ public class PlanBODetailsType {
      */
     public void setPricePlanSpecContainmentID(String value) {
         this.pricePlanSpecContainmentID = value;
+    }
+
+    /**
+     * Gets the value of the image property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the value of the image property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setImage(String value) {
+        this.image = value;
     }
 
 }

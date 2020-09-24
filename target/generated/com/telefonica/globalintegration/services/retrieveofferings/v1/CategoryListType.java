@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import lombok.Setter;
+
 
 /**
  * 
@@ -56,6 +58,10 @@ public class CategoryListType {
     @XmlElement(required = true)
     protected PagingInfoOutputType paginationInfo;
     protected List<OfferingTypeOfferType> offerings;
+
+    public void setOfferings(List<OfferingTypeOfferType> offerings) {
+        this.offerings = offerings;
+    }
 
     /**
      * Gets the value of the category property.

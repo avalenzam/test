@@ -3,6 +3,7 @@ package com.telefonica.eof.proxy.offering;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.transform.TransformerException;
@@ -16,9 +17,9 @@ import com.telefonica.globalintegration.header.HeaderInType;
 
 public class SoapHeaders implements WebServiceMessageCallback {
 	
-	private HeaderInType headerInType;
+	private JAXBElement<HeaderInType> headerInType;
 	
-	public SoapHeaders(HeaderInType headerInType) {
+	public SoapHeaders(JAXBElement<HeaderInType> headerInType) {
 		this.headerInType = headerInType;
 	}
 

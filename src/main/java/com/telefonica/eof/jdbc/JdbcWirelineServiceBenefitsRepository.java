@@ -52,8 +52,8 @@ public class JdbcWirelineServiceBenefitsRepository implements WirelineServiceBen
 	 	+ " and TARGET_TECHNOLOGY in (?,'*')"
 	 	+ " and COMMERCIAL_ZONE in (?,'*')"
 	 	+ " and LOB = 'BB'"
-	 	+ " and DOWNLOAD_SPEED_FROM <= ?"
-	 	+ " and DOWNLOAD_SPEED_TO >= ?";
+	 	+ " and CAST(DOWNLOAD_SPEED_FROM AS NUMBER)  <= ?"
+	 	+ " and CAST(DOWNLOAD_SPEED_TO AS NUMBER)  >= ?";
 	 	
 
 	 return jdbcTemplate.query(query,

@@ -155,7 +155,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
     public Sps findComponentIdAndName (String defSpsBo, String vProductOfferingID ) {
 	try {
 	    String query = "select rm.parent_id, rm.name_parent"
-   		+ " from relations_master rm, BILLING_OFFER_MASTER bim, MASTER_CHANN_PACK_WITH_PROPERT mcp"
+   		+ " from relations_master rm, BILLING_OFFER_MASTER bim"
    		+ " where rm.child_id = bim.cid_bo"
    		+ " and caption_bo = substr( ? ,1,"
    		+ " decode(instr(?,';')-1,-1,"

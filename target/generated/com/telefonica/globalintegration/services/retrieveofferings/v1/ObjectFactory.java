@@ -123,14 +123,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BundleSearchResultOfferType }
-     * 
-     */
-    public BundleSearchResultOfferType createBundleSearchResultOfferType() {
-        return new BundleSearchResultOfferType();
-    }
-
-    /**
      * Create an instance of {@link AttachmentOfferingsType }
      * 
      */

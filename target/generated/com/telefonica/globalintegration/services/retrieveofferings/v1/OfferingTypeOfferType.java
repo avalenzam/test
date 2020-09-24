@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
-import lombok.Getter;
+import com.telefonica.eof.generated.model.OfferingType;
 
 
 /**
@@ -80,9 +80,7 @@ import lombok.Getter;
  *         &lt;element name="minNumOfSubscribers" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}minNumOfSubscribersProductType" minOccurs="0"/&gt;
  *         &lt;element name="numOfSubscribers" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}numOfSubscribersProductType" minOccurs="0"/&gt;
  *         &lt;element name="sharedPlan" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}sharedPlanPlanType" minOccurs="0"/&gt;
- *         &lt;element name="containingOfferings" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}ContainingOfferingOfferType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="isBundle" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}isBundleType" minOccurs="0"/&gt;
- *         &lt;element name="bundledDetails" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}BundleSearchResultOfferType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="additionalData" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}UNIKeyValueType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="attachments" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}AttachmentOfferingsType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="planBoList" type="{http://telefonica.com/globalIntegration/services/retrieveOfferings/v1}PlanBODetailsType" maxOccurs="unbounded" minOccurs="0"/&gt;
@@ -122,9 +120,7 @@ import lombok.Getter;
     "minNumOfSubscribers",
     "numOfSubscribers",
     "sharedPlan",
-    "containingOfferings",
     "isBundle",
-    "bundledDetails",
     "additionalData",
     "attachments",
     "planBoList",
@@ -151,7 +147,6 @@ public class OfferingTypeOfferType {
     protected String parentCurrentStatus;
     protected String parentAssignedID;
     protected String planType;
-    @Getter
     protected Boolean topRecommended;
     @XmlSchemaType(name = "string")
     protected List<ProductTypeEnumType> productType;
@@ -159,10 +154,7 @@ public class OfferingTypeOfferType {
     protected String minNumOfSubscribers;
     protected String numOfSubscribers;
     protected String sharedPlan;
-    protected List<ContainingOfferingOfferType> containingOfferings;
-    @Getter
     protected Boolean isBundle;
-    protected List<BundleSearchResultOfferType> bundledDetails;
     protected List<UNIKeyValueType> additionalData;
     protected List<AttachmentOfferingsType> attachments;
     protected List<PlanBODetailsType> planBoList;
@@ -728,35 +720,6 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Gets the value of the containingOfferings property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the containingOfferings property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContainingOfferings().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ContainingOfferingOfferType }
-     * 
-     * 
-     */
-    public List<ContainingOfferingOfferType> getContainingOfferings() {
-        if (containingOfferings == null) {
-            containingOfferings = new ArrayList<ContainingOfferingOfferType>();
-        }
-        return this.containingOfferings;
-    }
-
-    /**
      * Gets the value of the isBundle property.
      * 
      * @return
@@ -778,35 +741,6 @@ public class OfferingTypeOfferType {
      */
     public void setIsBundle(Boolean value) {
         this.isBundle = value;
-    }
-
-    /**
-     * Gets the value of the bundledDetails property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the bundledDetails property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBundledDetails().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link BundleSearchResultOfferType }
-     * 
-     * 
-     */
-    public List<BundleSearchResultOfferType> getBundledDetails() {
-        if (bundledDetails == null) {
-            bundledDetails = new ArrayList<BundleSearchResultOfferType>();
-        }
-        return this.bundledDetails;
     }
 
     /**
@@ -976,6 +910,21 @@ public class OfferingTypeOfferType {
      */
     public void setProductOfferingProductSpecID(String value) {
         this.productOfferingProductSpecID = value;
+    }
+
+    public Boolean getIsBundle() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    public boolean getTopRecommended() {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    public Iterable<OfferingType> getBundledDetails() {
+	// TODO Auto-generated method stub
+	return null;
     }
 
 }
