@@ -11,7 +11,15 @@ import org.springframework.stereotype.Repository;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
 import com.telefonica.eof.entity.VasBenefits;
 import com.telefonica.eof.repository.VasBenefitsRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcVasBenefitsRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla VAS_BENEFITS
+ */
 @Repository
 public class JdbcVasBenefitsRepository implements VasBenefitsRepository {
     
@@ -55,7 +63,7 @@ public class JdbcVasBenefitsRepository implements VasBenefitsRepository {
 				svaBenefitParamsDto.getIDcomponente()},
 			new BeanPropertyRowMapper<>(VasBenefits.class));
 	  
-	 return svaBenefits.size()>0 ? svaBenefits.get(0):null;
+	 return !svaBenefits.isEmpty() ? svaBenefits.get(0):null;
        } catch (EmptyResultDataAccessException e) {
 		return null;
        }

@@ -10,7 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcOffersPropertiesRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla OFFERS_PROPERTIES
+ */
 @Repository
 public class JdbcOffersPropertiesRepository implements OffersPropertiesRepository {
     

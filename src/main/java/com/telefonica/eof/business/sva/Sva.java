@@ -95,8 +95,6 @@ public class Sva {
 	}
 
 	Integer score = Optional.ofNullable(offersBenefitsRequestDto.getCreditScore()).map(x -> x % 10).orElse(null);
-	// offersBenefitsRequestDto.getCreditScore() % 10;
-	// TODO verificar el creditscore y creditlimit
 	String upfront = null;
 	if (score != null) {
 	    upfront = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
@@ -145,7 +143,7 @@ public class Sva {
 				relationId = relationMasterRepository.findRelationId(offersBenefitsRequestDto.getProductOfferingCatalogId(),
 					billingOffer.getParentId());
 
-				if (StringUtil.isNullOrEmpty(relationId) && StringUtil.isNullOrEmpty(relationId)) {
+				if (StringUtil.isNullOrEmpty(relationId)) {
 				    relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(),
 					    offersBenefitsRequestDto.getProductOfferingCatalogId());
 				}
@@ -205,7 +203,7 @@ public class Sva {
 
 			    }
 			}
-			;
+			
 			svaResponse.setIdComponent(idComponent);
 			svaResponse.setBillingOffer(billingOfferResponseList);
 			svaResponseList.add(svaResponse);
@@ -215,10 +213,7 @@ public class Sva {
 	   
 
 	}
-	;
-
 	return svaResponseList;
-
     }
 
     /**
@@ -251,7 +246,7 @@ public class Sva {
 		relationId = relationMasterRepository.findRelationId(offersBenefitsRequestDto.getProductOfferingCatalogId(),
 			billingOffer.getParentId());
 
-		if (StringUtil.isNullOrEmpty(relationId) && StringUtil.isNullOrEmpty(relationId)) {
+		if (StringUtil.isNullOrEmpty(relationId)) {
 		    relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(),
 			    offersBenefitsRequestDto.getProductOfferingCatalogId());
 		}
@@ -293,9 +288,8 @@ public class Sva {
 	String propertyValueLT = offersPropertiesRepository.findPropertyValue(productOfferingCatalogId).stream()
 		.filter(x -> x.getNameOfProperty().equals(Constant.LOB_TYPE)).map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
-	List<String> idComponentList = svaOfferingRepository.findIdComponent(propertyValueLT, action, query).stream()
-		.filter(x -> x.matches("3196671|3197701|3239962|34105211")).collect(Collectors.toList());
-	return idComponentList;
+	return svaOfferingRepository.findIdComponent(propertyValueLT, action, query).stream()
+		.filter(x -> x.matches("3196671|3197701|3239962|34105211")).collect(Collectors.toList()); 
     }
 
     /**
@@ -332,7 +326,7 @@ public class Sva {
 		String spsId = offersPropertiesRepository.findSpsIdByofferCid(productOfferingCatalogId);
 
 		if (spsId.length() > 0) {
-		    String arr[] = spsId.split(";", 0);
+		    String[] arr = spsId.split(";", 0);
 		    String spsPropertyValue = arr[0];
 		    List<String> parentIdList = relationMasterRepository.findParentIdByChildId(spsPropertyValue);
 
@@ -368,9 +362,9 @@ public class Sva {
 
 	List<String> parentIdList = relationMasterRepository.findParentIdByChildId(billingOfferChildId);
 	String parentId = parentIdList.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
-	Sps spsIdAndName = relationMasterRepository.findSpsIdAndName(parentId);
-
-	return spsIdAndName;
+	
+	return relationMasterRepository.findSpsIdAndName(parentId);
+	 
     }
 
 }

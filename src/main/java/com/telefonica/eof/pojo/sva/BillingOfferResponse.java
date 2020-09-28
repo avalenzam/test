@@ -8,7 +8,17 @@ import com.telefonica.eof.entity.VasBenefits;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType.PriceTypeEnum;
 
 import lombok.Data;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: BillingOfferResponse.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Clase para el traslado de informacion entre el metodo
+ *               getBillingOffer y el metodo principal de la clase
+ *               AditionalSva.
+ */
 @Data
 public class BillingOfferResponse {
     private RelationMaster billingOffer;

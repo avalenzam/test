@@ -11,7 +11,15 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-07-17T17:23:53.051Z")
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: SwaggerDocumentationConfig.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Configuracion del Swagger
+ */
 @Configuration
 public class SwaggerDocumentationConfig {
 

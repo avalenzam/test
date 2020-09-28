@@ -11,7 +11,15 @@ import org.springframework.stereotype.Repository;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
 import com.telefonica.eof.repository.RelationMasterRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcRelationMasterRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla RELATIONS_MASTER
+ */
 @Repository
 public class JdbcRelationMasterRepository implements RelationMasterRepository{
     
@@ -36,11 +44,10 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		+ " AND ( TO_DATE(SUBSTR(pibo.PROPERTY_VALUE,1,10), 'YYYY-MM-DD' ) >= CURRENT_DATE"
 		+ " or pibo.PROPERTY_VALUE is null)";
 	
-	List<RelationMaster> cidBoActive = jdbcTemplate.queryForList(query,
+	  return jdbcTemplate.queryForList(query,
 		new Object[]{productOfferingCatalogId, svaIdComponente },
 		RelationMaster.class);
-	
-	return cidBoActive;  
+	  
 	} catch (EmptyResultDataAccessException e) {
 		return null;
 	}
@@ -58,11 +65,10 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		+ " AND pibo.PROPERTY_NAME = 'BO Type'"
 		+ " AND pibo.PROPERTY_VALUE !=  'Retention'";
 	
-	List<String> cidBoBoType = jdbcTemplate.queryForList(query,
+	    return jdbcTemplate.queryForList(query,
 		new Object[]{cidBo},
 		String.class);
-	
-	return cidBoBoType;
+
 	} catch (EmptyResultDataAccessException e) {
 		return null;
 	}
@@ -83,11 +89,10 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		+ " AND pibo.PROPERTY_NAME = 'BO Type'"
 		+ " AND pibo.PROPERTY_VALUE "+ propertyValue;
 	
-	List<RelationMaster> billingOfferList = jdbcTemplate.query(query,
+	    return jdbcTemplate.query(query,
 		new Object[]{cidBo},
 		new BeanPropertyRowMapper<>(RelationMaster.class));
 	
-	return billingOfferList;
 	} catch (EmptyResultDataAccessException e) {
 		return null;
 	}
@@ -102,11 +107,10 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		+ "from relations_master b "
 		+ "where b.child_id = ? ";
 	
-	List<String> parentId = jdbcTemplate.queryForList(query,
+	    return jdbcTemplate.queryForList(query,
 		new Object[]{billingOfferId},
 		String.class);
-	
-	return parentId;
+
 	} catch (EmptyResultDataAccessException e) {
 		return null;
 	}
@@ -125,7 +129,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		new Object[]{parentId},
 		new BeanPropertyRowMapper<>(Sps.class));
 	
-	return spsList.size()>0 ? spsList.get(0):null;
+	return !spsList.isEmpty() ? spsList.get(0):null;
 	
 	} catch (EmptyResultDataAccessException e) {
 		return null;
@@ -168,7 +172,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
    		new Object[]{defSpsBo, defSpsBo, defSpsBo, defSpsBo, vProductOfferingID},
 		new BeanPropertyRowMapper<>(Sps.class));
    
-   	return spsList.size()>0 ? spsList.get(0):null;
+   	return !spsList.isEmpty() ? spsList.get(0):null;
    	
 	} catch (EmptyResultDataAccessException e) {
 		return null;
@@ -233,11 +237,4 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 	}
    	
        }
-    
-    
-    
-    
-    
-    
-
 }

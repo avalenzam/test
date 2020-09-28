@@ -2,7 +2,6 @@ package com.telefonica.eof.enums;
 
 import lombok.Getter;
 
-// TODO, VERIFICAR QUE LLEGE LA CABECERA
 public enum OfferingHeaderEnum {
 	
 	COUNTRY("PE"),

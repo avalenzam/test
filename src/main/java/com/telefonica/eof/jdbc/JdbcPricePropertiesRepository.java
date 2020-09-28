@@ -31,7 +31,7 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
 			new BeanPropertyRowMapper<>(PriceProperties.class));
 
 	
-	return priceInfo.size()>0 ? priceInfo.get(0):null;
+	return !priceInfo.isEmpty() ? priceInfo.get(0):null;
     
 	} catch (EmptyResultDataAccessException e) {
 		return null;

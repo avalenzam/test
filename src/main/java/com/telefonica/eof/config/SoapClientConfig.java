@@ -9,7 +9,15 @@ import org.springframework.ws.transport.WebServiceMessageSender;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 
 import com.telefonica.eof.commons.WSProperties;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: SoapClientConfig.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Configuracion para la coneccion con el servicio SOAP de AMDOCS
+ */
 @Configuration
 public class SoapClientConfig {
 	
@@ -30,15 +38,7 @@ public class SoapClientConfig {
         return marshaller;
     }
     
-	@Bean(name = "penaltyWS")
-	public WebServiceTemplate penaltyConfigWs() {
-		WebServiceTemplate webServiceTemplate = new WebServiceTemplate();
-		webServiceTemplate.setMarshaller(marshaller());
-		webServiceTemplate.setUnmarshaller(marshaller());
-		webServiceTemplate.setDefaultUri(prop.getUrlPenaltyService());
-		webServiceTemplate.setMessageSender(wsMessageSender());
-		return webServiceTemplate;
-	}
+	
 	
 	@Bean(name = "offeringsWS")
 	public WebServiceTemplate offeringsConfigWs() {

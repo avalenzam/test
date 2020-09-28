@@ -72,13 +72,13 @@ public class AditionalSva {
      * @return AditionalSvaResponse : servicios de valor agregado
      */
     public AditionalSvaResponse getAditionalSva(String vProductOfferingID, String downloadSpeed,
-	    OffersBenefitsRequestDto offersBenefitsRequestDto) {
+	    OffersBenefitsRequestDto offersBenefitsRequestDto, List<OffersProperties> offersProperties) {
 	
 	Integer velocidad = Optional.ofNullable(downloadSpeed).map(x -> Integer.parseInt(downloadSpeed)).orElse(0);
 	
 	AditionalSvaResponse aditionalSvaResponse = new AditionalSvaResponse();
 
-	OfferDataResponse offerData = getOfferData(vProductOfferingID, velocidad);
+	OfferDataResponse offerData = getOfferData(velocidad,offersProperties);
 
 	ModemResponse modem = getModem(offersBenefitsRequestDto.getNetworkTechnology(), offerData.getLob());
 
@@ -118,14 +118,12 @@ public class AditionalSva {
      * @return OfferDataResponse : Datos de la Oferta
      */
 
-    private OfferDataResponse getOfferData(String vProductOfferingID, Integer velocidad) {
+    private OfferDataResponse getOfferData(Integer velocidad, List<OffersProperties> offersProperties) {
 
 	OfferDataResponse offerDataResponse = new OfferDataResponse();
 	Boolean flagModemPremium;
 	Boolean flagUltraWifi;
 	String lob;
-
-	List<OffersProperties> offersProperties = offersPropertiesRepository.findPropertyValue(vProductOfferingID);
 
 	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB)).map(p -> p.getPropertyValue())
 		.collect(Collectors.joining());
@@ -229,10 +227,8 @@ public class AditionalSva {
 	if (velocidad != 0) {
 	    stbNewOffer = stbSettingRepository.findStbSettingWithSpeed(offersBenefitsRequestDto.getChannelId(), vProductOfferingID,
 		    velocidad);
-	    System.out.println(stbNewOffer);
 	} else {
 	    stbNewOffer = stbSettingRepository.findStbSettingWithoutSpeed(offersBenefitsRequestDto.getChannelId(), vProductOfferingID);
-	    System.out.println(stbNewOffer);
 	}
 
 	List<String> stbNewOfferList = new ArrayList<>();
@@ -248,31 +244,27 @@ public class AditionalSva {
 
 	    String currentOfferLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
-	    System.out.println(currentOfferLob);
 
 	    String currentOfferBundleLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS))
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
-	    System.out.println(currentOfferBundleLob);
 
-	    if (!(currentOfferBundleLob.contains(Constant.TV) && currentOfferLob.contains(Constant.TV))) {
+	    if (!(currentOfferBundleLob.contains(Constant.TV) && currentOfferLob.contains(Constant.TV))
+		    && offersBenefitsRequestDto.getFields().contains(Constant.DOWNLOAD_SPEED)) {
 
-		if (offersBenefitsRequestDto.getFields().contains(Constant.DOWNLOAD_SPEED)) {
 		    List<String> fielList = Arrays.asList(offersBenefitsRequestDto.getFields().split(Constant.COMMA));
-		    List<String> downloadSpeedList = new ArrayList<String>();
-		    fielList.forEach(item -> {
-			downloadSpeedList.add(Arrays.asList(item.split(Constant.DOBLEPOINT)).get(1));
-		    });
+		    List<String> downloadSpeedList = new ArrayList<>();
+		    fielList.forEach(item -> 
+			downloadSpeedList.add(Arrays.asList(item.split(Constant.DOBLEPOINT)).get(1))
+		    );
 
 		    for (String downloadSpeed : downloadSpeedList) {
 			String stbCurrentOffer;
 			if (offersBenefitsRequestDto.getCurrentOffering() != null) {
 			    stbCurrentOffer = stbSettingRepository.findStbSettingWithSpeed(offersBenefitsRequestDto.getChannelId(),
 				    vProductOfferingID, Integer.parseInt(downloadSpeed.trim()));
-			    System.out.println(stbNewOffer);
 			} else {
 			    stbCurrentOffer = stbSettingRepository.findStbSettingWithoutSpeed(offersBenefitsRequestDto.getChannelId(),
 				    vProductOfferingID);
-			    System.out.println(stbNewOffer);
 			}
 			List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(Constant.COMMA));
 
@@ -307,8 +299,7 @@ public class AditionalSva {
 			decosResponse.setCaption(caption);
 			decosResponse.setStbSetting(stbSettings);
 			decosResponseList.add(decosResponse);
-		    };
-		}
+		    }
 
 	    }
 	} else {

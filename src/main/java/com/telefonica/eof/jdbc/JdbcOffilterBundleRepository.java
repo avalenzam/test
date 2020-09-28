@@ -6,7 +6,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.OffilterBundleRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcOffilterBundleRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla OFFILTER_BUNDLE
+ */
 @Repository
 public class JdbcOffilterBundleRepository implements OffilterBundleRepository{
     @Autowired

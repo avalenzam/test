@@ -6,7 +6,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.DomainWithValidValuesRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcDomainWithValidValuesRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla DOMAIN_WITH_VALID_VALUES
+ */
 @Repository
 public class JdbcDomainWithValidValuesRepository implements DomainWithValidValuesRepository {
 

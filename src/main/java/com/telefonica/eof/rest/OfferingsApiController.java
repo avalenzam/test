@@ -132,31 +132,32 @@ public class OfferingsApiController {
 	    @ApiParam(value = "Indica si esto es ascendente o descendente.") @Valid @RequestParam(value = "sortCriteria.ascending", required = false) Boolean sortCriteriaAscending)
 	    throws Exception {
 
-	 try {
-	OffersBenefitsRequestDto offersBenefitsRequestDto = appRequest.fromParamstoBody(correlationId, name, isBundle, lifeCycleStatus,
-		categoryId, categoryName, subcategoryId, subcategoryName, channelId, channelName, productSpecificationId,
-		productSpecificationName, frameworkAgreeementId, customerId, accountId, productType, productId, productPublicId, startDate,
-		endDate, limit, offset, productOfferingPricePriceUnits, productOfferingPriceCurrencyChangeDate,
-		productOfferingPriceStartPriceDate, productOfferingPriceEndPriceDate, productOfferingPricePriceConsumerEntityType,
-		productOfferingPricePriceConsumerId, productOfferingPricePriceLocation, productOfferingPriceStartPriceAmout,
-		productOfferingPriceEndPriceAmout, fields, creditScore, creditLimit, siteId, region, stateOrProvince, customerSegment,
-		customerSubsegment, isPortability, portabilityCurrentPlanType, portabilityCustomerSince, portabilityCurrentCompany,
-		dealerId, broadbandMinDlDataRate, broadbandMaxDlDataRate, broadbandConnection, isRetention, productOfferingCatalogId,
-		currentOffering, isUpgrade, action, commercialAreaId, productOrderId, planId, planType, sourceType, networkTechnology,
-		serviceabilityMaxSpeed, serviceabilityId, planGroup, planRankInitial, planRank, planCommitmentDuration, invoiceCompany,
-		orderSubType, subscriberGroupValue, excludeOffersId, paginationInfoSize, paginationInfoPageCount, paginationInfoPage,
-		paginationInfoMaxResultCount, sortCriteriaName, sortCriteriaAscending);
+	try {
+	    OffersBenefitsRequestDto offersBenefitsRequestDto = appRequest.fromParamstoBody(correlationId, name, isBundle, lifeCycleStatus,
+		    categoryId, categoryName, subcategoryId, subcategoryName, channelId, channelName, productSpecificationId,
+		    productSpecificationName, frameworkAgreeementId, customerId, accountId, productType, productId, productPublicId,
+		    startDate, endDate, limit, offset, productOfferingPricePriceUnits, productOfferingPriceCurrencyChangeDate,
+		    productOfferingPriceStartPriceDate, productOfferingPriceEndPriceDate, productOfferingPricePriceConsumerEntityType,
+		    productOfferingPricePriceConsumerId, productOfferingPricePriceLocation, productOfferingPriceStartPriceAmout,
+		    productOfferingPriceEndPriceAmout, fields, creditScore, creditLimit, siteId, region, stateOrProvince, customerSegment,
+		    customerSubsegment, isPortability, portabilityCurrentPlanType, portabilityCustomerSince, portabilityCurrentCompany,
+		    dealerId, broadbandMinDlDataRate, broadbandMaxDlDataRate, broadbandConnection, isRetention, productOfferingCatalogId,
+		    currentOffering, isUpgrade, action, commercialAreaId, productOrderId, planId, planType, sourceType, networkTechnology,
+		    serviceabilityMaxSpeed, serviceabilityId, planGroup, planRankInitial, planRank, planCommitmentDuration, invoiceCompany,
+		    orderSubType, subscriberGroupValue, excludeOffersId, paginationInfoSize, paginationInfoPageCount, paginationInfoPage,
+		    paginationInfoMaxResultCount, sortCriteriaName, sortCriteriaAscending);
 
-	HttpHeaders httpHeaders = new HttpHeaders();
-	httpHeaders.set(Constant.UNICA_SERVICE_ID, unICAServiceId);
-	httpHeaders.set(Constant.UNICA_TIMESTAMP, unICATimestamp);
+	    HttpHeaders httpHeaders = new HttpHeaders();
+	    httpHeaders.set(Constant.UNICA_SERVICE_ID, unICAServiceId);
+	    httpHeaders.set(Constant.UNICA_TIMESTAMP, unICATimestamp);
 
-	ResponseType responseType = offerBenefitsServiceI.getOfferBenefitsFi(offersBenefitsRequestDto);
+	    ResponseType responseType = offerBenefitsServiceI.getOfferBenefitsFi(offersBenefitsRequestDto);
 
-	return new ResponseEntity<>(responseType, httpHeaders, HttpStatus.OK);
-	 } catch (Exception e) {
-	 throw new Exception(e);
-	 }
+	    return new ResponseEntity<>(responseType, httpHeaders, HttpStatus.OK);
+	} catch (Exception e) {
+	    System.out.println(e.getMessage());
+	    throw new Exception(e.getMessage());
+	}
 
     }
 

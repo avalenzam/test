@@ -8,7 +8,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.SvaOfferingRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcSvaOfferingRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla SVAOffering
+ */
 @Repository
 public class JdbcSvaOfferingRepository implements SvaOfferingRepository{
 

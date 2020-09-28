@@ -51,11 +51,10 @@ public class OfferingsConnection {
 	
 	JAXBElement<HeaderInType> test = of.createHeaderIn(headerInType);
 	
-	JAXBElement<RetrieveOfferingsResponseType> response = (JAXBElement<RetrieveOfferingsResponseType>) webServiceTemplate.marshalSendAndReceive(
+	return (JAXBElement<RetrieveOfferingsResponseType>) webServiceTemplate.marshalSendAndReceive(
 		new JAXBElement<RetrieveOfferingsRequestType>(new QName(url, metodrequest),
 			RetrieveOfferingsRequestType.class, request),
 		new SoapHeaders(test));
-		
-	return response;
+ 
     }
 }

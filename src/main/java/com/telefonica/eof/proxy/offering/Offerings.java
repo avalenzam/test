@@ -45,20 +45,20 @@ public class Offerings {
 
 	rort.setCategory(offeringsRequestParamsFill.getCategory(offersBenefitsRequestDto));
 	rort.setChannelId(offersBenefitsRequestDto.getChannelId());
+	
+	if (offersBenefitsRequestDto.getCustomerId() != null) {
+	   rort.setCustomerId(new BigDecimal(offersBenefitsRequestDto.getCustomerId())); 
+	}
+	
 
-	rort.setCustomerId(new BigDecimal(offersBenefitsRequestDto.getCustomerId()));
+	if (offersBenefitsRequestDto.getProduct() != null) {
+	    
+	    List<String> productTypeList = Arrays.asList(offersBenefitsRequestDto.getProduct().getType().split(","));
+	    List<ProductTypeEnumType> productTypeEnumList = new ArrayList<>();
+	    productTypeList.forEach(productType -> productTypeEnumList.add(ProductTypeEnumType.fromValue(productType)));
+	    rort.getProductType().addAll(productTypeEnumList);
+	}
 
-	String optionalProductType = Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getType()).orElse(null);
-	List<String> productTypeList = Arrays.asList(optionalProductType.split(","));
-	List<ProductTypeEnumType> productTypeEnumList = new ArrayList<>();
-
-	productTypeList.forEach(productType -> {
-
-	    productTypeEnumList.add(ProductTypeEnumType.fromValue(productType));
-
-	});
-
-	rort.getProductType().addAll(productTypeEnumList);
 	rort.setProductId(Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getId()).orElse(null));
 	rort.setProductOfferingCatalogId(Arrays.asList(offersBenefitsRequestDto.getProductOfferingCatalogId()));
 	rort.setProductOrderId(offersBenefitsRequestDto.getProductOrderId());

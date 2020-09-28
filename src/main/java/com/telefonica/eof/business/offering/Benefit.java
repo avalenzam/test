@@ -70,7 +70,7 @@ public class Benefit {
 
 	DiscountParamsDto discountParamsDto = new DiscountParamsDto();
 	discountParamsDto.setChannelId(offersBenefitsRequestDto.getChannelId());
-	discountParamsDto.setCatalogItemID("DuoInternetEstandarDigitalHD");
+	discountParamsDto.setCatalogItemID(vProductOfferingID);
 	discountParamsDto.setAction(offersBenefitsRequestDto.getAction());
 	discountParamsDto.setIsPortability(offersBenefitsRequestDto.getIsPortability());
 	discountParamsDto.setCurrentOffering(currentOffering);

@@ -13,6 +13,8 @@ import com.telefonica.eof.business.sva.Sva;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.entity.InstallationFee;
+import com.telefonica.eof.enums.HttpsErrorMessage;
+import com.telefonica.eof.exception.HttpException;
 import com.telefonica.eof.generated.model.OfferingType;
 import com.telefonica.eof.generated.model.ResponseType;
 import com.telefonica.eof.pojo.Broadband;
@@ -29,8 +31,8 @@ import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOf
 @SpringBootTest
 class ServiceTest {
 
-    private OffersBenefitsRequestDto offersBenefitsRequestDto;
-
+    private OffersBenefitsRequestDto request;
+    private OffersBenefitsRequestDto request2;
 
     @Autowired
     private Offerings offerings;
@@ -40,58 +42,78 @@ class ServiceTest {
 
     @Autowired
     private OffersBenefitsService offersBenefitsService;
-
-    @Autowired
-    private UpfrontRepository upfrontRepository;
-    @Autowired
-    private InstallationFeeRepository installationFeeRepository;
-    
-    @Autowired
-    private OfferingsApiController offeringsApiController;
-
-    
+   
     @BeforeEach
     void Before() {
 
-	offersBenefitsRequestDto = new OffersBenefitsRequestDto();
+	request = new OffersBenefitsRequestDto();
 	Broadband broadband = new Broadband();
 	PaginationInfo paginationInfo = new PaginationInfo();
 	Product product = new Product();
 
-	
-
-	offersBenefitsRequestDto.setCategoryId("3195941");
-	offersBenefitsRequestDto.setChannelId("CC");
-	offersBenefitsRequestDto.setCustomerId("56843169");
+	request.setCategoryId("3195941");
+	request.setChannelId("CC");
+//	request.setCustomerId("56843169");
 	product.setType("landline,sva");//
-	offersBenefitsRequestDto.setProduct(product);
-	offersBenefitsRequestDto.setCreditLimit(BigDecimal.valueOf(500));//
-	offersBenefitsRequestDto.setRegion("15");//
-	offersBenefitsRequestDto.setCustomerSegment("R");//
-	offersBenefitsRequestDto.setCustomerSubsegment("RNA");//
-	offersBenefitsRequestDto.setDealerId("61200");//
-	offersBenefitsRequestDto.setCreditScore(9999);
+	request.setProduct(product);
+	request.setCreditLimit(BigDecimal.valueOf(500));//
+	request.setRegion("15");//
+	request.setCustomerSegment("R");//
+	request.setCustomerSubsegment("RNA");//
+	request.setDealerId("61200");//
+	request.setCreditScore(9999);
 	broadband.setMinDlDataRate(60);//
 	broadband.setConnection("TV_CATV;INT_GPON;VOIC_VOIP");
-	offersBenefitsRequestDto.setBroadband(broadband);
-	offersBenefitsRequestDto.setBroadband(broadband);
-	offersBenefitsRequestDto.setIsRetention(false);//
-	offersBenefitsRequestDto.setProductOfferingCatalogId("32952011");//
-	offersBenefitsRequestDto.setAction("PR");
-	offersBenefitsRequestDto.setCommercialAreaId("1");
-	offersBenefitsRequestDto.setSiteId("61200001");//
-	offersBenefitsRequestDto.setSourceType("OFFER");
-	offersBenefitsRequestDto.setNetworkTechnology("FTTH;HFC;COPPER");
-	offersBenefitsRequestDto.setServiceabilityMaxSpeed("999999");
-	offersBenefitsRequestDto.setServiceabilityId("1234");
+	request.setBroadband(broadband);
+	request.setIsRetention(false);//
+	request.setProductOfferingCatalogId("32952011");//
+	request.setAction("PR");
+	request.setCommercialAreaId("1");
+	request.setSiteId("61200001");//
+	request.setSourceType("OFFER");
+	request.setNetworkTechnology("FTTH;HFC;COPPER");
+	request.setServiceabilityMaxSpeed("999999");
+	request.setServiceabilityId("1234");
 	paginationInfo.setSize(100);
 	paginationInfo.setPageCount(1);
 	paginationInfo.setPage(1);
 	paginationInfo.setMaxResultCount(1);
-	offersBenefitsRequestDto.setPaginationInfo(paginationInfo);
-	offersBenefitsRequestDto.setSortCriteriaName("NAME");
-	offersBenefitsRequestDto.setSortCriteriaAscending(true);
-	offersBenefitsRequestDto.setServiceabilityMaxSpeed("500");//
+	request.setPaginationInfo(paginationInfo);
+	request.setSortCriteriaName("NAME");
+	request.setSortCriteriaAscending(true);
+	request.setServiceabilityMaxSpeed("500");//
+	
+	
+	
+	request2 = new OffersBenefitsRequestDto();
+	Broadband broadband2 = new Broadband();
+	Product product2 = new Product();
+
+	request2.setCategoryId("3195941");
+	request2.setChannelId("CC");
+	request2.setCustomerId("56843169");
+	product2.setType("broadband,landline,cableTv");//
+	request2.setProduct(product2);
+	request2.setCreditScore(9999);
+	request2.setCreditLimit(BigDecimal.valueOf(999));//
+	request2.setRegion("15");//
+	request2.setCustomerSegment("R");
+	request2.setIsPortability(false);
+	request2.setDealerId("05650");//
+	broadband2.setConnection("TV_CATV;INT_GPON;VOIC_VOIP");
+	request2.setBroadband(broadband2);
+	request2.setIsRetention(false);//
+	request2.setAction("PR");
+	request2.setCommercialAreaId("1");
+	request2.setSiteId("05650001");//
+	request2.setSourceType("OFFER");
+	request2.setNetworkTechnology("HFC");
+	request2.setServiceabilityMaxSpeed("999999");
+	request2.setServiceabilityId("1234");
+	request2.setInstallationAddressDepartment("15");
+	
+	request2.setSortCriteriaAscending(true);
+	
 
 
 
@@ -100,19 +122,27 @@ class ServiceTest {
     @Test
     void Test() {
 	
-	String crediScore = String.valueOf(offersBenefitsRequestDto.getCreditScore() % 10);
-	String upfront = upfrontRepository.findUpfront().stream()
-		.filter(x -> x.getUpfrontIndDesc().contains(crediScore))
-    		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
-	System.out.println(upfront);
-	InstallationFee installationFee = installationFeeRepository.findBoUpfront(offersBenefitsRequestDto.getAction(), "Voice+Internet+TV", upfront);
-	System.out.println(installationFee);
+	String e = "SVC1001:Missing Mandatory Parameter";
+	HttpException httpException = new HttpException();
+	String soapErrorCode = e.substring(0, 7);
+
+	for (HttpsErrorMessage http : HttpsErrorMessage.values()) {
+	    if (http.getExceptionId().equalsIgnoreCase(soapErrorCode)) {
+		
+		httpException.setExceptionId(http.getExceptionId());
+		httpException.setMessage(http.getMessage());
+	    }
+		
+	}
+	
+	System.out.println(httpException);
+	
     }
 
     @Test
     void OferingsTest() {
 
-	RetrieveOfferingsResponseType rort = offerings.consult(offersBenefitsRequestDto);
+	RetrieveOfferingsResponseType rort = offerings.consult(request);
 	System.out.println(rort.getCategories());
     }
 
@@ -120,77 +150,28 @@ class ServiceTest {
     void SvaTest() {
 
 	String flagRetention;
-	if (offersBenefitsRequestDto.getIsRetention()) {
+	if (request.getIsRetention()) {
 	    flagRetention = "'" + Constant.YES + "'";
-	    List<SvaResponse> svaListRetention = sva.getSvaTypeRetention(offersBenefitsRequestDto, flagRetention);
+	    List<SvaResponse> svaListRetention = sva.getSvaTypeRetention(request, flagRetention);
 	    System.out.println(svaListRetention);
 
 	} else {
 
 	    System.out.println("entro no");
 	    flagRetention = "'" + Constant.NO + "'";
-	    List<SvaResponse> svaList = sva.getSvaTypeSva(offersBenefitsRequestDto, flagRetention);
+	    List<SvaResponse> svaList = sva.getSvaTypeSva(request, flagRetention);
 	    System.out.println(svaList);
 	}
 
     }
 
     @Test
-    void OffersBenefitsServiceTest() {
-	ResponseType offering = offersBenefitsService.getOfferBenefitsFi(offersBenefitsRequestDto);
+    void OffersBenefitsServiceTest() throws Exception {
+	ResponseType offering = offersBenefitsService.getOfferBenefitsFi(request);
 	System.out.println(offering);
     }
     
     
     
-    @Test
-    void OfferingsApiControllerTest() {
-//	offeringsApiController.getOfferings(null, null,null, null, offersBenefitsRequestDto.getCorrelationId(),
-//		offersBenefitsRequestDto.getName(), offersBenefitsRequestDto.getIsBundle(),
-//		offersBenefitsRequestDto.getLifeCycleStatus(),  
-//		offersBenefitsRequestDto.getCategoryId(), offersBenefitsRequestDto.getCategoryId(),
-//		offersBenefitsRequestDto.getSubcategoryId(), offersBenefitsRequestDto.getSubcategoryName(), 
-//		offersBenefitsRequestDto.getChannelId(), offersBenefitsRequestDto.getChannelName(),
-//		offersBenefitsRequestDto.getProductSpecificationId(), offersBenefitsRequestDto.getProductSpecificationName(),
-//		offersBenefitsRequestDto.getFrameworkAgreeementId(), offersBenefitsRequestDto.getCustomerId(), 
-//		offersBenefitsRequestDto.getAccountId(), offersBenefitsRequestDto.getProduct().getType(),
-//		offersBenefitsRequestDto.getProduct().getId(), offersBenefitsRequestDto.getProduct().getPublicId(),
-//		offersBenefitsRequestDto.getStartDate(), offersBenefitsRequestDto.getEndDate(),
-//		offersBenefitsRequestDto.getLimit(), offersBenefitsRequestDto.getOffset(), 
-//		offersBenefitsRequestDto.getProductOfferingPrice().getPriceUnits(),
-//		offersBenefitsRequestDto.getProductOfferingPrice().getCurrencyChangeDate(),
-//		offersBenefitsRequestDto.getProductOfferingPrice().getStartPriceDate(),
-//		offersBenefitsRequestDto.getProductOfferingPrice().getEndPriceDate(), 
-//		offersBenefitsRequestDto.getProductOfferingPrice().getPriceConsumerEntityType(),
-//		offersBenefitsRequestDto.getProductOfferingPrice().getPriceConsumerId(), 
-//		offersBenefitsRequestDto.getProductOfferingPrice().getPriceLocation(),
-//		offersBenefitsRequestDto.getProductOfferingPrice().getStartPriceAmout(), 
-//		offersBenefitsRequestDto.getProductOfferingPrice().getEndPriceAmout(), 
-//		offersBenefitsRequestDto.getFields(), offersBenefitsRequestDto.getCreditScore(),
-//		offersBenefitsRequestDto.getCreditLimit(), offersBenefitsRequestDto.getSiteId(), 
-//		offersBenefitsRequestDto.getRegion(), offersBenefitsRequestDto.getStateOrProvince(), 
-//		offersBenefitsRequestDto.getCustomerSegment(), offersBenefitsRequestDto.getCustomerSubsegment(),
-//		offersBenefitsRequestDto.getIsPortability(), offersBenefitsRequestDto.getPortability().getCurrentPlanType(),
-//		offersBenefitsRequestDto.getPortability().getCustomerSince(), offersBenefitsRequestDto.getPortability().getCurrentCompany(),
-//		offersBenefitsRequestDto.getDealerId(), offersBenefitsRequestDto.getBroadband().getMinDlDataRate(),
-//		offersBenefitsRequestDto.getBroadband().getMaxDlDataRate(), offersBenefitsRequestDto.getBroadband().getConnection(),
-//		offersBenefitsRequestDto.getIsRetention(), offersBenefitsRequestDto.getProductOfferingCatalogId(),
-//		offersBenefitsRequestDto.getCurrentOffering(), offersBenefitsRequestDto.getIsUpgrade(),
-//		offersBenefitsRequestDto.getAction(), offersBenefitsRequestDto.getCommercialAreaId(),
-//		offersBenefitsRequestDto.getProductOrderId(), offersBenefitsRequestDto.getPlan().getId(),
-//		offersBenefitsRequestDto.getPlan().getType(), offersBenefitsRequestDto.getSourceType(),
-//		offersBenefitsRequestDto.getNetworkTechnology(), offersBenefitsRequestDto.getServiceabilityMaxSpeed(),
-//		offersBenefitsRequestDto.getServiceabilityId(), offersBenefitsRequestDto.getPlan().getGroup(),
-//		offersBenefitsRequestDto.getPlan().getRankInitial(), offersBenefitsRequestDto.getPlan().getRank(), 
-//		offersBenefitsRequestDto.getPlan().getCommitmentDuration(), offersBenefitsRequestDto.getInvoiceCompany(),
-//		offersBenefitsRequestDto.getOrderSubType(), offersBenefitsRequestDto.getSubscriberGroupValue(), 
-//		offersBenefitsRequestDto.getExcludeOffersId(), offersBenefitsRequestDto.getPaginationInfo().getSize(),
-//		offersBenefitsRequestDto.getPaginationInfo().getPageCount(), offersBenefitsRequestDto.getPaginationInfo().getPage(),
-//		offersBenefitsRequestDto.getPaginationInfo().getMaxResultCount(), offersBenefitsRequestDto.getSortCriteriaName(), 
-//		offersBenefitsRequestDto.getSortCriteriaAscending());
-    }
-
-    
-
-
+  
 }

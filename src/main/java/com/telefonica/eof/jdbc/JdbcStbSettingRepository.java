@@ -6,7 +6,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.StbSettingRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcStbSettingRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla STB_SETTING
+ */
 @Repository
 public class JdbcStbSettingRepository implements StbSettingRepository{
     

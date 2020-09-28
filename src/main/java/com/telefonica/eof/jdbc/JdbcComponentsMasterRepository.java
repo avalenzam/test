@@ -6,7 +6,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.ComponentsMasterRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcComponentsMasterRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla COMPONENTS_MASTER
+ */
 @Repository
 public class JdbcComponentsMasterRepository implements ComponentsMasterRepository{
     @Autowired

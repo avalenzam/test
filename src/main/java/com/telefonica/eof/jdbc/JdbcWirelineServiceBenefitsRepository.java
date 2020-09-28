@@ -11,7 +11,15 @@ import org.springframework.stereotype.Repository;
 import com.telefonica.eof.dto.DiscountParamsDto;
 import com.telefonica.eof.entity.WirelineServiceBenefits;
 import com.telefonica.eof.repository.WirelineServiceBenefitsRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcWirelineServiceBenefitsRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla WIRELINE_SERVICE_BENEFITS
+ */
 @Repository
 public class JdbcWirelineServiceBenefitsRepository implements WirelineServiceBenefitsRepository {
 

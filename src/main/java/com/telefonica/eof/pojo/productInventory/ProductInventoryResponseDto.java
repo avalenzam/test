@@ -12,7 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.Data;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: ProductInventoryResponseDto.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Clase para el traslado de informacion con el servicio del productInventory
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "additionalData",

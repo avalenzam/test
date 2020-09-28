@@ -92,13 +92,11 @@ public class OfferingsRequestParamsFill {
 	    fit.setRetentionFlag(portInFlag);
 	}
 
-	// ??? preguntar por request - equivalencia
-
 	fit.setActionType(offersBenefitsRequestDto.getAction());
 	fit.setCommercialZoneId(offersBenefitsRequestDto.getCommercialAreaId());
 	fit.setStoreId(offersBenefitsRequestDto.getSiteId());
 	fit.setSourceProductOfferingId(offersBenefitsRequestDto.getCurrentOffering());
-	fit.setSourceType("OFFER");
+	fit.setSourceType(Constant.OFFER);
 	fit.setNetworkTechnology(offersBenefitsRequestDto.getNetworkTechnology());
 	fit.setMaxSpeed(offersBenefitsRequestDto.getServiceabilityMaxSpeed());
 	fit.setServiceabilityID(offersBenefitsRequestDto.getServiceabilityId());
@@ -107,10 +105,12 @@ public class OfferingsRequestParamsFill {
 	fit.setPlanCommitmentDuration(
 		Optional.ofNullable(offersBenefitsRequestDto.getPlan()).map(x -> x.getCommitmentDuration()).orElse(null));
 	fit.setInvoiceCompany(offersBenefitsRequestDto.getInvoiceCompany());
+	if (offersBenefitsRequestDto.getPaginationInfo() != null) {
+	    fit.setPaginationInfo(this.getPaginationInfo(offersBenefitsRequestDto.getPaginationInfo().getSize(),
+		    offersBenefitsRequestDto.getPaginationInfo().getPageCount(), offersBenefitsRequestDto.getPaginationInfo().getPage(),
+		    offersBenefitsRequestDto.getPaginationInfo().getMaxResultCount()));
+	}
 
-	fit.setPaginationInfo(this.getPaginationInfo(offersBenefitsRequestDto.getPaginationInfo().getSize(),
-		offersBenefitsRequestDto.getPaginationInfo().getPageCount(), offersBenefitsRequestDto.getPaginationInfo().getPage(),
-		offersBenefitsRequestDto.getPaginationInfo().getMaxResultCount()));
 	fit.getSortCriteria().addAll(
 		this.getSortCriteria(offersBenefitsRequestDto.getSortCriteriaName(), offersBenefitsRequestDto.getSortCriteriaAscending()));
 

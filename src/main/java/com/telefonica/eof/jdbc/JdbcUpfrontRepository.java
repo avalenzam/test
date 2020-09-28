@@ -10,7 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.entity.Upfront;
 import com.telefonica.eof.repository.UpfrontRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcUpfrontRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla UPFRONT_IND
+ */
 @Repository
 public class JdbcUpfrontRepository implements UpfrontRepository{
 

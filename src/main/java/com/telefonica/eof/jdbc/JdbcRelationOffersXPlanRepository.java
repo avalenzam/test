@@ -6,7 +6,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.RelationOffersXPlanRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcRelationOffersXPlanRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de las consultas hechas a la tabla RELATION_OFFERS_X_PLAN
+ */
 @Repository
 public class JdbcRelationOffersXPlanRepository implements RelationOffersXPlanRepository {
     

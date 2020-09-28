@@ -10,7 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
-
+/**
+ * 
+ * @Author: Alexandra Valenza Medrano
+ * @Datecreation: August 2020
+ * @FileName: JdbcBillingOfferMasterRepository.java
+ * @AuthorCompany: Telefonica
+ * @version: 0.1
+ * @Description: Repositorio de la tabla BillingOfferMaster
+ */
 @Repository
 public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepository {
 
@@ -29,7 +37,7 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
 		 new Object[]{benefitBillingOfferCid},
 			new BeanPropertyRowMapper<>(BillingOfferMaster.class));
 		
-	 return billingOfferName.size()>0 ? billingOfferName.get(0):null;
+	 return !billingOfferName.isEmpty() ? billingOfferName.get(0):null;
        } catch (EmptyResultDataAccessException e) {
 		return null;
        }

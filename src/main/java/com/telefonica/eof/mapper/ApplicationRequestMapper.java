@@ -1,10 +1,10 @@
 package com.telefonica.eof.mapper;
 
 import java.math.BigDecimal;
-
-import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+
+import org.springframework.stereotype.Component;
 
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.pojo.Broadband;
@@ -14,7 +14,7 @@ import com.telefonica.eof.pojo.Portability;
 import com.telefonica.eof.pojo.Product;
 import com.telefonica.eof.pojo.ProductOfferingPrice;
 
-@Service
+@Component
 public class ApplicationRequestMapper {
 
 	public OffersBenefitsRequestDto fromParamstoBody(String correlationId, String name, Boolean isBundle,

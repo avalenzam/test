@@ -29,6 +29,7 @@ public class Constant {
     public static final String PLAN_GROUP = "Plan Group";
     public static final String PLAN_RANK  = "Plan Rank";
     public static final String RNU	  = "RNU";
+    public static final String OFFER	  = "OFFER";
 
     public static final String HREF			 = "/offerings/";
     public static final String HREF_OFFERING		 = "/offerings/{categories[i].offerings[j].catalogItemId}";
