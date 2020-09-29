@@ -1,8 +1,9 @@
 package com.telefonica.eof;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,19 +13,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.telefonica.eof.business.sva.Sva;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
-import com.telefonica.eof.entity.InstallationFee;
+import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.enums.HttpsErrorMessage;
 import com.telefonica.eof.exception.HttpException;
-import com.telefonica.eof.generated.model.OfferingType;
 import com.telefonica.eof.generated.model.ResponseType;
 import com.telefonica.eof.pojo.Broadband;
 import com.telefonica.eof.pojo.PaginationInfo;
 import com.telefonica.eof.pojo.Product;
 import com.telefonica.eof.pojo.sva.SvaResponse;
 import com.telefonica.eof.proxy.offering.Offerings;
-import com.telefonica.eof.repository.InstallationFeeRepository;
-import com.telefonica.eof.repository.UpfrontRepository;
-import com.telefonica.eof.rest.OfferingsApiController;
+import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.service.OffersBenefitsService;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOfferingsResponseType;
 
@@ -42,7 +40,10 @@ class ServiceTest {
 
     @Autowired
     private OffersBenefitsService offersBenefitsService;
-   
+
+    @Autowired
+    private OffersPropertiesRepository offersPropertiesRepository;
+
     @BeforeEach
     void Before() {
 
@@ -53,7 +54,7 @@ class ServiceTest {
 
 	request.setCategoryId("3195941");
 	request.setChannelId("CC");
-//	request.setCustomerId("56843169");
+	// request.setCustomerId("56843169");
 	product.setType("landline,sva");//
 	request.setProduct(product);
 	request.setCreditLimit(BigDecimal.valueOf(500));//
@@ -82,9 +83,7 @@ class ServiceTest {
 	request.setSortCriteriaName("NAME");
 	request.setSortCriteriaAscending(true);
 	request.setServiceabilityMaxSpeed("500");//
-	
-	
-	
+
 	request2 = new OffersBenefitsRequestDto();
 	Broadband broadband2 = new Broadband();
 	Product product2 = new Product();
@@ -111,32 +110,36 @@ class ServiceTest {
 	request2.setServiceabilityMaxSpeed("999999");
 	request2.setServiceabilityId("1234");
 	request2.setInstallationAddressDepartment("15");
-	
+
 	request2.setSortCriteriaAscending(true);
-	
-
-
 
     }
 
     @Test
     void Test() {
-	
+
+	Boolean flagType = Optional.ofNullable(request.getProduct()).map(x -> x.getType().contains("sva")).orElse(null);
+	System.out.println(flagType);
+
+	List<String> productOfferingCatalogIdList = Arrays.asList(request.getProduct().getType().split(","));
+
+	System.err.println(productOfferingCatalogIdList);
+
 	String e = "SVC1001:Missing Mandatory Parameter";
 	HttpException httpException = new HttpException();
 	String soapErrorCode = e.substring(0, 7);
 
 	for (HttpsErrorMessage http : HttpsErrorMessage.values()) {
 	    if (http.getExceptionId().equalsIgnoreCase(soapErrorCode)) {
-		
+
 		httpException.setExceptionId(http.getExceptionId());
 		httpException.setMessage(http.getMessage());
 	    }
-		
+
 	}
-	
+
 	System.out.println(httpException);
-	
+
     }
 
     @Test
@@ -149,19 +152,25 @@ class ServiceTest {
     @Test
     void SvaTest() {
 
-	String flagRetention;
-	if (request.getIsRetention()) {
-	    flagRetention = "'" + Constant.YES + "'";
-	    List<SvaResponse> svaListRetention = sva.getSvaTypeRetention(request, flagRetention);
-	    System.out.println(svaListRetention);
+	List<OffersProperties> propertyValueList = offersPropertiesRepository.findPropertyValue(request.getProductOfferingCatalogId());
+	List<String> productOfferingCatalogIdList = Arrays.asList(request.getProductOfferingCatalogId().split(","));
 
-	} else {
+	productOfferingCatalogIdList.forEach(productOfferingCatalogId -> {
+	    String flagRetention;
+	    if (request.getIsRetention()) {
+		flagRetention = "'" + Constant.YES + "'";
+		List<SvaResponse> svaListRetention = sva.getSvaTypeRetention(request, flagRetention, propertyValueList,
+			productOfferingCatalogId);
+		System.out.println(svaListRetention);
 
-	    System.out.println("entro no");
-	    flagRetention = "'" + Constant.NO + "'";
-	    List<SvaResponse> svaList = sva.getSvaTypeSva(request, flagRetention);
-	    System.out.println(svaList);
-	}
+	    } else {
+
+		System.out.println("entro no");
+		flagRetention = "'" + Constant.NO + "'";
+		List<SvaResponse> svaList = sva.getSvaTypeSva(request, flagRetention, propertyValueList, productOfferingCatalogId);
+		System.out.println(svaList);
+	    }
+	});
 
     }
 
@@ -170,8 +179,5 @@ class ServiceTest {
 	ResponseType offering = offersBenefitsService.getOfferBenefitsFi(request);
 	System.out.println(offering);
     }
-    
-    
-    
-  
+
 }

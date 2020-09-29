@@ -2,6 +2,7 @@ package com.telefonica.eof.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -269,11 +270,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productCharacteristicsList.add(
 				    fillProductCharacteristics(null, Constant.BANNER, ValueTypeEnum.STRINGWRAPPER, children.getBanner()));
 
-			    children.getAdditionalData().forEach(additionalData -> {
-				productCharacteristicsList.add(fillProductCharacteristics(null, additionalData.getKey(),
-					ValueTypeEnum.STRINGWRAPPER, additionalData.getValue()));
-
-			    });
+			    children.getAdditionalData()
+				    .forEach(additionalData -> productCharacteristicsList.add(fillProductCharacteristics(null,
+					    additionalData.getKey(), ValueTypeEnum.STRINGWRAPPER, additionalData.getValue())));
 
 			    if (!children.getPriceDetails().isEmpty()) {
 				for (PriceDetailsType priceDetail : children.getPriceDetails()) {
@@ -535,7 +534,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      * en la clase AdditionalSva
      * 
      * @param aditionalSvaResponse:
-     *           response del metodo de los SVA adicionales de la oferta
+     *            response del metodo de los SVA adicionales de la oferta
      * @param productType:
      *            tipo de producto
      * @return ComposingProductType: campos poblados
@@ -689,140 +688,157 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
     private List<OfferingType> getSva(OffersBenefitsRequestDto offersBenefitsRequestDto) {
 
-	String propertyValue = offersPropertiesRepository.findPropertyValue(offersBenefitsRequestDto.getProductOfferingCatalogId()).stream()
-		.filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.RETENTION)).map(p -> p.getPropertyValue())
-		.collect(Collectors.joining());
+	// getProductOfferingCatalogId, RETORNA CAMPOS CON ,
 
-	String flagRetention;
-
-	if (Boolean.TRUE.equals(offersBenefitsRequestDto.getIsRetention())) {
-	    flagRetention = "'" + Constant.YES + "'";
-	} else {
-	    flagRetention = "'" + Constant.NO + "'";
-	}
-
-	List<SvaResponse> svaResponseList;
+	Boolean flagType = Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getType().contains("sva")).orElse(null);
 
 	List<OfferingType> offeringTypeList = new ArrayList<>();
 
-	if (Constant.YES.equalsIgnoreCase(propertyValue)) {
-	    svaResponseList = sva.getSvaTypeRetention(offersBenefitsRequestDto, flagRetention);
+	if (Boolean.TRUE.equals(flagType)) {
 
-	    svaResponseList.forEach(svaResponse -> {
+	    List<String> productOfferingCatalogIdList = Arrays.asList(offersBenefitsRequestDto.getProductOfferingCatalogId().split(","));
 
-		OfferingType offeringType = new OfferingType();
-		List<ComposingProductType> productSpecificationList = new ArrayList<>();
+	    productOfferingCatalogIdList.forEach(productOfferingCatalogId -> {
+		
+		List<OffersProperties> propertyValueList = offersPropertiesRepository
+			.findPropertyValue(productOfferingCatalogId);
 
-		svaResponse.getBillingOffer().forEach(billingOffer -> {
+		String retention = propertyValueList.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.RETENTION))
+			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
-		    ComposingProductType productSpecification = new ComposingProductType();
-		    RefinedProductType refinedProductType = new RefinedProductType();
-		    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
-		    List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
-		    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
+		String flagRetention;
 
-		    productSpecification.setId(billingOffer.getBillingOffer().getChildId());
-		    productSpecification.setName(billingOffer.getBillingOffer().getNameChild());
+		if (Boolean.TRUE.equals(offersBenefitsRequestDto.getIsRetention())) {
+		    flagRetention = "'" + Constant.YES + "'";
+		} else {
+		    flagRetention = "'" + Constant.NO + "'";
+		}
 
-		    productSpecification.setProductType(ProductTypeEnum.SVA);
-		    productSpecification.setPeriodDuration(billingOffer.getBillingOffer().getDurationValue());
+		List<SvaResponse> svaResponseList;
 
-		    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
-			    billingOffer.getSpsIdAndName().getParentId()));
-		    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.NOMBRE_SPS, ValueTypeEnum.STRINGWRAPPER,
-			    billingOffer.getSpsIdAndName().getParentName()));
+		if (Constant.YES.equalsIgnoreCase(retention)) {
+		    
+		    
+		    svaResponseList = sva.getSvaTypeRetention(offersBenefitsRequestDto, flagRetention, propertyValueList, productOfferingCatalogId);
 
-		    refinedProductType.setProductCharacteristics(productCharacteristicsList);
-		    productSpecification.setRefinedProduct(refinedProductType);
+		    svaResponseList.forEach(svaResponse -> {
 
-		    productPrice.setName(Constant.PRECIO_SVA);
-		    productPrice.setProductSpecContainmentID(billingOffer.getBillingOffer().getRelationId());
-		    productPrice.setPricePlanSpecContainmentID(billingOffer.getRelationId());
-		    productPriceList.add(productPrice);
-		    productSpecification.setProductPrice(productPriceList);
+			OfferingType offeringType = new OfferingType();
+			List<ComposingProductType> productSpecificationList = new ArrayList<>();
 
-		    productSpecificationList.add(productSpecification);
-		    offeringType.setName(billingOffer.getBillingOffer().getNameParent());
+			svaResponse.getBillingOffer().forEach(billingOffer -> {
 
-		});
+			    ComposingProductType productSpecification = new ComposingProductType();
+			    RefinedProductType refinedProductType = new RefinedProductType();
+			    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
+			    List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
+			    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
 
-		offeringType.setId(svaResponse.getIdComponent());
-		offeringType.setProductSpecification(productSpecificationList);
-		offeringTypeList.add(offeringType);
+			    productSpecification.setId(billingOffer.getBillingOffer().getChildId());
+			    productSpecification.setName(billingOffer.getBillingOffer().getNameChild());
 
-	    });
+			    productSpecification.setProductType(ProductTypeEnum.SVA);
+			    productSpecification.setPeriodDuration(billingOffer.getBillingOffer().getDurationValue());
 
-	} else {
-	    svaResponseList = sva.getSvaTypeSva(offersBenefitsRequestDto, flagRetention);
+			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
+				    billingOffer.getSpsIdAndName().getParentId()));
+			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.NOMBRE_SPS,
+				    ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentName()));
 
-	    svaResponseList.forEach(svaResponse -> {
+			    refinedProductType.setProductCharacteristics(productCharacteristicsList);
+			    productSpecification.setRefinedProduct(refinedProductType);
 
-		OfferingType offeringType = new OfferingType();
-		List<ComposingProductType> productSpecificationList = new ArrayList<>();
-		List<BenefitType> benefitTypeList = new ArrayList<>();
+			    productPrice.setName(Constant.PRECIO_SVA);
+			    productPrice.setProductSpecContainmentID(billingOffer.getBillingOffer().getRelationId());
+			    productPrice.setPricePlanSpecContainmentID(billingOffer.getRelationId());
+			    productPriceList.add(productPrice);
+			    productSpecification.setProductPrice(productPriceList);
 
-		svaResponse.getBillingOffer().forEach(billingOffer -> {
+			    productSpecificationList.add(productSpecification);
+			    offeringType.setName(billingOffer.getBillingOffer().getNameParent());
 
-		    ComposingProductType productSpecification = new ComposingProductType();
-		    RefinedProductType refinedProductType = new RefinedProductType();
-		    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
-		    List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
-		    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
-		    BenefitType benefitType = new BenefitType();
-		    List<CharacteristicBenefitType> characteristicsList = new ArrayList<>();
+			});
 
-		    productSpecification.setId(billingOffer.getBillingOffer().getChildId());
-		    productSpecification.setName(billingOffer.getBillingOffer().getNameChild());
-		    productSpecification.setProductType(ComposingProductType.ProductTypeEnum.SVA);
+			offeringType.setId(svaResponse.getIdComponent());
+			offeringType.setProductSpecification(productSpecificationList);
+			offeringTypeList.add(offeringType);
 
-		    if (Constant.STB.equals(svaResponse.getIdComponent())) {
-			productSpecification.setMaxCardinality(billingOffer.getMaxSTBsallowed());
-		    }
+		    });
 
-		    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
-			    billingOffer.getSpsIdAndName().getParentId()));
-		    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.NOMBRE_SPS, ValueTypeEnum.STRINGWRAPPER,
-			    billingOffer.getSpsIdAndName().getParentName()));
+		} else {
+		    svaResponseList = sva.getSvaTypeSva(offersBenefitsRequestDto, flagRetention, propertyValueList, productOfferingCatalogId);
 
-		    refinedProductType.setProductCharacteristics(productCharacteristicsList);
-		    productSpecification.setRefinedProduct(refinedProductType);
+		    svaResponseList.forEach(svaResponse -> {
 
-		    productPrice.setName(Constant.PRECIO_SVA);
-		    productPrice.setPriceType(billingOffer.getPriceType());
-		    productPrice.setPrice(fillMoneyType(billingOffer.getAmount(), Constant.PERUVIAN_COIN));
-		    productPrice.setProductSpecContainmentID(billingOffer.getBillingOffer().getRelationId());
-		    productPrice.setPricePlanSpecContainmentID(billingOffer.getRelationId());
+			OfferingType offeringType = new OfferingType();
+			List<ComposingProductType> productSpecificationList = new ArrayList<>();
+			List<BenefitType> benefitTypeList = new ArrayList<>();
 
-		    BigDecimal amoutIgv = Util.igvCalculator(billingOffer.getAmount());
-		    productPrice.setTaxAmount(fillMoneyType(amoutIgv, Constant.PERUVIAN_COIN));
+			svaResponse.getBillingOffer().forEach(billingOffer -> {
 
-		    productPriceList.add(productPrice);
-		    productSpecification.setProductPrice(productPriceList);
+			    ComposingProductType productSpecification = new ComposingProductType();
+			    RefinedProductType refinedProductType = new RefinedProductType();
+			    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
+			    List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
+			    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
+			    BenefitType benefitType = new BenefitType();
+			    List<CharacteristicBenefitType> characteristicsList = new ArrayList<>();
 
-		    benefitType.setId(billingOffer.getVasBenefits().getBenefitComponentCid());
-		    benefitType.setName(billingOffer.getNameComp());
-		    benefitType.setDownloadSpeed(billingOffer.getVasBenefits().getSpeed());
+			    productSpecification.setId(billingOffer.getBillingOffer().getChildId());
+			    productSpecification.setName(billingOffer.getBillingOffer().getNameChild());
+			    productSpecification.setProductType(ComposingProductType.ProductTypeEnum.SVA);
 
-		    characteristicsList
-			    .add(fillCharacteristics(Constant.SPS_ID, billingOffer.getVasBenefits().getBenefitThemePackSpsCid()));
-		    characteristicsList.add(fillCharacteristics(Constant.SPS_NAME, billingOffer.getParentName()));
-		    characteristicsList.add(fillCharacteristics(Constant.BO_NAME, billingOffer.getNameBo()));
-		    characteristicsList.add(fillCharacteristics(Constant.DURATION, billingOffer.getVasBenefits().getDuration()));
-		    benefitType.setCharacteristics(characteristicsList);
+			    if (Constant.STB.equals(svaResponse.getIdComponent())) {
+				productSpecification.setMaxCardinality(billingOffer.getMaxSTBsallowed());
+			    }
 
-		    benefitTypeList.add(benefitType);
+			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
+				    billingOffer.getSpsIdAndName().getParentId()));
+			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.NOMBRE_SPS,
+				    ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentName()));
 
-		    productSpecificationList.add(productSpecification);
+			    refinedProductType.setProductCharacteristics(productCharacteristicsList);
+			    productSpecification.setRefinedProduct(refinedProductType);
 
-		    offeringType.setName(billingOffer.getBillingOffer().getNameParent());
+			    productPrice.setName(Constant.PRECIO_SVA);
+			    productPrice.setPriceType(billingOffer.getPriceType());
+			    productPrice.setPrice(fillMoneyType(billingOffer.getAmount(), Constant.PERUVIAN_COIN));
+			    productPrice.setProductSpecContainmentID(billingOffer.getBillingOffer().getRelationId());
+			    productPrice.setPricePlanSpecContainmentID(billingOffer.getRelationId());
 
-		});
+			    BigDecimal amoutIgv = Util.igvCalculator(billingOffer.getAmount());
+			    productPrice.setTaxAmount(fillMoneyType(amoutIgv, Constant.PERUVIAN_COIN));
 
-		offeringType.setBenefits(benefitTypeList);
-		offeringType.setId(svaResponse.getIdComponent());
-		offeringType.setProductSpecification(productSpecificationList);
-		offeringTypeList.add(offeringType);
+			    productPriceList.add(productPrice);
+			    productSpecification.setProductPrice(productPriceList);
 
+			    benefitType.setId(billingOffer.getVasBenefits().getBenefitComponentCid());
+			    benefitType.setName(billingOffer.getNameComp());
+			    benefitType.setDownloadSpeed(billingOffer.getVasBenefits().getSpeed());
+
+			    characteristicsList
+				    .add(fillCharacteristics(Constant.SPS_ID, billingOffer.getVasBenefits().getBenefitThemePackSpsCid()));
+			    characteristicsList.add(fillCharacteristics(Constant.SPS_NAME, billingOffer.getParentName()));
+			    characteristicsList.add(fillCharacteristics(Constant.BO_NAME, billingOffer.getNameBo()));
+			    characteristicsList.add(fillCharacteristics(Constant.DURATION, billingOffer.getVasBenefits().getDuration()));
+			    benefitType.setCharacteristics(characteristicsList);
+
+			    benefitTypeList.add(benefitType);
+
+			    productSpecificationList.add(productSpecification);
+
+			    offeringType.setName(billingOffer.getBillingOffer().getNameParent());
+
+			});
+
+			offeringType.setBenefits(benefitTypeList);
+			offeringType.setId(svaResponse.getIdComponent());
+			offeringType.setProductSpecification(productSpecificationList);
+			offeringTypeList.add(offeringType);
+
+		    });
+
+		}
 	    });
 
 	}

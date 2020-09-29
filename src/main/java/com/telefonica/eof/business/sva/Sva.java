@@ -14,6 +14,7 @@ import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.commons.Util;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
+import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
@@ -78,16 +79,23 @@ public class Sva {
      * 
      * @param offersBenefitsRequestDto:
      *            request que viene del front
+     * @param flagRetention:
+     *            flag que indica si tiene o no retencion
+     * @param propertyValueList:
+     *            listado de propertyValues
+     * @param productOfferingCatalogId:
+     *            campo que viene del front
      * @return retorna los servicios de valor agregado
      */
 
-    public List<SvaResponse> getSvaTypeSva(OffersBenefitsRequestDto offersBenefitsRequestDto, String flagRetention) {
+    public List<SvaResponse> getSvaTypeSva(OffersBenefitsRequestDto offersBenefitsRequestDto, String flagRetention,
+	    List<OffersProperties> propertyValueList, String productOfferingCatalogId) {
 
 	String query = Constant.ASTERISK + Constant.COMMA + flagRetention;
-	String flagType = Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getType()).orElse(null);
+	String flagType = Constant.SVA;
 
-	String offerCaption = masterOfOffersRepository.findOfferCaption(offersBenefitsRequestDto.getProductOfferingCatalogId());
-	Integer planCid = relationOffersXPlanRepository.findPlanCid(offersBenefitsRequestDto.getProductOfferingCatalogId());
+	String offerCaption = masterOfOffersRepository.findOfferCaption(productOfferingCatalogId);
+	Integer planCid = relationOffersXPlanRepository.findPlanCid(productOfferingCatalogId);
 	Integer maxSTBsallowed = null;
 
 	if (planCid != null) {
@@ -106,111 +114,108 @@ public class Sva {
 
 	}
 
-	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getProductOfferingCatalogId(),
-		offersBenefitsRequestDto.getAction(), query);
+	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getAction(), query, propertyValueList);
 
 	List<SvaResponse> svaResponseList = new ArrayList<>();
 
 	for (String idComponent : idComponentList) {
 
 	    if (idComponent != null) {
-		 List<RelationMaster> billingOfferList = getBillingOffer(offersBenefitsRequestDto.getProductOfferingCatalogId(), idComponent,
-			    flagType);
+		List<RelationMaster> billingOfferList = getBillingOffer(productOfferingCatalogId, idComponent, flagType);
 
-		    SvaResponse svaResponse = new SvaResponse();
-		    List<BillingOfferResponse> billingOfferResponseList = new ArrayList<>();
+		SvaResponse svaResponse = new SvaResponse();
+		List<BillingOfferResponse> billingOfferResponseList = new ArrayList<>();
 
-		    if (billingOfferList != null) {
-			for (RelationMaster billingOffer : billingOfferList) {
+		if (billingOfferList != null) {
+		    for (RelationMaster billingOffer : billingOfferList) {
 
-			    String modemPremium = upfrontRepository.findUpfront().stream()
-				    .filter(x -> x.getUpfrontIndDesc().contains(score.toString())).map(p -> p.getUpfrontIndId())
-				    .collect(Collectors.joining());
+			String modemPremium = upfrontRepository.findUpfront().stream()
+				.filter(x -> x.getUpfrontIndDesc().contains(score.toString())).map(p -> p.getUpfrontIndId())
+				.collect(Collectors.joining());
 
-			    if (!(Constant.YES.equalsIgnoreCase(modemPremium) && billingOffer.getParentId().contains("3192682|3192742|3192652"))) {
+			if (!(Constant.YES.equalsIgnoreCase(modemPremium)
+				&& billingOffer.getParentId().contains("3192682|3192742|3192652"))) {
 
-				PriceTypeEnum priceType;
+			    PriceTypeEnum priceType;
 
-				BigDecimal amount;
+			    BigDecimal amount;
 
-				Sps spsIdAndName = getSpsIdAndName(billingOffer.getChildId());
+			    Sps spsIdAndName = getSpsIdAndName(billingOffer.getChildId());
 
-				PriceProperties priceInfo = pricePropertiesRepository.findPriceInfo(billingOffer.getChildId());
-				BigDecimal valueAbp = new BigDecimal(priceInfo.getValueAbp());
+			    PriceProperties priceInfo = pricePropertiesRepository.findPriceInfo(billingOffer.getChildId());
+			    BigDecimal valueAbp = new BigDecimal(priceInfo.getValueAbp());
 
-				String relationId;
+			    String relationId;
 
-				relationId = relationMasterRepository.findRelationId(offersBenefitsRequestDto.getProductOfferingCatalogId(),
-					billingOffer.getParentId());
+			    relationId = relationMasterRepository.findRelationId(productOfferingCatalogId, billingOffer.getParentId());
 
-				if (StringUtil.isNullOrEmpty(relationId)) {
-				    relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(),
-					    offersBenefitsRequestDto.getProductOfferingCatalogId());
-				}
+			    if (StringUtil.isNullOrEmpty(relationId)) {
+				relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(),
+					productOfferingCatalogId);
+			    }
 
-				if (Constant.OC.equalsIgnoreCase(priceInfo.getRevenueType())) {
-				    priceType = ComponentProdOfferPriceType.PriceTypeEnum.ONE_TIME;
-				    amount = Util.igvCalculator(valueAbp);
-				} else {
-				    priceType = ComponentProdOfferPriceType.PriceTypeEnum.RECURRING;
-				    amount = Util.igvCalculator(valueAbp);
-				}
+			    if (Constant.OC.equalsIgnoreCase(priceInfo.getRevenueType())) {
+				priceType = ComponentProdOfferPriceType.PriceTypeEnum.ONE_TIME;
+				amount = Util.igvCalculator(valueAbp);
+			    } else {
+				priceType = ComponentProdOfferPriceType.PriceTypeEnum.RECURRING;
+				amount = Util.igvCalculator(valueAbp);
+			    }
 
-				SvaBenefitParamsDto svaBenefitParamsDto = new SvaBenefitParamsDto();
-				svaBenefitParamsDto.setChannelId(offersBenefitsRequestDto.getChannelId());
-				svaBenefitParamsDto.setOfferCaption(offerCaption);
-				svaBenefitParamsDto.setAction(offersBenefitsRequestDto.getAction());
-				svaBenefitParamsDto.setIsPortability(offersBenefitsRequestDto.getIsPortability());
-				svaBenefitParamsDto.setOrderSubType(offersBenefitsRequestDto.getOrderSubType());
-				svaBenefitParamsDto.setBroadbandConnection(offersBenefitsRequestDto.getBroadband().getConnection());
-				svaBenefitParamsDto.setNetworkTechnology(offersBenefitsRequestDto.getNetworkTechnology());
-				svaBenefitParamsDto.setCommercialAreaId(offersBenefitsRequestDto.getCommercialAreaId());
-				svaBenefitParamsDto.setParentId(spsIdAndName.getParentId());
-				svaBenefitParamsDto.setIDcomponente(idComponent);
+			    SvaBenefitParamsDto svaBenefitParamsDto = new SvaBenefitParamsDto();
+			    svaBenefitParamsDto.setChannelId(offersBenefitsRequestDto.getChannelId());
+			    svaBenefitParamsDto.setOfferCaption(offerCaption);
+			    svaBenefitParamsDto.setAction(offersBenefitsRequestDto.getAction());
+			    svaBenefitParamsDto.setIsPortability(offersBenefitsRequestDto.getIsPortability());
+			    svaBenefitParamsDto.setOrderSubType(offersBenefitsRequestDto.getOrderSubType());
+			    svaBenefitParamsDto.setBroadbandConnection(offersBenefitsRequestDto.getBroadband().getConnection());
+			    svaBenefitParamsDto.setNetworkTechnology(offersBenefitsRequestDto.getNetworkTechnology());
+			    svaBenefitParamsDto.setCommercialAreaId(offersBenefitsRequestDto.getCommercialAreaId());
+			    svaBenefitParamsDto.setParentId(spsIdAndName.getParentId());
+			    svaBenefitParamsDto.setIDcomponente(idComponent);
 
-				String dataRateFrom;
+			    String dataRateFrom;
 
-				String dataRateTo;
+			    String dataRateTo;
 
-				if (offersBenefitsRequestDto.getBroadband().getMinDlDataRate() != null) {
-				    dataRateFrom = "= 'NA'";
-				    dataRateTo = "= 'NA'";
-				} else {
-				    dataRateFrom = Constant.LESS_THAN + offersBenefitsRequestDto.getBroadband().getMinDlDataRate();
-				    dataRateTo = Constant.GREATER_THAN + offersBenefitsRequestDto.getBroadband().getMinDlDataRate();
-
-				}
-				VasBenefits vasBenefits = vasBenefitsRepository.findSvaBenefits(svaBenefitParamsDto, dataRateFrom, dataRateTo);
-				String nameComp = componentsMasterRepository.findNameComponentByCidComponent(vasBenefits.getBenefitComponentCid());
-				String parentName = relationMasterRepository.findSpsIdAndName(vasBenefits.getBenefitThemePackSpsCid())
-					.getParentName();
-				String nameBo = billingOfferMasterRepository.findBillingOfferBycidBo(idComponent).getNameBo();
-
-				BillingOfferResponse billingOfferResponse = new BillingOfferResponse();
-
-				billingOfferResponse.setBillingOffer(billingOffer);
-				billingOfferResponse.setMaxSTBsallowed(maxSTBsallowed);
-				billingOfferResponse.setSpsIdAndName(spsIdAndName);
-				billingOfferResponse.setPriceType(priceType);
-				billingOfferResponse.setAmount(amount);
-				billingOfferResponse.setVasBenefits(vasBenefits);
-				billingOfferResponse.setNameComp(nameComp);
-				billingOfferResponse.setParentName(parentName);
-				billingOfferResponse.setNameBo(nameBo);
-				billingOfferResponse.setRelationId(relationId);
-
-				billingOfferResponseList.add(billingOfferResponse);
+			    if (offersBenefitsRequestDto.getBroadband().getMinDlDataRate() != null) {
+				dataRateFrom = "= 'NA'";
+				dataRateTo = "= 'NA'";
+			    } else {
+				dataRateFrom = Constant.LESS_THAN + offersBenefitsRequestDto.getBroadband().getMinDlDataRate();
+				dataRateTo = Constant.GREATER_THAN + offersBenefitsRequestDto.getBroadband().getMinDlDataRate();
 
 			    }
+			    VasBenefits vasBenefits = vasBenefitsRepository.findSvaBenefits(svaBenefitParamsDto, dataRateFrom, dataRateTo);
+			    String nameComp = componentsMasterRepository
+				    .findNameComponentByCidComponent(vasBenefits.getBenefitComponentCid());
+			    String parentName = relationMasterRepository.findSpsIdAndName(vasBenefits.getBenefitThemePackSpsCid())
+				    .getParentName();
+			    String nameBo = billingOfferMasterRepository.findBillingOfferBycidBo(idComponent).getNameBo();
+
+			    BillingOfferResponse billingOfferResponse = new BillingOfferResponse();
+
+			    billingOfferResponse.setBillingOffer(billingOffer);
+			    billingOfferResponse.setMaxSTBsallowed(maxSTBsallowed);
+			    billingOfferResponse.setSpsIdAndName(spsIdAndName);
+			    billingOfferResponse.setPriceType(priceType);
+			    billingOfferResponse.setAmount(amount);
+			    billingOfferResponse.setVasBenefits(vasBenefits);
+			    billingOfferResponse.setNameComp(nameComp);
+			    billingOfferResponse.setParentName(parentName);
+			    billingOfferResponse.setNameBo(nameBo);
+			    billingOfferResponse.setRelationId(relationId);
+
+			    billingOfferResponseList.add(billingOfferResponse);
+
 			}
-			
-			svaResponse.setIdComponent(idComponent);
-			svaResponse.setBillingOffer(billingOfferResponseList);
-			svaResponseList.add(svaResponse);
 		    }
+
+		    svaResponse.setIdComponent(idComponent);
+		    svaResponse.setBillingOffer(billingOfferResponseList);
+		    svaResponseList.add(svaResponse);
+		}
 	    }
-	    
-	   
 
 	}
 	return svaResponseList;
@@ -222,19 +227,24 @@ public class Sva {
      * 
      * @param offersBenefitsRequestDto:
      *            request que viene del front
+     * @param flagRetention:
+     *            flag que indica si tiene o no retencion
+     * @param propertyValueList:
+     *            listado de propertyValues
+     * @param productOfferingCatalogId:
+     *            campo que viene del front
      * @return retorna los servicios de valor agregado
      */
 
-    public List<SvaResponse> getSvaTypeRetention(OffersBenefitsRequestDto offersBenefitsRequestDto, String flagRetention) {
+    public List<SvaResponse> getSvaTypeRetention(OffersBenefitsRequestDto offersBenefitsRequestDto, String flagRetention,
+	    List<OffersProperties> propertyValueList, String productOfferingCatalogId) {
 
-	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getProductOfferingCatalogId(),
-		offersBenefitsRequestDto.getAction(), flagRetention);
+	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getAction(), flagRetention, propertyValueList);
 
 	List<SvaResponse> svaResponseList = new ArrayList<>();
 
 	idComponentList.forEach(idComponent -> {
-	    List<RelationMaster> billingOfferList = getBillingOffer(offersBenefitsRequestDto.getProductOfferingCatalogId(), idComponent,
-		    flagRetention);
+	    List<RelationMaster> billingOfferList = getBillingOffer(productOfferingCatalogId, idComponent, flagRetention);
 
 	    SvaResponse svaResponse = new SvaResponse();
 	    List<BillingOfferResponse> billingOfferResponseList = new ArrayList<>();
@@ -243,12 +253,11 @@ public class Sva {
 
 		String relationId;
 
-		relationId = relationMasterRepository.findRelationId(offersBenefitsRequestDto.getProductOfferingCatalogId(),
-			billingOffer.getParentId());
+		relationId = relationMasterRepository.findRelationId(productOfferingCatalogId, billingOffer.getParentId());
 
 		if (StringUtil.isNullOrEmpty(relationId)) {
 		    relationId = relationMasterRepository.findRelationIdByrelationCidRoot(billingOffer.getParentId(),
-			    offersBenefitsRequestDto.getProductOfferingCatalogId());
+			    productOfferingCatalogId);
 		}
 
 		BillingOfferResponse billingOfferResponse = new BillingOfferResponse();
@@ -274,22 +283,22 @@ public class Sva {
      * El metodo obtiene los componentes adicionales (idComponente) necesario para
      * el metodo getSvaTypeSva() y getSvaTypeRetention()
      * 
-     * @param productOfferingCatalogId:
-     *            atributo del offersBenefitsRequestDto que viene del front
      * @param action:
      *            atributo del offersBenefitsRequestDto que viene del front
      * @param query:
      *            linea de query que varia dependiendo de si es retencion o no
+     * @param propertyValueList:
+     *            listado de propertyValue de acuerdo al ProductOfferingCatalogId()
      * @return retorna un listado de componentes
      */
 
-    private List<String> getAditionalComponent(String productOfferingCatalogId, String action, String query) {
+    private List<String> getAditionalComponent(String action, String query, List<OffersProperties> propertyValueList) {
 
-	String propertyValueLT = offersPropertiesRepository.findPropertyValue(productOfferingCatalogId).stream()
-		.filter(x -> x.getNameOfProperty().equals(Constant.LOB_TYPE)).map(p -> p.getPropertyValue()).collect(Collectors.joining());
+	String propertyValueLT = propertyValueList.stream().filter(x -> x.getNameOfProperty().equals(Constant.LOB_TYPE))
+		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
 	return svaOfferingRepository.findIdComponent(propertyValueLT, action, query).stream()
-		.filter(x -> x.matches("3196671|3197701|3239962|34105211")).collect(Collectors.toList()); 
+		.filter(x -> x.matches("3196671|3197701|3239962|34105211")).collect(Collectors.toList());
     }
 
     /**
@@ -362,9 +371,9 @@ public class Sva {
 
 	List<String> parentIdList = relationMasterRepository.findParentIdByChildId(billingOfferChildId);
 	String parentId = parentIdList.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
-	
+
 	return relationMasterRepository.findSpsIdAndName(parentId);
-	 
+
     }
 
 }
