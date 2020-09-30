@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.telefonica.eof.business.sva.Sva;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
+import com.telefonica.eof.ehcache.Equipment;
+import com.telefonica.eof.ehcache.EquipmentCharge;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.enums.HttpsErrorMessage;
 import com.telefonica.eof.exception.HttpException;
@@ -43,6 +46,9 @@ class ServiceTest {
 
     @Autowired
     private OffersPropertiesRepository offersPropertiesRepository;
+    
+    @Autowired
+    private EquipmentCharge cacheEquipmentCharge;
 
     @BeforeEach
     void Before() {
@@ -114,6 +120,25 @@ class ServiceTest {
 	request2.setSortCriteriaAscending(true);
 
     }
+    
+    @Test
+    void TestEhcache() {
+	
+	String lob = "Voice+TV";
+	String network = "3192652";
+//	List<Equipment> equipmentList1 = cacheEquipmentCharge.getEquipment();
+//	System.out.println(equipmentList1);
+//	List<Equipment> equipmentList2 = cacheEquipmentCharge.getEquipment();
+//	System.out.println(equipmentList2);
+	String cid1 = cacheEquipmentCharge.getEquipmentByIndex(network, lob);
+	System.out.println(cid1);
+	String cid2 = cacheEquipmentCharge.getEquipmentByIndex(network, lob);
+	System.out.println(cid2);
+//	String result = equipmentList.stream().filter(x -> lob.equalsIgnoreCase(x.getLob()) && network.equalsIgnoreCase(x.getNetworkTechnology()))
+//		    .map(p -> p.getCid()).collect(Collectors.joining());
+	
+	
+    }
 
     @Test
     void Test() {
@@ -132,7 +157,6 @@ class ServiceTest {
 	for (HttpsErrorMessage http : HttpsErrorMessage.values()) {
 	    if (http.getExceptionId().equalsIgnoreCase(soapErrorCode)) {
 
-		httpException.setExceptionId(http.getExceptionId());
 		httpException.setMessage(http.getMessage());
 	    }
 
@@ -168,6 +192,9 @@ class ServiceTest {
 		System.out.println("entro no");
 		flagRetention = "'" + Constant.NO + "'";
 		List<SvaResponse> svaList = sva.getSvaTypeSva(request, flagRetention, propertyValueList, productOfferingCatalogId);
+		if (svaList == null||svaList.isEmpty() ) {
+		    System.out.println("vacio");
+		}		
 		System.out.println(svaList);
 	    }
 	});

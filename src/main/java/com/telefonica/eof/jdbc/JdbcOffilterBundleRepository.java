@@ -23,7 +23,7 @@ public class JdbcOffilterBundleRepository implements OffilterBundleRepository{
     @Override
     public String findPlanCid(String catalogItemId, String installationAddressDepartment , String dealerId, String storeId) {
 	try {
-	 String query = "select moo.OFFER_CID"
+	 String query = "select moo.OFFER_CAPTION"
 	 	+ " from OFFILTER_BUNDLE ob, MASTER_OF_OFFERS moo"
 	 	+ " where moo.OFFER_CID= ?"
 	 	+ " and ob.DEPARTAMENTO in (?,'*')"

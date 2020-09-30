@@ -1,5 +1,7 @@
 package com.telefonica.eof.exception;
 
+import org.springframework.http.HttpStatus;
+
 import com.telefonica.eof.enums.HttpsErrorMessage;
 
 import lombok.Getter;
@@ -13,14 +15,14 @@ public class HttpException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
-    private String exceptionId;
-    private String responseHttp;
+    private HttpStatus httpStatus;
+    private String httpStatusCode;
     private String message;
 
-    public HttpException(String exceptionId, String responseHttp, String message) {
+      public HttpException(HttpStatus httpStatus, String httpStatusCode, String message) {
 	super();
-	this.exceptionId = exceptionId;
-	this.responseHttp = responseHttp;
+	this.httpStatus = httpStatus;
+	this.httpStatusCode = httpStatusCode;
 	this.message = message;
     }
 
@@ -28,22 +30,46 @@ public class HttpException extends Exception {
 	super();
     }
 
-    public static HttpException HttpExceptionResponse(String e) {
+    public HttpException(HttpException e) {
+	this.httpStatus = e.getHttpStatus();
+	this.httpStatusCode = e.getHttpStatusCode();
+	this.message = e.getMessage();
+    }
 
-	HttpException httpException = new HttpException();
-	String sSubCadena = e.substring(0, 7);
+    public static HttpException HttpExceptionResponse(Exception e) {
+
+	HttpException httpException = null;
+	String soapMessage = e.getMessage().substring(0, 7);
 
 	for (HttpsErrorMessage http : HttpsErrorMessage.values()) {
-	    if (http.getExceptionId().equalsIgnoreCase(sSubCadena)) {
+	    
+	    if (http.getExceptionId().equalsIgnoreCase(soapMessage)) {
 		
-		httpException.setExceptionId(http.getExceptionId());
-		httpException.setMessage(http.getMessage());
-	    }
-		
-	}
-	
-	 return httpException;
+		httpException = new HttpException();
+		httpException.setHttpStatusCode(http.getHttpStatusCode());
+		httpException.setHttpStatus(http.getHttpStatus());
 
-    }   
+		if (http.getExceptionId().equalsIgnoreCase(HttpsErrorMessage.ERROR_500.getExceptionId())) {
+		    httpException.setMessage(e.getMessage());
+		} else {
+		    httpException.setMessage(http.getMessage());
+		}
+
+	    }
+
+	}
+
+	if (httpException == null) {
+	    httpException = new HttpException();
+	    httpException.setHttpStatusCode("500");
+	    httpException.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+	    httpException.setMessage(e.getMessage());
+	}
+
+	return httpException;
+
+    }
+
+  
 
 }

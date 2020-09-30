@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
+import com.telefonica.eof.exception.ExceptionResponse;
+import com.telefonica.eof.exception.HttpException;
 import com.telefonica.eof.generated.model.ResponseType;
 import com.telefonica.eof.mapper.ApplicationRequestMapper;
 import com.telefonica.eof.service.OfferBenefitsServiceI;
@@ -48,7 +50,7 @@ public class OfferingsApiController {
 	    @ApiResponse(code = 501, message = "NOT IMPLEMENTED", response = ExceptionTypeFilter.class),
 	    @ApiResponse(code = 503, message = "SERVICE UNAVAILABLE", response = ExceptionTypeFilter.class) })
     @GetMapping(value = "/offerings", produces = { "application/json" })
-    public ResponseEntity<ResponseType> getOfferings(
+    public ResponseEntity<Object> getOfferings(
 
 	    @ApiParam(value = "If this API is used via a platform acting as a common entry point to different OBs, this identifier is used to route the request to the corresponding OB environment") @RequestHeader(value = "UNICA-ServiceId", required = false) String unICAServiceId,
 	    @ApiParam(value = "Identifier for the system originating the request") @RequestHeader(value = "UNICA-Application", required = false) String unICAApplication,
@@ -154,11 +156,10 @@ public class OfferingsApiController {
 	    ResponseType responseType = offerBenefitsServiceI.getOfferBenefitsFi(offersBenefitsRequestDto);
 
 	    return new ResponseEntity<>(responseType, httpHeaders, HttpStatus.OK);
-	} catch (Exception e) {
-	    System.out.println(e.getMessage());
-	    throw new Exception(e.getMessage());
+	} catch (HttpException e) {
+	   
+	    return new ResponseEntity<>(new ExceptionResponse(e.getHttpStatusCode(),e.getMessage()), e.getHttpStatus());
 	}
-
     }
 
 }

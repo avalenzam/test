@@ -211,9 +211,13 @@ public class Sva {
 			}
 		    }
 
-		    svaResponse.setIdComponent(idComponent);
-		    svaResponse.setBillingOffer(billingOfferResponseList);
-		    svaResponseList.add(svaResponse);
+		    if (!(billingOfferResponseList == null || billingOfferResponseList.isEmpty())) {
+			svaResponse.setIdComponent(idComponent);
+			svaResponse.setBillingOffer(billingOfferResponseList);
+			svaResponseList.add(svaResponse);
+
+		    }
+
 		}
 	    }
 
