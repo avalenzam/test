@@ -8,5 +8,6 @@ public interface OffersPropertiesRepository {
     
     public List<OffersProperties> findPropertyValue(String productOfferingCatalogId);
     public String findSpsIdByofferCid(String productOfferingCatalogId);
+    public List<OffersProperties> offersPropertiesTable();
 
 }

@@ -1,10 +1,15 @@
 package com.telefonica.eof.jdbc;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.telefonica.eof.ehcache.Equipment;
+import com.telefonica.eof.ehcache.PlanCid;
 import com.telefonica.eof.repository.OffilterBundleRepository;
 /**
  * 
@@ -39,6 +44,27 @@ public class JdbcOffilterBundleRepository implements OffilterBundleRepository{
 	} catch (EmptyResultDataAccessException e) {
 		return null;
 	}
+
+	
+
+    }
+    
+    
+    @Override
+    public List<PlanCid> planCid() {
+	try {
+	 String query = "select moo.OFFER_CAPTION, moo.OFFER_CID, ob.DEPARTAMENTO, ob.DEALER_CODE,ob.STORE_ID "
+	 	+ " from OFFILTER_BUNDLE ob, MASTER_OF_OFFERS moo"
+	 	+ " where ob.VALIDITY_START_DATE <= CURRENT_DATE"
+	 	+ " and ob.VALIDITY_END_DATE >= CURRENT_DATE"
+	 	+ " and ob.PRODUCT_OFFER_CODE = moo.OFFER_CAPTION";
+
+	 return jdbcTemplate.query(query,
+			new BeanPropertyRowMapper<>(PlanCid.class));
+		
+} catch (EmptyResultDataAccessException e) {
+		return null;
+}
 
 	
 

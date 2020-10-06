@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.entity.InstallationFee;
+import com.telefonica.eof.entity.Upfront;
 import com.telefonica.eof.pojo.upfrontFija.UpfrontFijaResponse;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
 import com.telefonica.eof.repository.InstalFeeNoRiskRepository;
@@ -52,7 +53,7 @@ public class UpfrontFija {
 	UpfrontFijaResponse upfrontFijaResponse = new UpfrontFijaResponse();
 	String crediScore = String.valueOf(offersBenefitsRequestDto.getCreditScore() % 10);
 	String upfront = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(crediScore))
-		.map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+		.map(Upfront::getUpfrontIndId).collect(Collectors.joining());
 
 	InstallationFee installationFee = installationFeeRepository.findBoUpfront(offersBenefitsRequestDto.getAction(), lob, upfront);
 

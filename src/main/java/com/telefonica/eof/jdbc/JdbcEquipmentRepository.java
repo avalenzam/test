@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.ehcache.Equipment;
-import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.repository.EquipmentRepository;
 /**
  * 

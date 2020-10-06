@@ -86,9 +86,9 @@ public class Benefit {
 		 String nameComp = componentsMasterRepository.findNameComponentByCidComponent(discountOffer.getBenefitComponentCid());
 		    List<PriceProperties> discountDetail = pricePropertiesRepository
 			    .findDiscountPriceDetail(discountOffer.getBenefitBillingOfferCid());
-		    String valueAbp = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_VALUE)).map(p -> p.getValueAbp())
+		    String valueAbp = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_VALUE)).map(PriceProperties::getValueAbp)
 			    .collect(Collectors.joining());
-		    String valueAbpType = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_TYPE)).map(p -> p.getValueAbp())
+		    String valueAbpType = discountDetail.stream().filter(x -> x.getNamePropAbp().equals(Constant.DISCOUNT_TYPE)).map(PriceProperties::getValueAbp)
 			    .collect(Collectors.joining());
 
 		    String spsName = relationMasterRepository.findSpsDiscountName(discountOffer.getBenefitThemePackSpsCid());

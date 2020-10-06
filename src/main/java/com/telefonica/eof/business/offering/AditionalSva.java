@@ -3,6 +3,7 @@ package com.telefonica.eof.business.offering;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Component;
 import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
+import com.telefonica.eof.ehcache.CacheEquipmentCharge;
+import com.telefonica.eof.ehcache.Equipment;
 import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.RelationMaster;
@@ -53,11 +56,12 @@ public class AditionalSva {
     @Autowired
     private BillingOfferMasterRepository    billingOfferMasterRepository;
     @Autowired
-    private EquipmentRepository		    equipmentRepository;
-    @Autowired
     private StbSettingRepository	    stbSettingRepository;
     @Autowired
     private DomainWithValidValuesRepository domainWithValidValuesRepository;
+    @Autowired
+    private CacheEquipmentCharge cacheEquipmentCharge;
+    
 
     /**
      * Método principal de la clase. Obtiene los sva adicionales como parte de la
@@ -125,19 +129,19 @@ public class AditionalSva {
 	Boolean flagUltraWifi;
 	String lob;
 
-	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB)).map(p -> p.getPropertyValue())
+	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB)).map(OffersProperties::getPropertyValue)
 		.collect(Collectors.joining());
 
 	if (Constant.NULL.equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob)) {
 
 	    lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS))
-		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
+		    .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 	}
 
 	if (lob.matches("Internet|BB")) {
 
 	    String minSpeedPremium = offersProperties.stream()
-		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_PREMIUM)).map(p -> p.getPropertyValue())
+		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_PREMIUM)).map(OffersProperties::getPropertyValue)
 		    .collect(Collectors.joining());
 
 	    if (Integer.parseInt(minSpeedPremium) <= velocidad) {
@@ -147,7 +151,7 @@ public class AditionalSva {
 	    }
 
 	    String minSpeedWifi = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_WIFI))
-		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
+		    .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	    if (Integer.parseInt(minSpeedWifi) <= velocidad) {
 		flagUltraWifi = true;
@@ -161,10 +165,10 @@ public class AditionalSva {
 	}
 
 	String defSpsId = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_ID))
-		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	String defSpsBo = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_BO))
-		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	offerDataResponse.setLob(lob);
 	offerDataResponse.setFlagModemPremium(flagModemPremium);
@@ -190,7 +194,10 @@ public class AditionalSva {
 
 	ModemResponse modemResponse = new ModemResponse();
 
-	String equipmentCid = equipmentRepository.findEquipmentCid(networkTecnology, lob);
+	Map<String, List<Equipment>> equipmentMap = cacheEquipmentCharge.getEquipment();
+	String equipmentCid = equipmentMap.get(lob).stream().filter(x -> x.getNetworkTechnology().contains(networkTecnology))
+		.map(Equipment::getCid).collect(Collectors.joining());
+
 
 	String nameComp = null;
 
@@ -246,7 +253,7 @@ public class AditionalSva {
 		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
 
 	    String currentOfferBundleLob = propertyValue.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS))
-		    .map(p -> p.getPropertyValue()).collect(Collectors.joining());
+		    .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	    if (!(currentOfferBundleLob.contains(Constant.TV) && currentOfferLob.contains(Constant.TV))
 		    && offersBenefitsRequestDto.getFields().contains(Constant.DOWNLOAD_SPEED)) {

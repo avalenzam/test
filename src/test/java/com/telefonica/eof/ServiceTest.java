@@ -3,6 +3,7 @@ package com.telefonica.eof;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -10,12 +11,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.annotation.Cacheable;
 
 import com.telefonica.eof.business.sva.Sva;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
+import com.telefonica.eof.ehcache.CacheOffersPropertiesCharge;
+import com.telefonica.eof.ehcache.CachePlanCidCharge;
 import com.telefonica.eof.ehcache.Equipment;
-import com.telefonica.eof.ehcache.EquipmentCharge;
+import com.telefonica.eof.ehcache.PlanCid;
+import com.telefonica.eof.ehcache.CacheEquipmentCharge;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.enums.HttpsErrorMessage;
 import com.telefonica.eof.exception.HttpException;
@@ -25,15 +30,23 @@ import com.telefonica.eof.pojo.PaginationInfo;
 import com.telefonica.eof.pojo.Product;
 import com.telefonica.eof.pojo.sva.SvaResponse;
 import com.telefonica.eof.proxy.offering.Offerings;
+import com.telefonica.eof.repository.EquipmentRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.service.OffersBenefitsService;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOfferingsResponseType;
+
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+import net.sf.ehcache.search.Attribute;
+import net.sf.ehcache.search.Query;
+import net.sf.ehcache.search.Results;
+import net.sf.ehcache.search.expression.Criteria;
 
 @SpringBootTest
 class ServiceTest {
 
     private OffersBenefitsRequestDto request;
-    private OffersBenefitsRequestDto request2;
 
     @Autowired
     private Offerings offerings;
@@ -46,9 +59,15 @@ class ServiceTest {
 
     @Autowired
     private OffersPropertiesRepository offersPropertiesRepository;
+
+    @Autowired
+    private CacheEquipmentCharge cacheEquipmentCharge;
     
     @Autowired
-    private EquipmentCharge cacheEquipmentCharge;
+    private CacheOffersPropertiesCharge cacheOffersPropertiesCharge;
+    
+    @Autowired
+    private CachePlanCidCharge cachePlanCidCharge;
 
     @BeforeEach
     void Before() {
@@ -60,7 +79,7 @@ class ServiceTest {
 
 	request.setCategoryId("3195941");
 	request.setChannelId("CC");
-	// request.setCustomerId("56843169");
+	 request.setCustomerId("56843169");
 	product.setType("landline,sva");//
 	request.setProduct(product);
 	request.setCreditLimit(BigDecimal.valueOf(500));//
@@ -90,54 +109,52 @@ class ServiceTest {
 	request.setSortCriteriaAscending(true);
 	request.setServiceabilityMaxSpeed("500");//
 
-	request2 = new OffersBenefitsRequestDto();
-	Broadband broadband2 = new Broadband();
-	Product product2 = new Product();
 
-	request2.setCategoryId("3195941");
-	request2.setChannelId("CC");
-	request2.setCustomerId("56843169");
-	product2.setType("broadband,landline,cableTv");//
-	request2.setProduct(product2);
-	request2.setCreditScore(9999);
-	request2.setCreditLimit(BigDecimal.valueOf(999));//
-	request2.setRegion("15");//
-	request2.setCustomerSegment("R");
-	request2.setIsPortability(false);
-	request2.setDealerId("05650");//
-	broadband2.setConnection("TV_CATV;INT_GPON;VOIC_VOIP");
-	request2.setBroadband(broadband2);
-	request2.setIsRetention(false);//
-	request2.setAction("PR");
-	request2.setCommercialAreaId("1");
-	request2.setSiteId("05650001");//
-	request2.setSourceType("OFFER");
-	request2.setNetworkTechnology("HFC");
-	request2.setServiceabilityMaxSpeed("999999");
-	request2.setServiceabilityId("1234");
-	request2.setInstallationAddressDepartment("15");
+    }
 
-	request2.setSortCriteriaAscending(true);
+    @Test
+    void TestEhcacheEquipment() {
 
+	String lobvalue = "Voice+TV";
+	String networkvalue = "HFC";
+
+	Map<String, List<Equipment>> equipmentMap = cacheEquipmentCharge.getEquipment();
+	System.out.println(equipmentMap.get(lobvalue));
+	String equipmentList = equipmentMap.get(lobvalue).stream().filter(x -> x.getNetworkTechnology().contains(networkvalue))
+		.map(Equipment::getCid).collect(Collectors.joining());
+	System.out.println(equipmentList);
     }
     
     @Test
-    void TestEhcache() {
+    void TestEhcacheOffersProperties() {
+
+	String offerCid = "34465865";
+	 Map<String, List<OffersProperties>> offersPropertiesMap = cacheOffersPropertiesCharge.getOffersProperties();
+	 List<OffersProperties> offersPropertiesList=offersPropertiesMap.get(offerCid);
+	 List<OffersProperties> offersProperties = offersPropertiesRepository.findPropertyValue(offerCid);
+	System.out.println(offersPropertiesList);
+	System.err.println("offersProperties :"+ offersProperties);
+    }
+    
+    @Test
+    void TestEhcachePlanCid() {
+
+	String offerCid = "34191511";
+	String departamento = "15";
+	String asterisk = "\\\\*|";
 	
-	String lob = "Voice+TV";
-	String network = "3192652";
-//	List<Equipment> equipmentList1 = cacheEquipmentCharge.getEquipment();
-//	System.out.println(equipmentList1);
-//	List<Equipment> equipmentList2 = cacheEquipmentCharge.getEquipment();
-//	System.out.println(equipmentList2);
-	String cid1 = cacheEquipmentCharge.getEquipmentByIndex(network, lob);
-	System.out.println(cid1);
-	String cid2 = cacheEquipmentCharge.getEquipmentByIndex(network, lob);
-	System.out.println(cid2);
-//	String result = equipmentList.stream().filter(x -> lob.equalsIgnoreCase(x.getLob()) && network.equalsIgnoreCase(x.getNetworkTechnology()))
-//		    .map(p -> p.getCid()).collect(Collectors.joining());
+	Map<String, List<PlanCid>> planCidMap = cachePlanCidCharge.getPlanCid();
+	List<PlanCid> planCidList=planCidMap.get(offerCid);
+//	String planCid = planCidList.stream().filter(x -> x.getDepartamento().contains("*|15"))
+//		.map(PlanCid::getOfferCaption).collect(Collectors.joining());
+//	
+	System.out.println(asterisk.concat(departamento));
+	Boolean planCid = planCidList.stream().anyMatch(x -> x.getDepartamento().equalsIgnoreCase(Constant.ASTERISK) || x.getDepartamento().equalsIgnoreCase(departamento)
+		&& x.getDealerCode().equalsIgnoreCase(Constant.ASTERISK) || x.getDealerCode().equalsIgnoreCase(departamento)
+		&&  x.getStoreId().equalsIgnoreCase(Constant.ASTERISK) || x.getStoreId().equalsIgnoreCase(departamento));
 	
-	
+	System.out.println("planCid :" + planCid);
+
     }
 
     @Test
@@ -192,9 +209,9 @@ class ServiceTest {
 		System.out.println("entro no");
 		flagRetention = "'" + Constant.NO + "'";
 		List<SvaResponse> svaList = sva.getSvaTypeSva(request, flagRetention, propertyValueList, productOfferingCatalogId);
-		if (svaList == null||svaList.isEmpty() ) {
+		if (svaList == null || svaList.isEmpty()) {
 		    System.out.println("vacio");
-		}		
+		}
 		System.out.println(svaList);
 	    }
 	});

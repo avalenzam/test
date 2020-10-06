@@ -18,6 +18,7 @@ import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
+import com.telefonica.eof.entity.Upfront;
 import com.telefonica.eof.entity.VasBenefits;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType;
 import com.telefonica.eof.generated.model.ComponentProdOfferPriceType.PriceTypeEnum;
@@ -91,7 +92,7 @@ public class Sva {
     public List<SvaResponse> getSvaTypeSva(OffersBenefitsRequestDto offersBenefitsRequestDto, String flagRetention,
 	    List<OffersProperties> propertyValueList, String productOfferingCatalogId) {
 
-	String query = Constant.ASTERISK + Constant.COMMA + flagRetention;
+	String query = Constant.ASTERISK_QUERY + Constant.COMMA + flagRetention;
 	String flagType = Constant.SVA;
 
 	String offerCaption = masterOfOffersRepository.findOfferCaption(productOfferingCatalogId);
@@ -106,7 +107,7 @@ public class Sva {
 	String upfront = null;
 	if (score != null) {
 	    upfront = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
-		    .map(p -> p.getUpfrontIndId()).collect(Collectors.joining());
+		    .map( Upfront::getUpfrontIndId).collect(Collectors.joining());
 	}
 
 	if (Constant.YES.equalsIgnoreCase(upfront)) {
@@ -130,11 +131,11 @@ public class Sva {
 		    for (RelationMaster billingOffer : billingOfferList) {
 
 			String modemPremium = upfrontRepository.findUpfront().stream()
-				.filter(x -> x.getUpfrontIndDesc().contains(score.toString())).map(p -> p.getUpfrontIndId())
+				.filter(x -> x.getUpfrontIndDesc().contains(score.toString())).map(Upfront::getUpfrontIndId)
 				.collect(Collectors.joining());
 
 			if (!(Constant.YES.equalsIgnoreCase(modemPremium)
-				&& billingOffer.getParentId().contains("3192682|3192742|3192652"))) {
+				&& billingOffer.getParentId().matches("3192682|3192742|3192652"))) {
 
 			    PriceTypeEnum priceType;
 
@@ -299,7 +300,7 @@ public class Sva {
     private List<String> getAditionalComponent(String action, String query, List<OffersProperties> propertyValueList) {
 
 	String propertyValueLT = propertyValueList.stream().filter(x -> x.getNameOfProperty().equals(Constant.LOB_TYPE))
-		.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	return svaOfferingRepository.findIdComponent(propertyValueLT, action, query).stream()
 		.filter(x -> x.matches("3196671|3197701|3239962|34105211")).collect(Collectors.toList());
@@ -338,7 +339,7 @@ public class Sva {
 		billingOfferList = relationMasterRepository.validateIdComponente(cidBoBoTypeString, propertyValue);
 		String spsId = offersPropertiesRepository.findSpsIdByofferCid(productOfferingCatalogId);
 
-		if (spsId.length() > 0) {
+		if (spsId != null ) {
 		    String[] arr = spsId.split(";", 0);
 		    String spsPropertyValue = arr[0];
 		    List<String> parentIdList = relationMasterRepository.findParentIdByChildId(spsPropertyValue);

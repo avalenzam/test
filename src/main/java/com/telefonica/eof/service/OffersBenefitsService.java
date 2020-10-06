@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -13,11 +14,13 @@ import org.springframework.stereotype.Service;
 import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.business.offering.AditionalSva;
 import com.telefonica.eof.business.offering.Benefit;
+import com.telefonica.eof.business.offering.OfferFilter;
 import com.telefonica.eof.business.offering.UpfrontFija;
 import com.telefonica.eof.business.sva.Sva;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.commons.Util;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
+import com.telefonica.eof.ehcache.CacheOffersPropertiesCharge;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.exception.HttpException;
 import com.telefonica.eof.generated.model.BenefitType;
@@ -51,7 +54,6 @@ import com.telefonica.eof.pojo.sva.SvaResponse;
 import com.telefonica.eof.pojo.upfrontFija.UpfrontFijaResponse;
 import com.telefonica.eof.proxy.offering.Offerings;
 import com.telefonica.eof.proxy.productInventory.ParqueUnificadoConnection;
-import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.repository.OffilterBundleRepository;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.CategoryListType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.CategoryTreeTypeType;
@@ -88,11 +90,12 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
     @Autowired
     private Sva			       sva;
     @Autowired
+    private OfferFilter offerFilter;
+    @Autowired
     private ParqueUnificadoConnection  parqueUnificadoConnection;
     @Autowired
-    private OffersPropertiesRepository offersPropertiesRepository;
-    @Autowired
-    private OffilterBundleRepository   offilterBundleRepository;
+    private CacheOffersPropertiesCharge cacheOffersPropertiesCharge;
+
 
     /**
      * Metodo principal. Retorna el response poblado con las ofertas, beneficios y
@@ -170,11 +173,13 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 		// TODO ANEXO 3, FILTRAR LAS OFERTA.
 
 		if (offering != null) {
-		    String offer = offilterBundleRepository.findPlanCid(offering.getCatalogItemId(),
-			    offersBenefitsRequestDto.getInstallationAddressDepartment(), offersBenefitsRequestDto.getDealerId(),
-			    offersBenefitsRequestDto.getSiteId());
+		    
+		    Boolean planCid = offerFilter.offerFilter(offersBenefitsRequestDto, offering.getCatalogItemId());
+//		    String offer = offilterBundleRepository.findPlanCid(offering.getCatalogItemId(),
+//			    offersBenefitsRequestDto.getInstallationAddressDepartment(), offersBenefitsRequestDto.getDealerId(),
+//			    offersBenefitsRequestDto.getSiteId());
 
-		    if (!(StringUtil.isNullOrEmpty(offer))) {
+		    if (Boolean.TRUE.equals(planCid)) {
 
 			ComposingProductType productSpecification = new ComposingProductType();
 			RefinedProductType refinedProduct = new RefinedProductType();
@@ -191,8 +196,10 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			ProductTypeEnumType productType = null;
 			BigDecimal amount = BigDecimal.valueOf(0);
 			String vProductOfferingID = offering.getCatalogItemId();
-			List<OffersProperties> offersProperties = offersPropertiesRepository.findPropertyValue(vProductOfferingID);
-			System.out.println(vProductOfferingID);
+			Map<String, List<OffersProperties>> offersPropertiesMap = cacheOffersPropertiesCharge.getOffersProperties();
+			List<OffersProperties> offersProperties=offersPropertiesMap.get(vProductOfferingID);
+			
+			
 			for (OfferingTypeOfferType children : offering.getChildren()) {
 			    productType = children.getProductType().get(0);
 			    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
@@ -705,11 +712,13 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	    List<String> productOfferingCatalogIdList = Arrays.asList(offersBenefitsRequestDto.getProductOfferingCatalogId().split(","));
 
 	    productOfferingCatalogIdList.forEach(productOfferingCatalogId -> {
+		
+		Map<String, List<OffersProperties>> offersPropertiesMap = cacheOffersPropertiesCharge.getOffersProperties();
+		List<OffersProperties> propertyValueList=offersPropertiesMap.get(productOfferingCatalogId);
 
-		List<OffersProperties> propertyValueList = offersPropertiesRepository.findPropertyValue(productOfferingCatalogId);
 
 		String retention = propertyValueList.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.RETENTION))
-			.map(p -> p.getPropertyValue()).collect(Collectors.joining());
+			.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 		String flagRetention;
 
@@ -999,9 +1008,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	category.setHref(categories.getHref());
 	category.setName(categories.getName());
 
-	subcategories.setId(Optional.ofNullable(categories.getSubcategories()).map(x -> x.getId()).orElse(null));
-	subcategories.setHref(Optional.ofNullable(categories.getSubcategories()).map(x -> x.getHref()).orElse(null));
-	subcategories.setName(Optional.ofNullable(categories.getSubcategories()).map(x -> x.getName()).orElse(null));
+	subcategories.setId(Optional.ofNullable(categories.getSubcategories()).map(CategoryTreeTypeType::getId).orElse(null));
+	subcategories.setHref(Optional.ofNullable(categories.getSubcategories()).map(CategoryTreeTypeType::getHref).orElse(null));
+	subcategories.setName(Optional.ofNullable(categories.getSubcategories()).map(CategoryTreeTypeType::getName).orElse(null));
 	category.setSubcategories(subcategories);
 
 	return category;

@@ -137,7 +137,7 @@ class ShakaElegibleoffersFiApplicationTests {
 
     @Test
     void SvaOfferingRepositoryTest() {
-	String query = "(" + Constant.ASTERISK + Constant.COMMA + Constant.NULL + ")";
+	String query = "(" + Constant.ASTERISK_QUERY + Constant.COMMA + Constant.NULL + ")";
 	List<String> idComponents = svaOfferingRepository.findIdComponent("Wireline", null, query);
 	System.out.println(idComponents.toString());
 

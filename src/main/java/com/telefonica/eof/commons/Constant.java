@@ -2,7 +2,8 @@ package com.telefonica.eof.commons;
 
 public class Constant {
 
-    public static final String ASTERISK	    = "'*'";
+    public static final String ASTERISK_QUERY	    = "'*'";
+    public static final String ASTERISK	    = "*";
     public static final String COMMA	    = ",";
     public static final String DOBLEPOINT   = ":";
     public static final String X	    = "x";
