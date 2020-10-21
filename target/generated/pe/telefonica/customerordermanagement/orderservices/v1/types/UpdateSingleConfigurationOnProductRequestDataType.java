@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for UpdateSingleConfigurationOnProductRequest_data_type complex type.
+ * <p>Clase Java para UpdateSingleConfigurationOnProductRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="UpdateSingleConfigurationOnProductRequest_data_type"&gt;
@@ -70,7 +70,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     protected String salesChannel;
 
     /**
-     * Gets the value of the productComponent property.
+     * Obtiene el valor de la propiedad productComponent.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the productComponent property.
+     * Define el valor de la propiedad productComponent.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the productOrder property.
+     * Obtiene el valor de la propiedad productOrder.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the productOrder property.
+     * Define el valor de la propiedad productOrder.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the configurationActionList property.
+     * Obtiene el valor de la propiedad configurationActionList.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the configurationActionList property.
+     * Define el valor de la propiedad configurationActionList.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the activity property.
+     * Obtiene el valor de la propiedad activity.
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the activity property.
+     * Define el valor de la propiedad activity.
      * 
      * @param value
      *     allowed object is
@@ -166,7 +166,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the isConfirmationRequired property.
+     * Obtiene el valor de la propiedad isConfirmationRequired.
      * 
      * @return
      *     possible object is
@@ -178,7 +178,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the isConfirmationRequired property.
+     * Define el valor de la propiedad isConfirmationRequired.
      * 
      * @param value
      *     allowed object is
@@ -190,7 +190,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the callbackURL property.
+     * Obtiene el valor de la propiedad callbackURL.
      * 
      * @return
      *     possible object is
@@ -202,7 +202,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the callbackURL property.
+     * Define el valor de la propiedad callbackURL.
      * 
      * @param value
      *     allowed object is
@@ -214,7 +214,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the userID property.
+     * Obtiene el valor de la propiedad userID.
      * 
      * @return
      *     possible object is
@@ -226,7 +226,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the userID property.
+     * Define el valor de la propiedad userID.
      * 
      * @param value
      *     allowed object is
@@ -238,7 +238,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Gets the value of the salesChannel property.
+     * Obtiene el valor de la propiedad salesChannel.
      * 
      * @return
      *     possible object is
@@ -250,7 +250,7 @@ public class UpdateSingleConfigurationOnProductRequestDataType {
     }
 
     /**
-     * Sets the value of the salesChannel property.
+     * Define el valor de la propiedad salesChannel.
      * 
      * @param value
      *     allowed object is

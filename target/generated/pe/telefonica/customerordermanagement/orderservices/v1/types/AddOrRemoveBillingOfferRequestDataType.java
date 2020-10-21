@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AddOrRemoveBillingOfferRequest_data_type complex type.
+ * <p>Clase Java para AddOrRemoveBillingOfferRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="AddOrRemoveBillingOfferRequest_data_type"&gt;
@@ -84,7 +84,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     protected String reasonText;
 
     /**
-     * Gets the value of the msisdn property.
+     * Obtiene el valor de la propiedad msisdn.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Sets the value of the msisdn property.
+     * Define el valor de la propiedad msisdn.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Gets the value of the externalOrderId property.
+     * Obtiene el valor de la propiedad externalOrderId.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Sets the value of the externalOrderId property.
+     * Define el valor de la propiedad externalOrderId.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Gets the value of the actionType property.
+     * Obtiene el valor de la propiedad actionType.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Sets the value of the actionType property.
+     * Define el valor de la propiedad actionType.
      * 
      * @param value
      *     allowed object is
@@ -185,7 +185,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Gets the value of the reasonCode property.
+     * Obtiene el valor de la propiedad reasonCode.
      * 
      * @return
      *     possible object is
@@ -197,7 +197,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Sets the value of the reasonCode property.
+     * Define el valor de la propiedad reasonCode.
      * 
      * @param value
      *     allowed object is
@@ -209,7 +209,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Gets the value of the reasonText property.
+     * Obtiene el valor de la propiedad reasonText.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class AddOrRemoveBillingOfferRequestDataType {
     }
 
     /**
-     * Sets the value of the reasonText property.
+     * Define el valor de la propiedad reasonText.
      * 
      * @param value
      *     allowed object is

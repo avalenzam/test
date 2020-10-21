@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Java class for ValidateTokenFnFResponse_type complex type.
+ * <p>Clase Java para ValidateTokenFnFResponse_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ValidateTokenFnFResponse_type"&gt;
@@ -39,7 +39,7 @@ public class ValidateTokenFnFResponseType
     protected ValidateTokenFnFResponseDataType validateTokenFnFResponseData;
 
     /**
-     * Gets the value of the validateTokenFnFResponseData property.
+     * Obtiene el valor de la propiedad validateTokenFnFResponseData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ValidateTokenFnFResponseType
     }
 
     /**
-     * Sets the value of the validateTokenFnFResponseData property.
+     * Define el valor de la propiedad validateTokenFnFResponseData.
      * 
      * @param value
      *     allowed object is

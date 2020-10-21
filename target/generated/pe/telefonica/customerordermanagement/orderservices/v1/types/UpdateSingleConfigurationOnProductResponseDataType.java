@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for UpdateSingleConfigurationOnProductResponse_data_type complex type.
+ * <p>Clase Java para UpdateSingleConfigurationOnProductResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="UpdateSingleConfigurationOnProductResponse_data_type"&gt;
@@ -46,7 +46,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     protected ProductComponentNumber productComponent;
 
     /**
-     * Gets the value of the response property.
+     * Obtiene el valor de la propiedad response.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Sets the value of the response property.
+     * Define el valor de la propiedad response.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Gets the value of the productOrder property.
+     * Obtiene el valor de la propiedad productOrder.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Sets the value of the productOrder property.
+     * Define el valor de la propiedad productOrder.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Gets the value of the confirmationData property.
+     * Obtiene el valor de la propiedad confirmationData.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Sets the value of the confirmationData property.
+     * Define el valor de la propiedad confirmationData.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Gets the value of the productComponent property.
+     * Obtiene el valor de la propiedad productComponent.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class UpdateSingleConfigurationOnProductResponseDataType {
     }
 
     /**
-     * Sets the value of the productComponent property.
+     * Define el valor de la propiedad productComponent.
      * 
      * @param value
      *     allowed object is

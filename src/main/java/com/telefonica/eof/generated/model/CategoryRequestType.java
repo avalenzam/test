@@ -1,26 +1,20 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
-import org.threeten.bp.OffsetDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import org.joda.time.DateTime;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * CategoryRequestType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class CategoryRequestType   {
+public class CategoryRequestType  implements Serializable {
   @JsonProperty("name")
   private String name = null;
 
@@ -28,7 +22,7 @@ public class CategoryRequestType   {
   private String description = null;
 
   @JsonProperty("lastUpdate")
-  private OffsetDateTime lastUpdate = null;
+  private DateTime lastUpdate = null;
 
   @JsonProperty("lifecycleStatus")
   private String lifecycleStatus = null;
@@ -50,13 +44,11 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * Category name
    * @return name
   **/
   @ApiModelProperty(value = "Category name")
-
-
   public String getName() {
     return name;
   }
@@ -70,13 +62,11 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * Category description
    * @return description
   **/
   @ApiModelProperty(value = "Category description")
-
-
   public String getDescription() {
     return description;
   }
@@ -85,24 +75,21 @@ public class CategoryRequestType   {
     this.description = description;
   }
 
-  public CategoryRequestType lastUpdate(OffsetDateTime lastUpdate) {
+  public CategoryRequestType lastUpdate(DateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
     return this;
   }
 
-  /**
+   /**
    * Date when the last update was performed
    * @return lastUpdate
   **/
   @ApiModelProperty(value = "Date when the last update was performed")
-
-  @Valid
-
-  public OffsetDateTime getLastUpdate() {
+  public DateTime getLastUpdate() {
     return lastUpdate;
   }
 
-  public void setLastUpdate(OffsetDateTime lastUpdate) {
+  public void setLastUpdate(DateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 
@@ -111,13 +98,11 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * Category current status
    * @return lifecycleStatus
   **/
   @ApiModelProperty(value = "Category current status")
-
-
   public String getLifecycleStatus() {
     return lifecycleStatus;
   }
@@ -131,14 +116,11 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * Period of time the category is valid
    * @return validFor
   **/
   @ApiModelProperty(value = "Period of time the category is valid")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }
@@ -152,14 +134,12 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * True if the category is the root of the category tree. False otherwise
    * @return isRoot
   **/
   @ApiModelProperty(value = "True if the category is the root of the category tree. False otherwise")
-
-
-  public Boolean isIsRoot() {
+  public Boolean getIsRoot() {
     return isRoot;
   }
 
@@ -172,13 +152,11 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * Id of the parent category
    * @return parentId
   **/
   @ApiModelProperty(value = "Id of the parent category")
-
-
   public String getParentId() {
     return parentId;
   }
@@ -192,13 +170,11 @@ public class CategoryRequestType   {
     return this;
   }
 
-  /**
+   /**
    * href of the parent category
    * @return parentHref
   **/
   @ApiModelProperty(value = "href of the parent category")
-
-
   public String getParentHref() {
     return parentHref;
   }

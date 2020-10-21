@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ReporterName complex type.
+ * <p>Clase Java para ReporterName complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ReporterName"&gt;
@@ -52,7 +52,7 @@ public class ReporterName {
     protected String lastName;
 
     /**
-     * Gets the value of the firstName property.
+     * Obtiene el valor de la propiedad firstName.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class ReporterName {
     }
 
     /**
-     * Sets the value of the firstName property.
+     * Define el valor de la propiedad firstName.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class ReporterName {
     }
 
     /**
-     * Gets the value of the lastName property.
+     * Obtiene el valor de la propiedad lastName.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class ReporterName {
     }
 
     /**
-     * Sets the value of the lastName property.
+     * Define el valor de la propiedad lastName.
      * 
      * @param value
      *     allowed object is

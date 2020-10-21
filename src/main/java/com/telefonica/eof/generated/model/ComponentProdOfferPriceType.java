@@ -1,31 +1,29 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.BenefitType;
+import com.telefonica.eof.generated.model.EntityRefType;
+import com.telefonica.eof.generated.model.KeyValueType;
+import com.telefonica.eof.generated.model.MoneyType;
+import com.telefonica.eof.generated.model.ProdOfferPriceAlterationType;
+import com.telefonica.eof.generated.model.QuantityType;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ComponentProdOfferPriceType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ComponentProdOfferPriceType   {
+public class ComponentProdOfferPriceType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -158,40 +156,33 @@ public class ComponentProdOfferPriceType   {
   private String taxType = null;
 
   @JsonProperty("productOfferPriceAlteration")
-  @Valid
-  private List<ProdOfferPriceAlterationType> productOfferPriceAlteration = null;
+  private List<ProdOfferPriceAlterationType> productOfferPriceAlteration = new ArrayList<ProdOfferPriceAlterationType>();
 
   @JsonProperty("pricedComponents")
-  @Valid
-  private List<KeyValueType> pricedComponents = null;
+  private List<KeyValueType> pricedComponents = new ArrayList<KeyValueType>();
 
   @JsonProperty("priceLocation")
-  @Valid
-  private List<String> priceLocation = null;
+  private List<String> priceLocation = new ArrayList<String>();
 
   @JsonProperty("priceConsumer")
   private EntityRefType priceConsumer = null;
 
   @JsonProperty("benefits")
-  @Valid
-  private List<BenefitType> benefits = null;
+  private List<BenefitType> benefits = new ArrayList<BenefitType>();
 
   @JsonProperty("additionalData")
-  @Valid
-  private List<KeyValueType> additionalData = null;
+  private List<KeyValueType> additionalData = new ArrayList<KeyValueType>();
 
   public ComponentProdOfferPriceType id(String id) {
     this.id = id;
     return this;
   }
 
-  /**
+   /**
    * A unique identifier for the pricing model
    * @return id
   **/
   @ApiModelProperty(value = "A unique identifier for the pricing model")
-
-
   public String getId() {
     return id;
   }
@@ -205,13 +196,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Code of the billingOffer
    * @return code
   **/
   @ApiModelProperty(value = "Code of the billingOffer")
-
-
   public String getCode() {
     return code;
   }
@@ -225,14 +214,12 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable pricing model name
    * @return name
   **/
   @ApiModelProperty(required = true, value = "A human readable pricing model name")
   @NotNull
-
-
   public String getName() {
     return name;
   }
@@ -246,13 +233,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable pricing short description
    * @return description
   **/
   @ApiModelProperty(value = "A human readable pricing short description")
-
-
   public String getDescription() {
     return description;
   }
@@ -266,13 +251,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Esta es la relación entre el componente del padre y el componente principal.  Seran usados para la creación de orden (UPC)
    * @return productSpecContainmentID
   **/
   @ApiModelProperty(value = "Esta es la relación entre el componente del padre y el componente principal.  Seran usados para la creación de orden (UPC)")
-
-
   public String getProductSpecContainmentID() {
     return productSpecContainmentID;
   }
@@ -286,13 +269,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Identificador de la relación entre el componente padre y la billingOffer.    Seran usados para la creación de orden (UPC)
    * @return pricePlanSpecContainmentID
   **/
   @ApiModelProperty(value = "Identificador de la relación entre el componente padre y la billingOffer.    Seran usados para la creación de orden (UPC)")
-
-
   public String getPricePlanSpecContainmentID() {
     return pricePlanSpecContainmentID;
   }
@@ -306,14 +287,12 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates if the pricing model must be always included as part of the offering
    * @return isMandatory
   **/
   @ApiModelProperty(value = "Indicates if the pricing model must be always included as part of the offering")
-
-
-  public Boolean isIsMandatory() {
+  public Boolean getIsMandatory() {
     return isMandatory;
   }
 
@@ -326,14 +305,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * The validity for the charging price model in the catalog. If not enDate included in the structure then no ending date for validity is defined.
    * @return validFor
   **/
   @ApiModelProperty(value = "The validity for the charging price model in the catalog. If not enDate included in the structure then no ending date for validity is defined.")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }
@@ -347,14 +323,12 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Identification for the type of individual pricing component
    * @return priceType
   **/
   @ApiModelProperty(required = true, value = "Identification for the type of individual pricing component")
   @NotNull
-
-
   public PriceTypeEnum getPriceType() {
     return priceType;
   }
@@ -368,13 +342,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Identification for the recurring charging periodicity in the case of recurring pricing models (e.g.: monthly, yearly)
    * @return recurringChargePeriod
   **/
   @ApiModelProperty(value = "Identification for the recurring charging periodicity in the case of recurring pricing models (e.g.: monthly, yearly)")
-
-
   public RecurringChargePeriodEnum getRecurringChargePeriod() {
     return recurringChargePeriod;
   }
@@ -388,14 +360,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Indication of the criteria to be used for the charging (e.g.: per minute, per second, per GB, per 50GB, per license, per subscription to offering ...). Notice that in the TMForum API version 14.5 this parameter is defined as a string, not meeting SID definition
    * @return unitOfMeasure
   **/
   @ApiModelProperty(value = "Indication of the criteria to be used for the charging (e.g.: per minute, per second, per GB, per 50GB, per license, per subscription to offering ...). Notice that in the TMForum API version 14.5 this parameter is defined as a string, not meeting SID definition")
-
-  @Valid
-
   public QuantityType getUnitOfMeasure() {
     return unitOfMeasure;
   }
@@ -409,15 +378,12 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Base value applied to the price model offering (tax included). This could refer to a charge, a discount or an allowance. If the value is defined as a range (min and max included) this will define the defaulted amount
    * @return price
   **/
   @ApiModelProperty(required = true, value = "Base value applied to the price model offering (tax included). This could refer to a charge, a discount or an allowance. If the value is defined as a range (min and max included) this will define the defaulted amount")
   @NotNull
-
-  @Valid
-
   public MoneyType getPrice() {
     return price;
   }
@@ -431,14 +397,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Minimum value allowed for the price model offering (tax included). This is used when the accepted value is defined as an allowed range instead of a single value
    * @return minPrice
   **/
   @ApiModelProperty(value = "Minimum value allowed for the price model offering (tax included). This is used when the accepted value is defined as an allowed range instead of a single value")
-
-  @Valid
-
   public MoneyType getMinPrice() {
     return minPrice;
   }
@@ -452,14 +415,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Maximum value allowed for the price model offering (tax included). This is used when the accepted value is defined as an allowed range instead of a single value
    * @return maxPrice
   **/
   @ApiModelProperty(value = "Maximum value allowed for the price model offering (tax included). This is used when the accepted value is defined as an allowed range instead of a single value")
-
-  @Valid
-
   public MoneyType getMaxPrice() {
     return maxPrice;
   }
@@ -473,14 +433,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Tax amount
    * @return taxAmount
   **/
   @ApiModelProperty(value = "Tax amount")
-
-  @Valid
-
   public MoneyType getTaxAmount() {
     return taxAmount;
   }
@@ -494,14 +451,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * The sum of price + taAmount
    * @return priceWithTax
   **/
   @ApiModelProperty(value = "The sum of price + taAmount")
-
-  @Valid
-
   public MoneyType getPriceWithTax() {
     return priceWithTax;
   }
@@ -515,14 +469,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * The original amount of the price - before any discounts.
    * @return originalAmount
   **/
   @ApiModelProperty(value = "The original amount of the price - before any discounts.")
-
-  @Valid
-
   public MoneyType getOriginalAmount() {
     return originalAmount;
   }
@@ -536,14 +487,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * The original Tax amount of the price - before any discounts.
    * @return originalTaxAmount
   **/
   @ApiModelProperty(value = "The original Tax amount of the price - before any discounts.")
-
-  @Valid
-
   public MoneyType getOriginalTaxAmount() {
     return originalTaxAmount;
   }
@@ -557,14 +505,12 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Indication if the price is with taxes (true) or without (false)
    * @return taxIncluded
   **/
   @ApiModelProperty(value = "Indication if the price is with taxes (true) or without (false)")
-
-
-  public Boolean isTaxIncluded() {
+  public Boolean getTaxIncluded() {
     return taxIncluded;
   }
 
@@ -577,14 +523,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Taxes (in percentage) applied to the individual pricing component
    * @return taxRate
   **/
   @ApiModelProperty(value = "Taxes (in percentage) applied to the individual pricing component")
-
-  @Valid
-
   public BigDecimal getTaxRate() {
     return taxRate;
   }
@@ -598,13 +541,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Indication on the type of tax applied (e.g. VAT, IVA,...)
    * @return taxType
   **/
   @ApiModelProperty(value = "Indication on the type of tax applied (e.g. VAT, IVA,...)")
-
-
   public String getTaxType() {
     return taxType;
   }
@@ -619,21 +560,15 @@ public class ComponentProdOfferPriceType   {
   }
 
   public ComponentProdOfferPriceType addProductOfferPriceAlterationItem(ProdOfferPriceAlterationType productOfferPriceAlterationItem) {
-    if (this.productOfferPriceAlteration == null) {
-      this.productOfferPriceAlteration = new ArrayList<ProdOfferPriceAlterationType>();
-    }
     this.productOfferPriceAlteration.add(productOfferPriceAlterationItem);
     return this;
   }
 
-  /**
+   /**
    * An amount, usually of money, that modifies a price charged for a ProductOffering
    * @return productOfferPriceAlteration
   **/
   @ApiModelProperty(value = "An amount, usually of money, that modifies a price charged for a ProductOffering")
-
-  @Valid
-
   public List<ProdOfferPriceAlterationType> getProductOfferPriceAlteration() {
     return productOfferPriceAlteration;
   }
@@ -648,21 +583,15 @@ public class ComponentProdOfferPriceType   {
   }
 
   public ComponentProdOfferPriceType addPricedComponentsItem(KeyValueType pricedComponentsItem) {
-    if (this.pricedComponents == null) {
-      this.pricedComponents = new ArrayList<KeyValueType>();
-    }
     this.pricedComponents.add(pricedComponentsItem);
     return this;
   }
 
-  /**
+   /**
    * Combination of characteristics to apply the charging. If not included, the charge applies to the whole offering/product.
    * @return pricedComponents
   **/
   @ApiModelProperty(value = "Combination of characteristics to apply the charging. If not included, the charge applies to the whole offering/product.")
-
-  @Valid
-
   public List<KeyValueType> getPricedComponents() {
     return pricedComponents;
   }
@@ -677,20 +606,15 @@ public class ComponentProdOfferPriceType   {
   }
 
   public ComponentProdOfferPriceType addPriceLocationItem(String priceLocationItem) {
-    if (this.priceLocation == null) {
-      this.priceLocation = new ArrayList<String>();
-    }
     this.priceLocation.add(priceLocationItem);
     return this;
   }
 
-  /**
+   /**
    * Identification for the specific locations where the price applies. This is intended to allow complex scenarios where a given price depends on the location
    * @return priceLocation
   **/
   @ApiModelProperty(value = "Identification for the specific locations where the price applies. This is intended to allow complex scenarios where a given price depends on the location")
-
-
   public List<String> getPriceLocation() {
     return priceLocation;
   }
@@ -704,14 +628,11 @@ public class ComponentProdOfferPriceType   {
     return this;
   }
 
-  /**
+   /**
    * Reference to the entity identifying the specific consumer for the price. This is intended to allow complex scenarios where a given price depends on the specific consumer of a product/service
    * @return priceConsumer
   **/
   @ApiModelProperty(value = "Reference to the entity identifying the specific consumer for the price. This is intended to allow complex scenarios where a given price depends on the specific consumer of a product/service")
-
-  @Valid
-
   public EntityRefType getPriceConsumer() {
     return priceConsumer;
   }
@@ -726,21 +647,15 @@ public class ComponentProdOfferPriceType   {
   }
 
   public ComponentProdOfferPriceType addBenefitsItem(BenefitType benefitsItem) {
-    if (this.benefits == null) {
-      this.benefits = new ArrayList<BenefitType>();
-    }
     this.benefits.add(benefitsItem);
     return this;
   }
 
-  /**
+   /**
    * Beneficios asociados a la Billing Offer del Plan
    * @return benefits
   **/
   @ApiModelProperty(value = "Beneficios asociados a la Billing Offer del Plan")
-
-  @Valid
-
   public List<BenefitType> getBenefits() {
     return benefits;
   }
@@ -755,21 +670,15 @@ public class ComponentProdOfferPriceType   {
   }
 
   public ComponentProdOfferPriceType addAdditionalDataItem(KeyValueType additionalDataItem) {
-    if (this.additionalData == null) {
-      this.additionalData = new ArrayList<KeyValueType>();
-    }
     this.additionalData.add(additionalDataItem);
     return this;
   }
 
-  /**
+   /**
    * Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines
    * @return additionalData
   **/
   @ApiModelProperty(value = "Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines")
-
-  @Valid
-
   public List<KeyValueType> getAdditionalData() {
     return additionalData;
   }

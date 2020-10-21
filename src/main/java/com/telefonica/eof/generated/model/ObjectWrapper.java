@@ -1,25 +1,22 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.ObjectCharacteristicValueType;
+import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ObjectWrapper
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ObjectWrapper extends ProductSpecCharacteristicType  {
+public class ObjectWrapper extends ProductSpecCharacteristicType implements Serializable {
   @JsonProperty("objectCharacteristicValue")
   private ObjectCharacteristicValueType objectCharacteristicValue = null;
 
@@ -28,14 +25,11 @@ public class ObjectWrapper extends ProductSpecCharacteristicType  {
     return this;
   }
 
-  /**
+   /**
    * Value of the characteristic when valueType is object
    * @return objectCharacteristicValue
   **/
   @ApiModelProperty(value = "Value of the characteristic when valueType is object")
-
-  @Valid
-
   public ObjectCharacteristicValueType getObjectCharacteristicValue() {
     return objectCharacteristicValue;
   }

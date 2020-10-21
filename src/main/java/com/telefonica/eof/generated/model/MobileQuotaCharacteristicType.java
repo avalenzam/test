@@ -1,40 +1,32 @@
 package com.telefonica.eof.generated.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.telefonica.eof.generated.model.MobileQuotaCharacteristicTypeDataQuota;
+import com.telefonica.eof.generated.model.MobileQuotaCharacteristicTypeSmsQuota;
+import com.telefonica.eof.generated.model.MobileQuotaCharacteristicTypeVoiceQuota;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Information for mobile type products, providing details on available data, voice and sms quota
  */
 @ApiModel(description = "Information for mobile type products, providing details on available data, voice and sms quota")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class MobileQuotaCharacteristicType   {
+public class MobileQuotaCharacteristicType  implements Serializable {
   @JsonProperty("voiceQuota")
-  @Valid
-  private List<MobileQuotaCharacteristicTypeVoiceQuota> voiceQuota = null;
+  private List<MobileQuotaCharacteristicTypeVoiceQuota> voiceQuota = new ArrayList<MobileQuotaCharacteristicTypeVoiceQuota>();
 
   @JsonProperty("dataQuota")
-  @Valid
-  private List<MobileQuotaCharacteristicTypeDataQuota> dataQuota = null;
+  private List<MobileQuotaCharacteristicTypeDataQuota> dataQuota = new ArrayList<MobileQuotaCharacteristicTypeDataQuota>();
 
   @JsonProperty("smsQuota")
-  @Valid
-  private List<MobileQuotaCharacteristicTypeSmsQuota> smsQuota = null;
+  private List<MobileQuotaCharacteristicTypeSmsQuota> smsQuota = new ArrayList<MobileQuotaCharacteristicTypeSmsQuota>();
 
   public MobileQuotaCharacteristicType voiceQuota(List<MobileQuotaCharacteristicTypeVoiceQuota> voiceQuota) {
     this.voiceQuota = voiceQuota;
@@ -42,21 +34,15 @@ public class MobileQuotaCharacteristicType   {
   }
 
   public MobileQuotaCharacteristicType addVoiceQuotaItem(MobileQuotaCharacteristicTypeVoiceQuota voiceQuotaItem) {
-    if (this.voiceQuota == null) {
-      this.voiceQuota = new ArrayList<MobileQuotaCharacteristicTypeVoiceQuota>();
-    }
     this.voiceQuota.add(voiceQuotaItem);
     return this;
   }
 
-  /**
+   /**
    * Get voiceQuota
    * @return voiceQuota
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
-
   public List<MobileQuotaCharacteristicTypeVoiceQuota> getVoiceQuota() {
     return voiceQuota;
   }
@@ -71,21 +57,15 @@ public class MobileQuotaCharacteristicType   {
   }
 
   public MobileQuotaCharacteristicType addDataQuotaItem(MobileQuotaCharacteristicTypeDataQuota dataQuotaItem) {
-    if (this.dataQuota == null) {
-      this.dataQuota = new ArrayList<MobileQuotaCharacteristicTypeDataQuota>();
-    }
     this.dataQuota.add(dataQuotaItem);
     return this;
   }
 
-  /**
+   /**
    * Get dataQuota
    * @return dataQuota
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
-
   public List<MobileQuotaCharacteristicTypeDataQuota> getDataQuota() {
     return dataQuota;
   }
@@ -100,21 +80,15 @@ public class MobileQuotaCharacteristicType   {
   }
 
   public MobileQuotaCharacteristicType addSmsQuotaItem(MobileQuotaCharacteristicTypeSmsQuota smsQuotaItem) {
-    if (this.smsQuota == null) {
-      this.smsQuota = new ArrayList<MobileQuotaCharacteristicTypeSmsQuota>();
-    }
     this.smsQuota.add(smsQuotaItem);
     return this;
   }
 
-  /**
+   /**
    * Get smsQuota
    * @return smsQuota
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
-
   public List<MobileQuotaCharacteristicTypeSmsQuota> getSmsQuota() {
     return smsQuota;
   }

@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- totalResultsInCategory: Field totalResultsInCategory
  * 			
  * 
- * <p>Java class for PagingInfoOutputType complex type.
+ * <p>Clase Java para PagingInfoOutputType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="PagingInfoOutputType"&gt;
@@ -58,7 +58,7 @@ public class PagingInfoOutputType {
     protected BigDecimal totalResultsInCategory;
 
     /**
-     * Gets the value of the itemsPerCategory property.
+     * Obtiene el valor de la propiedad itemsPerCategory.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Sets the value of the itemsPerCategory property.
+     * Define el valor de la propiedad itemsPerCategory.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Gets the value of the itemsPerPage property.
+     * Obtiene el valor de la propiedad itemsPerPage.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Sets the value of the itemsPerPage property.
+     * Define el valor de la propiedad itemsPerPage.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Gets the value of the startIndex property.
+     * Obtiene el valor de la propiedad startIndex.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Sets the value of the startIndex property.
+     * Define el valor de la propiedad startIndex.
      * 
      * @param value
      *     allowed object is
@@ -130,7 +130,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Gets the value of the hasMore property.
+     * Obtiene el valor de la propiedad hasMore.
      * 
      */
     public boolean isHasMore() {
@@ -138,7 +138,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Sets the value of the hasMore property.
+     * Define el valor de la propiedad hasMore.
      * 
      */
     public void setHasMore(boolean value) {
@@ -146,7 +146,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Gets the value of the totalResultsInCategory property.
+     * Obtiene el valor de la propiedad totalResultsInCategory.
      * 
      * @return
      *     possible object is
@@ -158,7 +158,7 @@ public class PagingInfoOutputType {
     }
 
     /**
-     * Sets the value of the totalResultsInCategory property.
+     * Define el valor de la propiedad totalResultsInCategory.
      * 
      * @param value
      *     allowed object is

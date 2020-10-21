@@ -1,30 +1,26 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
+import com.telefonica.eof.generated.model.ProductSpecCharacteristicValueType;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * StringWrapper
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class StringWrapper extends ProductSpecCharacteristicType  {
+public class StringWrapper extends ProductSpecCharacteristicType implements Serializable {
   @JsonProperty("productSpecCharacteristicValue")
-  @Valid
-  private List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue = null;
+  private List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue = new ArrayList<ProductSpecCharacteristicValueType>();
 
   public StringWrapper productSpecCharacteristicValue(List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue) {
     this.productSpecCharacteristicValue = productSpecCharacteristicValue;
@@ -32,21 +28,15 @@ public class StringWrapper extends ProductSpecCharacteristicType  {
   }
 
   public StringWrapper addProductSpecCharacteristicValueItem(ProductSpecCharacteristicValueType productSpecCharacteristicValueItem) {
-    if (this.productSpecCharacteristicValue == null) {
-      this.productSpecCharacteristicValue = new ArrayList<ProductSpecCharacteristicValueType>();
-    }
     this.productSpecCharacteristicValue.add(productSpecCharacteristicValueItem);
     return this;
   }
 
-  /**
+   /**
    * List of values that could be configured for a given characteristic when valueType is different from object
    * @return productSpecCharacteristicValue
   **/
   @ApiModelProperty(value = "List of values that could be configured for a given characteristic when valueType is different from object")
-
-  @Valid
-
   public List<ProductSpecCharacteristicValueType> getProductSpecCharacteristicValue() {
     return productSpecCharacteristicValue;
   }

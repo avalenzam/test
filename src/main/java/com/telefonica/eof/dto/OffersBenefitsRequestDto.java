@@ -1,7 +1,8 @@
 package com.telefonica.eof.dto;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+
+import org.joda.time.DateTime;
 
 import com.telefonica.eof.pojo.Broadband;
 import com.telefonica.eof.pojo.PaginationInfo;
@@ -27,6 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OffersBenefitsRequestDto {
     
+    private String type;
     private String correlationId;
     private String name;
     private Boolean isBundle;
@@ -43,8 +45,8 @@ public class OffersBenefitsRequestDto {
     private String customerId;
     private String accountId;
     private Product product;
-    private OffsetDateTime startDate;
-    private OffsetDateTime endDate;
+    private DateTime startDate;
+    private DateTime endDate;
     private String limit;
     private String offset;
     private ProductOfferingPrice productOfferingPrice;

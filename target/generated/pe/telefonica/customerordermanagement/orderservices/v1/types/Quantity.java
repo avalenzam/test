@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Quantity complex type.
+ * <p>Clase Java para Quantity complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Quantity"&gt;
@@ -34,7 +34,7 @@ public class Quantity {
     protected double amountDouble;
 
     /**
-     * Gets the value of the amountDouble property.
+     * Obtiene el valor de la propiedad amountDouble.
      * 
      */
     public double getAmountDouble() {
@@ -42,7 +42,7 @@ public class Quantity {
     }
 
     /**
-     * Sets the value of the amountDouble property.
+     * Define el valor de la propiedad amountDouble.
      * 
      */
     public void setAmountDouble(double value) {

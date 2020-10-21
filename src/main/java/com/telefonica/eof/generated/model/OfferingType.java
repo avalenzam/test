@@ -1,30 +1,32 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.BenefitType;
+import com.telefonica.eof.generated.model.CategoryTreeType;
+import com.telefonica.eof.generated.model.ChannelInfoType;
+import com.telefonica.eof.generated.model.ComponentProdOfferPriceType;
+import com.telefonica.eof.generated.model.ComposingOfferingType;
+import com.telefonica.eof.generated.model.ComposingProductType;
+import com.telefonica.eof.generated.model.KeyValueType;
+import com.telefonica.eof.generated.model.PenaltyType;
+import com.telefonica.eof.generated.model.ProductInstanceRefType;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import com.telefonica.eof.generated.model.UpFrontType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * OfferingType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class OfferingType   {
+public class OfferingType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -87,8 +89,7 @@ public class OfferingType   {
   private String productOfferingProductSpecID = null;
 
   @JsonProperty("category")
-  @Valid
-  private List<CategoryTreeType> category = null;
+  private List<CategoryTreeType> category = new ArrayList<CategoryTreeType>();
 
   @JsonProperty("isPromotion")
   private Boolean isPromotion = null;
@@ -132,8 +133,7 @@ public class OfferingType   {
   private BillingMethodEnum billingMethod = null;
 
   @JsonProperty("channel")
-  @Valid
-  private List<ChannelInfoType> channel = null;
+  private List<ChannelInfoType> channel = new ArrayList<ChannelInfoType>();
 
   @JsonProperty("frameworkAgreement")
   private String frameworkAgreement = null;
@@ -142,8 +142,7 @@ public class OfferingType   {
   private String customerId = null;
 
   @JsonProperty("compatibleProducts")
-  @Valid
-  private List<ProductInstanceRefType> compatibleProducts = null;
+  private List<ProductInstanceRefType> compatibleProducts = new ArrayList<ProductInstanceRefType>();
 
   @JsonProperty("isBundle")
   private Boolean isBundle = null;
@@ -155,19 +154,16 @@ public class OfferingType   {
   private TimePeriodType validFor = null;
 
   @JsonProperty("bundledProductOffering")
-  @Valid
-  private List<ComposingOfferingType> bundledProductOffering = null;
+  private List<ComposingOfferingType> bundledProductOffering = new ArrayList<ComposingOfferingType>();
 
   @JsonProperty("productSpecification")
-  @Valid
-  private List<ComposingProductType> productSpecification = null;
+  private List<ComposingProductType> productSpecification = new ArrayList<ComposingProductType>();
 
   @JsonProperty("isDowngrade")
   private Boolean isDowngrade = null;
 
   @JsonProperty("productOfferingPrice")
-  @Valid
-  private List<ComponentProdOfferPriceType> productOfferingPrice = null;
+  private List<ComponentProdOfferPriceType> productOfferingPrice = new ArrayList<ComponentProdOfferPriceType>();
 
   /**
    * Status of the offering within the catalog
@@ -206,33 +202,28 @@ public class OfferingType   {
   private LifeCycleStatusEnum lifeCycleStatus = null;
 
   @JsonProperty("offeringPenalties")
-  @Valid
-  private List<PenaltyType> offeringPenalties = null;
+  private List<PenaltyType> offeringPenalties = new ArrayList<PenaltyType>();
 
   @JsonProperty("upFront")
   private UpFrontType upFront = null;
 
   @JsonProperty("benefits")
-  @Valid
-  private List<BenefitType> benefits = null;
+  private List<BenefitType> benefits = new ArrayList<BenefitType>();
 
   @JsonProperty("additionalData")
-  @Valid
-  private List<KeyValueType> additionalData = null;
+  private List<KeyValueType> additionalData = new ArrayList<KeyValueType>();
 
   public OfferingType id(String id) {
     this.id = id;
     return this;
   }
 
-  /**
+   /**
    * Unique Identifier within the server for the offering reported
    * @return id
   **/
   @ApiModelProperty(required = true, value = "Unique Identifier within the server for the offering reported")
   @NotNull
-
-
   public String getId() {
     return id;
   }
@@ -246,13 +237,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Code of Offer reported
    * @return code
   **/
   @ApiModelProperty(value = "Code of Offer reported")
-
-
   public String getCode() {
     return code;
   }
@@ -266,13 +255,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Represents the Catalog item type.
    * @return catalogItemType
   **/
   @ApiModelProperty(value = "Represents the Catalog item type.")
-
-
   public String getCatalogItemType() {
     return catalogItemType;
   }
@@ -286,14 +273,12 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * A resource URI pointing to the resource in the OB that stores the detailed information of the offering
    * @return href
   **/
   @ApiModelProperty(required = true, value = "A resource URI pointing to the resource in the OB that stores the detailed information of the offering")
   @NotNull
-
-
   public String getHref() {
     return href;
   }
@@ -307,13 +292,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Unique identifier for the offering within the client, used to synchronize and map internal identifiers between server and client
    * @return correlationId
   **/
   @ApiModelProperty(value = "Unique identifier for the offering within the client, used to synchronize and map internal identifiers between server and client")
-
-
   public String getCorrelationId() {
     return correlationId;
   }
@@ -327,14 +310,12 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable offering name
    * @return name
   **/
   @ApiModelProperty(required = true, value = "A human readable offering name")
   @NotNull
-
-
   public String getName() {
     return name;
   }
@@ -348,13 +329,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable offering short description
    * @return description
   **/
   @ApiModelProperty(value = "A human readable offering short description")
-
-
   public String getDescription() {
     return description;
   }
@@ -368,13 +347,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Indica el tipo de oferta a obtener  Puede tomar dos valores: elegibles ,  sugeridas
    * @return type
   **/
   @ApiModelProperty(value = "Indica el tipo de oferta a obtener  Puede tomar dos valores: elegibles ,  sugeridas")
-
-
   public TypeEnum getType() {
     return type;
   }
@@ -388,13 +365,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Id del plan actual de la billing offer
    * @return currentPlanRelationID
   **/
   @ApiModelProperty(value = "Id del plan actual de la billing offer")
-
-
   public String getCurrentPlanRelationID() {
     return currentPlanRelationID;
   }
@@ -408,13 +383,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Identificador de la relación entre el producto    en sí (como WirelessMain) y sus especificaciones    de producto (como Wireless).
    * @return productOfferingProductSpecID
   **/
   @ApiModelProperty(value = "Identificador de la relación entre el producto    en sí (como WirelessMain) y sus especificaciones    de producto (como Wireless).")
-
-
   public String getProductOfferingProductSpecID() {
     return productOfferingProductSpecID;
   }
@@ -429,21 +402,15 @@ public class OfferingType   {
   }
 
   public OfferingType addCategoryItem(CategoryTreeType categoryItem) {
-    if (this.category == null) {
-      this.category = new ArrayList<CategoryTreeType>();
-    }
     this.category.add(categoryItem);
     return this;
   }
 
-  /**
+   /**
    * List of categories/subcategories allocated to the offering, intended to allow segmentation A product offering may belong to more than one category/subcategory. Each service may define its own categories and levels in the tree
    * @return category
   **/
   @ApiModelProperty(value = "List of categories/subcategories allocated to the offering, intended to allow segmentation A product offering may belong to more than one category/subcategory. Each service may define its own categories and levels in the tree")
-
-  @Valid
-
   public List<CategoryTreeType> getCategory() {
     return category;
   }
@@ -457,14 +424,12 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates if the offering is a promotion
    * @return isPromotion
   **/
   @ApiModelProperty(value = "Indicates if the offering is a promotion")
-
-
-  public Boolean isIsPromotion() {
+  public Boolean getIsPromotion() {
     return isPromotion;
   }
 
@@ -477,13 +442,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * How this offered product is billed
    * @return billingMethod
   **/
   @ApiModelProperty(value = "How this offered product is billed")
-
-
   public BillingMethodEnum getBillingMethod() {
     return billingMethod;
   }
@@ -498,21 +461,15 @@ public class OfferingType   {
   }
 
   public OfferingType addChannelItem(ChannelInfoType channelItem) {
-    if (this.channel == null) {
-      this.channel = new ArrayList<ChannelInfoType>();
-    }
     this.channel.add(channelItem);
     return this;
   }
 
-  /**
+   /**
    * Defines the channels that can be used for selling the product offering
    * @return channel
   **/
   @ApiModelProperty(value = "Defines the channels that can be used for selling the product offering")
-
-  @Valid
-
   public List<ChannelInfoType> getChannel() {
     return channel;
   }
@@ -526,13 +483,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Unique identifier of the framework agreement associated to the offering
    * @return frameworkAgreement
   **/
   @ApiModelProperty(value = "Unique identifier of the framework agreement associated to the offering")
-
-
   public String getFrameworkAgreement() {
     return frameworkAgreement;
   }
@@ -546,13 +501,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Unique Identifier for the customer that is the specific target to the offering
    * @return customerId
   **/
   @ApiModelProperty(value = "Unique Identifier for the customer that is the specific target to the offering")
-
-
   public String getCustomerId() {
     return customerId;
   }
@@ -567,21 +520,15 @@ public class OfferingType   {
   }
 
   public OfferingType addCompatibleProductsItem(ProductInstanceRefType compatibleProductsItem) {
-    if (this.compatibleProducts == null) {
-      this.compatibleProducts = new ArrayList<ProductInstanceRefType>();
-    }
     this.compatibleProducts.add(compatibleProductsItem);
     return this;
   }
 
-  /**
+   /**
    * Indication of an existing product already acquired by the customer that is compatible with the offering
    * @return compatibleProducts
   **/
   @ApiModelProperty(value = "Indication of an existing product already acquired by the customer that is compatible with the offering")
-
-  @Valid
-
   public List<ProductInstanceRefType> getCompatibleProducts() {
     return compatibleProducts;
   }
@@ -595,15 +542,13 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates if the offering is a bundle of other offerings (true) or it is a single offering for a bundle of multiple products (false)
    * @return isBundle
   **/
   @ApiModelProperty(required = true, value = "Indicates if the offering is a bundle of other offerings (true) or it is a single offering for a bundle of multiple products (false)")
   @NotNull
-
-
-  public Boolean isIsBundle() {
+  public Boolean getIsBundle() {
     return isBundle;
   }
 
@@ -616,13 +561,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * A URL that can provide additional information of the offer (e.g.: weblink with a downloadable description brochure)
    * @return offeringUrl
   **/
   @ApiModelProperty(value = "A URL that can provide additional information of the offer (e.g.: weblink with a downloadable description brochure)")
-
-
   public String getOfferingUrl() {
     return offeringUrl;
   }
@@ -636,14 +579,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * The validity for the product in the catalog. If not enDate included in the structure then no ending date for validity is defined
    * @return validFor
   **/
   @ApiModelProperty(value = "The validity for the product in the catalog. If not enDate included in the structure then no ending date for validity is defined")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }
@@ -658,21 +598,15 @@ public class OfferingType   {
   }
 
   public OfferingType addBundledProductOfferingItem(ComposingOfferingType bundledProductOfferingItem) {
-    if (this.bundledProductOffering == null) {
-      this.bundledProductOffering = new ArrayList<ComposingOfferingType>();
-    }
     this.bundledProductOffering.add(bundledProductOfferingItem);
     return this;
   }
 
-  /**
+   /**
    * List of codes and URIs providing the resource address for the individual offerings included in the bundle offering
    * @return bundledProductOffering
   **/
   @ApiModelProperty(value = "List of codes and URIs providing the resource address for the individual offerings included in the bundle offering")
-
-  @Valid
-
   public List<ComposingOfferingType> getBundledProductOffering() {
     return bundledProductOffering;
   }
@@ -687,21 +621,15 @@ public class OfferingType   {
   }
 
   public OfferingType addProductSpecificationItem(ComposingProductType productSpecificationItem) {
-    if (this.productSpecification == null) {
-      this.productSpecification = new ArrayList<ComposingProductType>();
-    }
     this.productSpecification.add(productSpecificationItem);
     return this;
   }
 
-  /**
+   /**
    * List of codes and URIs providing the resource address for the products included in the offering. If the offer is for a single product (isBundle set to false) then the list will have one single entry
    * @return productSpecification
   **/
   @ApiModelProperty(value = "List of codes and URIs providing the resource address for the products included in the offering. If the offer is for a single product (isBundle set to false) then the list will have one single entry")
-
-  @Valid
-
   public List<ComposingProductType> getProductSpecification() {
     return productSpecification;
   }
@@ -715,14 +643,12 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * When reporting the offerings that are intended for an specific customer/account, this paremeter indicates if the offering is a downgrade of any of the existing offerings subscribed by the customer/account
    * @return isDowngrade
   **/
   @ApiModelProperty(value = "When reporting the offerings that are intended for an specific customer/account, this paremeter indicates if the offering is a downgrade of any of the existing offerings subscribed by the customer/account")
-
-
-  public Boolean isIsDowngrade() {
+  public Boolean getIsDowngrade() {
     return isDowngrade;
   }
 
@@ -736,21 +662,15 @@ public class OfferingType   {
   }
 
   public OfferingType addProductOfferingPriceItem(ComponentProdOfferPriceType productOfferingPriceItem) {
-    if (this.productOfferingPrice == null) {
-      this.productOfferingPrice = new ArrayList<ComponentProdOfferPriceType>();
-    }
     this.productOfferingPrice.add(productOfferingPriceItem);
     return this;
   }
 
-  /**
+   /**
    * List of price models available for the offering
    * @return productOfferingPrice
   **/
   @ApiModelProperty(value = "List of price models available for the offering")
-
-  @Valid
-
   public List<ComponentProdOfferPriceType> getProductOfferingPrice() {
     return productOfferingPrice;
   }
@@ -764,13 +684,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Status of the offering within the catalog
    * @return lifeCycleStatus
   **/
   @ApiModelProperty(value = "Status of the offering within the catalog")
-
-
   public LifeCycleStatusEnum getLifeCycleStatus() {
     return lifeCycleStatus;
   }
@@ -785,21 +703,15 @@ public class OfferingType   {
   }
 
   public OfferingType addOfferingPenaltiesItem(PenaltyType offeringPenaltiesItem) {
-    if (this.offeringPenalties == null) {
-      this.offeringPenalties = new ArrayList<PenaltyType>();
-    }
     this.offeringPenalties.add(offeringPenaltiesItem);
     return this;
   }
 
-  /**
+   /**
    * List of penalties that can be applied to the product offering
    * @return offeringPenalties
   **/
   @ApiModelProperty(value = "List of penalties that can be applied to the product offering")
-
-  @Valid
-
   public List<PenaltyType> getOfferingPenalties() {
     return offeringPenalties;
   }
@@ -813,14 +725,11 @@ public class OfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Objeto que indica si se debe cobrar por la instalación del serivicio fijo
    * @return upFront
   **/
   @ApiModelProperty(value = "Objeto que indica si se debe cobrar por la instalación del serivicio fijo")
-
-  @Valid
-
   public UpFrontType getUpFront() {
     return upFront;
   }
@@ -835,21 +744,15 @@ public class OfferingType   {
   }
 
   public OfferingType addBenefitsItem(BenefitType benefitsItem) {
-    if (this.benefits == null) {
-      this.benefits = new ArrayList<BenefitType>();
-    }
     this.benefits.add(benefitsItem);
     return this;
   }
 
-  /**
+   /**
    * Beneficios asociados a la oferta
    * @return benefits
   **/
   @ApiModelProperty(value = "Beneficios asociados a la oferta")
-
-  @Valid
-
   public List<BenefitType> getBenefits() {
     return benefits;
   }
@@ -864,21 +767,15 @@ public class OfferingType   {
   }
 
   public OfferingType addAdditionalDataItem(KeyValueType additionalDataItem) {
-    if (this.additionalData == null) {
-      this.additionalData = new ArrayList<KeyValueType>();
-    }
     this.additionalData.add(additionalDataItem);
     return this;
   }
 
-  /**
+   /**
    * Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines
    * @return additionalData
   **/
   @ApiModelProperty(value = "Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines")
-
-  @Valid
-
   public List<KeyValueType> getAdditionalData() {
     return additionalData;
   }
@@ -981,25 +878,5 @@ public class OfferingType   {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
-public String getOfferingName() {
-    // TODO Auto-generated method stub
-    return null;
-}
-
-public String getPlanName() {
-    // TODO Auto-generated method stub
-    return null;
-}
-
-public String getDisplayName() {
-    // TODO Auto-generated method stub
-    return null;
-}
-
-public String getImage() {
-    // TODO Auto-generated method stub
-    return null;
-}
 }
 

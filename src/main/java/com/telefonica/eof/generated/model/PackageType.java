@@ -1,23 +1,18 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * PackageType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class PackageType   {
+public class PackageType  implements Serializable {
   @JsonProperty("name")
   private String name = null;
 
@@ -29,13 +24,11 @@ public class PackageType   {
     return this;
   }
 
-  /**
+   /**
    * Name of the package
    * @return name
   **/
   @ApiModelProperty(value = "Name of the package")
-
-
   public String getName() {
     return name;
   }
@@ -49,13 +42,11 @@ public class PackageType   {
     return this;
   }
 
-  /**
+   /**
    * Unique package identifier
    * @return packageId
   **/
   @ApiModelProperty(value = "Unique package identifier")
-
-
   public String getPackageId() {
     return packageId;
   }

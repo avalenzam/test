@@ -1,26 +1,19 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ProductSpecificationRelationshipType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ProductSpecificationRelationshipType   {
+public class ProductSpecificationRelationshipType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -38,13 +31,11 @@ public class ProductSpecificationRelationshipType   {
     return this;
   }
 
-  /**
+   /**
    * Identifier for the product that is related to the referenced one
    * @return id
   **/
   @ApiModelProperty(value = "Identifier for the product that is related to the referenced one")
-
-
   public String getId() {
     return id;
   }
@@ -58,14 +49,12 @@ public class ProductSpecificationRelationshipType   {
     return this;
   }
 
-  /**
+   /**
    * URI providing the resource address for the other product that is related to the referenced one
    * @return href
   **/
   @ApiModelProperty(required = true, value = "URI providing the resource address for the other product that is related to the referenced one")
   @NotNull
-
-
   public String getHref() {
     return href;
   }
@@ -79,13 +68,11 @@ public class ProductSpecificationRelationshipType   {
     return this;
   }
 
-  /**
+   /**
    * A categorization of the relationship (e.g.: migration, substitution, dependency, exclusivity)
    * @return type
   **/
   @ApiModelProperty(value = "A categorization of the relationship (e.g.: migration, substitution, dependency, exclusivity)")
-
-
   public String getType() {
     return type;
   }
@@ -99,14 +86,11 @@ public class ProductSpecificationRelationshipType   {
     return this;
   }
 
-  /**
+   /**
    * The period for which the relationship is applicable
    * @return validFor
   **/
   @ApiModelProperty(value = "The period for which the relationship is applicable")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }

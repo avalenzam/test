@@ -1,25 +1,19 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ProductInstanceRefType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ProductInstanceRefType   {
+public class ProductInstanceRefType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -98,13 +92,11 @@ public class ProductInstanceRefType   {
     return this;
   }
 
-  /**
+   /**
    * Unique Identifier within the server (product inventory) for the product instance that is associated to an account
    * @return id
   **/
   @ApiModelProperty(value = "Unique Identifier within the server (product inventory) for the product instance that is associated to an account")
-
-
   public String getId() {
     return id;
   }
@@ -118,13 +110,11 @@ public class ProductInstanceRefType   {
     return this;
   }
 
-  /**
+   /**
    * A resource URI pointing to the resource in the OB that stores the product instance detailed information (e.g.: /productinventory/v1/products/{productId})
    * @return href
   **/
   @ApiModelProperty(value = "A resource URI pointing to the resource in the OB that stores the product instance detailed information (e.g.: /productinventory/v1/products/{productId})")
-
-
   public String getHref() {
     return href;
   }
@@ -138,13 +128,11 @@ public class ProductInstanceRefType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable product name
    * @return name
   **/
   @ApiModelProperty(value = "A human readable product name")
-
-
   public String getName() {
     return name;
   }
@@ -158,13 +146,11 @@ public class ProductInstanceRefType   {
     return this;
   }
 
-  /**
+   /**
    * Public number associated to the product (e.g.: use of an msisdn to refer to a subscription to a mobileline product)
    * @return publicId
   **/
   @ApiModelProperty(value = "Public number associated to the product (e.g.: use of an msisdn to refer to a subscription to a mobileline product)")
-
-
   public String getPublicId() {
     return publicId;
   }
@@ -178,13 +164,11 @@ public class ProductInstanceRefType   {
     return this;
   }
 
-  /**
+   /**
    * Some text providing a user-friendly detailed description of the product instance
    * @return description
   **/
   @ApiModelProperty(value = "Some text providing a user-friendly detailed description of the product instance")
-
-
   public String getDescription() {
     return description;
   }
@@ -198,13 +182,11 @@ public class ProductInstanceRefType   {
     return this;
   }
 
-  /**
+   /**
    * Indication of the type of product instance registered. Supported values are implementation and application specific
    * @return productType
   **/
   @ApiModelProperty(value = "Indication of the type of product instance registered. Supported values are implementation and application specific")
-
-
   public ProductTypeEnum getProductType() {
     return productType;
   }

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Services complex type.
+ * <p>Clase Java para Services complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Services"&gt;
@@ -62,7 +62,7 @@ public class Services {
     protected ProductOfferingList billingOffersList;
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      * @param value
      *     allowed object is
@@ -86,7 +86,7 @@ public class Services {
     }
 
     /**
-     * Gets the value of the serviceStatus property.
+     * Obtiene el valor de la propiedad serviceStatus.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the serviceStatus property.
+     * Define el valor de la propiedad serviceStatus.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class Services {
     }
 
     /**
-     * Gets the value of the serviceSubStatus property.
+     * Obtiene el valor de la propiedad serviceSubStatus.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the serviceSubStatus property.
+     * Define el valor de la propiedad serviceSubStatus.
      * 
      * @param value
      *     allowed object is
@@ -134,7 +134,7 @@ public class Services {
     }
 
     /**
-     * Gets the value of the serviceCatalog property.
+     * Obtiene el valor de la propiedad serviceCatalog.
      * 
      * @return
      *     possible object is
@@ -146,7 +146,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the serviceCatalog property.
+     * Define el valor de la propiedad serviceCatalog.
      * 
      * @param value
      *     allowed object is
@@ -158,7 +158,7 @@ public class Services {
     }
 
     /**
-     * Gets the value of the attributesList property.
+     * Obtiene el valor de la propiedad attributesList.
      * 
      * @return
      *     possible object is
@@ -170,7 +170,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the attributesList property.
+     * Define el valor de la propiedad attributesList.
      * 
      * @param value
      *     allowed object is
@@ -182,7 +182,7 @@ public class Services {
     }
 
     /**
-     * Gets the value of the allowedActionList property.
+     * Obtiene el valor de la propiedad allowedActionList.
      * 
      * @return
      *     possible object is
@@ -194,7 +194,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the allowedActionList property.
+     * Define el valor de la propiedad allowedActionList.
      * 
      * @param value
      *     allowed object is
@@ -206,7 +206,7 @@ public class Services {
     }
 
     /**
-     * Gets the value of the billingOffersList property.
+     * Obtiene el valor de la propiedad billingOffersList.
      * 
      * @return
      *     possible object is
@@ -218,7 +218,7 @@ public class Services {
     }
 
     /**
-     * Sets the value of the billingOffersList property.
+     * Define el valor de la propiedad billingOffersList.
      * 
      * @param value
      *     allowed object is

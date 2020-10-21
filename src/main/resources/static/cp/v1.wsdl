@@ -1,0 +1,738 @@
+<WL5G3N0:definitions
+	xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:WL5G3N1="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/types"
+	xmlns:WL5G3N2="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1"
+	xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/"
+	name="IdentityManager"
+	targetNamespace="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1">
+	<WL5G3N0:types>
+		<xsd:schema
+			xmlns:ns="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/types"
+			xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import
+				namespace="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/types"
+				schemaLocation="http://10.4.65.142:8311/CustomerOrderManagement/OrderServices/V1?SCHEMA%2FOrderServices%2FXSD%2FOrderServiceLocalPe_v001" />
+		</xsd:schema>
+	</WL5G3N0:types>
+	<WL5G3N0:message
+		name="updateFriendsAndFamilyNumbersRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:UpdateFriendsAndFamilyNumbersRequest"
+			name="UpdateFriendsAndFamilyNumbersRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="updateFriendsAndFamilyNumbersResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:UpdateFriendsAndFamilyNumbersResponse"
+			name="UpdateFriendsAndFamilyNumbersResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="updateFriendsAndFamilyNumbersFault">
+		<WL5G3N0:part
+			element="WL5G3N1:UpdateFriendsAndFamilyNumbersFault"
+			name="UpdateFriendsAndFamilyNumbersFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveServiceByMaskRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveServiceByMaskRequest"
+			name="RetrieveServiceByMaskRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveServiceByMaskResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveServiceByMaskResponse"
+			name="RetrieveServiceByMaskResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveServiceByMaskFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveServiceByMaskFault"
+			name="RetrieveServiceByMaskFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="updateSingleConfigurationOnProductRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:UpdateSingleConfigurationOnProductRequest"
+			name="UpdateSingleConfigurationOnProductRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="updateSingleConfigurationOnProductResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:UpdateSingleConfigurationOnProductResponse"
+			name="UpdateSingleConfigurationOnProductResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="updateSingleConfigurationOnProductFault">
+		<WL5G3N0:part
+			element="WL5G3N1:UpdateSingleConfigurationOnProductFault"
+			name="UpdateSingleConfigurationOnProductFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveFriendsAndFamilyNumbersRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveFriendsAndFamilyNumbersRequest"
+			name="RetrieveFriendsAndFamilyNumbersRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveFriendsAndFamilyNumbersResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveFriendsAndFamilyNumbersResponse"
+			name="RetrieveFriendsAndFamilyNumbersResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveFriendsAndFamilyNumbersFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveFriendsAndFamilyNumbersFault"
+			name="RetrieveFriendsAndFamilyNumbersFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveProductHeaderRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveProductHeaderRequest"
+			name="RetrieveProductHeaderRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveProductHeaderResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveProductHeaderResponse"
+			name="RetrieveProductHeaderResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveProductHeaderFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveProductHeaderFault"
+			name="RetrieveProductHeaderFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveExternalStockUnitRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveExternalStockUnitRequest"
+			name="RetrieveExternalStockUnitRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveExternalStockUnitResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveExternalStockUnitResponse"
+			name="RetrieveExternalStockUnitResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveExternalStockUnitFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveExternalStockUnitFault"
+			name="RetrieveExternalStockUnitFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveProductOrderStatusRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveProductOrderStatusRequest"
+			name="RetrieveProductOrderStatusRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveProductOrderStatusResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveProductOrderStatusResponse"
+			name="RetrieveProductOrderStatusResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveProductOrderStatusFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveProductOrderStatusFault"
+			name="RetrieveProductOrderStatusFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="querySubscriptionGroupValueRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:QuerySubscriptionGroupValueRequest"
+			name="QuerySubscriptionGroupValueRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="querySubscriptionGroupValueResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:QuerySubscriptionGroupValueResponse"
+			name="QuerySubscriptionGroupValueResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="querySubscriptionGroupValueFault">
+		<WL5G3N0:part
+			element="WL5G3N1:QuerySubscriptionGroupValueFault"
+			name="QuerySubscriptionGroupValueFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="changeProductStatusRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:ChangeProductStatusRequest"
+			name="ChangeProductStatusRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="changeProductStatusResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:ChangeProductStatusResponse"
+			name="ChangeProductStatusResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="changeProductStatusFault">
+		<WL5G3N0:part element="WL5G3N1:ChangeProductStatusFault"
+			name="ChangeProductStatusFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="locateSubscriptionRequest">
+		<WL5G3N0:part element="WL5G3N1:LocateSubscriptionRequest"
+			name="LocateSubscriptionRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="locateSubscriptionResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:LocateSubscriptionResponse"
+			name="LocateSubscriptionResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="locateSubscriptionFault">
+		<WL5G3N0:part element="WL5G3N1:LocateSubscriptionFault"
+			name="LocateSubscriptionFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="requestSVAActivationRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RequestSVAActivationRequest"
+			name="RequestSVAActivationRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="requestSVAActivationResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RequestSVAActivationResponse"
+			name="RequestSVAActivationResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="requestSVAActivationFault">
+		<WL5G3N0:part element="WL5G3N1:RequestSVAActivationFault"
+			name="RequestSVAActivationFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="requestSVADeactivationRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RequestSVADeactivationRequest"
+			name="RequestSVADeactivationRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="requestSVADeactivationResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RequestSVADeactivationResponse"
+			name="RequestSVADeactivationResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="requestSVADeactivationFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RequestSVADeactivationFault"
+			name="RequestSVADeactivationFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveOrdersHistoryRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveOrdersHistoryRequest"
+			name="retrieveOrdersHistoryRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveOrdersHistoryResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveOrdersHistoryResponse"
+			name="retrieveOrdersHistoryResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveOrdersHistoryFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveOrdersHistoryFault"
+			name="RetrieveOrdersHistoryFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="changeFunPackRequest">
+		<WL5G3N0:part element="WL5G3N1:ChangeFunPackRequest"
+			name="ChangeFunPackRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="changeFunPackResponse">
+		<WL5G3N0:part element="WL5G3N1:ChangeFunPackResponse"
+			name="ChangeFunPackResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="changeFunPackFault">
+		<WL5G3N0:part element="WL5G3N1:ChangeFunPackFault"
+			name="ChangeFunPackFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="createTokenFnFRequest">
+		<WL5G3N0:part element="WL5G3N1:CreateTokenFnFRequest"
+			name="CreateTokenFnFRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="createTokenFnFResponse">
+		<WL5G3N0:part element="WL5G3N1:CreateTokenFnFResponse"
+			name="CreateTokenFnFResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="createTokenFnFFault">
+		<WL5G3N0:part element="WL5G3N1:CreateTokenFnFFault"
+			name="CreateTokenFnFFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="validateTokenFnFRequest">
+		<WL5G3N0:part element="WL5G3N1:ValidateTokenFnFRequest"
+			name="ValidateTokenFnFRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="validateTokenFnFResponse">
+		<WL5G3N0:part element="WL5G3N1:ValidateTokenFnFResponse"
+			name="ValidateTokenFnFResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="validateTokenFnFFault">
+		<WL5G3N0:part element="WL5G3N1:ValidateTokenFnFFault"
+			name="ValidateTokenFnFFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveCommitmentPenaltyRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveCommitmentPenaltyRequest"
+			name="RetrieveCommitmentPenaltyRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message
+		name="retrieveCommitmentPenaltyResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveCommitmentPenaltyResponse"
+			name="RetrieveCommitmentPenaltyResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="retrieveCommitmentPenaltyFault">
+		<WL5G3N0:part
+			element="WL5G3N1:RetrieveCommitmentPenaltyFault"
+			name="RetrieveCommitmentPenaltyFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="addOrRemoveBillingOfferRequest">
+		<WL5G3N0:part
+			element="WL5G3N1:AddOrRemoveBillingOfferRequest"
+			name="AddOrRemoveBillingOfferRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="addOrRemoveBillingOfferResponse">
+		<WL5G3N0:part
+			element="WL5G3N1:AddOrRemoveBillingOfferResponse"
+			name="AddOrRemoveBillingOfferResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="addOrRemoveBillingOfferFault">
+		<WL5G3N0:part
+			element="WL5G3N1:AddOrRemoveBillingOfferFault"
+			name="AddOrRemoveBillingOfferFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="modifyServiceRequest">
+		<WL5G3N0:part element="WL5G3N1:ModifyServiceRequest"
+			name="ModifyServiceRequest" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="modifyServiceResponse">
+		<WL5G3N0:part element="WL5G3N1:ModifyServiceResponse"
+			name="ModifyServiceResponse" />
+	</WL5G3N0:message>
+	<WL5G3N0:message name="modifyServiceFault">
+		<WL5G3N0:part element="WL5G3N1:ModifyServiceFault"
+			name="ModifyServiceFault" />
+	</WL5G3N0:message>
+	<WL5G3N0:portType name="orderServicesPortType">
+		<WL5G3N0:operation
+			name="updateFriendsAndFamilyNumbers">
+			<WL5G3N0:input
+				message="WL5G3N2:updateFriendsAndFamilyNumbersRequest" name="input1" />
+			<WL5G3N0:output
+				message="WL5G3N2:updateFriendsAndFamilyNumbersResponse"
+				name="output1" />
+			<WL5G3N0:fault
+				message="WL5G3N2:updateFriendsAndFamilyNumbersFault" name="fault1" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveServiceByMask">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveServiceByMaskRequest" name="input2" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveServiceByMaskResponse" name="output2" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveServiceByMaskFault" name="fault2" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation
+			name="updateSingleConfigurationOnProduct">
+			<WL5G3N0:input
+				message="WL5G3N2:updateSingleConfigurationOnProductRequest"
+				name="input3" />
+			<WL5G3N0:output
+				message="WL5G3N2:updateSingleConfigurationOnProductResponse"
+				name="output3" />
+			<WL5G3N0:fault
+				message="WL5G3N2:updateSingleConfigurationOnProductFault"
+				name="fault3" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation
+			name="retrieveFriendsAndFamilyNumbers">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveFriendsAndFamilyNumbersRequest"
+				name="input4" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveFriendsAndFamilyNumbersResponse"
+				name="output4" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveFriendsAndFamilyNumbersFault" name="fault4" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveProductHeader">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveProductHeaderRequest" name="input5" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveProductHeaderResponse" name="output5" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveProductHeaderFault" name="fault5" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveExternalStockUnit">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveExternalStockUnitRequest" name="input6" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveExternalStockUnitResponse" name="output6" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveExternalStockUnitFault" name="fault6" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveProductOrderStatus">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveProductOrderStatusRequest" name="input7" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveProductOrderStatusResponse" name="output7" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveProductOrderStatusFault" name="fault7" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation
+			name="querySubscriptionGroupValue">
+			<WL5G3N0:input
+				message="WL5G3N2:querySubscriptionGroupValueRequest" name="input8" />
+			<WL5G3N0:output
+				message="WL5G3N2:querySubscriptionGroupValueResponse" name="output8" />
+			<WL5G3N0:fault
+				message="WL5G3N2:querySubscriptionGroupValueFault" name="fault8" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="changeProductStatus">
+			<WL5G3N0:input
+				message="WL5G3N2:changeProductStatusRequest" name="input9" />
+			<WL5G3N0:output
+				message="WL5G3N2:changeProductStatusResponse" name="output9" />
+			<WL5G3N0:fault
+				message="WL5G3N2:changeProductStatusFault" name="fault9" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="locateSubscription">
+			<WL5G3N0:input
+				message="WL5G3N2:locateSubscriptionRequest" />
+			<WL5G3N0:output
+				message="WL5G3N2:locateSubscriptionResponse" />
+			<WL5G3N0:fault
+				message="WL5G3N2:updateFriendsAndFamilyNumbersRequest"
+				name="fault10" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="requestSVAActivation">
+			<WL5G3N0:input
+				message="WL5G3N2:requestSVAActivationRequest" name="input11" />
+			<WL5G3N0:output
+				message="WL5G3N2:requestSVAActivationResponse" name="output11" />
+			<WL5G3N0:fault
+				message="WL5G3N2:requestSVAActivationFault" name="fault11" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="requestSVADeactivation">
+			<WL5G3N0:input
+				message="WL5G3N2:requestSVADeactivationRequest" name="input12" />
+			<WL5G3N0:output
+				message="WL5G3N2:requestSVADeactivationResponse" name="output12" />
+			<WL5G3N0:fault
+				message="WL5G3N2:requestSVADeactivationFault" name="fault12" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveOrdersHistory">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveOrdersHistoryRequest" name="input13" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveOrdersHistoryResponse" name="output13" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveOrdersHistoryFault" name="fault13" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="changeFunPack">
+			<WL5G3N0:input message="WL5G3N2:changeFunPackRequest"
+				name="input14" />
+			<WL5G3N0:output
+				message="WL5G3N2:changeFunPackResponse" name="output14" />
+			<WL5G3N0:fault message="WL5G3N2:changeFunPackFault"
+				name="fault14" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="createTokenFnF">
+			<WL5G3N0:input message="WL5G3N2:createTokenFnFRequest"
+				name="input15" />
+			<WL5G3N0:output
+				message="WL5G3N2:createTokenFnFResponse" name="output15" />
+			<WL5G3N0:fault message="WL5G3N2:createTokenFnFFault"
+				name="fault15" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="validateTokenFnF">
+			<WL5G3N0:input
+				message="WL5G3N2:validateTokenFnFRequest" name="input16" />
+			<WL5G3N0:output
+				message="WL5G3N2:validateTokenFnFResponse" name="output16" />
+			<WL5G3N0:fault message="WL5G3N2:validateTokenFnFFault"
+				name="fault16" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveCommitmentPenalty">
+			<WL5G3N0:input
+				message="WL5G3N2:retrieveCommitmentPenaltyRequest" name="input17" />
+			<WL5G3N0:output
+				message="WL5G3N2:retrieveCommitmentPenaltyResponse" name="output17" />
+			<WL5G3N0:fault
+				message="WL5G3N2:retrieveCommitmentPenaltyFault" name="fault17" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="addOrRemoveBillingOffer">
+			<WL5G3N0:input
+				message="WL5G3N2:addOrRemoveBillingOfferRequest" name="input18" />
+			<WL5G3N0:output
+				message="WL5G3N2:addOrRemoveBillingOfferResponse" name="output18" />
+			<WL5G3N0:fault
+				message="WL5G3N2:addOrRemoveBillingOfferFault" name="fault18" />
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="modifyService">
+			<WL5G3N0:input message="WL5G3N2:modifyServiceRequest"
+				name="input19" />
+			<WL5G3N0:output
+				message="WL5G3N2:modifyServiceResponse" name="output19" />
+			<WL5G3N0:fault message="WL5G3N2:modifyServiceFault"
+				name="fault19" />
+		</WL5G3N0:operation>
+	</WL5G3N0:portType>
+	<WL5G3N0:binding name="orderServicesBinding"
+		type="WL5G3N2:orderServicesPortType">
+		<WL5G3N3:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<WL5G3N0:operation
+			name="updateFriendsAndFamilyNumbers">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/updateFriendsAndFamilyNumbers" />
+			<WL5G3N0:input name="input1">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output1">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault1">
+				<WL5G3N3:fault name="fault1" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveServiceByMask">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveServiceByMask" />
+			<WL5G3N0:input name="input2">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output2">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault2">
+				<WL5G3N3:fault name="fault2" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation
+			name="updateSingleConfigurationOnProduct">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/updateSingleConfigurationOnProduct" />
+			<WL5G3N0:input name="input3">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output3">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault3">
+				<WL5G3N3:fault name="fault3" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation
+			name="retrieveFriendsAndFamilyNumbers">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveFriendsAndFamilyNumbers" />
+			<WL5G3N0:input name="input4">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output4">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault4">
+				<WL5G3N3:fault name="fault4" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveProductHeader">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveProductHeader" />
+			<WL5G3N0:input name="input5">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output5">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault5">
+				<WL5G3N3:fault name="fault5" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveExternalStockUnit">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveExternalStockUnit" />
+			<WL5G3N0:input name="input6">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output6">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault6">
+				<WL5G3N3:fault name="fault6" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveProductOrderStatus">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveProductOrderStatus" />
+			<WL5G3N0:input name="input7">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output7">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault7">
+				<WL5G3N3:fault name="fault7" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation
+			name="querySubscriptionGroupValue">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/querySubscriptionGroupValue" />
+			<WL5G3N0:input name="input8">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output8">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault8">
+				<WL5G3N3:fault name="fault8" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="changeProductStatus">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/changeProductStatus" />
+			<WL5G3N0:input name="input9">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output9">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault9">
+				<WL5G3N3:fault name="fault9" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<!-- 
+		<WL5G3N0:operation name="locateSubscription">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/locateSubscription" />
+			<WL5G3N0:input name="input10">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output10">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault10">
+				<WL5G3N3:fault name="fault10" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		 -->
+		<WL5G3N0:operation name="requestSVAActivation">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/requestSVAActivation" />
+			<WL5G3N0:input name="input11">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output11">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault11">
+				<WL5G3N3:fault name="fault11" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="requestSVADeactivation">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/requestSVADeactivation" />
+			<WL5G3N0:input name="input12">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output12">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault12">
+				<WL5G3N3:fault name="fault12" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveOrdersHistory">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveOrdersHistory" />
+			<WL5G3N0:input name="input13">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output13">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault13">
+				<WL5G3N3:fault name="fault13" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="changeFunPack">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/changeFunPack" />
+			<WL5G3N0:input name="input14">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output14">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault14">
+				<WL5G3N3:fault name="fault14" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="createTokenFnF">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/createTokenFnF" />
+			<WL5G3N0:input name="input15">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output15">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault15">
+				<WL5G3N3:fault name="fault15" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="validateTokenFnF">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/validateTokenFnF" />
+			<WL5G3N0:input name="input16">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output16">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault16">
+				<WL5G3N3:fault name="fault16" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="retrieveCommitmentPenalty">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/retrieveCommitmentPenalty" />
+			<WL5G3N0:input name="input17">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output17">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault17">
+				<WL5G3N3:fault name="fault17" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="addOrRemoveBillingOffer">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/addOrRemoveBillingOffer" />
+			<WL5G3N0:input name="input18">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output18">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault18">
+				<WL5G3N3:fault name="fault18" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+		<WL5G3N0:operation name="modifyService">
+			<WL5G3N3:operation
+				soapAction="http://telefonica.pe/CustomerOrderManagement/OrderServices/V1/modifyService" />
+			<WL5G3N0:input name="input19">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:input>
+			<WL5G3N0:output name="output19">
+				<WL5G3N3:body use="literal" />
+			</WL5G3N0:output>
+			<WL5G3N0:fault name="fault19">
+				<WL5G3N3:fault name="fault19" use="literal" />
+			</WL5G3N0:fault>
+		</WL5G3N0:operation>
+	</WL5G3N0:binding>
+	<WL5G3N0:service name="OrderServicesService">
+		<WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+		<WL5G3N0:port binding="WL5G3N2:orderServicesBinding"
+			name="orderServicesPortType">
+			<WL5G3N3:address
+				location="http://10.4.65.142:8311/CustomerOrderManagement/OrderServices/V1" />
+		</WL5G3N0:port>
+	</WL5G3N0:service>
+</WL5G3N0:definitions>

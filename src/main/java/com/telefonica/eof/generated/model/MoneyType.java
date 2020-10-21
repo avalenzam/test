@@ -1,29 +1,20 @@
 package com.telefonica.eof.generated.model;
 
-import java.math.BigDecimal;
 import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.math.BigDecimal;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Representation of a monetary value
  */
 @ApiModel(description = "Representation of a monetary value")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class MoneyType   {
+public class MoneyType  implements Serializable {
   @JsonProperty("amount")
   private BigDecimal amount = null;
 
@@ -35,15 +26,12 @@ public class MoneyType   {
     return this;
   }
 
-  /**
+   /**
    * Amount of money. Notice that in the TMForum API version 14.5 this parameter is named taxIncludedAmount and is not meeting SID definition
    * @return amount
   **/
   @ApiModelProperty(required = true, value = "Amount of money. Notice that in the TMForum API version 14.5 this parameter is named taxIncludedAmount and is not meeting SID definition")
   @NotNull
-
-  @Valid
-
   public BigDecimal getAmount() {
     return amount;
   }
@@ -57,14 +45,12 @@ public class MoneyType   {
     return this;
   }
 
-  /**
+   /**
    * Definition of the currency used. It is implementation specific to define how currencies are defined, it could be defined using ISO 4217. Notice that in the TMForum API version 14.5 this parameter is named currencyCode and is not meeting SID definition
    * @return units
   **/
   @ApiModelProperty(required = true, value = "Definition of the currency used. It is implementation specific to define how currencies are defined, it could be defined using ISO 4217. Notice that in the TMForum API version 14.5 this parameter is named currencyCode and is not meeting SID definition")
   @NotNull
-
-
   public String getUnits() {
     return units;
   }

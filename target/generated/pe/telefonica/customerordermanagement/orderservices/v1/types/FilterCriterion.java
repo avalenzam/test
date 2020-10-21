@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FilterCriterion complex type.
+ * <p>Clase Java para FilterCriterion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="FilterCriterion"&gt;
@@ -100,7 +100,7 @@ public class FilterCriterion {
     protected String valueDataType;
 
     /**
-     * Gets the value of the closeParenNumber property.
+     * Obtiene el valor de la propiedad closeParenNumber.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the closeParenNumber property.
+     * Define el valor de la propiedad closeParenNumber.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the fieldname property.
+     * Obtiene el valor de la propiedad fieldname.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the fieldname property.
+     * Define el valor de la propiedad fieldname.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the isLogicalAnd property.
+     * Obtiene el valor de la propiedad isLogicalAnd.
      * 
      */
     public boolean isIsLogicalAnd() {
@@ -156,7 +156,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the isLogicalAnd property.
+     * Define el valor de la propiedad isLogicalAnd.
      * 
      */
     public void setIsLogicalAnd(boolean value) {
@@ -164,7 +164,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the openParenNumber property.
+     * Obtiene el valor de la propiedad openParenNumber.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the openParenNumber property.
+     * Define el valor de la propiedad openParenNumber.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the operator property.
+     * Obtiene el valor de la propiedad operator.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the operator property.
+     * Define el valor de la propiedad operator.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the otherValue property.
+     * Obtiene el valor de la propiedad otherValue.
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the otherValue property.
+     * Define el valor de la propiedad otherValue.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the value property.
+     * Obtiene el valor de la propiedad value.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define el valor de la propiedad value.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Gets the value of the valueDataType property.
+     * Obtiene el valor de la propiedad valueDataType.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class FilterCriterion {
     }
 
     /**
-     * Sets the value of the valueDataType property.
+     * Define el valor de la propiedad valueDataType.
      * 
      * @param value
      *     allowed object is

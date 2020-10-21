@@ -1,25 +1,20 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ProductSpecCharacteristicType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "valueType", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = BooleanWrapper.class, name = "booleanWrapper"),
@@ -31,10 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
   @JsonSubTypes.Type(value = IntegerWrapper.class, name = "integerWrapper"),
 })
 
-
-
-
-public class ProductSpecCharacteristicType   {
+public class ProductSpecCharacteristicType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -96,13 +88,11 @@ public class ProductSpecCharacteristicType   {
     return this;
   }
 
-  /**
+   /**
    * Unique identifier for the product characteristic
    * @return id
   **/
   @ApiModelProperty(value = "Unique identifier for the product characteristic")
-
-
   public String getId() {
     return id;
   }
@@ -116,14 +106,12 @@ public class ProductSpecCharacteristicType   {
     return this;
   }
 
-  /**
+   /**
    * Name of the product characteristic
    * @return name
   **/
   @ApiModelProperty(required = true, value = "Name of the product characteristic")
   @NotNull
-
-
   public String getName() {
     return name;
   }
@@ -137,13 +125,11 @@ public class ProductSpecCharacteristicType   {
     return this;
   }
 
-  /**
+   /**
    * A narrative that explains the characteristic
    * @return description
   **/
   @ApiModelProperty(value = "A narrative that explains the characteristic")
-
-
   public String getDescription() {
     return description;
   }
@@ -157,14 +143,12 @@ public class ProductSpecCharacteristicType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the kind of value that the characteristic can take
    * @return valueType
   **/
   @ApiModelProperty(required = true, value = "Indicates the kind of value that the characteristic can take")
   @NotNull
-
-
   public ValueTypeEnum getValueType() {
     return valueType;
   }
@@ -178,14 +162,11 @@ public class ProductSpecCharacteristicType   {
     return this;
   }
 
-  /**
+   /**
    * The period of time for which a characteristic is applicable
    * @return validFor
   **/
   @ApiModelProperty(value = "The period of time for which a characteristic is applicable")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }

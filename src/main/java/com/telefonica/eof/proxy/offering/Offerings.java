@@ -49,7 +49,6 @@ public class Offerings {
 	if (offersBenefitsRequestDto.getCustomerId() != null) {
 	   rort.setCustomerId(new BigDecimal(offersBenefitsRequestDto.getCustomerId())); 
 	}
-	
 
 	if (offersBenefitsRequestDto.getProduct() != null) {
 	    
@@ -60,7 +59,11 @@ public class Offerings {
 	}
 
 	rort.setProductId(Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getId()).orElse(null));
-	rort.setProductOfferingCatalogId(Arrays.asList(offersBenefitsRequestDto.getProductOfferingCatalogId()));
+	
+	String[] test = offersBenefitsRequestDto.getProductOfferingCatalogId().split(",");
+
+	rort.getProductOfferingCatalogId().addAll(Arrays.asList(test));
+	
 	rort.setProductOrderId(offersBenefitsRequestDto.getProductOrderId());
 	rort.setCatalogID(Optional.ofNullable(offersBenefitsRequestDto.getPlan()).map(x -> x.getId()).orElse(null));
 	rort.setFilterInfo(offeringsRequestParamsFill.getFilterInfo(offersBenefitsRequestDto));

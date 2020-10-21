@@ -6,7 +6,6 @@ import lombok.Data;
 public class Plan {
     
     private String id;
-    private String type;
     private String group;
     private String rankInitial;
     private String rank;

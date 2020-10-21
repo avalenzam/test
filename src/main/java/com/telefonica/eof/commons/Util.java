@@ -1,6 +1,7 @@
 package com.telefonica.eof.commons;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
@@ -14,14 +15,14 @@ import com.telefonica.eof.generated.model.ComponentProdOfferPriceType.PriceTypeE
 import com.telefonica.globalintegration.services.retrieveofferings.v1.PriceTypeProdAltType;
 
 public class Util {
-    
+
     public static String fromBoolToYN(boolean cond) {
 	return cond ? Constant.YES : Constant.NO;
     }
-    
+
     public static LocalDate parseDate(String dateString) {
 	LocalDate localDAte = null;
-	if(dateString.contains("T")) {
+	if (dateString.contains("T")) {
 	    localDAte = LocalDate.parse(Arrays.asList(dateString.split("T")).get(0));
 	}
 	return localDAte;
@@ -71,13 +72,27 @@ public class Util {
 	}
 	return null;
     }
-    
-    public static BigDecimal igvCalculator(BigDecimal amount) {
 
-	BigDecimal igv = new BigDecimal(0.18);
-	BigDecimal total = amount.multiply(igv).add(amount);
-	return total;
+    /**
+     * Agrega el IGV
+     * 
+     * @param amount
+     * @return amount con IGV
+     */
+    public static BigDecimal addIgv(BigDecimal amount) {
+
+	return amount.multiply(Constant.IGV_MULTIPLIER);
     }
 
+    /**
+     * Redondea a 2 decimales
+     * 
+     * @param value
+     * @return value con 2 decimales
+     */
+    public static BigDecimal roundValue(BigDecimal value) {
+
+	return value.setScale(2, RoundingMode.HALF_UP);
+    }
 
 }

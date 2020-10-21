@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RetrieveExternalStockUnitResponse_data_type complex type.
+ * <p>Clase Java para RetrieveExternalStockUnitResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveExternalStockUnitResponse_data_type"&gt;
@@ -44,7 +44,7 @@ public class RetrieveExternalStockUnitResponseDataType {
     protected SkuError skuError;
 
     /**
-     * Gets the value of the skuDevice property.
+     * Obtiene el valor de la propiedad skuDevice.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class RetrieveExternalStockUnitResponseDataType {
     }
 
     /**
-     * Sets the value of the skuDevice property.
+     * Define el valor de la propiedad skuDevice.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class RetrieveExternalStockUnitResponseDataType {
     }
 
     /**
-     * Gets the value of the skuSim property.
+     * Obtiene el valor de la propiedad skuSim.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class RetrieveExternalStockUnitResponseDataType {
     }
 
     /**
-     * Sets the value of the skuSim property.
+     * Define el valor de la propiedad skuSim.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class RetrieveExternalStockUnitResponseDataType {
     }
 
     /**
-     * Gets the value of the skuError property.
+     * Obtiene el valor de la propiedad skuError.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class RetrieveExternalStockUnitResponseDataType {
     }
 
     /**
-     * Sets the value of the skuError property.
+     * Define el valor de la propiedad skuError.
      * 
      * @param value
      *     allowed object is

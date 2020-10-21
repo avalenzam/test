@@ -1,23 +1,18 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * CategoryRefType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class CategoryRefType   {
+public class CategoryRefType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -32,13 +27,11 @@ public class CategoryRefType   {
     return this;
   }
 
-  /**
+   /**
    * Unique identifier of the category
    * @return id
   **/
   @ApiModelProperty(value = "Unique identifier of the category")
-
-
   public String getId() {
     return id;
   }
@@ -52,13 +45,11 @@ public class CategoryRefType   {
     return this;
   }
 
-  /**
+   /**
    * URI where to query or perform actions on the category
    * @return href
   **/
   @ApiModelProperty(value = "URI where to query or perform actions on the category")
-
-
   public String getHref() {
     return href;
   }
@@ -72,13 +63,11 @@ public class CategoryRefType   {
     return this;
   }
 
-  /**
+   /**
    * Category name
    * @return name
   **/
   @ApiModelProperty(value = "Category name")
-
-
   public String getName() {
     return name;
   }

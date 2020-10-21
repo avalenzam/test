@@ -1,30 +1,29 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.CategoryTreeType;
+import com.telefonica.eof.generated.model.ComposingProductType;
+import com.telefonica.eof.generated.model.EntityRefType;
+import com.telefonica.eof.generated.model.InfoAttachmentType;
+import com.telefonica.eof.generated.model.MoneyType;
+import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
+import com.telefonica.eof.generated.model.ProductSpecificationRelationshipType;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ProductSpecificationType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ProductSpecificationType   {
+public class ProductSpecificationType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -41,8 +40,7 @@ public class ProductSpecificationType   {
   private String description = null;
 
   @JsonProperty("category")
-  @Valid
-  private List<CategoryTreeType> category = null;
+  private List<CategoryTreeType> category = new ArrayList<CategoryTreeType>();
 
   @JsonProperty("validFor")
   private TimePeriodType validFor = null;
@@ -57,23 +55,19 @@ public class ProductSpecificationType   {
   private InfoAttachmentType attachment = null;
 
   @JsonProperty("offerings")
-  @Valid
-  private List<EntityRefType> offerings = null;
+  private List<EntityRefType> offerings = new ArrayList<EntityRefType>();
 
   @JsonProperty("isBundle")
   private Boolean isBundle = null;
 
   @JsonProperty("bundledProductSpecification")
-  @Valid
-  private List<ComposingProductType> bundledProductSpecification = null;
+  private List<ComposingProductType> bundledProductSpecification = new ArrayList<ComposingProductType>();
 
   @JsonProperty("productSpecificationRelationship")
-  @Valid
-  private List<ProductSpecificationRelationshipType> productSpecificationRelationship = null;
+  private List<ProductSpecificationRelationshipType> productSpecificationRelationship = new ArrayList<ProductSpecificationRelationshipType>();
 
   @JsonProperty("productSpecCharacteristic")
-  @Valid
-  private List<ProductSpecCharacteristicType> productSpecCharacteristic = null;
+  private List<ProductSpecCharacteristicType> productSpecCharacteristic = new ArrayList<ProductSpecCharacteristicType>();
 
   /**
    * Status to be set for the product within the catalog
@@ -112,22 +106,19 @@ public class ProductSpecificationType   {
   private LifeCycleStatusEnum lifeCycleStatus = null;
 
   @JsonProperty("additionalData")
-  @Valid
-  private List<MoneyType> additionalData = null;
+  private List<MoneyType> additionalData = new ArrayList<MoneyType>();
 
   public ProductSpecificationType id(String id) {
     this.id = id;
     return this;
   }
 
-  /**
+   /**
    * Unique Identifier within the server for the product definition reported
    * @return id
   **/
   @ApiModelProperty(required = true, value = "Unique Identifier within the server for the product definition reported")
   @NotNull
-
-
   public String getId() {
     return id;
   }
@@ -141,14 +132,12 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * A resource URI pointing to the resource in the OB that stores the product detailed information
    * @return href
   **/
   @ApiModelProperty(required = true, value = "A resource URI pointing to the resource in the OB that stores the product detailed information")
   @NotNull
-
-
   public String getHref() {
     return href;
   }
@@ -162,13 +151,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * Unique identifier for the product description within the client, used to synchronize and map internal identifiers between server and client
    * @return correlationId
   **/
   @ApiModelProperty(value = "Unique identifier for the product description within the client, used to synchronize and map internal identifiers between server and client")
-
-
   public String getCorrelationId() {
     return correlationId;
   }
@@ -182,14 +169,12 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable product name
    * @return name
   **/
   @ApiModelProperty(required = true, value = "A human readable product name")
   @NotNull
-
-
   public String getName() {
     return name;
   }
@@ -203,13 +188,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable product short description
    * @return description
   **/
   @ApiModelProperty(value = "A human readable product short description")
-
-
   public String getDescription() {
     return description;
   }
@@ -224,21 +207,15 @@ public class ProductSpecificationType   {
   }
 
   public ProductSpecificationType addCategoryItem(CategoryTreeType categoryItem) {
-    if (this.category == null) {
-      this.category = new ArrayList<CategoryTreeType>();
-    }
     this.category.add(categoryItem);
     return this;
   }
 
-  /**
+   /**
    * A class defining the type of product A product may belong to more than one class. A standard list of classes (e.g.: Video,Audio,Adult,etc) would be helpful together with the ability to extend as required. Each service may define its own classes. Therefore, only certain values for class will be allowed depending on the service
    * @return category
   **/
   @ApiModelProperty(value = "A class defining the type of product A product may belong to more than one class. A standard list of classes (e.g.: Video,Audio,Adult,etc) would be helpful together with the ability to extend as required. Each service may define its own classes. Therefore, only certain values for class will be allowed depending on the service")
-
-  @Valid
-
   public List<CategoryTreeType> getCategory() {
     return category;
   }
@@ -252,14 +229,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * The validity for the product in the catalog If not included, the current date is used as starting date and no ending date is defined. Notice that the use of this parameter may drive to inconsistencies between offering validity and product validity. The application must manage these cases
    * @return validFor
   **/
   @ApiModelProperty(value = "The validity for the product in the catalog If not included, the current date is used as starting date and no ending date is defined. Notice that the use of this parameter may drive to inconsistencies between offering validity and product validity. The application must manage these cases")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }
@@ -273,13 +247,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * Identifier for the original provider or developer for the product when provided by third parties. The manufacturer or trademark of the specification
    * @return brand
   **/
   @ApiModelProperty(value = "Identifier for the original provider or developer for the product when provided by third parties. The manufacturer or trademark of the specification")
-
-
   public String getBrand() {
     return brand;
   }
@@ -293,13 +265,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * Any commercial code string that can be used for internal accounting to uniquely identify the product. This could be different than the unique identifier assigned by server or client?s catalogs. It can be used as a merchant-supplied identifier for products provided by third parties. Notice that in the TMForum API version 14.5 this parameter is named productNumber which is not consistent with the names of the rest of attributes in the resource
    * @return number
   **/
   @ApiModelProperty(value = "Any commercial code string that can be used for internal accounting to uniquely identify the product. This could be different than the unique identifier assigned by server or client?s catalogs. It can be used as a merchant-supplied identifier for products provided by third parties. Notice that in the TMForum API version 14.5 this parameter is named productNumber which is not consistent with the names of the rest of attributes in the resource")
-
-
   public String getNumber() {
     return number;
   }
@@ -313,14 +283,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * Structure including an URL that can provide additional information of the product (e.g.: weblink with a downloadable product description brochure)
    * @return attachment
   **/
   @ApiModelProperty(value = "Structure including an URL that can provide additional information of the product (e.g.: weblink with a downloadable product description brochure)")
-
-  @Valid
-
   public InfoAttachmentType getAttachment() {
     return attachment;
   }
@@ -335,21 +302,15 @@ public class ProductSpecificationType   {
   }
 
   public ProductSpecificationType addOfferingsItem(EntityRefType offeringsItem) {
-    if (this.offerings == null) {
-      this.offerings = new ArrayList<EntityRefType>();
-    }
     this.offerings.add(offeringsItem);
     return this;
   }
 
-  /**
+   /**
    * List of URIs including the resource address for the offerings where the product is included. When empty this means that the reported product has not been included in any offering
    * @return offerings
   **/
   @ApiModelProperty(value = "List of URIs including the resource address for the offerings where the product is included. When empty this means that the reported product has not been included in any offering")
-
-  @Valid
-
   public List<EntityRefType> getOfferings() {
     return offerings;
   }
@@ -363,15 +324,13 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates if the product is a single entity (false) or if it is actually composed of subproducts itself (true)
    * @return isBundle
   **/
   @ApiModelProperty(required = true, value = "Indicates if the product is a single entity (false) or if it is actually composed of subproducts itself (true)")
   @NotNull
-
-
-  public Boolean isIsBundle() {
+  public Boolean getIsBundle() {
     return isBundle;
   }
 
@@ -385,21 +344,15 @@ public class ProductSpecificationType   {
   }
 
   public ProductSpecificationType addBundledProductSpecificationItem(ComposingProductType bundledProductSpecificationItem) {
-    if (this.bundledProductSpecification == null) {
-      this.bundledProductSpecification = new ArrayList<ComposingProductType>();
-    }
     this.bundledProductSpecification.add(bundledProductSpecificationItem);
     return this;
   }
 
-  /**
+   /**
    * List of individual product identifiers that compose the parent product. Only required if isBundle is set to TRUE
    * @return bundledProductSpecification
   **/
   @ApiModelProperty(value = "List of individual product identifiers that compose the parent product. Only required if isBundle is set to TRUE")
-
-  @Valid
-
   public List<ComposingProductType> getBundledProductSpecification() {
     return bundledProductSpecification;
   }
@@ -414,21 +367,15 @@ public class ProductSpecificationType   {
   }
 
   public ProductSpecificationType addProductSpecificationRelationshipItem(ProductSpecificationRelationshipType productSpecificationRelationshipItem) {
-    if (this.productSpecificationRelationship == null) {
-      this.productSpecificationRelationship = new ArrayList<ProductSpecificationRelationshipType>();
-    }
     this.productSpecificationRelationship.add(productSpecificationRelationshipItem);
     return this;
   }
 
-  /**
+   /**
    * List of other products that are related to the current one (e.g.: accessories or similar products that can be offered to the customer). When empty this means that there are no other products registered as related to the reported one
    * @return productSpecificationRelationship
   **/
   @ApiModelProperty(value = "List of other products that are related to the current one (e.g.: accessories or similar products that can be offered to the customer). When empty this means that there are no other products registered as related to the reported one")
-
-  @Valid
-
   public List<ProductSpecificationRelationshipType> getProductSpecificationRelationship() {
     return productSpecificationRelationship;
   }
@@ -443,21 +390,15 @@ public class ProductSpecificationType   {
   }
 
   public ProductSpecificationType addProductSpecCharacteristicItem(ProductSpecCharacteristicType productSpecCharacteristicItem) {
-    if (this.productSpecCharacteristic == null) {
-      this.productSpecCharacteristic = new ArrayList<ProductSpecCharacteristicType>();
-    }
     this.productSpecCharacteristic.add(productSpecCharacteristicItem);
     return this;
   }
 
-  /**
+   /**
    * List of specific parameters for a product that could be configured and/or charged for
    * @return productSpecCharacteristic
   **/
   @ApiModelProperty(value = "List of specific parameters for a product that could be configured and/or charged for")
-
-  @Valid
-
   public List<ProductSpecCharacteristicType> getProductSpecCharacteristic() {
     return productSpecCharacteristic;
   }
@@ -471,13 +412,11 @@ public class ProductSpecificationType   {
     return this;
   }
 
-  /**
+   /**
    * Status to be set for the product within the catalog
    * @return lifeCycleStatus
   **/
   @ApiModelProperty(value = "Status to be set for the product within the catalog")
-
-
   public LifeCycleStatusEnum getLifeCycleStatus() {
     return lifeCycleStatus;
   }
@@ -492,21 +431,15 @@ public class ProductSpecificationType   {
   }
 
   public ProductSpecificationType addAdditionalDataItem(MoneyType additionalDataItem) {
-    if (this.additionalData == null) {
-      this.additionalData = new ArrayList<MoneyType>();
-    }
     this.additionalData.add(additionalDataItem);
     return this;
   }
 
-  /**
+   /**
    * Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines
    * @return additionalData
   **/
   @ApiModelProperty(value = "Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines")
-
-  @Valid
-
   public List<MoneyType> getAdditionalData() {
     return additionalData;
   }

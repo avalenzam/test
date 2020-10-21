@@ -1,29 +1,20 @@
 package com.telefonica.eof.generated.model;
 
-import java.math.BigDecimal;
 import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.math.BigDecimal;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Representation of a quantity of something. I can also be used to represent a quantity range
  */
 @ApiModel(description = "Representation of a quantity of something. I can also be used to represent a quantity range")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class QuantityType   {
+public class QuantityType  implements Serializable {
   @JsonProperty("amount")
   private BigDecimal amount = null;
 
@@ -41,15 +32,12 @@ public class QuantityType   {
     return this;
   }
 
-  /**
+   /**
    * Measured amount
    * @return amount
   **/
   @ApiModelProperty(required = true, value = "Measured amount")
   @NotNull
-
-  @Valid
-
   public BigDecimal getAmount() {
     return amount;
   }
@@ -63,14 +51,11 @@ public class QuantityType   {
     return this;
   }
 
-  /**
+   /**
    * Maximum amount allowed
    * @return maximum
   **/
   @ApiModelProperty(value = "Maximum amount allowed")
-
-  @Valid
-
   public BigDecimal getMaximum() {
     return maximum;
   }
@@ -84,14 +69,11 @@ public class QuantityType   {
     return this;
   }
 
-  /**
+   /**
    * Minimum amount allowed
    * @return minimum
   **/
   @ApiModelProperty(value = "Minimum amount allowed")
-
-  @Valid
-
   public BigDecimal getMinimum() {
     return minimum;
   }
@@ -105,14 +87,12 @@ public class QuantityType   {
     return this;
   }
 
-  /**
+   /**
    * Units the quantity is measured in
    * @return units
   **/
   @ApiModelProperty(required = true, value = "Units the quantity is measured in")
   @NotNull
-
-
   public String getUnits() {
     return units;
   }

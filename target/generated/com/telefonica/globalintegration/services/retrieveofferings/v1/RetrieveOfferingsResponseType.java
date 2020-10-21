@@ -14,9 +14,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- categories: Synonym of CategoryList - retrieveOfferings (similar concept that SID attribute defined by 'p1:CategoryListType')
  * 			
  * 
- * <p>Java class for retrieveOfferingsResponseType complex type.
+ * <p>Clase Java para retrieveOfferingsResponseType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="retrieveOfferingsResponseType"&gt;
@@ -68,11 +68,5 @@ public class RetrieveOfferingsResponseType {
         }
         return this.categories;
     }
-
-    public void setCategories(List<CategoryListType> categories) {
-        this.categories = categories;
-    }
-    
-    
 
 }

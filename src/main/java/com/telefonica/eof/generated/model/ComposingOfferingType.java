@@ -1,23 +1,18 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ComposingOfferingType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ComposingOfferingType   {
+public class ComposingOfferingType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -50,13 +45,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Product Offering Identifier. This is the identifier that can be used to retrieve specific information for that offering
    * @return id
   **/
   @ApiModelProperty(value = "Product Offering Identifier. This is the identifier that can be used to retrieve specific information for that offering")
-
-
   public String getId() {
     return id;
   }
@@ -70,13 +63,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * A resource URI pointing to the resource in the OB that stores the detailed information for the referred product offering
    * @return href
   **/
   @ApiModelProperty(value = "A resource URI pointing to the resource in the OB that stores the detailed information for the referred product offering")
-
-
   public String getHref() {
     return href;
   }
@@ -90,13 +81,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable offering name
    * @return name
   **/
   @ApiModelProperty(value = "A human readable offering name")
-
-
   public String getName() {
     return name;
   }
@@ -110,13 +99,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Nombre del plan
    * @return planName
   **/
   @ApiModelProperty(value = "Nombre del plan")
-
-
   public String getPlanName() {
     return planName;
   }
@@ -130,13 +117,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Nombre del plan que se mostrará según el LOB
    * @return displayName
   **/
   @ApiModelProperty(value = "Nombre del plan que se mostrará según el LOB")
-
-
   public String getDisplayName() {
     return displayName;
   }
@@ -150,13 +135,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Es la URL de la imagen
    * @return image
   **/
   @ApiModelProperty(value = "Es la URL de la imagen")
-
-
   public String getImage() {
     return image;
   }
@@ -170,13 +153,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the minimum number of entities of this offering that can be included within the parent offering. If not included then value 0 will be considered
    * @return minCardinality
   **/
   @ApiModelProperty(value = "Indicates the minimum number of entities of this offering that can be included within the parent offering. If not included then value 0 will be considered")
-
-
   public Integer getMinCardinality() {
     return minCardinality;
   }
@@ -190,13 +171,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the maximum number of entities of this offering that can be included within the parent offering. If not included then no limit will be considered
    * @return maxCardinality
   **/
   @ApiModelProperty(value = "Indicates the maximum number of entities of this offering that can be included within the parent offering. If not included then no limit will be considered")
-
-
   public Integer getMaxCardinality() {
     return maxCardinality;
   }
@@ -210,13 +189,11 @@ public class ComposingOfferingType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the default number of entities of this offering that are included within the parent offering
    * @return defaultCardinality
   **/
   @ApiModelProperty(value = "Indicates the default number of entities of this offering that are included within the parent offering")
-
-
   public Integer getDefaultCardinality() {
     return defaultCardinality;
   }

@@ -1,30 +1,24 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.MoneyType;
+import com.telefonica.eof.generated.model.QuantityType;
+import com.telefonica.eof.generated.model.TimePeriodType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ProductSpecCharacteristicValueType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ProductSpecCharacteristicValueType   {
+public class ProductSpecCharacteristicValueType  implements Serializable {
   /**
    * Indicates the kind of value that is being defined for the characteristic
    */
@@ -88,21 +82,18 @@ public class ProductSpecCharacteristicValueType   {
   private TimePeriodType validFor = null;
 
   @JsonProperty("additionalData")
-  @Valid
-  private List<MoneyType> additionalData = null;
+  private List<MoneyType> additionalData = new ArrayList<MoneyType>();
 
   public ProductSpecCharacteristicValueType valueType(ValueTypeEnum valueType) {
     this.valueType = valueType;
     return this;
   }
 
-  /**
+   /**
    * Indicates the kind of value that is being defined for the characteristic
    * @return valueType
   **/
   @ApiModelProperty(value = "Indicates the kind of value that is being defined for the characteristic")
-
-
   public ValueTypeEnum getValueType() {
     return valueType;
   }
@@ -116,14 +107,11 @@ public class ProductSpecCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * Indication of the criteria to be used for the charging (e.g.: 1 call, 60 minutes, 50 GB). Notice that in the TMForum API version 14.5 this parameter is defined as a string, not meeting SID definition
    * @return unitOfMeasure
   **/
   @ApiModelProperty(value = "Indication of the criteria to be used for the charging (e.g.: 1 call, 60 minutes, 50 GB). Notice that in the TMForum API version 14.5 this parameter is defined as a string, not meeting SID definition")
-
-  @Valid
-
   public QuantityType getUnitOfMeasure() {
     return unitOfMeasure;
   }
@@ -137,14 +125,12 @@ public class ProductSpecCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates if the value is the defaulted one for the characteristic (true means it is the default value)
    * @return _default
   **/
   @ApiModelProperty(value = "Indicates if the value is the defaulted one for the characteristic (true means it is the default value)")
-
-
-  public Boolean isDefault() {
+  public Boolean getDefault() {
     return _default;
   }
 
@@ -157,14 +143,12 @@ public class ProductSpecCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * The value that the characteristic can take. For non-defaulted range values this will be one of the possible values in the range
    * @return value
   **/
   @ApiModelProperty(required = true, value = "The value that the characteristic can take. For non-defaulted range values this will be one of the possible values in the range")
   @NotNull
-
-
   public String getValue() {
     return value;
   }
@@ -178,13 +162,11 @@ public class ProductSpecCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * The lower range value that the characteristic can take on. Only required for ranged values
    * @return valueFrom
   **/
   @ApiModelProperty(value = "The lower range value that the characteristic can take on. Only required for ranged values")
-
-
   public String getValueFrom() {
     return valueFrom;
   }
@@ -198,13 +180,11 @@ public class ProductSpecCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * The upper range value that the characteristic can take on. Only required for ranged values
    * @return valueTo
   **/
   @ApiModelProperty(value = "The upper range value that the characteristic can take on. Only required for ranged values")
-
-
   public String getValueTo() {
     return valueTo;
   }
@@ -218,14 +198,11 @@ public class ProductSpecCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * The period of time for which a characteristic is applicable
    * @return validFor
   **/
   @ApiModelProperty(value = "The period of time for which a characteristic is applicable")
-
-  @Valid
-
   public TimePeriodType getValidFor() {
     return validFor;
   }
@@ -240,21 +217,15 @@ public class ProductSpecCharacteristicValueType   {
   }
 
   public ProductSpecCharacteristicValueType addAdditionalDataItem(MoneyType additionalDataItem) {
-    if (this.additionalData == null) {
-      this.additionalData = new ArrayList<MoneyType>();
-    }
     this.additionalData.add(additionalDataItem);
     return this;
   }
 
-  /**
+   /**
    * Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines
    * @return additionalData
   **/
   @ApiModelProperty(value = "Any additional metadata that may be needed to define the entity (implementation and application specific). It is recommended not to make use of this information element, this extension capability will be removed from UNICA design guidelines")
-
-  @Valid
-
   public List<MoneyType> getAdditionalData() {
     return additionalData;
   }

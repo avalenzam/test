@@ -2,8 +2,8 @@ package com.telefonica.eof.mapper;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Component;
 
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
@@ -17,14 +17,14 @@ import com.telefonica.eof.pojo.ProductOfferingPrice;
 @Component
 public class ApplicationRequestMapper {
 
-	public OffersBenefitsRequestDto fromParamstoBody(String correlationId, String name, Boolean isBundle,
+	public OffersBenefitsRequestDto fromParamstoBody(String type, String correlationId, String name, Boolean isBundle,
 			String lifeCycleStatus, String categoryId, String categoryName, String subcategoryId,
 			String subcategoryName, String channelId, String channelName, String productSpecificationId,
 			String productSpecificationName, String frameworkAgreeementId, String customerId, String accountId,
-			String productType, String productId, String productPublicId, OffsetDateTime startDate,
-			OffsetDateTime endDate, String limit, String offset, String productOfferingPricePriceUnits,
-			OffsetDateTime productOfferingPriceCurrencyChangeDate, OffsetDateTime productOfferingPriceStartPriceDate,
-			OffsetDateTime productOfferingPriceEndPriceDate, String productOfferingPricePriceConsumerEntityType,
+			String productType, String productId, String productPublicId, DateTime startDate,
+			DateTime endDate, String limit, String offset, String productOfferingPricePriceUnits,
+			DateTime productOfferingPriceCurrencyChangeDate, DateTime productOfferingPriceStartPriceDate,
+			DateTime productOfferingPriceEndPriceDate, String productOfferingPricePriceConsumerEntityType,
 			String productOfferingPricePriceConsumerId, String productOfferingPricePriceLocation,
 			BigDecimal productOfferingPriceStartPriceAmout, BigDecimal productOfferingPriceEndPriceAmout, String fields,
 			Integer creditScore, BigDecimal creditLimit, String siteId, String region, String stateOrProvince,
@@ -36,6 +36,7 @@ public class ApplicationRequestMapper {
 			String sourceType, String networkTechnology, String serviceabilityMaxSpeed, String serviceabilityId,
 			String planGroup, String planRankInitial, String planRank, String planCommitmentDuration,
 			String invoiceCompany, String orderSubType, String subscriberGroupValue, String excludeOffersId,
+			String installationAddressDepartment, String nationalID, String nationalIDType,
 			Integer paginationInfoSize, Integer paginationInfoPageCount, Integer paginationInfoPage,
 			Integer paginationInfoMaxResultCount, String sortCriteriaName, Boolean sortCriteriaAscending) {
 
@@ -47,6 +48,7 @@ public class ApplicationRequestMapper {
 		Plan plan = new Plan();
 		PaginationInfo paginationInfo = new PaginationInfo();
 
+		offersBenefitsRequestDto.setType(type);
 		offersBenefitsRequestDto.setCorrelationId(correlationId);
 		offersBenefitsRequestDto.setName(name);
 		offersBenefitsRequestDto.setIsBundle(isBundle);
@@ -106,12 +108,12 @@ public class ApplicationRequestMapper {
 		offersBenefitsRequestDto.setCommercialAreaId(commercialAreaId);
 		offersBenefitsRequestDto.setProductOrderId(productOrderId);
 		plan.setId(planId);
-		plan.setType(planType);
 		plan.setGroup(planGroup);
 		plan.setRankInitial(planRankInitial);
 		plan.setRank(planRank);
 		plan.setCommitmentDuration(planCommitmentDuration);
 		offersBenefitsRequestDto.setPlan(plan);
+		offersBenefitsRequestDto.setProductPlanType(planType);
 		offersBenefitsRequestDto.setSourceType(sourceType);
 		offersBenefitsRequestDto.setNetworkTechnology(networkTechnology);
 		offersBenefitsRequestDto.setServiceabilityMaxSpeed(serviceabilityMaxSpeed);
@@ -120,6 +122,9 @@ public class ApplicationRequestMapper {
 		offersBenefitsRequestDto.setOrderSubType(orderSubType);
 		offersBenefitsRequestDto.setSubscriberGroupValue(subscriberGroupValue);
 		offersBenefitsRequestDto.setExcludeOffersId(excludeOffersId);
+		offersBenefitsRequestDto.setInstallationAddressDepartment(installationAddressDepartment);
+		offersBenefitsRequestDto.setNationalId(nationalID);
+		offersBenefitsRequestDto.setNationalIdType(nationalIDType);
 		paginationInfo.setSize(paginationInfoSize);
 		paginationInfo.setPageCount(paginationInfoPageCount);
 		paginationInfo.setPage(paginationInfoPage);

@@ -1,30 +1,21 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * MobileQuotaCharacteristicTypeVoiceQuota
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class MobileQuotaCharacteristicTypeVoiceQuota   {
+public class MobileQuotaCharacteristicTypeVoiceQuota  implements Serializable {
   @JsonProperty("voiceAllowance")
   private Integer voiceAllowance = null;
 
@@ -104,8 +95,7 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
   }
 
   @JsonProperty("timeBands")
-  @Valid
-  private List<TimeBandsEnum> timeBands = null;
+  private List<TimeBandsEnum> timeBands = new ArrayList<TimeBandsEnum>();
 
   /**
    * Gets or Sets origins
@@ -143,8 +133,7 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
   }
 
   @JsonProperty("origins")
-  @Valid
-  private List<OriginsEnum> origins = null;
+  private List<OriginsEnum> origins = new ArrayList<OriginsEnum>();
 
   /**
    * Gets or Sets destinations
@@ -194,22 +183,19 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
   }
 
   @JsonProperty("destinations")
-  @Valid
-  private List<DestinationsEnum> destinations = null;
+  private List<DestinationsEnum> destinations = new ArrayList<DestinationsEnum>();
 
   public MobileQuotaCharacteristicTypeVoiceQuota voiceAllowance(Integer voiceAllowance) {
     this.voiceAllowance = voiceAllowance;
     return this;
   }
 
-  /**
+   /**
    * Voice quota max number of units allowed to consume (default seconds). -1 means unlimited
    * @return voiceAllowance
   **/
   @ApiModelProperty(required = true, value = "Voice quota max number of units allowed to consume (default seconds). -1 means unlimited")
   @NotNull
-
-
   public Integer getVoiceAllowance() {
     return voiceAllowance;
   }
@@ -223,13 +209,11 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
     return this;
   }
 
-  /**
+   /**
    * Code of the unit used to specify the given value of the quota. If not included is seconds (default value)
    * @return unit
   **/
   @ApiModelProperty(value = "Code of the unit used to specify the given value of the quota. If not included is seconds (default value)")
-
-
   public UnitEnum getUnit() {
     return unit;
   }
@@ -244,20 +228,15 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
   }
 
   public MobileQuotaCharacteristicTypeVoiceQuota addTimeBandsItem(TimeBandsEnum timeBandsItem) {
-    if (this.timeBands == null) {
-      this.timeBands = new ArrayList<TimeBandsEnum>();
-    }
     this.timeBands.add(timeBandsItem);
     return this;
   }
 
-  /**
+   /**
    * Get timeBands
    * @return timeBands
   **/
   @ApiModelProperty(value = "")
-
-
   public List<TimeBandsEnum> getTimeBands() {
     return timeBands;
   }
@@ -272,20 +251,15 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
   }
 
   public MobileQuotaCharacteristicTypeVoiceQuota addOriginsItem(OriginsEnum originsItem) {
-    if (this.origins == null) {
-      this.origins = new ArrayList<OriginsEnum>();
-    }
     this.origins.add(originsItem);
     return this;
   }
 
-  /**
+   /**
    * Get origins
    * @return origins
   **/
   @ApiModelProperty(value = "")
-
-
   public List<OriginsEnum> getOrigins() {
     return origins;
   }
@@ -300,20 +274,15 @@ public class MobileQuotaCharacteristicTypeVoiceQuota   {
   }
 
   public MobileQuotaCharacteristicTypeVoiceQuota addDestinationsItem(DestinationsEnum destinationsItem) {
-    if (this.destinations == null) {
-      this.destinations = new ArrayList<DestinationsEnum>();
-    }
     this.destinations.add(destinationsItem);
     return this;
   }
 
-  /**
+   /**
    * Get destinations
    * @return destinations
   **/
   @ApiModelProperty(value = "")
-
-
   public List<DestinationsEnum> getDestinations() {
     return destinations;
   }

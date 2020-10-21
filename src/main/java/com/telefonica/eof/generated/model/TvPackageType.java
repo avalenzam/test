@@ -1,32 +1,24 @@
 package com.telefonica.eof.generated.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.telefonica.eof.generated.model.PackageType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Information for TV type products, providing details on available TV packages
  */
 @ApiModel(description = "Information for TV type products, providing details on available TV packages")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class TvPackageType   {
+public class TvPackageType  implements Serializable {
   @JsonProperty("packages")
-  @Valid
-  private List<PackageType> packages = null;
+  private List<PackageType> packages = new ArrayList<PackageType>();
 
   public TvPackageType packages(List<PackageType> packages) {
     this.packages = packages;
@@ -34,21 +26,15 @@ public class TvPackageType   {
   }
 
   public TvPackageType addPackagesItem(PackageType packagesItem) {
-    if (this.packages == null) {
-      this.packages = new ArrayList<PackageType>();
-    }
     this.packages.add(packagesItem);
     return this;
   }
 
-  /**
+   /**
    * List of subscribed available TV packages
    * @return packages
   **/
   @ApiModelProperty(value = "List of subscribed available TV packages")
-
-  @Valid
-
   public List<PackageType> getPackages() {
     return packages;
   }

@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for UpdateFriendsAndFamilyNumbersRequest_type complex type.
+ * <p>Clase Java para UpdateFriendsAndFamilyNumbersRequest_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="UpdateFriendsAndFamilyNumbersRequest_type"&gt;
@@ -39,7 +39,7 @@ public class UpdateFriendsAndFamilyNumbersRequestType
     protected UpdateFriendsAndFamilyNumbersRequestDataType updateFriendsAndFamilyNumbersRequestData;
 
     /**
-     * Gets the value of the updateFriendsAndFamilyNumbersRequestData property.
+     * Obtiene el valor de la propiedad updateFriendsAndFamilyNumbersRequestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class UpdateFriendsAndFamilyNumbersRequestType
     }
 
     /**
-     * Sets the value of the updateFriendsAndFamilyNumbersRequestData property.
+     * Define el valor de la propiedad updateFriendsAndFamilyNumbersRequestData.
      * 
      * @param value
      *     allowed object is

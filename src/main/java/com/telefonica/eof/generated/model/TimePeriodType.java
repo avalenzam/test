@@ -1,75 +1,60 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-import org.threeten.bp.OffsetDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import org.joda.time.DateTime;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Representation of a time period
  */
 @ApiModel(description = "Representation of a time period")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class TimePeriodType   {
+public class TimePeriodType  implements Serializable {
   @JsonProperty("startDateTime")
-  private OffsetDateTime startDateTime = null;
+  private DateTime startDateTime = null;
 
   @JsonProperty("endDateTime")
-  private OffsetDateTime endDateTime = null;
+  private DateTime endDateTime = null;
 
-  public TimePeriodType startDateTime(OffsetDateTime startDateTime) {
+  public TimePeriodType startDateTime(DateTime startDateTime) {
     this.startDateTime = startDateTime;
     return this;
   }
 
-  /**
+   /**
    * Start date of the period
    * @return startDateTime
   **/
   @ApiModelProperty(required = true, value = "Start date of the period")
   @NotNull
-
-  @Valid
-
-  public OffsetDateTime getStartDateTime() {
+  public DateTime getStartDateTime() {
     return startDateTime;
   }
 
-  public void setStartDateTime(OffsetDateTime startDateTime) {
+  public void setStartDateTime(DateTime startDateTime) {
     this.startDateTime = startDateTime;
   }
 
-  public TimePeriodType endDateTime(OffsetDateTime endDateTime) {
+  public TimePeriodType endDateTime(DateTime endDateTime) {
     this.endDateTime = endDateTime;
     return this;
   }
 
-  /**
+   /**
    * End date of the period
    * @return endDateTime
   **/
   @ApiModelProperty(value = "End date of the period")
-
-  @Valid
-
-  public OffsetDateTime getEndDateTime() {
+  public DateTime getEndDateTime() {
     return endDateTime;
   }
 
-  public void setEndDateTime(OffsetDateTime endDateTime) {
+  public void setEndDateTime(DateTime endDateTime) {
     this.endDateTime = endDateTime;
   }
 

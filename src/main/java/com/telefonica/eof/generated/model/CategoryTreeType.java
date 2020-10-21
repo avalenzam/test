@@ -1,26 +1,19 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.telefonica.eof.generated.model.CategoryTreeType;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * CategoryTreeType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class CategoryTreeType   {
+public class CategoryTreeType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -38,14 +31,12 @@ public class CategoryTreeType   {
     return this;
   }
 
-  /**
+   /**
    * An identifier for the category
    * @return id
   **/
   @ApiModelProperty(required = true, value = "An identifier for the category")
   @NotNull
-
-
   public String getId() {
     return id;
   }
@@ -59,13 +50,11 @@ public class CategoryTreeType   {
     return this;
   }
 
-  /**
+   /**
    * A resource URI pointing to the resource in the OB that stores the category detailed information
    * @return href
   **/
   @ApiModelProperty(value = "A resource URI pointing to the resource in the OB that stores the category detailed information")
-
-
   public String getHref() {
     return href;
   }
@@ -79,13 +68,11 @@ public class CategoryTreeType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable category name
    * @return name
   **/
   @ApiModelProperty(value = "A human readable category name")
-
-
   public String getName() {
     return name;
   }
@@ -99,14 +86,11 @@ public class CategoryTreeType   {
     return this;
   }
 
-  /**
+   /**
    * 
    * @return subcategories
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
-
   public CategoryTreeType getSubcategories() {
     return subcategories;
   }

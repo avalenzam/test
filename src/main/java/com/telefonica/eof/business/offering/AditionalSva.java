@@ -28,7 +28,6 @@ import com.telefonica.eof.pojo.aditionalSva.OtherSvasResponse;
 import com.telefonica.eof.repository.BillingOfferMasterRepository;
 import com.telefonica.eof.repository.ComponentsMasterRepository;
 import com.telefonica.eof.repository.DomainWithValidValuesRepository;
-import com.telefonica.eof.repository.EquipmentRepository;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
 import com.telefonica.eof.repository.RelationMasterRepository;
 import com.telefonica.eof.repository.StbSettingRepository;

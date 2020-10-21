@@ -1,27 +1,19 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Key - value pair typically used for extensions or for adding extra data which structure is previously unknown
  */
 @ApiModel(description = "Key - value pair typically used for extensions or for adding extra data which structure is previously unknown")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class KeyValueType   {
+public class KeyValueType  implements Serializable {
   @JsonProperty("key")
   private String key = null;
 
@@ -33,14 +25,12 @@ public class KeyValueType   {
     return this;
   }
 
-  /**
+   /**
    * Name of the field
    * @return key
   **/
   @ApiModelProperty(required = true, value = "Name of the field")
   @NotNull
-
-
   public String getKey() {
     return key;
   }
@@ -54,14 +44,12 @@ public class KeyValueType   {
     return this;
   }
 
-  /**
+   /**
    * Value of the field
    * @return value
   **/
   @ApiModelProperty(required = true, value = "Value of the field")
   @NotNull
-
-
   public String getValue() {
     return value;
   }

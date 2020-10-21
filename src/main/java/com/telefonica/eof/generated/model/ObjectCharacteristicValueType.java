@@ -1,22 +1,19 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ObjectCharacteristicValueType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = MobileQuota.class, name = "MobileQuota"),
@@ -24,10 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
   @JsonSubTypes.Type(value = TvPackages.class, name = "TvPackages"),
 })
 
-
-
-
-public class ObjectCharacteristicValueType   {
+public class ObjectCharacteristicValueType  implements Serializable {
   /**
    * type of characteristic information element, defines the format structure of the value information element (string or specific object type)
    */
@@ -72,13 +66,11 @@ public class ObjectCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * type of characteristic information element, defines the format structure of the value information element (string or specific object type)
    * @return type
   **/
   @ApiModelProperty(value = "type of characteristic information element, defines the format structure of the value information element (string or specific object type)")
-
-
   public TypeEnum getType() {
     return type;
   }
@@ -92,13 +84,11 @@ public class ObjectCharacteristicValueType   {
     return this;
   }
 
-  /**
+   /**
    * This field provides a link to the schema describing the resource model for the Object defining the characteristics for a TV product
    * @return schemaLocation
   **/
   @ApiModelProperty(value = "This field provides a link to the schema describing the resource model for the Object defining the characteristics for a TV product")
-
-
   public String getSchemaLocation() {
     return schemaLocation;
   }

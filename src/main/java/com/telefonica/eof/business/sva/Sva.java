@@ -139,12 +139,12 @@ public class Sva {
 
 			    PriceTypeEnum priceType;
 
-			    BigDecimal amount;
+//			    BigDecimal amount;
 
 			    Sps spsIdAndName = getSpsIdAndName(billingOffer.getChildId());
 
 			    PriceProperties priceInfo = pricePropertiesRepository.findPriceInfo(billingOffer.getChildId());
-			    BigDecimal valueAbp = new BigDecimal(priceInfo.getValueAbp());
+			    BigDecimal amount = new BigDecimal(priceInfo.getValueAbp());
 
 			    String relationId;
 
@@ -157,11 +157,11 @@ public class Sva {
 
 			    if (Constant.OC.equalsIgnoreCase(priceInfo.getRevenueType())) {
 				priceType = ComponentProdOfferPriceType.PriceTypeEnum.ONE_TIME;
-				amount = Util.igvCalculator(valueAbp);
 			    } else {
 				priceType = ComponentProdOfferPriceType.PriceTypeEnum.RECURRING;
-				amount = Util.igvCalculator(valueAbp);
 			    }
+			    
+			    amount = Util.addIgv(amount);
 
 			    SvaBenefitParamsDto svaBenefitParamsDto = new SvaBenefitParamsDto();
 			    svaBenefitParamsDto.setChannelId(offersBenefitsRequestDto.getChannelId());

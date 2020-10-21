@@ -1,27 +1,20 @@
 package com.telefonica.eof.generated.model;
 
 import java.util.Objects;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * Information for broadband/internet type products, providing details on connections characteristics
  */
 @ApiModel(description = "Information for broadband/internet type products, providing details on connections characteristics")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ConnectionType   {
+public class ConnectionType  implements Serializable {
   /**
    * Data quota max number of bytes allowed. -1 means unlimited
    */
@@ -107,13 +100,11 @@ public class ConnectionType   {
     return this;
   }
 
-  /**
+   /**
    * Data quota max number of bytes allowed. -1 means unlimited
    * @return type
   **/
   @ApiModelProperty(value = "Data quota max number of bytes allowed. -1 means unlimited")
-
-
   public TypeEnum getType() {
     return type;
   }
@@ -127,13 +118,11 @@ public class ConnectionType   {
     return this;
   }
 
-  /**
+   /**
    * Uplink speed in megabits per second
    * @return ulDataRate
   **/
   @ApiModelProperty(value = "Uplink speed in megabits per second")
-
-
   public Integer getUlDataRate() {
     return ulDataRate;
   }
@@ -147,13 +136,11 @@ public class ConnectionType   {
     return this;
   }
 
-  /**
+   /**
    * Downlink speed in megabits per second
    * @return dlDataRate
   **/
   @ApiModelProperty(value = "Downlink speed in megabits per second")
-
-
   public Integer getDlDataRate() {
     return dlDataRate;
   }
@@ -167,13 +154,11 @@ public class ConnectionType   {
     return this;
   }
 
-  /**
+   /**
    * Code of the unit used to specify the data rate. If not included is MBs (default value)
    * @return unit
   **/
   @ApiModelProperty(value = "Code of the unit used to specify the data rate. If not included is MBs (default value)")
-
-
   public UnitEnum getUnit() {
     return unit;
   }

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ActivityInformation_UpdateSingleConfigurationOnProductRequest complex type.
+ * <p>Clase Java para ActivityInformation_UpdateSingleConfigurationOnProductRequest complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ActivityInformation_UpdateSingleConfigurationOnProductRequest"&gt;
@@ -49,7 +49,7 @@ public class ActivityInformationUpdateSingleConfigurationOnProductRequest {
     protected String activityReason;
 
     /**
-     * Gets the value of the reasonCode property.
+     * Obtiene el valor de la propiedad reasonCode.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ActivityInformationUpdateSingleConfigurationOnProductRequest {
     }
 
     /**
-     * Sets the value of the reasonCode property.
+     * Define el valor de la propiedad reasonCode.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ActivityInformationUpdateSingleConfigurationOnProductRequest {
     }
 
     /**
-     * Gets the value of the activityReason property.
+     * Obtiene el valor de la propiedad activityReason.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ActivityInformationUpdateSingleConfigurationOnProductRequest {
     }
 
     /**
-     * Sets the value of the activityReason property.
+     * Define el valor de la propiedad activityReason.
      * 
      * @param value
      *     allowed object is

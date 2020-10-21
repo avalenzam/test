@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 	<Properties>
-		<Property name="log-path">/var/opt/teradata/daas-log4j/shaka-elegibleoffers-mo/</Property>
+		<Property name="log-path">/var/opt/teradata/daas-log4j/shaka-elegibleoffers-fi/</Property>
 	</Properties>
 
 	<Appenders>
@@ -10,8 +10,8 @@
 				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg{nolookups}%n" />
 		</Console>
 
-		<RollingFile name="AppElegibleOffers-Mo" fileName="${log-path}/shaka-elegibleoffers-mo.log"
-			filePattern="${log-path}/shaka-elegibleoffers-mo-%d{yyyy-MM-dd}.log">
+		<RollingFile name="AppElegibleOffers-Fi" fileName="${log-path}/shaka-elegibleoffers-fi.log"
+			filePattern="${log-path}/shaka-elegibleoffers-fi-%d{yyyy-MM-dd}.log">
 			<PatternLayout>
 				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} -
 					%msg{nolookups}%n </pattern>
@@ -23,8 +23,8 @@
 	</Appenders>
 
 	<Loggers>
-		<Logger name="com.telefonica.eom" level="info" additivity="false">
-			<appender-ref ref="AppElegibleOffers-Mo" level="info" />
+		<Logger name="com.telefonica.eof" level="info" additivity="false">
+			<appender-ref ref="AppElegibleOffers-Fi" level="info" />
 		</Logger>
 		<Root level="info" additivity="false">
 			<AppenderRef ref="stdout" />

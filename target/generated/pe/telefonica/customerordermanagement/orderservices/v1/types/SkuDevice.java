@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SkuDevice complex type.
+ * <p>Clase Java para SkuDevice complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="SkuDevice"&gt;
@@ -40,7 +40,7 @@ public class SkuDevice {
     protected String skuNumber;
 
     /**
-     * Gets the value of the skuNumber property.
+     * Obtiene el valor de la propiedad skuNumber.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class SkuDevice {
     }
 
     /**
-     * Sets the value of the skuNumber property.
+     * Define el valor de la propiedad skuNumber.
      * 
      * @param value
      *     allowed object is

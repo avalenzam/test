@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for DevicePenaltyInfo complex type.
+ * <p>Clase Java para DevicePenaltyInfo complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="DevicePenaltyInfo"&gt;
@@ -73,7 +73,7 @@ public class DevicePenaltyInfo {
     protected String penaltyCurrency;
 
     /**
-     * Gets the value of the deviceSapId property.
+     * Obtiene el valor de la propiedad deviceSapId.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Sets the value of the deviceSapId property.
+     * Define el valor de la propiedad deviceSapId.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Gets the value of the commitmentEndDate property.
+     * Obtiene el valor de la propiedad commitmentEndDate.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Sets the value of the commitmentEndDate property.
+     * Define el valor de la propiedad commitmentEndDate.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Gets the value of the penaltyAmountWithTax property.
+     * Obtiene el valor de la propiedad penaltyAmountWithTax.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Sets the value of the penaltyAmountWithTax property.
+     * Define el valor de la propiedad penaltyAmountWithTax.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Gets the value of the penaltyAmountWithoutTax property.
+     * Obtiene el valor de la propiedad penaltyAmountWithoutTax.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Sets the value of the penaltyAmountWithoutTax property.
+     * Define el valor de la propiedad penaltyAmountWithoutTax.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Gets the value of the penaltyCurrency property.
+     * Obtiene el valor de la propiedad penaltyCurrency.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class DevicePenaltyInfo {
     }
 
     /**
-     * Sets the value of the penaltyCurrency property.
+     * Define el valor de la propiedad penaltyCurrency.
      * 
      * @param value
      *     allowed object is

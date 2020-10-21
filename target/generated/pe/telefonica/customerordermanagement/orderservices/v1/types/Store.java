@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Store complex type.
+ * <p>Clase Java para Store complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Store"&gt;
@@ -40,7 +40,7 @@ public class Store {
     protected String storeID;
 
     /**
-     * Gets the value of the storeID property.
+     * Obtiene el valor de la propiedad storeID.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class Store {
     }
 
     /**
-     * Sets the value of the storeID property.
+     * Define el valor de la propiedad storeID.
      * 
      * @param value
      *     allowed object is

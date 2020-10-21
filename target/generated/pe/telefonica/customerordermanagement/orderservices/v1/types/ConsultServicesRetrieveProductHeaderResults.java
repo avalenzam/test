@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ConsultServicesRetrieveProductHeaderResults complex type.
+ * <p>Clase Java para ConsultServicesRetrieveProductHeaderResults complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ConsultServicesRetrieveProductHeaderResults"&gt;
@@ -40,7 +40,7 @@ public class ConsultServicesRetrieveProductHeaderResults {
     protected ProductHeader productHeader;
 
     /**
-     * Gets the value of the response property.
+     * Obtiene el valor de la propiedad response.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class ConsultServicesRetrieveProductHeaderResults {
     }
 
     /**
-     * Sets the value of the response property.
+     * Define el valor de la propiedad response.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class ConsultServicesRetrieveProductHeaderResults {
     }
 
     /**
-     * Gets the value of the productHeader property.
+     * Obtiene el valor de la propiedad productHeader.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class ConsultServicesRetrieveProductHeaderResults {
     }
 
     /**
-     * Sets the value of the productHeader property.
+     * Define el valor de la propiedad productHeader.
      * 
      * @param value
      *     allowed object is

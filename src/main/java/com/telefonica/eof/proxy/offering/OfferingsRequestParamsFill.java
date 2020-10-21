@@ -57,7 +57,7 @@ public class OfferingsRequestParamsFill {
 	fit.setName(offersBenefitsRequestDto.getName());
 
 	if (offersBenefitsRequestDto.getFields() != null) {
-	    fit.setFilterFacets(this.getFilterFacets(offersBenefitsRequestDto.getFields()));
+	    fit.getFilterFacets().addAll(this.getFilterFacets(offersBenefitsRequestDto.getFields()));
 	}
 
 	fit.setCreditScore(String.valueOf(offersBenefitsRequestDto.getCreditScore()));
@@ -68,7 +68,6 @@ public class OfferingsRequestParamsFill {
 
 	if (StringUtil.isNullOrEmpty(isPortability)) {
 	    fit.setPortInFlag(isPortability);
-
 	}
 
 	fit.setDealerCode(offersBenefitsRequestDto.getDealerId());

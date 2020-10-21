@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ProductOrder_UpdateSingleConfigurationOnProductResponse complex type.
+ * <p>Clase Java para ProductOrder_UpdateSingleConfigurationOnProductResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductOrder_UpdateSingleConfigurationOnProductResponse"&gt;
@@ -40,7 +40,7 @@ public class ProductOrderUpdateSingleConfigurationOnProductResponse {
     protected String orderID;
 
     /**
-     * Gets the value of the orderID property.
+     * Obtiene el valor de la propiedad orderID.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class ProductOrderUpdateSingleConfigurationOnProductResponse {
     }
 
     /**
-     * Sets the value of the orderID property.
+     * Define el valor de la propiedad orderID.
      * 
      * @param value
      *     allowed object is

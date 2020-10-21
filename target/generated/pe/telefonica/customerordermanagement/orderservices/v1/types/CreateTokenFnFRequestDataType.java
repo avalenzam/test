@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CreateTokenFnFRequest_data_type complex type.
+ * <p>Clase Java para CreateTokenFnFRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="CreateTokenFnFRequest_data_type"&gt;
@@ -48,7 +48,7 @@ public class CreateTokenFnFRequestDataType {
     protected List<ArgumentsList> arguments;
 
     /**
-     * Gets the value of the context property.
+     * Obtiene el valor de la propiedad context.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class CreateTokenFnFRequestDataType {
     }
 
     /**
-     * Sets the value of the context property.
+     * Define el valor de la propiedad context.
      * 
      * @param value
      *     allowed object is

@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- attachmentType: Field attachmentType
  * 			
  * 
- * <p>Java class for AttachmentOfferingsType complex type.
+ * <p>Clase Java para AttachmentOfferingsType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="AttachmentOfferingsType"&gt;
@@ -52,7 +52,7 @@ public class AttachmentOfferingsType {
     protected String attachmentType;
 
     /**
-     * Gets the value of the purpose property.
+     * Obtiene el valor de la propiedad purpose.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class AttachmentOfferingsType {
     }
 
     /**
-     * Sets the value of the purpose property.
+     * Define el valor de la propiedad purpose.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class AttachmentOfferingsType {
     }
 
     /**
-     * Gets the value of the attachmentLocation property.
+     * Obtiene el valor de la propiedad attachmentLocation.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class AttachmentOfferingsType {
     }
 
     /**
-     * Sets the value of the attachmentLocation property.
+     * Define el valor de la propiedad attachmentLocation.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class AttachmentOfferingsType {
     }
 
     /**
-     * Gets the value of the attachmentType property.
+     * Obtiene el valor de la propiedad attachmentType.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class AttachmentOfferingsType {
     }
 
     /**
-     * Sets the value of the attachmentType property.
+     * Define el valor de la propiedad attachmentType.
      * 
      * @param value
      *     allowed object is

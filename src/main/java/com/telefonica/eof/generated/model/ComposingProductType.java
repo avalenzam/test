@@ -1,30 +1,23 @@
 package com.telefonica.eof.generated.model;
 
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.ComponentProdOfferPriceType;
+import com.telefonica.eof.generated.model.RefinedProductType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import io.swagger.annotations.ApiModelProperty;
-
+import java.io.Serializable;
+import javax.validation.constraints.*;
 /**
  * ComposingProductType
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-09-14T17:51:01.594Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
 
-
-
-
-public class ComposingProductType   {
+public class ComposingProductType  implements Serializable {
   @JsonProperty("id")
   private String id = null;
 
@@ -93,8 +86,7 @@ public class ComposingProductType   {
   private ProductTypeEnum productType = null;
 
   @JsonProperty("tags")
-  @Valid
-  private List<String> tags = null;
+  private List<String> tags = new ArrayList<String>();
 
   @JsonProperty("minCardinality")
   private Integer minCardinality = null;
@@ -112,21 +104,18 @@ public class ComposingProductType   {
   private RefinedProductType refinedProduct = null;
 
   @JsonProperty("productPrice")
-  @Valid
-  private List<ComponentProdOfferPriceType> productPrice = null;
+  private List<ComponentProdOfferPriceType> productPrice = new ArrayList<ComponentProdOfferPriceType>();
 
   public ComposingProductType id(String id) {
     this.id = id;
     return this;
   }
 
-  /**
+   /**
    * Product Identifier. This is the identifier that can be used to retrieve specific information for that product
    * @return id
   **/
   @ApiModelProperty(value = "Product Identifier. This is the identifier that can be used to retrieve specific information for that product")
-
-
   public String getId() {
     return id;
   }
@@ -140,13 +129,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * A resource URI pointing to the resource in the OB that stores the detailed information for the referred product
    * @return href
   **/
   @ApiModelProperty(value = "A resource URI pointing to the resource in the OB that stores the detailed information for the referred product")
-
-
   public String getHref() {
     return href;
   }
@@ -160,13 +147,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * A human readable product name
    * @return name
   **/
   @ApiModelProperty(value = "A human readable product name")
-
-
   public String getName() {
     return name;
   }
@@ -180,13 +165,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * Indication of the type of product that forms the offer. Supported values are implementation and application specific
    * @return productType
   **/
   @ApiModelProperty(value = "Indication of the type of product that forms the offer. Supported values are implementation and application specific")
-
-
   public ProductTypeEnum getProductType() {
     return productType;
   }
@@ -201,20 +184,15 @@ public class ComposingProductType   {
   }
 
   public ComposingProductType addTagsItem(String tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<String>();
-    }
     this.tags.add(tagsItem);
     return this;
   }
 
-  /**
+   /**
    * ist of freely defined strings that tag the product based on some criteria. This can be used by consumer application to define presentation logic
    * @return tags
   **/
   @ApiModelProperty(value = "ist of freely defined strings that tag the product based on some criteria. This can be used by consumer application to define presentation logic")
-
-
   public List<String> getTags() {
     return tags;
   }
@@ -228,13 +206,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the minimum number of entities of this product that can be included within the product/offering. If not included then value 0 will be considered
    * @return minCardinality
   **/
   @ApiModelProperty(value = "Indicates the minimum number of entities of this product that can be included within the product/offering. If not included then value 0 will be considered")
-
-
   public Integer getMinCardinality() {
     return minCardinality;
   }
@@ -248,13 +224,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the maximum number of entities of this product that can be included within the product/offering. If not included then no limit will be considered
    * @return maxCardinality
   **/
   @ApiModelProperty(value = "Indicates the maximum number of entities of this product that can be included within the product/offering. If not included then no limit will be considered")
-
-
   public Integer getMaxCardinality() {
     return maxCardinality;
   }
@@ -268,13 +242,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * Indicates the default number of entities of this product that are included within the parent product/offering
    * @return defaultCardinality
   **/
   @ApiModelProperty(value = "Indicates the default number of entities of this product that are included within the parent product/offering")
-
-
   public Integer getDefaultCardinality() {
     return defaultCardinality;
   }
@@ -288,13 +260,12 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * Period for which the product will be subscribed if offer is purchased. It does not mean that offer is available for indicated period, it means that in case offer is purchased, product will be acquired and will last for indicated period. Applies when type equals one-off or usage. For backwards compatibility, in case of recurring prices, recurring_period param is used instead.  Additional to pre-defined values of day, week, month, year, any indication of number of days or hours is possible, with format {x}-days or {x}-hours (e.g.: 7-days or 24-hours).
    * @return periodDuration
   **/
   @ApiModelProperty(value = "Period for which the product will be subscribed if offer is purchased. It does not mean that offer is available for indicated period, it means that in case offer is purchased, product will be acquired and will last for indicated period. Applies when type equals one-off or usage. For backwards compatibility, in case of recurring prices, recurring_period param is used instead.  Additional to pre-defined values of day, week, month, year, any indication of number of days or hours is possible, with format {x}-days or {x}-hours (e.g.: 7-days or 24-hours).")
-
-@Pattern(regexp="^(day|week|month|year|\\d{1,4}-(days|hours))$") 
+  @Pattern(regexp="^(day|week|month|year|\\d{1,4}-(days|hours))$")
   public String getPeriodDuration() {
     return periodDuration;
   }
@@ -308,14 +279,11 @@ public class ComposingProductType   {
     return this;
   }
 
-  /**
+   /**
    * Structure defining the particular instantiation (e.g.: limitation on the cardinality and/or characteristic values) of the product when included in an specific product offering
    * @return refinedProduct
   **/
   @ApiModelProperty(value = "Structure defining the particular instantiation (e.g.: limitation on the cardinality and/or characteristic values) of the product when included in an specific product offering")
-
-  @Valid
-
   public RefinedProductType getRefinedProduct() {
     return refinedProduct;
   }
@@ -330,21 +298,15 @@ public class ComposingProductType   {
   }
 
   public ComposingProductType addProductPriceItem(ComponentProdOfferPriceType productPriceItem) {
-    if (this.productPrice == null) {
-      this.productPrice = new ArrayList<ComponentProdOfferPriceType>();
-    }
     this.productPrice.add(productPriceItem);
     return this;
   }
 
-  /**
+   /**
    * List of price models available for the product within the offering. Typically prices are at top offering level, but sometimes offerings break up prices for each product and that can be done with this structure
    * @return productPrice
   **/
   @ApiModelProperty(value = "List of price models available for the product within the offering. Typically prices are at top offering level, but sometimes offerings break up prices for each product and that can be done with this structure")
-
-  @Valid
-
   public List<ComponentProdOfferPriceType> getProductPrice() {
     return productPrice;
   }

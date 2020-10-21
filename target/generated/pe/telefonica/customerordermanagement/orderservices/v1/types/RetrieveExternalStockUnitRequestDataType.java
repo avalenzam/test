@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RetrieveExternalStockUnitRequest_data_type complex type.
+ * <p>Clase Java para RetrieveExternalStockUnitRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveExternalStockUnitRequest_data_type"&gt;
@@ -51,7 +51,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     protected Price simPrice;
 
     /**
-     * Gets the value of the device property.
+     * Obtiene el valor de la propiedad device.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Sets the value of the device property.
+     * Define el valor de la propiedad device.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Gets the value of the activity property.
+     * Obtiene el valor de la propiedad activity.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Sets the value of the activity property.
+     * Define el valor de la propiedad activity.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Gets the value of the store property.
+     * Obtiene el valor de la propiedad store.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Sets the value of the store property.
+     * Define el valor de la propiedad store.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Gets the value of the product property.
+     * Obtiene el valor de la propiedad product.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Sets the value of the product property.
+     * Define el valor de la propiedad product.
      * 
      * @param value
      *     allowed object is
@@ -147,7 +147,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Gets the value of the price property.
+     * Obtiene el valor de la propiedad price.
      * 
      * @return
      *     possible object is
@@ -159,7 +159,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Sets the value of the price property.
+     * Define el valor de la propiedad price.
      * 
      * @param value
      *     allowed object is
@@ -171,7 +171,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Gets the value of the simPrice property.
+     * Obtiene el valor de la propiedad simPrice.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class RetrieveExternalStockUnitRequestDataType {
     }
 
     /**
-     * Sets the value of the simPrice property.
+     * Define el valor de la propiedad simPrice.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ProductOrder_RetrieveProductOrderStatusRequest complex type.
+ * <p>Clase Java para ProductOrder_RetrieveProductOrderStatusRequest complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductOrder_RetrieveProductOrderStatusRequest"&gt;
@@ -49,7 +49,7 @@ public class ProductOrderRetrieveProductOrderStatusRequest {
     protected String externalID;
 
     /**
-     * Gets the value of the orderID property.
+     * Obtiene el valor de la propiedad orderID.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ProductOrderRetrieveProductOrderStatusRequest {
     }
 
     /**
-     * Sets the value of the orderID property.
+     * Define el valor de la propiedad orderID.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ProductOrderRetrieveProductOrderStatusRequest {
     }
 
     /**
-     * Gets the value of the externalID property.
+     * Obtiene el valor de la propiedad externalID.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ProductOrderRetrieveProductOrderStatusRequest {
     }
 
     /**
-     * Sets the value of the externalID property.
+     * Define el valor de la propiedad externalID.
      * 
      * @param value
      *     allowed object is

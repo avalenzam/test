@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ServiceType complex type.
+ * <p>Clase Java para ServiceType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ServiceType"&gt;
@@ -58,7 +58,7 @@ public class ServiceType {
     protected String value;
 
     /**
-     * Gets the value of the code property.
+     * Obtiene el valor de la propiedad code.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class ServiceType {
     }
 
     /**
-     * Sets the value of the code property.
+     * Define el valor de la propiedad code.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class ServiceType {
     }
 
     /**
-     * Gets the value of the isDefault property.
+     * Obtiene el valor de la propiedad isDefault.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class ServiceType {
     }
 
     /**
-     * Sets the value of the isDefault property.
+     * Define el valor de la propiedad isDefault.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class ServiceType {
     }
 
     /**
-     * Gets the value of the isObsolete property.
+     * Obtiene el valor de la propiedad isObsolete.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class ServiceType {
     }
 
     /**
-     * Sets the value of the isObsolete property.
+     * Define el valor de la propiedad isObsolete.
      * 
      * @param value
      *     allowed object is
@@ -130,7 +130,7 @@ public class ServiceType {
     }
 
     /**
-     * Gets the value of the value property.
+     * Obtiene el valor de la propiedad value.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class ServiceType {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define el valor de la propiedad value.
      * 
      * @param value
      *     allowed object is
