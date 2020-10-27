@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ActivityInformation_RetrieveExternalStockUnitRequest complex type.
+ * <p>Clase Java para ActivityInformation_RetrieveExternalStockUnitRequest complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ActivityInformation_RetrieveExternalStockUnitRequest"&gt;
@@ -58,7 +58,7 @@ public class ActivityInformationRetrieveExternalStockUnitRequest {
     protected String usercode;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class ActivityInformationRetrieveExternalStockUnitRequest {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class ActivityInformationRetrieveExternalStockUnitRequest {
     }
 
     /**
-     * Gets the value of the sourceChannel property.
+     * Obtiene el valor de la propiedad sourceChannel.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class ActivityInformationRetrieveExternalStockUnitRequest {
     }
 
     /**
-     * Sets the value of the sourceChannel property.
+     * Define el valor de la propiedad sourceChannel.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class ActivityInformationRetrieveExternalStockUnitRequest {
     }
 
     /**
-     * Gets the value of the usercode property.
+     * Obtiene el valor de la propiedad usercode.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class ActivityInformationRetrieveExternalStockUnitRequest {
     }
 
     /**
-     * Sets the value of the usercode property.
+     * Define el valor de la propiedad usercode.
      * 
      * @param value
      *     allowed object is

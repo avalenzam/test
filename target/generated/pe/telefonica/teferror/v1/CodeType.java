@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for codeType complex type.
+ * <p>Clase Java para codeType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="codeType"&gt;
@@ -60,7 +60,7 @@ public class CodeType {
     protected String error;
 
     /**
-     * Gets the value of the service property.
+     * Obtiene el valor de la propiedad service.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the service property.
+     * Define el valor de la propiedad service.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class CodeType {
     }
 
     /**
-     * Gets the value of the operation property.
+     * Obtiene el valor de la propiedad operation.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the operation property.
+     * Define el valor de la propiedad operation.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class CodeType {
     }
 
     /**
-     * Gets the value of the layer property.
+     * Obtiene el valor de la propiedad layer.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the layer property.
+     * Define el valor de la propiedad layer.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class CodeType {
     }
 
     /**
-     * Gets the value of the tamSystem property.
+     * Obtiene el valor de la propiedad tamSystem.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the tamSystem property.
+     * Define el valor de la propiedad tamSystem.
      * 
      * @param value
      *     allowed object is
@@ -156,7 +156,7 @@ public class CodeType {
     }
 
     /**
-     * Gets the value of the legacySystem property.
+     * Obtiene el valor de la propiedad legacySystem.
      * 
      * @return
      *     possible object is
@@ -168,7 +168,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the legacySystem property.
+     * Define el valor de la propiedad legacySystem.
      * 
      * @param value
      *     allowed object is
@@ -180,7 +180,7 @@ public class CodeType {
     }
 
     /**
-     * Gets the value of the api property.
+     * Obtiene el valor de la propiedad api.
      * 
      * @return
      *     possible object is
@@ -192,7 +192,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the api property.
+     * Define el valor de la propiedad api.
      * 
      * @param value
      *     allowed object is
@@ -204,7 +204,7 @@ public class CodeType {
     }
 
     /**
-     * Gets the value of the error property.
+     * Obtiene el valor de la propiedad error.
      * 
      * @return
      *     possible object is
@@ -216,7 +216,7 @@ public class CodeType {
     }
 
     /**
-     * Sets the value of the error property.
+     * Define el valor de la propiedad error.
      * 
      * @param value
      *     allowed object is

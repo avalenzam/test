@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for TefHeaderResType complex type.
+ * <p>Clase Java para TefHeaderResType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="TefHeaderResType"&gt;
@@ -50,7 +50,7 @@ public class TefHeaderResType {
     protected String transactionID;
 
     /**
-     * Gets the value of the idMessage property.
+     * Obtiene el valor de la propiedad idMessage.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Sets the value of the idMessage property.
+     * Define el valor de la propiedad idMessage.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Gets the value of the serviceName property.
+     * Obtiene el valor de la propiedad serviceName.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Sets the value of the serviceName property.
+     * Define el valor de la propiedad serviceName.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Gets the value of the responseDateTime property.
+     * Obtiene el valor de la propiedad responseDateTime.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Sets the value of the responseDateTime property.
+     * Define el valor de la propiedad responseDateTime.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Gets the value of the transactionID property.
+     * Obtiene el valor de la propiedad transactionID.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class TefHeaderResType {
     }
 
     /**
-     * Sets the value of the transactionID property.
+     * Define el valor de la propiedad transactionID.
      * 
      * @param value
      *     allowed object is

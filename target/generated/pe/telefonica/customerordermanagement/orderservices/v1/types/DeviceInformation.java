@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DeviceInformation complex type.
+ * <p>Clase Java para DeviceInformation complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="DeviceInformation"&gt;
@@ -70,7 +70,7 @@ public class DeviceInformation {
     protected String customerType;
 
     /**
-     * Gets the value of the deviceSAPID property.
+     * Obtiene el valor de la propiedad deviceSAPID.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Sets the value of the deviceSAPID property.
+     * Define el valor de la propiedad deviceSAPID.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Gets the value of the planGroup property.
+     * Obtiene el valor de la propiedad planGroup.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Sets the value of the planGroup property.
+     * Define el valor de la propiedad planGroup.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Gets the value of the simSAPID property.
+     * Obtiene el valor de la propiedad simSAPID.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Sets the value of the simSAPID property.
+     * Define el valor de la propiedad simSAPID.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Gets the value of the customerType property.
+     * Obtiene el valor de la propiedad customerType.
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class DeviceInformation {
     }
 
     /**
-     * Sets the value of the customerType property.
+     * Define el valor de la propiedad customerType.
      * 
      * @param value
      *     allowed object is

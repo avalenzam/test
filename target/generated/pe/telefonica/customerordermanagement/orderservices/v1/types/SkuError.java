@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SkuError complex type.
+ * <p>Clase Java para SkuError complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="SkuError"&gt;
@@ -62,7 +62,7 @@ public class SkuError {
     protected String detail;
 
     /**
-     * Gets the value of the code property.
+     * Obtiene el valor de la propiedad code.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class SkuError {
     }
 
     /**
-     * Sets the value of the code property.
+     * Define el valor de la propiedad code.
      * 
      * @param value
      *     allowed object is
@@ -86,7 +86,7 @@ public class SkuError {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class SkuError {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class SkuError {
     }
 
     /**
-     * Gets the value of the detail property.
+     * Obtiene el valor de la propiedad detail.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class SkuError {
     }
 
     /**
-     * Sets the value of the detail property.
+     * Define el valor de la propiedad detail.
      * 
      * @param value
      *     allowed object is

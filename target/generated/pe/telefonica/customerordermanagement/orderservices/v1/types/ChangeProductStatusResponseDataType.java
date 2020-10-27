@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ChangeProductStatusResponse_data_type complex type.
+ * <p>Clase Java para ChangeProductStatusResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ChangeProductStatusResponse_data_type"&gt;
@@ -42,7 +42,7 @@ public class ChangeProductStatusResponseDataType {
     protected LostAndStolenCode lostAndStolenCode;
 
     /**
-     * Gets the value of the response property.
+     * Obtiene el valor de la propiedad response.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class ChangeProductStatusResponseDataType {
     }
 
     /**
-     * Sets the value of the response property.
+     * Define el valor de la propiedad response.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class ChangeProductStatusResponseDataType {
     }
 
     /**
-     * Gets the value of the productOrder property.
+     * Obtiene el valor de la propiedad productOrder.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class ChangeProductStatusResponseDataType {
     }
 
     /**
-     * Sets the value of the productOrder property.
+     * Define el valor de la propiedad productOrder.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class ChangeProductStatusResponseDataType {
     }
 
     /**
-     * Gets the value of the lostAndStolenCode property.
+     * Obtiene el valor de la propiedad lostAndStolenCode.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class ChangeProductStatusResponseDataType {
     }
 
     /**
-     * Sets the value of the lostAndStolenCode property.
+     * Define el valor de la propiedad lostAndStolenCode.
      * 
      * @param value
      *     allowed object is

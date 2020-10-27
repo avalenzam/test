@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for ValidateTokenFnFRequest_type complex type.
+ * <p>Clase Java para ValidateTokenFnFRequest_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ValidateTokenFnFRequest_type"&gt;
@@ -39,7 +39,7 @@ public class ValidateTokenFnFRequestType
     protected ValidateTokenFnFRequestDataType validateTokenFnFRequestData;
 
     /**
-     * Gets the value of the validateTokenFnFRequestData property.
+     * Obtiene el valor de la propiedad validateTokenFnFRequestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ValidateTokenFnFRequestType
     }
 
     /**
-     * Sets the value of the validateTokenFnFRequestData property.
+     * Define el valor de la propiedad validateTokenFnFRequestData.
      * 
      * @param value
      *     allowed object is

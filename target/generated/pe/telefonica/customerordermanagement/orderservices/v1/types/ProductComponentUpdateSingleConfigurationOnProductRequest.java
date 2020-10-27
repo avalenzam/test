@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ProductComponent_UpdateSingleConfigurationOnProductRequest complex type.
+ * <p>Clase Java para ProductComponent_UpdateSingleConfigurationOnProductRequest complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductComponent_UpdateSingleConfigurationOnProductRequest"&gt;
@@ -49,7 +49,7 @@ public class ProductComponentUpdateSingleConfigurationOnProductRequest {
     protected String externalProductID;
 
     /**
-     * Gets the value of the instanceId property.
+     * Obtiene el valor de la propiedad instanceId.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ProductComponentUpdateSingleConfigurationOnProductRequest {
     }
 
     /**
-     * Sets the value of the instanceId property.
+     * Define el valor de la propiedad instanceId.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ProductComponentUpdateSingleConfigurationOnProductRequest {
     }
 
     /**
-     * Gets the value of the externalProductID property.
+     * Obtiene el valor de la propiedad externalProductID.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ProductComponentUpdateSingleConfigurationOnProductRequest {
     }
 
     /**
-     * Sets the value of the externalProductID property.
+     * Define el valor de la propiedad externalProductID.
      * 
      * @param value
      *     allowed object is

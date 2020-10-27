@@ -41,9 +41,9 @@ import javax.xml.bind.annotation.XmlType;
  *                                         - offerName: Name of the Offer. Could be sent the name partially.
  * 			
  * 
- * <p>Java class for FilterInfoType complex type.
+ * <p>Clase Java para FilterInfoType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="FilterInfoType"&gt;
@@ -144,7 +144,7 @@ public class FilterInfoType {
     protected String product;
 
     /**
-     * Gets the value of the sourceProductOfferingId property.
+     * Obtiene el valor de la propiedad sourceProductOfferingId.
      * 
      * @return
      *     possible object is
@@ -156,7 +156,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the sourceProductOfferingId property.
+     * Define el valor de la propiedad sourceProductOfferingId.
      * 
      * @param value
      *     allowed object is
@@ -168,7 +168,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the sourceType property.
+     * Obtiene el valor de la propiedad sourceType.
      * 
      * @return
      *     possible object is
@@ -180,7 +180,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the sourceType property.
+     * Define el valor de la propiedad sourceType.
      * 
      * @param value
      *     allowed object is
@@ -192,7 +192,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the actionType property.
+     * Obtiene el valor de la propiedad actionType.
      * 
      * @return
      *     possible object is
@@ -204,7 +204,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the actionType property.
+     * Define el valor de la propiedad actionType.
      * 
      * @param value
      *     allowed object is
@@ -216,7 +216,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the customerType property.
+     * Obtiene el valor de la propiedad customerType.
      * 
      * @return
      *     possible object is
@@ -228,7 +228,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the customerType property.
+     * Define el valor de la propiedad customerType.
      * 
      * @param value
      *     allowed object is
@@ -240,7 +240,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the commercialZoneId property.
+     * Obtiene el valor de la propiedad commercialZoneId.
      * 
      * @return
      *     possible object is
@@ -252,7 +252,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the commercialZoneId property.
+     * Define el valor de la propiedad commercialZoneId.
      * 
      * @param value
      *     allowed object is
@@ -264,7 +264,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the serviceTechnology property.
+     * Obtiene el valor de la propiedad serviceTechnology.
      * 
      * @return
      *     possible object is
@@ -276,7 +276,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the serviceTechnology property.
+     * Define el valor de la propiedad serviceTechnology.
      * 
      * @param value
      *     allowed object is
@@ -288,7 +288,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the networkTechnology property.
+     * Obtiene el valor de la propiedad networkTechnology.
      * 
      * @return
      *     possible object is
@@ -300,7 +300,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the networkTechnology property.
+     * Define el valor de la propiedad networkTechnology.
      * 
      * @param value
      *     allowed object is
@@ -312,7 +312,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the maxSpeed property.
+     * Obtiene el valor de la propiedad maxSpeed.
      * 
      * @return
      *     possible object is
@@ -324,7 +324,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the maxSpeed property.
+     * Define el valor de la propiedad maxSpeed.
      * 
      * @param value
      *     allowed object is
@@ -336,7 +336,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the serviceabilityID property.
+     * Obtiene el valor de la propiedad serviceabilityID.
      * 
      * @return
      *     possible object is
@@ -348,7 +348,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the serviceabilityID property.
+     * Define el valor de la propiedad serviceabilityID.
      * 
      * @param value
      *     allowed object is
@@ -389,7 +389,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the creditScore property.
+     * Obtiene el valor de la propiedad creditScore.
      * 
      * @return
      *     possible object is
@@ -401,7 +401,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the creditScore property.
+     * Define el valor de la propiedad creditScore.
      * 
      * @param value
      *     allowed object is
@@ -413,7 +413,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the departament property.
+     * Obtiene el valor de la propiedad departament.
      * 
      * @return
      *     possible object is
@@ -425,7 +425,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the departament property.
+     * Define el valor de la propiedad departament.
      * 
      * @param value
      *     allowed object is
@@ -437,7 +437,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the storeId property.
+     * Obtiene el valor de la propiedad storeId.
      * 
      * @return
      *     possible object is
@@ -449,7 +449,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the storeId property.
+     * Define el valor de la propiedad storeId.
      * 
      * @param value
      *     allowed object is
@@ -461,7 +461,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the dealerCode property.
+     * Obtiene el valor de la propiedad dealerCode.
      * 
      * @return
      *     possible object is
@@ -473,7 +473,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the dealerCode property.
+     * Define el valor de la propiedad dealerCode.
      * 
      * @param value
      *     allowed object is
@@ -485,7 +485,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the portInFlag property.
+     * Obtiene el valor de la propiedad portInFlag.
      * 
      * @return
      *     possible object is
@@ -497,7 +497,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the portInFlag property.
+     * Define el valor de la propiedad portInFlag.
      * 
      * @param value
      *     allowed object is
@@ -509,7 +509,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the planGroup property.
+     * Obtiene el valor de la propiedad planGroup.
      * 
      * @return
      *     possible object is
@@ -521,7 +521,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the planGroup property.
+     * Define el valor de la propiedad planGroup.
      * 
      * @param value
      *     allowed object is
@@ -533,7 +533,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the planRank property.
+     * Obtiene el valor de la propiedad planRank.
      * 
      * @return
      *     possible object is
@@ -545,7 +545,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the planRank property.
+     * Define el valor de la propiedad planRank.
      * 
      * @param value
      *     allowed object is
@@ -557,7 +557,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the planCommitmentDuration property.
+     * Obtiene el valor de la propiedad planCommitmentDuration.
      * 
      * @return
      *     possible object is
@@ -569,7 +569,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the planCommitmentDuration property.
+     * Define el valor de la propiedad planCommitmentDuration.
      * 
      * @param value
      *     allowed object is
@@ -581,7 +581,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the retentionFlag property.
+     * Obtiene el valor de la propiedad retentionFlag.
      * 
      * @return
      *     possible object is
@@ -593,7 +593,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the retentionFlag property.
+     * Define el valor de la propiedad retentionFlag.
      * 
      * @param value
      *     allowed object is
@@ -605,7 +605,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the offerMinInternetSpeed property.
+     * Obtiene el valor de la propiedad offerMinInternetSpeed.
      * 
      * @return
      *     possible object is
@@ -617,7 +617,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the offerMinInternetSpeed property.
+     * Define el valor de la propiedad offerMinInternetSpeed.
      * 
      * @param value
      *     allowed object is
@@ -629,7 +629,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the offerMaxInternetSpeed property.
+     * Obtiene el valor de la propiedad offerMaxInternetSpeed.
      * 
      * @return
      *     possible object is
@@ -641,7 +641,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the offerMaxInternetSpeed property.
+     * Define el valor de la propiedad offerMaxInternetSpeed.
      * 
      * @param value
      *     allowed object is
@@ -653,7 +653,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the invoiceCompany property.
+     * Obtiene el valor de la propiedad invoiceCompany.
      * 
      * @return
      *     possible object is
@@ -665,7 +665,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the invoiceCompany property.
+     * Define el valor de la propiedad invoiceCompany.
      * 
      * @param value
      *     allowed object is
@@ -677,7 +677,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the paginationInfo property.
+     * Obtiene el valor de la propiedad paginationInfo.
      * 
      * @return
      *     possible object is
@@ -689,7 +689,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the paginationInfo property.
+     * Define el valor de la propiedad paginationInfo.
      * 
      * @param value
      *     allowed object is
@@ -730,7 +730,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -742,7 +742,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -754,7 +754,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Gets the value of the product property.
+     * Obtiene el valor de la propiedad product.
      * 
      * @return
      *     possible object is
@@ -766,7 +766,7 @@ public class FilterInfoType {
     }
 
     /**
-     * Sets the value of the product property.
+     * Define el valor de la propiedad product.
      * 
      * @param value
      *     allowed object is

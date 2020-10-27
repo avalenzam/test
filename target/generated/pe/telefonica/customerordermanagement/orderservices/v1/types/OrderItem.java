@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for OrderItem complex type.
+ * <p>Clase Java para OrderItem complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="OrderItem"&gt;
@@ -61,7 +61,7 @@ public class OrderItem {
     protected List<OrderItem> subOrderItem;
 
     /**
-     * Gets the value of the itemID property.
+     * Obtiene el valor de la propiedad itemID.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class OrderItem {
     }
 
     /**
-     * Sets the value of the itemID property.
+     * Define el valor de la propiedad itemID.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class OrderItem {
     }
 
     /**
-     * Gets the value of the action property.
+     * Obtiene el valor de la propiedad action.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class OrderItem {
     }
 
     /**
-     * Sets the value of the action property.
+     * Define el valor de la propiedad action.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class OrderItem {
     }
 
     /**
-     * Gets the value of the product property.
+     * Obtiene el valor de la propiedad product.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class OrderItem {
     }
 
     /**
-     * Sets the value of the product property.
+     * Define el valor de la propiedad product.
      * 
      * @param value
      *     allowed object is

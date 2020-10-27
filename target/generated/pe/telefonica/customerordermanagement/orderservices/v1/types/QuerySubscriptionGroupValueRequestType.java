@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for QuerySubscriptionGroupValueRequest_type complex type.
+ * <p>Clase Java para QuerySubscriptionGroupValueRequest_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="QuerySubscriptionGroupValueRequest_type"&gt;
@@ -39,7 +39,7 @@ public class QuerySubscriptionGroupValueRequestType
     protected QuerySubscriptionGroupValueRequestDataType querySubscriptionGroupValueRequestData;
 
     /**
-     * Gets the value of the querySubscriptionGroupValueRequestData property.
+     * Obtiene el valor de la propiedad querySubscriptionGroupValueRequestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class QuerySubscriptionGroupValueRequestType
     }
 
     /**
-     * Sets the value of the querySubscriptionGroupValueRequestData property.
+     * Define el valor de la propiedad querySubscriptionGroupValueRequestData.
      * 
      * @param value
      *     allowed object is

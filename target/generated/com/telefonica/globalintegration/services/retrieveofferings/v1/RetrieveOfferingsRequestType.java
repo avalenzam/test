@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- filterInfo: Synonym of FilterInfo (similar concept that SID attribute defined by 'p1:FilterInfoType')
  * 			
  * 
- * <p>Java class for retrieveOfferingsRequestType complex type.
+ * <p>Clase Java para retrieveOfferingsRequestType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="retrieveOfferingsRequestType"&gt;
@@ -81,7 +81,7 @@ public class RetrieveOfferingsRequestType {
     protected FilterInfoType filterInfo;
 
     /**
-     * Gets the value of the customerId property.
+     * Obtiene el valor de la propiedad customerId.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the customerId property.
+     * Define el valor de la propiedad customerId.
      * 
      * @param value
      *     allowed object is
@@ -134,7 +134,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Gets the value of the category property.
+     * Obtiene el valor de la propiedad category.
      * 
      * @return
      *     possible object is
@@ -146,7 +146,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the category property.
+     * Define el valor de la propiedad category.
      * 
      * @param value
      *     allowed object is
@@ -158,7 +158,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Gets the value of the channelId property.
+     * Obtiene el valor de la propiedad channelId.
      * 
      * @return
      *     possible object is
@@ -170,7 +170,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the channelId property.
+     * Define el valor de la propiedad channelId.
      * 
      * @param value
      *     allowed object is
@@ -182,7 +182,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Gets the value of the productId property.
+     * Obtiene el valor de la propiedad productId.
      * 
      * @return
      *     possible object is
@@ -194,7 +194,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the productId property.
+     * Define el valor de la propiedad productId.
      * 
      * @param value
      *     allowed object is
@@ -206,7 +206,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Gets the value of the productOrderId property.
+     * Obtiene el valor de la propiedad productOrderId.
      * 
      * @return
      *     possible object is
@@ -218,7 +218,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the productOrderId property.
+     * Define el valor de la propiedad productOrderId.
      * 
      * @param value
      *     allowed object is
@@ -230,7 +230,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Gets the value of the catalogID property.
+     * Obtiene el valor de la propiedad catalogID.
      * 
      * @return
      *     possible object is
@@ -242,7 +242,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the catalogID property.
+     * Define el valor de la propiedad catalogID.
      * 
      * @param value
      *     allowed object is
@@ -283,7 +283,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Gets the value of the filterInfo property.
+     * Obtiene el valor de la propiedad filterInfo.
      * 
      * @return
      *     possible object is
@@ -295,7 +295,7 @@ public class RetrieveOfferingsRequestType {
     }
 
     /**
-     * Sets the value of the filterInfo property.
+     * Define el valor de la propiedad filterInfo.
      * 
      * @param value
      *     allowed object is

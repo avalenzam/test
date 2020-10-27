@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ServiceSpecCharacteristic complex type.
+ * <p>Clase Java para ServiceSpecCharacteristic complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ServiceSpecCharacteristic"&gt;
@@ -62,7 +62,7 @@ public class ServiceSpecCharacteristic {
     protected RangeList rangeList;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -86,7 +86,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Gets the value of the valueType property.
+     * Obtiene el valor de la propiedad valueType.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Sets the value of the valueType property.
+     * Define el valor de la propiedad valueType.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Gets the value of the classification property.
+     * Obtiene el valor de la propiedad classification.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Sets the value of the classification property.
+     * Define el valor de la propiedad classification.
      * 
      * @param value
      *     allowed object is
@@ -134,7 +134,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Gets the value of the size property.
+     * Obtiene el valor de la propiedad size.
      * 
      */
     public int getSize() {
@@ -142,7 +142,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Sets the value of the size property.
+     * Define el valor de la propiedad size.
      * 
      */
     public void setSize(int value) {
@@ -150,7 +150,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Gets the value of the validValueList property.
+     * Obtiene el valor de la propiedad validValueList.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Sets the value of the validValueList property.
+     * Define el valor de la propiedad validValueList.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Gets the value of the rangeList property.
+     * Obtiene el valor de la propiedad rangeList.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class ServiceSpecCharacteristic {
     }
 
     /**
-     * Sets the value of the rangeList property.
+     * Define el valor de la propiedad rangeList.
      * 
      * @param value
      *     allowed object is

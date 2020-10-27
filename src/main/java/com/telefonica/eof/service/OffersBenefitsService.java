@@ -880,14 +880,11 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 	if (id != null) {
 	    productCharacteristics.setId(id);
-	    productCharacteristics.setName(name);
-	    productCharacteristics.setValueType(enumValue);
-	    productSpecCharacteristicValue.setValue(value);
-	} else {
-	    productCharacteristics.setName(name);
-	    productCharacteristics.setValueType(enumValue);
-	    productSpecCharacteristicValue.setValue(value);
+
 	}
+	productCharacteristics.setName(name);
+	productCharacteristics.setValueType(enumValue);
+	productSpecCharacteristicValue.setValue(value);
 	productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
 	productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
 	return productCharacteristics;

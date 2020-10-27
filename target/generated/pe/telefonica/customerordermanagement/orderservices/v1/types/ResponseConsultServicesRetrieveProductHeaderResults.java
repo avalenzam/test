@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Response_ConsultServicesRetrieveProductHeaderResults complex type.
+ * <p>Clase Java para Response_ConsultServicesRetrieveProductHeaderResults complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Response_ConsultServicesRetrieveProductHeaderResults"&gt;
@@ -37,7 +37,7 @@ public class ResponseConsultServicesRetrieveProductHeaderResults {
     protected RejectStatus rejectStatus;
 
     /**
-     * Gets the value of the status property.
+     * Obtiene el valor de la propiedad status.
      * 
      */
     public boolean isStatus() {
@@ -45,7 +45,7 @@ public class ResponseConsultServicesRetrieveProductHeaderResults {
     }
 
     /**
-     * Sets the value of the status property.
+     * Define el valor de la propiedad status.
      * 
      */
     public void setStatus(boolean value) {
@@ -53,7 +53,7 @@ public class ResponseConsultServicesRetrieveProductHeaderResults {
     }
 
     /**
-     * Gets the value of the rejectStatus property.
+     * Obtiene el valor de la propiedad rejectStatus.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class ResponseConsultServicesRetrieveProductHeaderResults {
     }
 
     /**
-     * Sets the value of the rejectStatus property.
+     * Define el valor de la propiedad rejectStatus.
      * 
      * @param value
      *     allowed object is

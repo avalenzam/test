@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for HeaderInType complex type.
+ * <p>Clase Java para HeaderInType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="HeaderInType"&gt;
@@ -100,7 +100,7 @@ public class HeaderInType {
     protected VarArgType varArg;
 
     /**
-     * Gets the value of the country property.
+     * Obtiene el valor de la propiedad country.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the country property.
+     * Define el valor de la propiedad country.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the lang property.
+     * Obtiene el valor de la propiedad lang.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the lang property.
+     * Define el valor de la propiedad lang.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the entity property.
+     * Obtiene el valor de la propiedad entity.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the entity property.
+     * Define el valor de la propiedad entity.
      * 
      * @param value
      *     allowed object is
@@ -172,7 +172,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the system property.
+     * Obtiene el valor de la propiedad system.
      * 
      * @return
      *     possible object is
@@ -184,7 +184,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the system property.
+     * Define el valor de la propiedad system.
      * 
      * @param value
      *     allowed object is
@@ -196,7 +196,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the subsystem property.
+     * Obtiene el valor de la propiedad subsystem.
      * 
      * @return
      *     possible object is
@@ -208,7 +208,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the subsystem property.
+     * Define el valor de la propiedad subsystem.
      * 
      * @param value
      *     allowed object is
@@ -220,7 +220,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the originator property.
+     * Obtiene el valor de la propiedad originator.
      * 
      * @return
      *     possible object is
@@ -232,7 +232,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the originator property.
+     * Define el valor de la propiedad originator.
      * 
      * @param value
      *     allowed object is
@@ -244,7 +244,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the sender property.
+     * Obtiene el valor de la propiedad sender.
      * 
      * @return
      *     possible object is
@@ -256,7 +256,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the sender property.
+     * Define el valor de la propiedad sender.
      * 
      * @param value
      *     allowed object is
@@ -268,7 +268,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the userId property.
+     * Obtiene el valor de la propiedad userId.
      * 
      * @return
      *     possible object is
@@ -280,7 +280,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the userId property.
+     * Define el valor de la propiedad userId.
      * 
      * @param value
      *     allowed object is
@@ -292,7 +292,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the wsId property.
+     * Obtiene el valor de la propiedad wsId.
      * 
      * @return
      *     possible object is
@@ -304,7 +304,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the wsId property.
+     * Define el valor de la propiedad wsId.
      * 
      * @param value
      *     allowed object is
@@ -316,7 +316,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the wsIp property.
+     * Obtiene el valor de la propiedad wsIp.
      * 
      * @return
      *     possible object is
@@ -328,7 +328,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the wsIp property.
+     * Define el valor de la propiedad wsIp.
      * 
      * @param value
      *     allowed object is
@@ -340,7 +340,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the wsIpv6 property.
+     * Obtiene el valor de la propiedad wsIpv6.
      * 
      * @return
      *     possible object is
@@ -352,7 +352,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the wsIpv6 property.
+     * Define el valor de la propiedad wsIpv6.
      * 
      * @param value
      *     allowed object is
@@ -364,7 +364,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the operation property.
+     * Obtiene el valor de la propiedad operation.
      * 
      * @return
      *     possible object is
@@ -376,7 +376,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the operation property.
+     * Define el valor de la propiedad operation.
      * 
      * @param value
      *     allowed object is
@@ -388,7 +388,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the destination property.
+     * Obtiene el valor de la propiedad destination.
      * 
      * @return
      *     possible object is
@@ -400,7 +400,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the destination property.
+     * Define el valor de la propiedad destination.
      * 
      * @param value
      *     allowed object is
@@ -412,7 +412,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the pid property.
+     * Obtiene el valor de la propiedad pid.
      * 
      * @return
      *     possible object is
@@ -424,7 +424,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the pid property.
+     * Define el valor de la propiedad pid.
      * 
      * @param value
      *     allowed object is
@@ -436,7 +436,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the execId property.
+     * Obtiene el valor de la propiedad execId.
      * 
      * @return
      *     possible object is
@@ -448,7 +448,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the execId property.
+     * Define el valor de la propiedad execId.
      * 
      * @param value
      *     allowed object is
@@ -460,7 +460,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the msgId property.
+     * Obtiene el valor de la propiedad msgId.
      * 
      * @return
      *     possible object is
@@ -472,7 +472,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the msgId property.
+     * Define el valor de la propiedad msgId.
      * 
      * @param value
      *     allowed object is
@@ -484,7 +484,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the timestamp property.
+     * Obtiene el valor de la propiedad timestamp.
      * 
      * @return
      *     possible object is
@@ -496,7 +496,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the timestamp property.
+     * Define el valor de la propiedad timestamp.
      * 
      * @param value
      *     allowed object is
@@ -508,7 +508,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the msgType property.
+     * Obtiene el valor de la propiedad msgType.
      * 
      * @return
      *     possible object is
@@ -520,7 +520,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the msgType property.
+     * Define el valor de la propiedad msgType.
      * 
      * @param value
      *     allowed object is
@@ -532,7 +532,7 @@ public class HeaderInType {
     }
 
     /**
-     * Gets the value of the varArg property.
+     * Obtiene el valor de la propiedad varArg.
      * 
      * @return
      *     possible object is
@@ -544,7 +544,7 @@ public class HeaderInType {
     }
 
     /**
-     * Sets the value of the varArg property.
+     * Define el valor de la propiedad varArg.
      * 
      * @param value
      *     allowed object is

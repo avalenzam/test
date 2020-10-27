@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RetrieveCommitmentPenaltyResponse_data_type complex type.
+ * <p>Clase Java para RetrieveCommitmentPenaltyResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveCommitmentPenaltyResponse_data_type"&gt;
@@ -40,7 +40,7 @@ public class RetrieveCommitmentPenaltyResponseDataType {
     protected Status status;
 
     /**
-     * Gets the value of the devicePenaltyInfo property.
+     * Obtiene el valor de la propiedad devicePenaltyInfo.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class RetrieveCommitmentPenaltyResponseDataType {
     }
 
     /**
-     * Sets the value of the devicePenaltyInfo property.
+     * Define el valor de la propiedad devicePenaltyInfo.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class RetrieveCommitmentPenaltyResponseDataType {
     }
 
     /**
-     * Gets the value of the status property.
+     * Obtiene el valor de la propiedad status.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class RetrieveCommitmentPenaltyResponseDataType {
     }
 
     /**
-     * Sets the value of the status property.
+     * Define el valor de la propiedad status.
      * 
      * @param value
      *     allowed object is

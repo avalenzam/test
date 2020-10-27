@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SortCriterion complex type.
+ * <p>Clase Java para SortCriterion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="SortCriterion"&gt;
@@ -45,7 +45,7 @@ public class SortCriterion {
     protected boolean isAscending;
 
     /**
-     * Gets the value of the fieldName property.
+     * Obtiene el valor de la propiedad fieldName.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class SortCriterion {
     }
 
     /**
-     * Sets the value of the fieldName property.
+     * Define el valor de la propiedad fieldName.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class SortCriterion {
     }
 
     /**
-     * Gets the value of the isAscending property.
+     * Obtiene el valor de la propiedad isAscending.
      * 
      */
     public boolean isIsAscending() {
@@ -77,7 +77,7 @@ public class SortCriterion {
     }
 
     /**
-     * Sets the value of the isAscending property.
+     * Define el valor de la propiedad isAscending.
      * 
      */
     public void setIsAscending(boolean value) {

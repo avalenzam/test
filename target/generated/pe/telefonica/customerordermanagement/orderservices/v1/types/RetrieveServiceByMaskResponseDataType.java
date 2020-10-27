@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RetrieveServiceByMaskResponse_data_type complex type.
+ * <p>Clase Java para RetrieveServiceByMaskResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveServiceByMaskResponse_data_type"&gt;
@@ -42,7 +42,7 @@ public class RetrieveServiceByMaskResponseDataType {
     protected AvailableServiceList availableServicesList;
 
     /**
-     * Gets the value of the response property.
+     * Obtiene el valor de la propiedad response.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class RetrieveServiceByMaskResponseDataType {
     }
 
     /**
-     * Sets the value of the response property.
+     * Define el valor de la propiedad response.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class RetrieveServiceByMaskResponseDataType {
     }
 
     /**
-     * Gets the value of the implementedServicesList property.
+     * Obtiene el valor de la propiedad implementedServicesList.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class RetrieveServiceByMaskResponseDataType {
     }
 
     /**
-     * Sets the value of the implementedServicesList property.
+     * Define el valor de la propiedad implementedServicesList.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class RetrieveServiceByMaskResponseDataType {
     }
 
     /**
-     * Gets the value of the availableServicesList property.
+     * Obtiene el valor de la propiedad availableServicesList.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class RetrieveServiceByMaskResponseDataType {
     }
 
     /**
-     * Sets the value of the availableServicesList property.
+     * Define el valor de la propiedad availableServicesList.
      * 
      * @param value
      *     allowed object is

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Context complex type.
+ * <p>Clase Java para Context complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Context"&gt;
@@ -52,7 +52,7 @@ public class Context {
     protected String localeString;
 
     /**
-     * Gets the value of the salesChannel property.
+     * Obtiene el valor de la propiedad salesChannel.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class Context {
     }
 
     /**
-     * Sets the value of the salesChannel property.
+     * Define el valor de la propiedad salesChannel.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class Context {
     }
 
     /**
-     * Gets the value of the localeString property.
+     * Obtiene el valor de la propiedad localeString.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class Context {
     }
 
     /**
-     * Sets the value of the localeString property.
+     * Define el valor de la propiedad localeString.
      * 
      * @param value
      *     allowed object is

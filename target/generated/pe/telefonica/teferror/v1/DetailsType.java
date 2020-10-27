@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for detailsType complex type.
+ * <p>Clase Java para detailsType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="detailsType"&gt;
@@ -40,7 +40,7 @@ public class DetailsType {
     protected String cause;
 
     /**
-     * Gets the value of the timeStamp property.
+     * Obtiene el valor de la propiedad timeStamp.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class DetailsType {
     }
 
     /**
-     * Sets the value of the timeStamp property.
+     * Define el valor de la propiedad timeStamp.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class DetailsType {
     }
 
     /**
-     * Gets the value of the cause property.
+     * Obtiene el valor de la propiedad cause.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class DetailsType {
     }
 
     /**
-     * Sets the value of the cause property.
+     * Define el valor de la propiedad cause.
      * 
      * @param value
      *     allowed object is

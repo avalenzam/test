@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ProductComponent_ChangeProductStatusRequest complex type.
+ * <p>Clase Java para ProductComponent_ChangeProductStatusRequest complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductComponent_ChangeProductStatusRequest"&gt;
@@ -78,7 +78,7 @@ public class ProductComponentChangeProductStatusRequest {
     protected String model;
 
     /**
-     * Gets the value of the instanceId property.
+     * Obtiene el valor de la propiedad instanceId.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Sets the value of the instanceId property.
+     * Define el valor de la propiedad instanceId.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Gets the value of the externalProductID property.
+     * Obtiene el valor de la propiedad externalProductID.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Sets the value of the externalProductID property.
+     * Define el valor de la propiedad externalProductID.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Gets the value of the imei property.
+     * Obtiene el valor de la propiedad imei.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Sets the value of the imei property.
+     * Define el valor de la propiedad imei.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Gets the value of the brand property.
+     * Obtiene el valor de la propiedad brand.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Sets the value of the brand property.
+     * Define el valor de la propiedad brand.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Gets the value of the model property.
+     * Obtiene el valor de la propiedad model.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class ProductComponentChangeProductStatusRequest {
     }
 
     /**
-     * Sets the value of the model property.
+     * Define el valor de la propiedad model.
      * 
      * @param value
      *     allowed object is

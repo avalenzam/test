@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for LocateSubscriptionRequest_data_type complex type.
+ * <p>Clase Java para LocateSubscriptionRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="LocateSubscriptionRequest_data_type"&gt;
@@ -36,7 +36,7 @@ public class LocateSubscriptionRequestDataType {
     protected NumbersList numbers;
 
     /**
-     * Gets the value of the numbers property.
+     * Obtiene el valor de la propiedad numbers.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class LocateSubscriptionRequestDataType {
     }
 
     /**
-     * Sets the value of the numbers property.
+     * Define el valor de la propiedad numbers.
      * 
      * @param value
      *     allowed object is

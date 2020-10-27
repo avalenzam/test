@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for RequestSVAActivationRequest_type complex type.
+ * <p>Clase Java para RequestSVAActivationRequest_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RequestSVAActivationRequest_type"&gt;
@@ -39,7 +39,7 @@ public class RequestSVAActivationRequestType
     protected RequestSVAActivationRequestDataType requestSVAActivationRequestData;
 
     /**
-     * Gets the value of the requestSVAActivationRequestData property.
+     * Obtiene el valor de la propiedad requestSVAActivationRequestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RequestSVAActivationRequestType
     }
 
     /**
-     * Sets the value of the requestSVAActivationRequestData property.
+     * Define el valor de la propiedad requestSVAActivationRequestData.
      * 
      * @param value
      *     allowed object is

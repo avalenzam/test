@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- price: Synonym of MoneyType (similar concept that SID attribute defined by 'p1:UNIMoneyType')
  * 			
  * 
- * <p>Java class for PricingType complex type.
+ * <p>Clase Java para PricingType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="PricingType"&gt;
@@ -53,7 +53,7 @@ public class PricingType {
     protected UNIMoneyType price;
 
     /**
-     * Gets the value of the technology property.
+     * Obtiene el valor de la propiedad technology.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class PricingType {
     }
 
     /**
-     * Sets the value of the technology property.
+     * Define el valor de la propiedad technology.
      * 
      * @param value
      *     allowed object is
@@ -77,7 +77,7 @@ public class PricingType {
     }
 
     /**
-     * Gets the value of the downloadSpeed property.
+     * Obtiene el valor de la propiedad downloadSpeed.
      * 
      * @return
      *     possible object is
@@ -89,7 +89,7 @@ public class PricingType {
     }
 
     /**
-     * Sets the value of the downloadSpeed property.
+     * Define el valor de la propiedad downloadSpeed.
      * 
      * @param value
      *     allowed object is
@@ -101,7 +101,7 @@ public class PricingType {
     }
 
     /**
-     * Gets the value of the price property.
+     * Obtiene el valor de la propiedad price.
      * 
      * @return
      *     possible object is
@@ -113,7 +113,7 @@ public class PricingType {
     }
 
     /**
-     * Sets the value of the price property.
+     * Define el valor de la propiedad price.
      * 
      * @param value
      *     allowed object is

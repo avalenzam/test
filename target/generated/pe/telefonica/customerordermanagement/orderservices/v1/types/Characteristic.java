@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Characteristic complex type.
+ * <p>Clase Java para Characteristic complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Characteristic"&gt;
@@ -51,7 +51,7 @@ public class Characteristic {
     protected String value;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class Characteristic {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class Characteristic {
     }
 
     /**
-     * Gets the value of the value property.
+     * Obtiene el valor de la propiedad value.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class Characteristic {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define el valor de la propiedad value.
      * 
      * @param value
      *     allowed object is

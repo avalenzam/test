@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for FNFBODetails complex type.
+ * <p>Clase Java para FNFBODetails complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="FNFBODetails"&gt;
@@ -66,7 +66,7 @@ public class FNFBODetails {
     protected XMLGregorianCalendar effectiveDate;
 
     /**
-     * Gets the value of the instanceID property.
+     * Obtiene el valor de la propiedad instanceID.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Sets the value of the instanceID property.
+     * Define el valor de la propiedad instanceID.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Gets the value of the productSerialNumber property.
+     * Obtiene el valor de la propiedad productSerialNumber.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Sets the value of the productSerialNumber property.
+     * Define el valor de la propiedad productSerialNumber.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +114,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Gets the value of the effectiveDate property.
+     * Obtiene el valor de la propiedad effectiveDate.
      * 
      * @return
      *     possible object is
@@ -150,7 +150,7 @@ public class FNFBODetails {
     }
 
     /**
-     * Sets the value of the effectiveDate property.
+     * Define el valor de la propiedad effectiveDate.
      * 
      * @param value
      *     allowed object is

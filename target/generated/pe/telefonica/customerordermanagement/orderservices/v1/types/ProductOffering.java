@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ProductOffering complex type.
+ * <p>Clase Java para ProductOffering complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductOffering"&gt;
@@ -65,7 +65,7 @@ public class ProductOffering {
     protected TimePeriod validFor;
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      * @return
      *     possible object is
@@ -77,7 +77,7 @@ public class ProductOffering {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      * @param value
      *     allowed object is
@@ -89,7 +89,7 @@ public class ProductOffering {
     }
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -101,7 +101,7 @@ public class ProductOffering {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -113,7 +113,7 @@ public class ProductOffering {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -125,7 +125,7 @@ public class ProductOffering {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -137,7 +137,7 @@ public class ProductOffering {
     }
 
     /**
-     * Gets the value of the validFor property.
+     * Obtiene el valor de la propiedad validFor.
      * 
      * @return
      *     possible object is
@@ -149,7 +149,7 @@ public class ProductOffering {
     }
 
     /**
-     * Sets the value of the validFor property.
+     * Define el valor de la propiedad validFor.
      * 
      * @param value
      *     allowed object is

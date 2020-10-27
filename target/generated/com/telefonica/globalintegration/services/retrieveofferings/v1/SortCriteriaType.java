@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- isAscending: Field isAscending
  * 			
  * 
- * <p>Java class for SortCriteriaType complex type.
+ * <p>Clase Java para SortCriteriaType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="SortCriteriaType"&gt;
@@ -47,7 +47,7 @@ public class SortCriteriaType {
     protected boolean isAscending;
 
     /**
-     * Gets the value of the propertyName property.
+     * Obtiene el valor de la propiedad propertyName.
      * 
      * @return
      *     possible object is
@@ -59,7 +59,7 @@ public class SortCriteriaType {
     }
 
     /**
-     * Sets the value of the propertyName property.
+     * Define el valor de la propiedad propertyName.
      * 
      * @param value
      *     allowed object is
@@ -71,7 +71,7 @@ public class SortCriteriaType {
     }
 
     /**
-     * Gets the value of the isAscending property.
+     * Obtiene el valor de la propiedad isAscending.
      * 
      */
     public boolean isIsAscending() {
@@ -79,7 +79,7 @@ public class SortCriteriaType {
     }
 
     /**
-     * Sets the value of the isAscending property.
+     * Define el valor de la propiedad isAscending.
      * 
      */
     public void setIsAscending(boolean value) {

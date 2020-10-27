@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for Request_type complex type.
+ * <p>Clase Java para Request_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Request_type"&gt;
@@ -39,7 +39,7 @@ public class RequestType
     protected RequestDataType requestData;
 
     /**
-     * Gets the value of the requestData property.
+     * Obtiene el valor de la propiedad requestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RequestType
     }
 
     /**
-     * Sets the value of the requestData property.
+     * Define el valor de la propiedad requestData.
      * 
      * @param value
      *     allowed object is

@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Java class for CreateTokenFnFResponse_type complex type.
+ * <p>Clase Java para CreateTokenFnFResponse_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="CreateTokenFnFResponse_type"&gt;
@@ -39,7 +39,7 @@ public class CreateTokenFnFResponseType
     protected CreateTokenFnFesponseDataType createTokenFnFResponseData;
 
     /**
-     * Gets the value of the createTokenFnFResponseData property.
+     * Obtiene el valor de la propiedad createTokenFnFResponseData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class CreateTokenFnFResponseType
     }
 
     /**
-     * Sets the value of the createTokenFnFResponseData property.
+     * Define el valor de la propiedad createTokenFnFResponseData.
      * 
      * @param value
      *     allowed object is

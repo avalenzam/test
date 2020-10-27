@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for ChangeFunPackRequest_data_type complex type.
+ * <p>Clase Java para ChangeFunPackRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ChangeFunPackRequest_data_type"&gt;
@@ -86,7 +86,7 @@ public class ChangeFunPackRequestDataType {
     protected ApplicationsList applicationsNewList;
 
     /**
-     * Gets the value of the subscriberID property.
+     * Obtiene el valor de la propiedad subscriberID.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the subscriberID property.
+     * Define el valor de la propiedad subscriberID.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Gets the value of the msisdn property.
+     * Obtiene el valor de la propiedad msisdn.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the msisdn property.
+     * Define el valor de la propiedad msisdn.
      * 
      * @param value
      *     allowed object is
@@ -134,7 +134,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Gets the value of the action property.
+     * Obtiene el valor de la propiedad action.
      * 
      * @return
      *     possible object is
@@ -146,7 +146,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the action property.
+     * Define el valor de la propiedad action.
      * 
      * @param value
      *     allowed object is
@@ -158,7 +158,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Gets the value of the expirationDate property.
+     * Obtiene el valor de la propiedad expirationDate.
      * 
      * @return
      *     possible object is
@@ -170,7 +170,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the expirationDate property.
+     * Define el valor de la propiedad expirationDate.
      * 
      * @param value
      *     allowed object is
@@ -182,7 +182,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Gets the value of the expirationTime property.
+     * Obtiene el valor de la propiedad expirationTime.
      * 
      * @return
      *     possible object is
@@ -194,7 +194,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the expirationTime property.
+     * Define el valor de la propiedad expirationTime.
      * 
      * @param value
      *     allowed object is
@@ -206,7 +206,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Gets the value of the applicationsOldList property.
+     * Obtiene el valor de la propiedad applicationsOldList.
      * 
      * @return
      *     possible object is
@@ -218,7 +218,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the applicationsOldList property.
+     * Define el valor de la propiedad applicationsOldList.
      * 
      * @param value
      *     allowed object is
@@ -230,7 +230,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Gets the value of the applicationsNewList property.
+     * Obtiene el valor de la propiedad applicationsNewList.
      * 
      * @return
      *     possible object is
@@ -242,7 +242,7 @@ public class ChangeFunPackRequestDataType {
     }
 
     /**
-     * Sets the value of the applicationsNewList property.
+     * Define el valor de la propiedad applicationsNewList.
      * 
      * @param value
      *     allowed object is

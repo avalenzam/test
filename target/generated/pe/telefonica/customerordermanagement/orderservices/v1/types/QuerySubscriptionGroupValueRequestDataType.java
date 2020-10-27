@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for QuerySubscriptionGroupValueRequest_data_type complex type.
+ * <p>Clase Java para QuerySubscriptionGroupValueRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="QuerySubscriptionGroupValueRequest_data_type"&gt;
@@ -36,7 +36,7 @@ public class QuerySubscriptionGroupValueRequestDataType {
     protected TelephoneNumberQuerySubscriptionGroupValueRequest msisdn;
 
     /**
-     * Gets the value of the msisdn property.
+     * Obtiene el valor de la propiedad msisdn.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class QuerySubscriptionGroupValueRequestDataType {
     }
 
     /**
-     * Sets the value of the msisdn property.
+     * Define el valor de la propiedad msisdn.
      * 
      * @param value
      *     allowed object is

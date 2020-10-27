@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for RetrieveOrdersHistoryRequest_type complex type.
+ * <p>Clase Java para RetrieveOrdersHistoryRequest_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveOrdersHistoryRequest_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveOrdersHistoryRequestType
     protected RetrieveOrdersHistoryRequestDataType retrieveOrdersHistoryRequestData;
 
     /**
-     * Gets the value of the retrieveOrdersHistoryRequestData property.
+     * Obtiene el valor de la propiedad retrieveOrdersHistoryRequestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveOrdersHistoryRequestType
     }
 
     /**
-     * Sets the value of the retrieveOrdersHistoryRequestData property.
+     * Define el valor de la propiedad retrieveOrdersHistoryRequestData.
      * 
      * @param value
      *     allowed object is

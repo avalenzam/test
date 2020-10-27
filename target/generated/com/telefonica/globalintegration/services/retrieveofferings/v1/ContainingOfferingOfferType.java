@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- productSpecIds: Synonym of ProductSpecIds (similar concept that SID attribute defined by 'p1:ProductSpecIdsProductCatalogType')
  * 			
  * 
- * <p>Java class for ContainingOfferingOfferType complex type.
+ * <p>Clase Java para ContainingOfferingOfferType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ContainingOfferingOfferType"&gt;
@@ -53,7 +53,7 @@ public class ContainingOfferingOfferType {
     protected List<String> productSpecIds;
 
     /**
-     * Gets the value of the offeringId property.
+     * Obtiene el valor de la propiedad offeringId.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class ContainingOfferingOfferType {
     }
 
     /**
-     * Sets the value of the offeringId property.
+     * Define el valor de la propiedad offeringId.
      * 
      * @param value
      *     allowed object is

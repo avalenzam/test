@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Valores asociados a una key.
  * 
- * <p>Java class for valuesType complex type.
+ * <p>Clase Java para valuesType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="valuesType"&gt;
