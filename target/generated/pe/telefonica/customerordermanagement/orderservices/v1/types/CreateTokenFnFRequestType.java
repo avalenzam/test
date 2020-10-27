@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para CreateTokenFnFRequest_type complex type.
+ * <p>Java class for CreateTokenFnFRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="CreateTokenFnFRequest_type"&gt;
@@ -39,7 +39,7 @@ public class CreateTokenFnFRequestType
     protected CreateTokenFnFRequestDataType createTokenFnFRequestData;
 
     /**
-     * Obtiene el valor de la propiedad createTokenFnFRequestData.
+     * Gets the value of the createTokenFnFRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class CreateTokenFnFRequestType
     }
 
     /**
-     * Define el valor de la propiedad createTokenFnFRequestData.
+     * Sets the value of the createTokenFnFRequestData property.
      * 
      * @param value
      *     allowed object is

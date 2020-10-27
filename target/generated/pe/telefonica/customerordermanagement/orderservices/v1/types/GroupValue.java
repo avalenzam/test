@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para GroupValue complex type.
+ * <p>Java class for GroupValue complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="GroupValue"&gt;
@@ -42,7 +42,7 @@ public class GroupValue {
     protected String groupValue;
 
     /**
-     * Obtiene el valor de la propiedad groupValue.
+     * Gets the value of the groupValue property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class GroupValue {
     }
 
     /**
-     * Define el valor de la propiedad groupValue.
+     * Sets the value of the groupValue property.
      * 
      * @param value
      *     allowed object is

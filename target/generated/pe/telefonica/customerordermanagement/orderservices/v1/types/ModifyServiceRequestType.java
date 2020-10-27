@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para ModifyServiceRequest_type complex type.
+ * <p>Java class for ModifyServiceRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ModifyServiceRequest_type"&gt;
@@ -39,7 +39,7 @@ public class ModifyServiceRequestType
     protected ModifyServiceRequestDataType modifyServiceRequestData;
 
     /**
-     * Obtiene el valor de la propiedad modifyServiceRequestData.
+     * Gets the value of the modifyServiceRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ModifyServiceRequestType
     }
 
     /**
-     * Define el valor de la propiedad modifyServiceRequestData.
+     * Sets the value of the modifyServiceRequestData property.
      * 
      * @param value
      *     allowed object is

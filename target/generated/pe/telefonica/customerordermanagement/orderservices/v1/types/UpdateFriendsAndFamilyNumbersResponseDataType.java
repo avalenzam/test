@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para UpdateFriendsAndFamilyNumbersResponse_data_type complex type.
+ * <p>Java class for UpdateFriendsAndFamilyNumbersResponse_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="UpdateFriendsAndFamilyNumbersResponse_data_type"&gt;
@@ -39,7 +39,7 @@ public class UpdateFriendsAndFamilyNumbersResponseDataType {
     protected ProductOrderUpdateFriendsAndFamilyNumbersResponse productOrder;
 
     /**
-     * Obtiene el valor de la propiedad response.
+     * Gets the value of the response property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class UpdateFriendsAndFamilyNumbersResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad response.
+     * Sets the value of the response property.
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class UpdateFriendsAndFamilyNumbersResponseDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOrder.
+     * Gets the value of the productOrder property.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class UpdateFriendsAndFamilyNumbersResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad productOrder.
+     * Sets the value of the productOrder property.
      * 
      * @param value
      *     allowed object is

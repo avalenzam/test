@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para ProductHeader complex type.
+ * <p>Java class for ProductHeader complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ProductHeader"&gt;
@@ -126,7 +126,7 @@ public class ProductHeader {
     protected ProductOfferingProductHeader productOffering;
 
     /**
-     * Obtiene el valor de la propiedad productComponent.
+     * Gets the value of the productComponent property.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productComponent.
+     * Sets the value of the productComponent property.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad externalProductID.
+     * Gets the value of the externalProductID property.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad externalProductID.
+     * Sets the value of the externalProductID property.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad customerID.
+     * Gets the value of the customerID property.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad customerID.
+     * Sets the value of the customerID property.
      * 
      * @param value
      *     allowed object is
@@ -198,7 +198,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productSpecificationType.
+     * Gets the value of the productSpecificationType property.
      * 
      * @return
      *     possible object is
@@ -210,7 +210,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productSpecificationType.
+     * Sets the value of the productSpecificationType property.
      * 
      * @param value
      *     allowed object is
@@ -222,7 +222,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productSpecification.
+     * Gets the value of the productSpecification property.
      * 
      * @return
      *     possible object is
@@ -234,7 +234,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productSpecification.
+     * Sets the value of the productSpecification property.
      * 
      * @param value
      *     allowed object is
@@ -246,7 +246,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productStatus.
+     * Gets the value of the productStatus property.
      * 
      * @return
      *     possible object is
@@ -258,7 +258,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productStatus.
+     * Sets the value of the productStatus property.
      * 
      * @param value
      *     allowed object is
@@ -270,7 +270,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productStatusReason.
+     * Gets the value of the productStatusReason property.
      * 
      * @return
      *     possible object is
@@ -282,7 +282,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productStatusReason.
+     * Sets the value of the productStatusReason property.
      * 
      * @param value
      *     allowed object is
@@ -294,7 +294,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productSubStatus.
+     * Gets the value of the productSubStatus property.
      * 
      * @return
      *     possible object is
@@ -306,7 +306,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productSubStatus.
+     * Sets the value of the productSubStatus property.
      * 
      * @param value
      *     allowed object is
@@ -318,7 +318,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad effectiveDate.
+     * Gets the value of the effectiveDate property.
      * 
      * @return
      *     possible object is
@@ -330,7 +330,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad effectiveDate.
+     * Sets the value of the effectiveDate property.
      * 
      * @param value
      *     allowed object is
@@ -342,7 +342,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad initialActivationDate.
+     * Gets the value of the initialActivationDate property.
      * 
      * @return
      *     possible object is
@@ -354,7 +354,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad initialActivationDate.
+     * Sets the value of the initialActivationDate property.
      * 
      * @param value
      *     allowed object is
@@ -366,7 +366,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOfferingInstanceID.
+     * Gets the value of the productOfferingInstanceID property.
      * 
      * @return
      *     possible object is
@@ -378,7 +378,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productOfferingInstanceID.
+     * Sets the value of the productOfferingInstanceID property.
      * 
      * @param value
      *     allowed object is
@@ -390,7 +390,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOfferingCode.
+     * Gets the value of the productOfferingCode property.
      * 
      * @return
      *     possible object is
@@ -402,7 +402,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productOfferingCode.
+     * Sets the value of the productOfferingCode property.
      * 
      * @param value
      *     allowed object is
@@ -414,7 +414,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOfferType.
+     * Gets the value of the productOfferType property.
      * 
      * @return
      *     possible object is
@@ -426,7 +426,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productOfferType.
+     * Sets the value of the productOfferType property.
      * 
      * @param value
      *     allowed object is
@@ -438,7 +438,7 @@ public class ProductHeader {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOffering.
+     * Gets the value of the productOffering property.
      * 
      * @return
      *     possible object is
@@ -450,7 +450,7 @@ public class ProductHeader {
     }
 
     /**
-     * Define el valor de la propiedad productOffering.
+     * Sets the value of the productOffering property.
      * 
      * @param value
      *     allowed object is

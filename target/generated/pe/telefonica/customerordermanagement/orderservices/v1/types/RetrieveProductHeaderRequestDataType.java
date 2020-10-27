@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveProductHeaderRequest_data_type complex type.
+ * <p>Java class for RetrieveProductHeaderRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveProductHeaderRequest_data_type"&gt;
@@ -36,7 +36,7 @@ public class RetrieveProductHeaderRequestDataType {
     protected ProductComponentNumber productComponent;
 
     /**
-     * Obtiene el valor de la propiedad productComponent.
+     * Gets the value of the productComponent property.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class RetrieveProductHeaderRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad productComponent.
+     * Sets the value of the productComponent property.
      * 
      * @param value
      *     allowed object is

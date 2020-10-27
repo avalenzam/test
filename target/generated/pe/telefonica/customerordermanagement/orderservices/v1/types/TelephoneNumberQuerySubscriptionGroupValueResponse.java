@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para TelephoneNumber_QuerySubscriptionGroupValueResponse complex type.
+ * <p>Java class for TelephoneNumber_QuerySubscriptionGroupValueResponse complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="TelephoneNumber_QuerySubscriptionGroupValueResponse"&gt;
@@ -42,7 +42,7 @@ public class TelephoneNumberQuerySubscriptionGroupValueResponse {
     protected String number;
 
     /**
-     * Obtiene el valor de la propiedad number.
+     * Gets the value of the number property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class TelephoneNumberQuerySubscriptionGroupValueResponse {
     }
 
     /**
-     * Define el valor de la propiedad number.
+     * Sets the value of the number property.
      * 
      * @param value
      *     allowed object is

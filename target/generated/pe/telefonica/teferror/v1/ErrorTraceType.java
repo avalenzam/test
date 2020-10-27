@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para errorTraceType complex type.
+ * <p>Java class for errorTraceType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="errorTraceType"&gt;
@@ -44,7 +44,7 @@ public class ErrorTraceType {
     protected DetailsType details;
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Gets the value of the code property.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class ErrorTraceType {
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Sets the value of the code property.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class ErrorTraceType {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class ErrorTraceType {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class ErrorTraceType {
     }
 
     /**
-     * Obtiene el valor de la propiedad details.
+     * Gets the value of the details property.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class ErrorTraceType {
     }
 
     /**
-     * Define el valor de la propiedad details.
+     * Sets the value of the details property.
      * 
      * @param value
      *     allowed object is

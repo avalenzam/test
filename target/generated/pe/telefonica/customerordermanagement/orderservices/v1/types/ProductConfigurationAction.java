@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ProductConfigurationAction complex type.
+ * <p>Java class for ProductConfigurationAction complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ProductConfigurationAction"&gt;
@@ -60,7 +60,7 @@ public class ProductConfigurationAction {
     protected ServiceCharacteristicValueList attributeList;
 
     /**
-     * Obtiene el valor de la propiedad actionType.
+     * Gets the value of the actionType property.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Define el valor de la propiedad actionType.
+     * Sets the value of the actionType property.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Obtiene el valor de la propiedad itemCode.
+     * Gets the value of the itemCode property.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Define el valor de la propiedad itemCode.
+     * Sets the value of the itemCode property.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Obtiene el valor de la propiedad itemInstanceID.
+     * Gets the value of the itemInstanceID property.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Define el valor de la propiedad itemInstanceID.
+     * Sets the value of the itemInstanceID property.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Obtiene el valor de la propiedad attributeList.
+     * Gets the value of the attributeList property.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class ProductConfigurationAction {
     }
 
     /**
-     * Define el valor de la propiedad attributeList.
+     * Sets the value of the attributeList property.
      * 
      * @param value
      *     allowed object is

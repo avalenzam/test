@@ -58,7 +58,7 @@ public class Constant {
     public static final String WIRELESS	= "WRLS";
     public static final String TV	= "TV";
 
-    public static final String SVA	     = "SVA";
+    public static final String SVA	     = "sva";
     public static final String OC	     = "OC";
     public static final String PERUVIAN_COIN = "PEN";
     public static final String MONETARY	     = "Monetary";

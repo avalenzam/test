@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ActivityInformation complex type.
+ * <p>Java class for ActivityInformation complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ActivityInformation"&gt;
@@ -49,7 +49,7 @@ public class ActivityInformation {
     protected String activityReason;
 
     /**
-     * Obtiene el valor de la propiedad reasonCode.
+     * Gets the value of the reasonCode property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ActivityInformation {
     }
 
     /**
-     * Define el valor de la propiedad reasonCode.
+     * Sets the value of the reasonCode property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ActivityInformation {
     }
 
     /**
-     * Obtiene el valor de la propiedad activityReason.
+     * Gets the value of the activityReason property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ActivityInformation {
     }
 
     /**
-     * Define el valor de la propiedad activityReason.
+     * Sets the value of the activityReason property.
      * 
      * @param value
      *     allowed object is

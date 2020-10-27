@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Clase Java para UpdateFriendsAndFamilyNumbersResponse_type complex type.
+ * <p>Java class for UpdateFriendsAndFamilyNumbersResponse_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="UpdateFriendsAndFamilyNumbersResponse_type"&gt;
@@ -39,7 +39,7 @@ public class UpdateFriendsAndFamilyNumbersResponseType
     protected UpdateFriendsAndFamilyNumbersResponseDataType updateFriendsAndFamilyNumbersResponseData;
 
     /**
-     * Obtiene el valor de la propiedad updateFriendsAndFamilyNumbersResponseData.
+     * Gets the value of the updateFriendsAndFamilyNumbersResponseData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class UpdateFriendsAndFamilyNumbersResponseType
     }
 
     /**
-     * Define el valor de la propiedad updateFriendsAndFamilyNumbersResponseData.
+     * Sets the value of the updateFriendsAndFamilyNumbersResponseData property.
      * 
      * @param value
      *     allowed object is

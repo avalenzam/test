@@ -10,9 +10,9 @@ import pe.telefonica.teferror.v1.ErrorTraceType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -39,7 +39,7 @@ public class LocateSubscriptionFault {
     protected ErrorTraceType error;
 
     /**
-     * Obtiene el valor de la propiedad error.
+     * Gets the value of the error property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class LocateSubscriptionFault {
     }
 
     /**
-     * Define el valor de la propiedad error.
+     * Sets the value of the error property.
      * 
      * @param value
      *     allowed object is

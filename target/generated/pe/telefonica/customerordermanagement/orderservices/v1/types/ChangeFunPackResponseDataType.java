@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ChangeFunPackResponse_data_type complex type.
+ * <p>Java class for ChangeFunPackResponse_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ChangeFunPackResponse_data_type"&gt;
@@ -51,7 +51,7 @@ public class ChangeFunPackResponseDataType {
     protected String resultDesc;
 
     /**
-     * Obtiene el valor de la propiedad resultCode.
+     * Gets the value of the resultCode property.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class ChangeFunPackResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad resultCode.
+     * Sets the value of the resultCode property.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class ChangeFunPackResponseDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad resultDesc.
+     * Gets the value of the resultDesc property.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class ChangeFunPackResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad resultDesc.
+     * Sets the value of the resultDesc property.
      * 
      * @param value
      *     allowed object is

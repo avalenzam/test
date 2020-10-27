@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para OrderAction complex type.
+ * <p>Java class for OrderAction complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="OrderAction"&gt;
@@ -38,7 +38,7 @@ public class OrderAction {
     protected ActionEnum action;
 
     /**
-     * Obtiene el valor de la propiedad action.
+     * Gets the value of the action property.
      * 
      * @return
      *     possible object is
@@ -50,7 +50,7 @@ public class OrderAction {
     }
 
     /**
-     * Define el valor de la propiedad action.
+     * Sets the value of the action property.
      * 
      * @param value
      *     allowed object is

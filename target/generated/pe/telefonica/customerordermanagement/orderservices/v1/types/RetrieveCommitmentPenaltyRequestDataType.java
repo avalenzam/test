@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveCommitmentPenaltyRequest_data_type complex type.
+ * <p>Java class for RetrieveCommitmentPenaltyRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveCommitmentPenaltyRequest_data_type"&gt;
@@ -42,7 +42,7 @@ public class RetrieveCommitmentPenaltyRequestDataType {
     protected String msisdn;
 
     /**
-     * Obtiene el valor de la propiedad msisdn.
+     * Gets the value of the msisdn property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class RetrieveCommitmentPenaltyRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad msisdn.
+     * Sets the value of the msisdn property.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveOrdersHistoryRequest_data_type complex type.
+ * <p>Java class for RetrieveOrdersHistoryRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveOrdersHistoryRequest_data_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveOrdersHistoryRequestDataType {
     protected long customerID;
 
     /**
-     * Obtiene el valor de la propiedad customerID.
+     * Gets the value of the customerID property.
      * 
      */
     public long getCustomerID() {
@@ -47,7 +47,7 @@ public class RetrieveOrdersHistoryRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad customerID.
+     * Sets the value of the customerID property.
      * 
      */
     public void setCustomerID(long value) {

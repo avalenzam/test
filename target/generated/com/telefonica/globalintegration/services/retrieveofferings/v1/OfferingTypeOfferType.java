@@ -46,9 +46,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- children: Synonym of OfferingType - retrieveOfferings (similar concept that SID attribute defined by 'p1:OfferingTypeOfferType')
  * 			
  * 
- * <p>Clase Java para OfferingTypeOfferType complex type.
+ * <p>Java class for OfferingTypeOfferType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="OfferingTypeOfferType"&gt;
@@ -161,7 +161,7 @@ public class OfferingTypeOfferType {
     protected String productOfferingProductSpecID;
 
     /**
-     * Obtiene el valor de la propiedad businessType.
+     * Gets the value of the businessType property.
      * 
      * @return
      *     possible object is
@@ -173,7 +173,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad businessType.
+     * Sets the value of the businessType property.
      * 
      * @param value
      *     allowed object is
@@ -185,7 +185,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad catalogItemId.
+     * Gets the value of the catalogItemId property.
      * 
      * @return
      *     possible object is
@@ -197,7 +197,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad catalogItemId.
+     * Sets the value of the catalogItemId property.
      * 
      * @param value
      *     allowed object is
@@ -209,7 +209,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad catalogItemCode.
+     * Gets the value of the catalogItemCode property.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad catalogItemCode.
+     * Sets the value of the catalogItemCode property.
      * 
      * @param value
      *     allowed object is
@@ -233,7 +233,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -245,7 +245,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -257,7 +257,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -269,7 +269,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -281,7 +281,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad image.
+     * Gets the value of the image property.
      * 
      * @return
      *     possible object is
@@ -293,7 +293,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad image.
+     * Sets the value of the image property.
      * 
      * @param value
      *     allowed object is
@@ -305,7 +305,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad banner.
+     * Gets the value of the banner property.
      * 
      * @return
      *     possible object is
@@ -317,7 +317,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad banner.
+     * Sets the value of the banner property.
      * 
      * @param value
      *     allowed object is
@@ -329,7 +329,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad displayName.
+     * Gets the value of the displayName property.
      * 
      * @return
      *     possible object is
@@ -341,7 +341,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad displayName.
+     * Sets the value of the displayName property.
      * 
      * @param value
      *     allowed object is
@@ -353,7 +353,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad catalogItemType.
+     * Gets the value of the catalogItemType property.
      * 
      * @return
      *     possible object is
@@ -365,7 +365,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad catalogItemType.
+     * Sets the value of the catalogItemType property.
      * 
      * @param value
      *     allowed object is
@@ -377,7 +377,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad relationId.
+     * Gets the value of the relationId property.
      * 
      * @return
      *     possible object is
@@ -389,7 +389,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad relationId.
+     * Sets the value of the relationId property.
      * 
      * @param value
      *     allowed object is
@@ -401,7 +401,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad correlationId.
+     * Gets the value of the correlationId property.
      * 
      * @return
      *     possible object is
@@ -413,7 +413,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad correlationId.
+     * Sets the value of the correlationId property.
      * 
      * @param value
      *     allowed object is
@@ -425,7 +425,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad lifeCycleStatus.
+     * Gets the value of the lifeCycleStatus property.
      * 
      * @return
      *     possible object is
@@ -437,7 +437,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad lifeCycleStatus.
+     * Sets the value of the lifeCycleStatus property.
      * 
      * @param value
      *     allowed object is
@@ -449,7 +449,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad parentCatalogItemID.
+     * Gets the value of the parentCatalogItemID property.
      * 
      * @return
      *     possible object is
@@ -461,7 +461,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad parentCatalogItemID.
+     * Sets the value of the parentCatalogItemID property.
      * 
      * @param value
      *     allowed object is
@@ -473,7 +473,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad parentCatalogItemName.
+     * Gets the value of the parentCatalogItemName property.
      * 
      * @return
      *     possible object is
@@ -485,7 +485,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad parentCatalogItemName.
+     * Sets the value of the parentCatalogItemName property.
      * 
      * @param value
      *     allowed object is
@@ -497,7 +497,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad parentCurrentStatus.
+     * Gets the value of the parentCurrentStatus property.
      * 
      * @return
      *     possible object is
@@ -509,7 +509,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad parentCurrentStatus.
+     * Sets the value of the parentCurrentStatus property.
      * 
      * @param value
      *     allowed object is
@@ -521,7 +521,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad parentAssignedID.
+     * Gets the value of the parentAssignedID property.
      * 
      * @return
      *     possible object is
@@ -533,7 +533,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad parentAssignedID.
+     * Sets the value of the parentAssignedID property.
      * 
      * @param value
      *     allowed object is
@@ -545,7 +545,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad planType.
+     * Gets the value of the planType property.
      * 
      * @return
      *     possible object is
@@ -557,7 +557,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad planType.
+     * Sets the value of the planType property.
      * 
      * @param value
      *     allowed object is
@@ -569,7 +569,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad topRecommended.
+     * Gets the value of the topRecommended property.
      * 
      * @return
      *     possible object is
@@ -581,7 +581,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad topRecommended.
+     * Sets the value of the topRecommended property.
      * 
      * @param value
      *     allowed object is
@@ -622,7 +622,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad compatibleWithDevice.
+     * Gets the value of the compatibleWithDevice property.
      * 
      * @return
      *     possible object is
@@ -634,7 +634,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad compatibleWithDevice.
+     * Sets the value of the compatibleWithDevice property.
      * 
      * @param value
      *     allowed object is
@@ -646,7 +646,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad minNumOfSubscribers.
+     * Gets the value of the minNumOfSubscribers property.
      * 
      * @return
      *     possible object is
@@ -658,7 +658,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad minNumOfSubscribers.
+     * Sets the value of the minNumOfSubscribers property.
      * 
      * @param value
      *     allowed object is
@@ -670,7 +670,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad numOfSubscribers.
+     * Gets the value of the numOfSubscribers property.
      * 
      * @return
      *     possible object is
@@ -682,7 +682,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad numOfSubscribers.
+     * Sets the value of the numOfSubscribers property.
      * 
      * @param value
      *     allowed object is
@@ -694,7 +694,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad sharedPlan.
+     * Gets the value of the sharedPlan property.
      * 
      * @return
      *     possible object is
@@ -706,7 +706,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad sharedPlan.
+     * Sets the value of the sharedPlan property.
      * 
      * @param value
      *     allowed object is
@@ -718,7 +718,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad isBundle.
+     * Gets the value of the isBundle property.
      * 
      * @return
      *     possible object is
@@ -730,7 +730,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad isBundle.
+     * Sets the value of the isBundle property.
      * 
      * @param value
      *     allowed object is
@@ -887,7 +887,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOfferingProductSpecID.
+     * Gets the value of the productOfferingProductSpecID property.
      * 
      * @return
      *     possible object is
@@ -899,7 +899,7 @@ public class OfferingTypeOfferType {
     }
 
     /**
-     * Define el valor de la propiedad productOfferingProductSpecID.
+     * Sets the value of the productOfferingProductSpecID property.
      * 
      * @param value
      *     allowed object is

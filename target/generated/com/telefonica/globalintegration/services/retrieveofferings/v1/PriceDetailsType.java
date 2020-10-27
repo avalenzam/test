@@ -24,9 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- originalTaxAmount: Synonym of MoneyType (similar concept that SID attribute defined by 'p1:UNIMoneyType')
  * 			
  * 
- * <p>Clase Java para PriceDetailsType complex type.
+ * <p>Java class for PriceDetailsType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="PriceDetailsType"&gt;
@@ -79,7 +79,7 @@ public class PriceDetailsType {
     protected UNIMoneyType originalTaxAmount;
 
     /**
-     * Obtiene el valor de la propiedad priceType.
+     * Gets the value of the priceType property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad priceType.
+     * Sets the value of the priceType property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad price.
+     * Gets the value of the price property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad price.
+     * Sets the value of the price property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad taxAmount.
+     * Gets the value of the taxAmount property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad taxAmount.
+     * Sets the value of the taxAmount property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad priceWithTax.
+     * Gets the value of the priceWithTax property.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad priceWithTax.
+     * Sets the value of the priceWithTax property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad minPrice.
+     * Gets the value of the minPrice property.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad minPrice.
+     * Sets the value of the minPrice property.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxPrice.
+     * Gets the value of the maxPrice property.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad maxPrice.
+     * Sets the value of the maxPrice property.
      * 
      * @param value
      *     allowed object is
@@ -247,7 +247,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad originalAmount.
+     * Gets the value of the originalAmount property.
      * 
      * @return
      *     possible object is
@@ -259,7 +259,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad originalAmount.
+     * Sets the value of the originalAmount property.
      * 
      * @param value
      *     allowed object is
@@ -271,7 +271,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad originalTaxAmount.
+     * Gets the value of the originalTaxAmount property.
      * 
      * @return
      *     possible object is
@@ -283,7 +283,7 @@ public class PriceDetailsType {
     }
 
     /**
-     * Define el valor de la propiedad originalTaxAmount.
+     * Sets the value of the originalTaxAmount property.
      * 
      * @param value
      *     allowed object is

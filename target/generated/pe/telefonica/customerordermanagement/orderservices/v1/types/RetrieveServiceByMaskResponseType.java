@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Clase Java para RetrieveServiceByMaskResponse_type complex type.
+ * <p>Java class for RetrieveServiceByMaskResponse_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveServiceByMaskResponse_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveServiceByMaskResponseType
     protected RetrieveServiceByMaskResponseDataType retrieveServiceByMaskResponseData;
 
     /**
-     * Obtiene el valor de la propiedad retrieveServiceByMaskResponseData.
+     * Gets the value of the retrieveServiceByMaskResponseData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveServiceByMaskResponseType
     }
 
     /**
-     * Define el valor de la propiedad retrieveServiceByMaskResponseData.
+     * Sets the value of the retrieveServiceByMaskResponseData property.
      * 
      * @param value
      *     allowed object is

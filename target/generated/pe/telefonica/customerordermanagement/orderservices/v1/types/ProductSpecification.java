@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ProductSpecification complex type.
+ * <p>Java class for ProductSpecification complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ProductSpecification"&gt;
@@ -62,7 +62,7 @@ public class ProductSpecification {
     protected String brand;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class ProductSpecification {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -86,7 +86,7 @@ public class ProductSpecification {
     }
 
     /**
-     * Obtiene el valor de la propiedad productSpecificationID.
+     * Gets the value of the productSpecificationID property.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class ProductSpecification {
     }
 
     /**
-     * Define el valor de la propiedad productSpecificationID.
+     * Sets the value of the productSpecificationID property.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class ProductSpecification {
     }
 
     /**
-     * Obtiene el valor de la propiedad brand.
+     * Gets the value of the brand property.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class ProductSpecification {
     }
 
     /**
-     * Define el valor de la propiedad brand.
+     * Sets the value of the brand property.
      * 
      * @param value
      *     allowed object is

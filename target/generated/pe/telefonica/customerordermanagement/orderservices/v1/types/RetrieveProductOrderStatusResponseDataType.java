@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveProductOrderStatusResponse_data_type complex type.
+ * <p>Java class for RetrieveProductOrderStatusResponse_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveProductOrderStatusResponse_data_type"&gt;
@@ -42,7 +42,7 @@ public class RetrieveProductOrderStatusResponseDataType {
     protected CancelStatus cancelStatus;
 
     /**
-     * Obtiene el valor de la propiedad response.
+     * Gets the value of the response property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class RetrieveProductOrderStatusResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad response.
+     * Sets the value of the response property.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class RetrieveProductOrderStatusResponseDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad orderStatus.
+     * Gets the value of the orderStatus property.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class RetrieveProductOrderStatusResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad orderStatus.
+     * Sets the value of the orderStatus property.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class RetrieveProductOrderStatusResponseDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad cancelStatus.
+     * Gets the value of the cancelStatus property.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class RetrieveProductOrderStatusResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad cancelStatus.
+     * Sets the value of the cancelStatus property.
      * 
      * @param value
      *     allowed object is

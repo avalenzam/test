@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para SubscriptionType complex type.
+ * <p>Java class for SubscriptionType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="SubscriptionType"&gt;
@@ -40,7 +40,7 @@ public class SubscriptionType {
     protected String subscriberType;
 
     /**
-     * Obtiene el valor de la propiedad subscriberType.
+     * Gets the value of the subscriberType property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class SubscriptionType {
     }
 
     /**
-     * Define el valor de la propiedad subscriberType.
+     * Sets the value of the subscriberType property.
      * 
      * @param value
      *     allowed object is

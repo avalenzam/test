@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para HeaderOutType complex type.
+ * <p>Java class for HeaderOutType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="HeaderOutType"&gt;
@@ -60,7 +60,7 @@ public class HeaderOutType {
     protected VarArgType varArg;
 
     /**
-     * Obtiene el valor de la propiedad originator.
+     * Gets the value of the originator property.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad originator.
+     * Sets the value of the originator property.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad destination.
+     * Gets the value of the destination property.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad destination.
+     * Sets the value of the destination property.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad pid.
+     * Gets the value of the pid property.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad pid.
+     * Sets the value of the pid property.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad execId.
+     * Gets the value of the execId property.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad execId.
+     * Sets the value of the execId property.
      * 
      * @param value
      *     allowed object is
@@ -156,7 +156,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad msgId.
+     * Gets the value of the msgId property.
      * 
      * @return
      *     possible object is
@@ -168,7 +168,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad msgId.
+     * Sets the value of the msgId property.
      * 
      * @param value
      *     allowed object is
@@ -180,7 +180,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad timestamp.
+     * Gets the value of the timestamp property.
      * 
      * @return
      *     possible object is
@@ -192,7 +192,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad timestamp.
+     * Sets the value of the timestamp property.
      * 
      * @param value
      *     allowed object is
@@ -204,7 +204,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad msgType.
+     * Gets the value of the msgType property.
      * 
      * @return
      *     possible object is
@@ -216,7 +216,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad msgType.
+     * Sets the value of the msgType property.
      * 
      * @param value
      *     allowed object is
@@ -228,7 +228,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Obtiene el valor de la propiedad varArg.
+     * Gets the value of the varArg property.
      * 
      * @return
      *     possible object is
@@ -240,7 +240,7 @@ public class HeaderOutType {
     }
 
     /**
-     * Define el valor de la propiedad varArg.
+     * Sets the value of the varArg property.
      * 
      * @param value
      *     allowed object is

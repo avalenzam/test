@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveProductHeaderResponse_data_type complex type.
+ * <p>Java class for RetrieveProductHeaderResponse_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveProductHeaderResponse_data_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveProductHeaderResponseDataType {
     protected ProductHeader productHeader;
 
     /**
-     * Obtiene el valor de la propiedad response.
+     * Gets the value of the response property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveProductHeaderResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad response.
+     * Sets the value of the response property.
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class RetrieveProductHeaderResponseDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad productHeader.
+     * Gets the value of the productHeader property.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class RetrieveProductHeaderResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad productHeader.
+     * Sets the value of the productHeader property.
      * 
      * @param value
      *     allowed object is

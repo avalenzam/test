@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para LocateSubscriptionRequest_type complex type.
+ * <p>Java class for LocateSubscriptionRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="LocateSubscriptionRequest_type"&gt;
@@ -39,7 +39,7 @@ public class LocateSubscriptionRequestType
     protected LocateSubscriptionRequestDataType locateSubscriptionRequestData;
 
     /**
-     * Obtiene el valor de la propiedad locateSubscriptionRequestData.
+     * Gets the value of the locateSubscriptionRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class LocateSubscriptionRequestType
     }
 
     /**
-     * Define el valor de la propiedad locateSubscriptionRequestData.
+     * Sets the value of the locateSubscriptionRequestData property.
      * 
      * @param value
      *     allowed object is

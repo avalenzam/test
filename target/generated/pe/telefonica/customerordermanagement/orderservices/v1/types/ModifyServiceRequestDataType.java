@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para ModifyServiceRequest_data_type complex type.
+ * <p>Java class for ModifyServiceRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ModifyServiceRequest_data_type"&gt;
@@ -45,7 +45,7 @@ public class ModifyServiceRequestDataType {
     protected List<OrderItem> orderItem;
 
     /**
-     * Obtiene el valor de la propiedad orderDate.
+     * Gets the value of the orderDate property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class ModifyServiceRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad orderDate.
+     * Sets the value of the orderDate property.
      * 
      * @param value
      *     allowed object is

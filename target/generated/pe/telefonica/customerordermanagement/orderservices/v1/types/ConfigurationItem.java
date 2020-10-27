@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ConfigurationItem complex type.
+ * <p>Java class for ConfigurationItem complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ConfigurationItem"&gt;
@@ -49,7 +49,7 @@ public class ConfigurationItem {
     protected String billingOfferAssignedProductId;
 
     /**
-     * Obtiene el valor de la propiedad itemCode.
+     * Gets the value of the itemCode property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ConfigurationItem {
     }
 
     /**
-     * Define el valor de la propiedad itemCode.
+     * Sets the value of the itemCode property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ConfigurationItem {
     }
 
     /**
-     * Obtiene el valor de la propiedad billingOfferAssignedProductId.
+     * Gets the value of the billingOfferAssignedProductId property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ConfigurationItem {
     }
 
     /**
-     * Define el valor de la propiedad billingOfferAssignedProductId.
+     * Sets the value of the billingOfferAssignedProductId property.
      * 
      * @param value
      *     allowed object is

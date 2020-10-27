@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para UpdateSingleConfigurationOnProductRequest_type complex type.
+ * <p>Java class for UpdateSingleConfigurationOnProductRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="UpdateSingleConfigurationOnProductRequest_type"&gt;
@@ -39,7 +39,7 @@ public class UpdateSingleConfigurationOnProductRequestType
     protected UpdateSingleConfigurationOnProductRequestDataType updateSingleConfigurationOnProductRequestData;
 
     /**
-     * Obtiene el valor de la propiedad updateSingleConfigurationOnProductRequestData.
+     * Gets the value of the updateSingleConfigurationOnProductRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class UpdateSingleConfigurationOnProductRequestType
     }
 
     /**
-     * Define el valor de la propiedad updateSingleConfigurationOnProductRequestData.
+     * Sets the value of the updateSingleConfigurationOnProductRequestData property.
      * 
      * @param value
      *     allowed object is
