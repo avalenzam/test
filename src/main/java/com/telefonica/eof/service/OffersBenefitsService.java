@@ -883,7 +883,6 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 	}
 	productCharacteristics.setName(name);
-	productCharacteristics.setValueType(enumValue);
 	productSpecCharacteristicValue.setValue(value);
 	productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
 	productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
