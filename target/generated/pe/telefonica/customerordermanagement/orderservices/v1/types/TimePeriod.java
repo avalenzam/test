@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for TimePeriod complex type.
+ * <p>Clase Java para TimePeriod complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="TimePeriod"&gt;
@@ -43,7 +43,7 @@ public class TimePeriod {
     protected XMLGregorianCalendar endDateTime;
 
     /**
-     * Gets the value of the startDateTime property.
+     * Obtiene el valor de la propiedad startDateTime.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class TimePeriod {
     }
 
     /**
-     * Sets the value of the startDateTime property.
+     * Define el valor de la propiedad startDateTime.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class TimePeriod {
     }
 
     /**
-     * Gets the value of the endDateTime property.
+     * Obtiene el valor de la propiedad endDateTime.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class TimePeriod {
     }
 
     /**
-     * Sets the value of the endDateTime property.
+     * Define el valor de la propiedad endDateTime.
      * 
      * @param value
      *     allowed object is

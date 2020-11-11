@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ChangeProductStatusRequest_data_type complex type.
+ * <p>Clase Java para ChangeProductStatusRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ChangeProductStatusRequest_data_type"&gt;
@@ -51,7 +51,7 @@ public class ChangeProductStatusRequestDataType {
     protected ReporterDetails reporterDetails;
 
     /**
-     * Gets the value of the productComponent property.
+     * Obtiene el valor de la propiedad productComponent.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Sets the value of the productComponent property.
+     * Define el valor de la propiedad productComponent.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Gets the value of the productOrder property.
+     * Obtiene el valor de la propiedad productOrder.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Sets the value of the productOrder property.
+     * Define el valor de la propiedad productOrder.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Gets the value of the orderAction property.
+     * Obtiene el valor de la propiedad orderAction.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Sets the value of the orderAction property.
+     * Define el valor de la propiedad orderAction.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Gets the value of the activity property.
+     * Obtiene el valor de la propiedad activity.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Sets the value of the activity property.
+     * Define el valor de la propiedad activity.
      * 
      * @param value
      *     allowed object is
@@ -147,7 +147,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Gets the value of the reporterName property.
+     * Obtiene el valor de la propiedad reporterName.
      * 
      * @return
      *     possible object is
@@ -159,7 +159,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Sets the value of the reporterName property.
+     * Define el valor de la propiedad reporterName.
      * 
      * @param value
      *     allowed object is
@@ -171,7 +171,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Gets the value of the reporterDetails property.
+     * Obtiene el valor de la propiedad reporterDetails.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class ChangeProductStatusRequestDataType {
     }
 
     /**
-     * Sets the value of the reporterDetails property.
+     * Define el valor de la propiedad reporterDetails.
      * 
      * @param value
      *     allowed object is

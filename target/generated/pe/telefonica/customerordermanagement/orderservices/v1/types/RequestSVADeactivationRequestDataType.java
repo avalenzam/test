@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RequestSVADeactivationRequest_data_type complex type.
+ * <p>Clase Java para RequestSVADeactivationRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RequestSVADeactivationRequest_data_type"&gt;
@@ -62,7 +62,7 @@ public class RequestSVADeactivationRequestDataType {
     protected String platform;
 
     /**
-     * Gets the value of the msisdn property.
+     * Obtiene el valor de la propiedad msisdn.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class RequestSVADeactivationRequestDataType {
     }
 
     /**
-     * Sets the value of the msisdn property.
+     * Define el valor de la propiedad msisdn.
      * 
      * @param value
      *     allowed object is
@@ -86,7 +86,7 @@ public class RequestSVADeactivationRequestDataType {
     }
 
     /**
-     * Gets the value of the vasid property.
+     * Obtiene el valor de la propiedad vasid.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class RequestSVADeactivationRequestDataType {
     }
 
     /**
-     * Sets the value of the vasid property.
+     * Define el valor de la propiedad vasid.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class RequestSVADeactivationRequestDataType {
     }
 
     /**
-     * Gets the value of the platform property.
+     * Obtiene el valor de la propiedad platform.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class RequestSVADeactivationRequestDataType {
     }
 
     /**
-     * Sets the value of the platform property.
+     * Define el valor de la propiedad platform.
      * 
      * @param value
      *     allowed object is

@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Java class for RetrieveProductOrderStatusResponse_type complex type.
+ * <p>Clase Java para RetrieveProductOrderStatusResponse_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveProductOrderStatusResponse_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveProductOrderStatusResponseType
     protected RetrieveProductOrderStatusResponseDataType retrieveProductOrderStatusResponseData;
 
     /**
-     * Gets the value of the retrieveProductOrderStatusResponseData property.
+     * Obtiene el valor de la propiedad retrieveProductOrderStatusResponseData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveProductOrderStatusResponseType
     }
 
     /**
-     * Sets the value of the retrieveProductOrderStatusResponseData property.
+     * Define el valor de la propiedad retrieveProductOrderStatusResponseData.
      * 
      * @param value
      *     allowed object is

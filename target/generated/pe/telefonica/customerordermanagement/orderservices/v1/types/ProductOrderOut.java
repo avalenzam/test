@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for ProductOrderOut complex type.
+ * <p>Clase Java para ProductOrderOut complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductOrderOut"&gt;
@@ -63,7 +63,7 @@ public class ProductOrderOut {
     protected List<OrderItem> orderItem;
 
     /**
-     * Gets the value of the state property.
+     * Obtiene el valor de la propiedad state.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class ProductOrderOut {
     }
 
     /**
-     * Sets the value of the state property.
+     * Define el valor de la propiedad state.
      * 
      * @param value
      *     allowed object is
@@ -87,7 +87,7 @@ public class ProductOrderOut {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -99,7 +99,7 @@ public class ProductOrderOut {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -111,7 +111,7 @@ public class ProductOrderOut {
     }
 
     /**
-     * Gets the value of the orderDate property.
+     * Obtiene el valor de la propiedad orderDate.
      * 
      * @return
      *     possible object is
@@ -123,7 +123,7 @@ public class ProductOrderOut {
     }
 
     /**
-     * Sets the value of the orderDate property.
+     * Define el valor de la propiedad orderDate.
      * 
      * @param value
      *     allowed object is

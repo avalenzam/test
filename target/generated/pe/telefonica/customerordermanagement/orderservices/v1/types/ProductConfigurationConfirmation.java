@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ProductConfigurationConfirmation complex type.
+ * <p>Clase Java para ProductConfigurationConfirmation complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ProductConfigurationConfirmation"&gt;
@@ -76,7 +76,7 @@ public class ProductConfigurationConfirmation {
     protected String telephoneNumber;
 
     /**
-     * Gets the value of the catalogID property.
+     * Obtiene el valor de la propiedad catalogID.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Sets the value of the catalogID property.
+     * Define el valor de la propiedad catalogID.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Gets the value of the activityType property.
+     * Obtiene el valor de la propiedad activityType.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Sets the value of the activityType property.
+     * Define el valor de la propiedad activityType.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Gets the value of the message property.
+     * Obtiene el valor de la propiedad message.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Sets the value of the message property.
+     * Define el valor de la propiedad message.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Gets the value of the confirmationNumber property.
+     * Obtiene el valor de la propiedad confirmationNumber.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Sets the value of the confirmationNumber property.
+     * Define el valor de la propiedad confirmationNumber.
      * 
      * @param value
      *     allowed object is
@@ -172,7 +172,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Gets the value of the telephoneNumber property.
+     * Obtiene el valor de la propiedad telephoneNumber.
      * 
      * @return
      *     possible object is
@@ -184,7 +184,7 @@ public class ProductConfigurationConfirmation {
     }
 
     /**
-     * Sets the value of the telephoneNumber property.
+     * Define el valor de la propiedad telephoneNumber.
      * 
      * @param value
      *     allowed object is

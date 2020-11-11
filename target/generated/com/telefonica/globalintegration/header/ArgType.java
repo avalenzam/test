@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Este elemento queda definido por un tipo complejo y variable en cuya finalidad es permitir cubrir las necesidades particulares de trasmision de informacion del contexto de aplicacion, no relacionada con conceptos de negocio, en las interacciones entre dos sistemas. La estructura propuesta esta formada por un grupo con pares clave-multivalor. No queda recomendado el uso de este elemento por parte de los sistemas salvo en escenarios con necesidades muy concretas.
  * 
- * <p>Java class for argType complex type.
+ * <p>Clase Java para argType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="argType"&gt;
@@ -42,7 +42,7 @@ public class ArgType {
     protected ValuesType values;
 
     /**
-     * Gets the value of the key property.
+     * Obtiene el valor de la propiedad key.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class ArgType {
     }
 
     /**
-     * Sets the value of the key property.
+     * Define el valor de la propiedad key.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class ArgType {
     }
 
     /**
-     * Gets the value of the values property.
+     * Obtiene el valor de la propiedad values.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class ArgType {
     }
 
     /**
-     * Sets the value of the values property.
+     * Define el valor de la propiedad values.
      * 
      * @param value
      *     allowed object is

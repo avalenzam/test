@@ -898,9 +898,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	    productSpecCharacteristicValue.setValueType(enumValue);
 	    productSpecCharacteristicValue.setValue(value);
 	}
+	
 	productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
 	productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
-	
 	return productCharacteristics;
 	
 //	StringWrapper productCharacteristics = new StringWrapper();

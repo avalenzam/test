@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RetrieveOrdersHistoryResponse_data_type complex type.
+ * <p>Clase Java para RetrieveOrdersHistoryResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveOrdersHistoryResponse_data_type"&gt;

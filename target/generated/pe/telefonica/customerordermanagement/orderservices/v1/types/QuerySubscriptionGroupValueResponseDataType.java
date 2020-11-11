@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for QuerySubscriptionGroupValueResponse_data_type complex type.
+ * <p>Clase Java para QuerySubscriptionGroupValueResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="QuerySubscriptionGroupValueResponse_data_type"&gt;
@@ -44,7 +44,7 @@ public class QuerySubscriptionGroupValueResponseDataType {
     protected GroupValue gvs;
 
     /**
-     * Gets the value of the error property.
+     * Obtiene el valor de la propiedad error.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class QuerySubscriptionGroupValueResponseDataType {
     }
 
     /**
-     * Sets the value of the error property.
+     * Define el valor de la propiedad error.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class QuerySubscriptionGroupValueResponseDataType {
     }
 
     /**
-     * Gets the value of the msisdn property.
+     * Obtiene el valor de la propiedad msisdn.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class QuerySubscriptionGroupValueResponseDataType {
     }
 
     /**
-     * Sets the value of the msisdn property.
+     * Define el valor de la propiedad msisdn.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class QuerySubscriptionGroupValueResponseDataType {
     }
 
     /**
-     * Gets the value of the gvs property.
+     * Obtiene el valor de la propiedad gvs.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class QuerySubscriptionGroupValueResponseDataType {
     }
 
     /**
-     * Sets the value of the gvs property.
+     * Define el valor de la propiedad gvs.
      * 
      * @param value
      *     allowed object is

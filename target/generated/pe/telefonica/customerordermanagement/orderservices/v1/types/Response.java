@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Response complex type.
+ * <p>Clase Java para Response complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Response"&gt;
@@ -37,7 +37,7 @@ public class Response {
     protected Status errorStatus;
 
     /**
-     * Gets the value of the isSuccess property.
+     * Obtiene el valor de la propiedad isSuccess.
      * 
      */
     public boolean isIsSuccess() {
@@ -45,7 +45,7 @@ public class Response {
     }
 
     /**
-     * Sets the value of the isSuccess property.
+     * Define el valor de la propiedad isSuccess.
      * 
      */
     public void setIsSuccess(boolean value) {
@@ -53,7 +53,7 @@ public class Response {
     }
 
     /**
-     * Gets the value of the errorStatus property.
+     * Obtiene el valor de la propiedad errorStatus.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class Response {
     }
 
     /**
-     * Sets the value of the errorStatus property.
+     * Define el valor de la propiedad errorStatus.
      * 
      * @param value
      *     allowed object is

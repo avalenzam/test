@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for UpdateFriendsAndFamilyNumbersRequest_data_type complex type.
+ * <p>Clase Java para UpdateFriendsAndFamilyNumbersRequest_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="UpdateFriendsAndFamilyNumbersRequest_data_type"&gt;
@@ -51,7 +51,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     protected TelephoneNumberFNFList removeDestinationList;
 
     /**
-     * Gets the value of the productComponent property.
+     * Obtiene el valor de la propiedad productComponent.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Sets the value of the productComponent property.
+     * Define el valor de la propiedad productComponent.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Gets the value of the productOrder property.
+     * Obtiene el valor de la propiedad productOrder.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Sets the value of the productOrder property.
+     * Define el valor de la propiedad productOrder.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Gets the value of the friendsAndFamilyComponnent property.
+     * Obtiene el valor de la propiedad friendsAndFamilyComponnent.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Sets the value of the friendsAndFamilyComponnent property.
+     * Define el valor de la propiedad friendsAndFamilyComponnent.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Gets the value of the activity property.
+     * Obtiene el valor de la propiedad activity.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Sets the value of the activity property.
+     * Define el valor de la propiedad activity.
      * 
      * @param value
      *     allowed object is
@@ -147,7 +147,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Gets the value of the addDestinationList property.
+     * Obtiene el valor de la propiedad addDestinationList.
      * 
      * @return
      *     possible object is
@@ -159,7 +159,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Sets the value of the addDestinationList property.
+     * Define el valor de la propiedad addDestinationList.
      * 
      * @param value
      *     allowed object is
@@ -171,7 +171,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Gets the value of the removeDestinationList property.
+     * Obtiene el valor de la propiedad removeDestinationList.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class UpdateFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Sets the value of the removeDestinationList property.
+     * Define el valor de la propiedad removeDestinationList.
      * 
      * @param value
      *     allowed object is

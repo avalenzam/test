@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Application complex type.
+ * <p>Clase Java para Application complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Application"&gt;
@@ -42,7 +42,7 @@ public class Application {
     protected String appCode;
 
     /**
-     * Gets the value of the appCode property.
+     * Obtiene el valor de la propiedad appCode.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class Application {
     }
 
     /**
-     * Sets the value of the appCode property.
+     * Define el valor de la propiedad appCode.
      * 
      * @param value
      *     allowed object is

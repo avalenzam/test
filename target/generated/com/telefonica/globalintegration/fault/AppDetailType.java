@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for appDetailType complex type.
+ * <p>Clase Java para appDetailType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="appDetailType"&gt;
@@ -49,7 +49,7 @@ public class AppDetailType {
     protected VarArgType varArg;
 
     /**
-     * Gets the value of the exceptionAppCode property.
+     * Obtiene el valor de la propiedad exceptionAppCode.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class AppDetailType {
     }
 
     /**
-     * Sets the value of the exceptionAppCode property.
+     * Define el valor de la propiedad exceptionAppCode.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class AppDetailType {
     }
 
     /**
-     * Gets the value of the exceptionAppMessage property.
+     * Obtiene el valor de la propiedad exceptionAppMessage.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class AppDetailType {
     }
 
     /**
-     * Sets the value of the exceptionAppMessage property.
+     * Define el valor de la propiedad exceptionAppMessage.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class AppDetailType {
     }
 
     /**
-     * Gets the value of the exceptionAppLocation property.
+     * Obtiene el valor de la propiedad exceptionAppLocation.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class AppDetailType {
     }
 
     /**
-     * Sets the value of the exceptionAppLocation property.
+     * Define el valor de la propiedad exceptionAppLocation.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class AppDetailType {
     }
 
     /**
-     * Gets the value of the exceptionAppCause property.
+     * Obtiene el valor de la propiedad exceptionAppCause.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class AppDetailType {
     }
 
     /**
-     * Sets the value of the exceptionAppCause property.
+     * Define el valor de la propiedad exceptionAppCause.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class AppDetailType {
     }
 
     /**
-     * Gets the value of the varArg property.
+     * Obtiene el valor de la propiedad varArg.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class AppDetailType {
     }
 
     /**
-     * Sets the value of the varArg property.
+     * Define el valor de la propiedad varArg.
      * 
      * @param value
      *     allowed object is

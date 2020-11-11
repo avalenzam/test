@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Java class for RetrieveFriendsAndFamilyNumbersResponse_type complex type.
+ * <p>Clase Java para RetrieveFriendsAndFamilyNumbersResponse_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RetrieveFriendsAndFamilyNumbersResponse_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveFriendsAndFamilyNumbersResponseType
     protected RetrieveFriendsAndFamilyNumbersResponseDataType retrieveFriendsAndFamilyNumbersResponseData;
 
     /**
-     * Gets the value of the retrieveFriendsAndFamilyNumbersResponseData property.
+     * Obtiene el valor de la propiedad retrieveFriendsAndFamilyNumbersResponseData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveFriendsAndFamilyNumbersResponseType
     }
 
     /**
-     * Sets the value of the retrieveFriendsAndFamilyNumbersResponseData property.
+     * Define el valor de la propiedad retrieveFriendsAndFamilyNumbersResponseData.
      * 
      * @param value
      *     allowed object is

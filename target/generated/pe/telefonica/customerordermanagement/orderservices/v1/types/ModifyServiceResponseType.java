@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Java class for ModifyServiceResponse_type complex type.
+ * <p>Clase Java para ModifyServiceResponse_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ModifyServiceResponse_type"&gt;
@@ -39,7 +39,7 @@ public class ModifyServiceResponseType
     protected ModifyServiceResponseDataType modifyServiceResponseData;
 
     /**
-     * Gets the value of the modifyServiceResponseData property.
+     * Obtiene el valor de la propiedad modifyServiceResponseData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ModifyServiceResponseType
     }
 
     /**
-     * Sets the value of the modifyServiceResponseData property.
+     * Define el valor de la propiedad modifyServiceResponseData.
      * 
      * @param value
      *     allowed object is

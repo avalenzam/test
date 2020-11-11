@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ReporterDetails complex type.
+ * <p>Clase Java para ReporterDetails complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ReporterDetails"&gt;
@@ -56,7 +56,7 @@ public class ReporterDetails {
     protected ReporterTelephoneNumber msisdn;
 
     /**
-     * Gets the value of the identificationType property.
+     * Obtiene el valor de la propiedad identificationType.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class ReporterDetails {
     }
 
     /**
-     * Sets the value of the identificationType property.
+     * Define el valor de la propiedad identificationType.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class ReporterDetails {
     }
 
     /**
-     * Gets the value of the identificationNumber property.
+     * Obtiene el valor de la propiedad identificationNumber.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class ReporterDetails {
     }
 
     /**
-     * Sets the value of the identificationNumber property.
+     * Define el valor de la propiedad identificationNumber.
      * 
      * @param value
      *     allowed object is
@@ -104,7 +104,7 @@ public class ReporterDetails {
     }
 
     /**
-     * Gets the value of the msisdn property.
+     * Obtiene el valor de la propiedad msisdn.
      * 
      * @return
      *     possible object is
@@ -116,7 +116,7 @@ public class ReporterDetails {
     }
 
     /**
-     * Sets the value of the msisdn property.
+     * Define el valor de la propiedad msisdn.
      * 
      * @param value
      *     allowed object is

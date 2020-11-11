@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ValidateTokenFnFResponse_data_type complex type.
+ * <p>Clase Java para ValidateTokenFnFResponse_data_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="ValidateTokenFnFResponse_data_type"&gt;
@@ -51,7 +51,7 @@ public class ValidateTokenFnFResponseDataType {
     protected String resultDesc;
 
     /**
-     * Gets the value of the resultCode property.
+     * Obtiene el valor de la propiedad resultCode.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class ValidateTokenFnFResponseDataType {
     }
 
     /**
-     * Sets the value of the resultCode property.
+     * Define el valor de la propiedad resultCode.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class ValidateTokenFnFResponseDataType {
     }
 
     /**
-     * Gets the value of the resultDesc property.
+     * Obtiene el valor de la propiedad resultDesc.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class ValidateTokenFnFResponseDataType {
     }
 
     /**
-     * Sets the value of the resultDesc property.
+     * Define el valor de la propiedad resultDesc.
      * 
      * @param value
      *     allowed object is

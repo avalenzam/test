@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SkuSim complex type.
+ * <p>Clase Java para SkuSim complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="SkuSim"&gt;
@@ -40,7 +40,7 @@ public class SkuSim {
     protected String skuSIM;
 
     /**
-     * Gets the value of the skuSIM property.
+     * Obtiene el valor de la propiedad skuSIM.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class SkuSim {
     }
 
     /**
-     * Sets the value of the skuSIM property.
+     * Define el valor de la propiedad skuSIM.
      * 
      * @param value
      *     allowed object is

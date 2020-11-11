@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Java class for AddOrRemoveBillingOfferRequest_type complex type.
+ * <p>Clase Java para AddOrRemoveBillingOfferRequest_type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="AddOrRemoveBillingOfferRequest_type"&gt;
@@ -39,7 +39,7 @@ public class AddOrRemoveBillingOfferRequestType
     protected AddOrRemoveBillingOfferRequestDataType addOrRemoveBillingOfferRequestData;
 
     /**
-     * Gets the value of the addOrRemoveBillingOfferRequestData property.
+     * Obtiene el valor de la propiedad addOrRemoveBillingOfferRequestData.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class AddOrRemoveBillingOfferRequestType
     }
 
     /**
-     * Sets the value of the addOrRemoveBillingOfferRequestData property.
+     * Define el valor de la propiedad addOrRemoveBillingOfferRequestData.
      * 
      * @param value
      *     allowed object is

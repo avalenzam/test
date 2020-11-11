@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for TefHeaderReqType complex type.
+ * <p>Clase Java para TefHeaderReqType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="TefHeaderReqType"&gt;
@@ -72,7 +72,7 @@ public class TefHeaderReqType {
     protected String version;
 
     /**
-     * Gets the value of the userLogin property.
+     * Obtiene el valor de la propiedad userLogin.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the userLogin property.
+     * Define el valor de la propiedad userLogin.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the serviceChannel property.
+     * Obtiene el valor de la propiedad serviceChannel.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the serviceChannel property.
+     * Define el valor de la propiedad serviceChannel.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the sessionCode property.
+     * Obtiene el valor de la propiedad sessionCode.
      * 
      * @return
      *     possible object is
@@ -132,7 +132,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the sessionCode property.
+     * Define el valor de la propiedad sessionCode.
      * 
      * @param value
      *     allowed object is
@@ -144,7 +144,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the application property.
+     * Obtiene el valor de la propiedad application.
      * 
      * @return
      *     possible object is
@@ -156,7 +156,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the application property.
+     * Define el valor de la propiedad application.
      * 
      * @param value
      *     allowed object is
@@ -168,7 +168,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the idMessage property.
+     * Obtiene el valor de la propiedad idMessage.
      * 
      * @return
      *     possible object is
@@ -180,7 +180,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the idMessage property.
+     * Define el valor de la propiedad idMessage.
      * 
      * @param value
      *     allowed object is
@@ -192,7 +192,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the ipAddress property.
+     * Obtiene el valor de la propiedad ipAddress.
      * 
      * @return
      *     possible object is
@@ -204,7 +204,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the ipAddress property.
+     * Define el valor de la propiedad ipAddress.
      * 
      * @param value
      *     allowed object is
@@ -216,7 +216,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the functionalityCode property.
+     * Obtiene el valor de la propiedad functionalityCode.
      * 
      * @return
      *     possible object is
@@ -228,7 +228,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the functionalityCode property.
+     * Define el valor de la propiedad functionalityCode.
      * 
      * @param value
      *     allowed object is
@@ -240,7 +240,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the transactionTimestamp property.
+     * Obtiene el valor de la propiedad transactionTimestamp.
      * 
      * @return
      *     possible object is
@@ -252,7 +252,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the transactionTimestamp property.
+     * Define el valor de la propiedad transactionTimestamp.
      * 
      * @param value
      *     allowed object is
@@ -264,7 +264,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the serviceName property.
+     * Obtiene el valor de la propiedad serviceName.
      * 
      * @return
      *     possible object is
@@ -276,7 +276,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the serviceName property.
+     * Define el valor de la propiedad serviceName.
      * 
      * @param value
      *     allowed object is
@@ -288,7 +288,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Gets the value of the version property.
+     * Obtiene el valor de la propiedad version.
      * 
      * @return
      *     possible object is
@@ -300,7 +300,7 @@ public class TefHeaderReqType {
     }
 
     /**
-     * Sets the value of the version property.
+     * Define el valor de la propiedad version.
      * 
      * @param value
      *     allowed object is
