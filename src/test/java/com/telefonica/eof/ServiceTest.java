@@ -80,7 +80,7 @@ class ServiceTest {
 	request.setCategoryId("3195941");
 	request.setChannelId("CC");
 	 request.setCustomerId("56843169");
-	product.setType("landline,sva");//
+	product.setType("landline");//
 	request.setProduct(product);
 	request.setCreditLimit(BigDecimal.valueOf(500));//
 	request.setRegion("15");//

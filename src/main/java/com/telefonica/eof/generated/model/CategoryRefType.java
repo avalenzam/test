@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 /**
  * CategoryRefType
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-11-09T18:16:42.509-05:00")
 
 public class CategoryRefType  implements Serializable {
   @JsonProperty("id")

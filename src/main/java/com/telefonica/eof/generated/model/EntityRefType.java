@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * Reference to an external entity that can be tipically queried with another API such as a customer account, a ticket, etc.
  */
 @ApiModel(description = "Reference to an external entity that can be tipically queried with another API such as a customer account, a ticket, etc.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-11-09T18:16:42.509-05:00")
 
 public class EntityRefType  implements Serializable {
   @JsonProperty("id")

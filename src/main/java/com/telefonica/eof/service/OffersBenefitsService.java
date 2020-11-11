@@ -41,11 +41,10 @@ import com.telefonica.eof.generated.model.PaginationInfoType;
 import com.telefonica.eof.generated.model.PriceBenefitType;
 import com.telefonica.eof.generated.model.ProductInstanceRefType;
 import com.telefonica.eof.generated.model.ProductSpecCharacteristicType;
-import com.telefonica.eof.generated.model.ProductSpecCharacteristicType.ValueTypeEnum;
 import com.telefonica.eof.generated.model.ProductSpecCharacteristicValueType;
+import com.telefonica.eof.generated.model.ProductSpecCharacteristicValueType.ValueTypeEnum;
 import com.telefonica.eof.generated.model.RefinedProductType;
 import com.telefonica.eof.generated.model.ResponseType;
-import com.telefonica.eof.generated.model.StringWrapper;
 import com.telefonica.eof.generated.model.UpFrontType;
 import com.telefonica.eof.pojo.aditionalSva.AditionalSvaResponse;
 import com.telefonica.eof.pojo.aditionalSva.ModemResponse;
@@ -62,6 +61,7 @@ import com.telefonica.globalintegration.services.retrieveofferings.v1.PagingInfo
 import com.telefonica.globalintegration.services.retrieveofferings.v1.PlanBODetailsType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.PriceDetailsType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.PriceTypeProdAltType;
+import com.telefonica.globalintegration.services.retrieveofferings.v1.PricingType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.ProductTypeEnumType;
 import com.telefonica.globalintegration.services.retrieveofferings.v1.RetrieveOfferingsResponseType;
 
@@ -176,7 +176,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 		// TODO ANEXO 3, FILTRAR LAS OFERTA.
 
-		if (offering != null) {
+		if (Objects.nonNull(offering)) {
 
 		    Boolean planCid = offerFilter.offerFilter(offersBenefitsRequestDto, offering.getCatalogItemId());
 
@@ -206,8 +206,17 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productType = children.getProductType().get(0);
 			    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
 				isInternet = true;
-				if (!children.getPlanBoList().get(0).getPriceList().isEmpty()) {
-				    downloadSpeed = children.getPlanBoList().get(0).getPriceList().get(0).getDownloadSpeed();
+				List<PricingType>  priceList = children.getPlanBoList().get(0).getPriceList();
+				if ( Boolean.FALSE.equals(priceList.isEmpty())) {
+				    
+				    //TODO VERIFICAR QUE VELOCIODAD Y PRECIO OBTENER, AMDOCS TRAE VARIOS
+				    for (PricingType price  : priceList) {
+					if (Boolean.FALSE.equals(StringUtil.isNullOrEmpty(price.getDownloadSpeed()))) {
+					  downloadSpeed = price.getDownloadSpeed();  
+					}
+					
+				    }
+				    
 				    amount = children.getPlanBoList().get(0).getPriceList().get(0).getPrice().getAmount();
 				}
 
@@ -240,6 +249,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productSpecification.setId(children.getCatalogItemId());
 			    productSpecification.setHref(Constant.HREF + children.getCatalogItemId());
 			    ProductTypeEnumType childreProductType = children.getProductType().get(0);
+			   
 			    if (ProductTypeEnumType.BROADBAND.equals(childreProductType)) {
 				productSpecification.setName(children.getName() + " " + downloadSpeed + " " + Constant.MBPS);
 			    } else {
@@ -872,25 +882,44 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      *            valor del productCharacteristics
      * @return StringWrapper: atributos poblados
      */
-    private StringWrapper fillProductCharacteristics(String id, String name, ValueTypeEnum enumValue, String value) {
+    private ProductSpecCharacteristicType fillProductCharacteristics(String id, String name, ValueTypeEnum enumValue, String value) {
 
-	StringWrapper productCharacteristics = new StringWrapper();
+	ProductSpecCharacteristicType productCharacteristics = new ProductSpecCharacteristicType();
 	List<ProductSpecCharacteristicValueType> productSpecCharacteristicValueTypeList = new ArrayList<>();
 	ProductSpecCharacteristicValueType productSpecCharacteristicValue = new ProductSpecCharacteristicValueType();
 
 	if (id != null) {
 	    productCharacteristics.setId(id);
 	    productCharacteristics.setName(name);
-	    productCharacteristics.setValueType(enumValue);
 	    productSpecCharacteristicValue.setValue(value);
+	    productSpecCharacteristicValue.setValueType(enumValue);
 	} else {
 	    productCharacteristics.setName(name);
-	    productCharacteristics.setValueType(enumValue);
+	    productSpecCharacteristicValue.setValueType(enumValue);
 	    productSpecCharacteristicValue.setValue(value);
 	}
 	productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
 	productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
+	
 	return productCharacteristics;
+	
+//	StringWrapper productCharacteristics = new StringWrapper();
+//	List<ProductSpecCharacteristicValueType> productSpecCharacteristicValueTypeList = new ArrayList<>();
+//	ProductSpecCharacteristicValueType productSpecCharacteristicValue = new ProductSpecCharacteristicValueType();
+//
+//	if (id != null) {
+//	    productCharacteristics.setId(id);
+//	    productCharacteristics.setName(name);
+//	    productCharacteristics.setValueType(enumValue);
+//	    productSpecCharacteristicValue.setValue(value);
+//	} else {
+//	    productCharacteristics.setName(name);
+//	    productCharacteristics.setValueType(enumValue);
+//	    productSpecCharacteristicValue.setValue(value);
+//	}
+//	productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
+//	productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
+//	return productCharacteristics;
     }
 
     /**

@@ -18,7 +18,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<swagger-template.name>Product Catalog Management_v3.3.0_swagger.yaml</swagger-template.name>
+		<swagger-template.name>Product Catalog Management_v3.4.0_swagger.yaml</swagger-template.name>
 	</properties>
 
 	<dependencies>

@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 /**
  * ObjectCharacteristicValueType
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-11-09T18:16:42.509-05:00")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = MobileQuota.class, name = "MobileQuota"),

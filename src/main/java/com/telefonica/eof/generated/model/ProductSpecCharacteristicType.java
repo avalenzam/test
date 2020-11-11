@@ -3,28 +3,19 @@ package com.telefonica.eof.generated.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.telefonica.eof.generated.model.ObjectCharacteristicValueType;
+import com.telefonica.eof.generated.model.ProductSpecCharacteristicValueType;
 import com.telefonica.eof.generated.model.TimePeriodType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 import javax.validation.constraints.*;
 /**
  * ProductSpecCharacteristicType
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "valueType", visible = true )
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = BooleanWrapper.class, name = "booleanWrapper"),
-  @JsonSubTypes.Type(value = NumericWrapper.class, name = "numericWrapper"),
-  @JsonSubTypes.Type(value = DecimalWrapper.class, name = "decimalWrapper"),
-  @JsonSubTypes.Type(value = ObjectWrapper.class, name = "objectWrapper"),
-  @JsonSubTypes.Type(value = StringWrapper.class, name = "stringWrapper"),
-  @JsonSubTypes.Type(value = TextWrapper.class, name = "textWrapper"),
-  @JsonSubTypes.Type(value = IntegerWrapper.class, name = "integerWrapper"),
-})
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-11-09T18:16:42.509-05:00")
 
 public class ProductSpecCharacteristicType  implements Serializable {
   @JsonProperty("id")
@@ -36,52 +27,14 @@ public class ProductSpecCharacteristicType  implements Serializable {
   @JsonProperty("description")
   private String description = null;
 
-  /**
-   * Indicates the kind of value that the characteristic can take
-   */
-  public enum ValueTypeEnum {
-    INTEGERWRAPPER("integerWrapper"),
-    
-    DECIMALWRAPPER("decimalWrapper"),
-    
-    STRINGWRAPPER("stringWrapper"),
-    
-    BOOLEANWRAPPER("booleanWrapper"),
-    
-    NUMERICWRAPPER("numericWrapper"),
-    
-    TEXTWRAPPER("textWrapper"),
-    
-    OBJECTWRAPPER("objectWrapper");
-
-    private String value;
-
-    ValueTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ValueTypeEnum fromValue(String text) {
-      for (ValueTypeEnum b : ValueTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("valueType")
-  private ValueTypeEnum valueType = null;
-
   @JsonProperty("validFor")
   private TimePeriodType validFor = null;
+
+  @JsonProperty("productSpecCharacteristicValue")
+  private List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue = new ArrayList<ProductSpecCharacteristicValueType>();
+
+  @JsonProperty("objectCharacteristicValue")
+  private ObjectCharacteristicValueType objectCharacteristicValue = null;
 
   public ProductSpecCharacteristicType id(String id) {
     this.id = id;
@@ -138,25 +91,6 @@ public class ProductSpecCharacteristicType  implements Serializable {
     this.description = description;
   }
 
-  public ProductSpecCharacteristicType valueType(ValueTypeEnum valueType) {
-    this.valueType = valueType;
-    return this;
-  }
-
-   /**
-   * Indicates the kind of value that the characteristic can take
-   * @return valueType
-  **/
-  @ApiModelProperty(required = true, value = "Indicates the kind of value that the characteristic can take")
-  @NotNull
-  public ValueTypeEnum getValueType() {
-    return valueType;
-  }
-
-  public void setValueType(ValueTypeEnum valueType) {
-    this.valueType = valueType;
-  }
-
   public ProductSpecCharacteristicType validFor(TimePeriodType validFor) {
     this.validFor = validFor;
     return this;
@@ -175,6 +109,47 @@ public class ProductSpecCharacteristicType  implements Serializable {
     this.validFor = validFor;
   }
 
+  public ProductSpecCharacteristicType productSpecCharacteristicValue(List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue) {
+    this.productSpecCharacteristicValue = productSpecCharacteristicValue;
+    return this;
+  }
+
+  public ProductSpecCharacteristicType addProductSpecCharacteristicValueItem(ProductSpecCharacteristicValueType productSpecCharacteristicValueItem) {
+    this.productSpecCharacteristicValue.add(productSpecCharacteristicValueItem);
+    return this;
+  }
+
+   /**
+   * List of values that could be configured for a given characteristic when valueType is different from object
+   * @return productSpecCharacteristicValue
+  **/
+  @ApiModelProperty(value = "List of values that could be configured for a given characteristic when valueType is different from object")
+  public List<ProductSpecCharacteristicValueType> getProductSpecCharacteristicValue() {
+    return productSpecCharacteristicValue;
+  }
+
+  public void setProductSpecCharacteristicValue(List<ProductSpecCharacteristicValueType> productSpecCharacteristicValue) {
+    this.productSpecCharacteristicValue = productSpecCharacteristicValue;
+  }
+
+  public ProductSpecCharacteristicType objectCharacteristicValue(ObjectCharacteristicValueType objectCharacteristicValue) {
+    this.objectCharacteristicValue = objectCharacteristicValue;
+    return this;
+  }
+
+   /**
+   * Value of the characteristic when valueType is object
+   * @return objectCharacteristicValue
+  **/
+  @ApiModelProperty(value = "Value of the characteristic when valueType is object")
+  public ObjectCharacteristicValueType getObjectCharacteristicValue() {
+    return objectCharacteristicValue;
+  }
+
+  public void setObjectCharacteristicValue(ObjectCharacteristicValueType objectCharacteristicValue) {
+    this.objectCharacteristicValue = objectCharacteristicValue;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -188,13 +163,14 @@ public class ProductSpecCharacteristicType  implements Serializable {
     return Objects.equals(this.id, productSpecCharacteristicType.id) &&
         Objects.equals(this.name, productSpecCharacteristicType.name) &&
         Objects.equals(this.description, productSpecCharacteristicType.description) &&
-        Objects.equals(this.valueType, productSpecCharacteristicType.valueType) &&
-        Objects.equals(this.validFor, productSpecCharacteristicType.validFor);
+        Objects.equals(this.validFor, productSpecCharacteristicType.validFor) &&
+        Objects.equals(this.productSpecCharacteristicValue, productSpecCharacteristicType.productSpecCharacteristicValue) &&
+        Objects.equals(this.objectCharacteristicValue, productSpecCharacteristicType.objectCharacteristicValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, valueType, validFor);
+    return Objects.hash(id, name, description, validFor, productSpecCharacteristicValue, objectCharacteristicValue);
   }
 
   @Override
@@ -205,8 +181,9 @@ public class ProductSpecCharacteristicType  implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
     sb.append("    validFor: ").append(toIndentedString(validFor)).append("\n");
+    sb.append("    productSpecCharacteristicValue: ").append(toIndentedString(productSpecCharacteristicValue)).append("\n");
+    sb.append("    objectCharacteristicValue: ").append(toIndentedString(objectCharacteristicValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }

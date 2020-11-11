@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
  * Key - value pair typically used for extensions or for adding extra data which structure is previously unknown
  */
 @ApiModel(description = "Key - value pair typically used for extensions or for adding extra data which structure is previously unknown")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-20T15:28:41.044-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-11-09T18:16:42.509-05:00")
 
 public class KeyValueType  implements Serializable {
   @JsonProperty("key")
