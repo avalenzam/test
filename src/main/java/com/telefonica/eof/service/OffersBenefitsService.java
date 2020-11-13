@@ -107,7 +107,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      */
 
     public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws HttpException {
-	try {
+//	try {
 	    ResponseType responseType = new ResponseType();
 
 	    List<OfferingType> offeringTypeList = new ArrayList<>();
@@ -135,9 +135,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	    responseType.setPaginationInfo(paginationInfo);
 
 	    return responseType;
-	} catch (Exception e) {
-	    throw HttpException.HttpExceptionResponse(e);
-	}
+//	} catch (Exception e) {
+//	    throw HttpException.HttpExceptionResponse(e);
+//	}
     }
 
     /**
@@ -270,8 +270,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 				if (ProductTypeEnumType.SH_EQ.equals(childreProductType)) {
 				    productSpecification.setProductType(ProductTypeEnum.DEVICE);
-				} else {
-				    // TODO PROVAR CON CABLETV
+				} else if (ProductTypeEnumType.SH_EQ.toString().equalsIgnoreCase(childreProductType.toString())) {
+				    productSpecification.setProductType(ProductTypeEnum.CABLETV);
+				}else{
 				    productSpecification
 					    .setProductType(ProductTypeEnum.fromValue(childreProductType.toString().toLowerCase()));
 
@@ -531,6 +532,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			additionalDataList
 				.add(fillAdittionalData(Constant.PRODUCT_FOR_INST_FEE, upfrontFijaResponse.getProductForInstFee()));
 			upFront.setPrice(price);
+			upFront.setIndicator(upfrontFijaResponse.getIndicator());
 
 			// refinedProduct.setSubProducts(subProductsList);
 			// refinedProduct.setProductCharacteristics(productCharacteristicsList);

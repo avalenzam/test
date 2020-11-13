@@ -19,4 +19,5 @@ public class UpfrontFijaResponse {
     private BigDecimal valueAbp;
     private String productForInstFee;
     private String cidBo;
+    private String indicator;
 }

@@ -52,14 +52,15 @@ public class UpfrontFija {
 
 	UpfrontFijaResponse upfrontFijaResponse = new UpfrontFijaResponse();
 	String crediScore = String.valueOf(offersBenefitsRequestDto.getCreditScore() % 10);
-	String upfront = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(crediScore))
+	
+	String upfrontIndId = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(crediScore))
 		.map(Upfront::getUpfrontIndId).collect(Collectors.joining());
 
-	InstallationFee installationFee = installationFeeRepository.findBoUpfront(offersBenefitsRequestDto.getAction(), lob, upfront);
+	InstallationFee installationFee = installationFeeRepository.findBoUpfront(offersBenefitsRequestDto.getAction(), lob, upfrontIndId);
 
 	if (installationFee != null) {
 	    BigDecimal upfrontPrice;
-	    if (Constant.YES.equalsIgnoreCase(upfront)) {
+	    if (Constant.YES.equalsIgnoreCase(upfrontIndId)) {
 
 		upfrontPrice = pricePropertiesRepository.findUpfrontPrice(installationFee.getInstallationFeeBo());
 
@@ -69,6 +70,7 @@ public class UpfrontFija {
 	    }
 	    String cidBo = billingOfferMasterRepository.findCidBoBycaptionBo(installationFee.getInstallationFeeBo());
 
+	    upfrontFijaResponse.setIndicator(upfrontIndId);
 	    upfrontFijaResponse.setCidBo(cidBo);
 	    upfrontFijaResponse.setProductForInstFee(installationFee.getProductForInstFee());
 	    upfrontFijaResponse.setValueAbp(upfrontPrice);

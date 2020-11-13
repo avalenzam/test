@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
 import com.telefonica.eof.repository.RelationMasterRepository;
@@ -39,14 +40,14 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		+ " AND rm.CHILD_IS = 'PP'"
 		+ " AND rm.default_quantity = 0"
 		+ " AND rm.minimum_quantity = 0"
-		+ " AND rm.maximum_quantity > 0"
-		+ " AND pibo.PROPERTY_NAME = 'Salesenddate'"
-		+ " AND ( TO_DATE(SUBSTR(pibo.PROPERTY_VALUE,1,10), 'YYYY-MM-DD' ) >= CURRENT_DATE"
-		+ " or pibo.PROPERTY_VALUE is null)";
+		+ " AND rm.maximum_quantity > 0";
+//		+ " AND pibo.PROPERTY_NAME = 'Salesenddate'"
+//		+ " AND ( TO_DATE(SUBSTR(pibo.PROPERTY_VALUE,1,10), 'YYYY-MM-DD' ) >= CURRENT_DATE"
+//		+ " or pibo.PROPERTY_VALUE is null)";
 	
-	  return jdbcTemplate.queryForList(query,
+	  return jdbcTemplate.query(query,
 		new Object[]{productOfferingCatalogId, svaIdComponente },
-		RelationMaster.class);
+		new BeanPropertyRowMapper<>(RelationMaster.class));
 	  
 	} catch (EmptyResultDataAccessException e) {
 		return null;
@@ -61,7 +62,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 	    String query = "select DISTINCT pibo.CID_BO" 
 		+ " from RELATIONS_MASTER rm"
 		+ " inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  = pibo.CID_BO"
-		+ " WHERE pibo.CID_BO IN (?)"
+		+ " WHERE pibo.CID_BO IN ('33145811', '34618465','34297611')"
 		+ " AND pibo.PROPERTY_NAME = 'BO Type'"
 		+ " AND pibo.PROPERTY_VALUE !=  'Retention'";
 	
@@ -70,10 +71,9 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository{
 		String.class);
 
 	} catch (EmptyResultDataAccessException e) {
+	   
 		return null;
 	}
-	
-
     }
     
     @Override

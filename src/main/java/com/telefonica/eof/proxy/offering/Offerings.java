@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.enums.OfferingHeaderEnum;
@@ -45,13 +46,13 @@ public class Offerings {
 
 	rort.setCategory(offeringsRequestParamsFill.getCategory(offersBenefitsRequestDto));
 	rort.setChannelId(offersBenefitsRequestDto.getChannelId());
-	
+
 	if (offersBenefitsRequestDto.getCustomerId() != null) {
-	   rort.setCustomerId(new BigDecimal(offersBenefitsRequestDto.getCustomerId())); 
+	    rort.setCustomerId(new BigDecimal(offersBenefitsRequestDto.getCustomerId()));
 	}
 
 	if (offersBenefitsRequestDto.getProduct() != null) {
-	    
+
 	    List<String> productTypeList = Arrays.asList(offersBenefitsRequestDto.getProduct().getType().split(","));
 	    List<ProductTypeEnumType> productTypeEnumList = new ArrayList<>();
 	    productTypeList.forEach(productType -> productTypeEnumList.add(ProductTypeEnumType.fromValue(productType)));
@@ -59,11 +60,10 @@ public class Offerings {
 	}
 
 	rort.setProductId(Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getId()).orElse(null));
-	
-	String[] test = offersBenefitsRequestDto.getProductOfferingCatalogId().split(",");
 
+	String[] test = offersBenefitsRequestDto.getProductOfferingCatalogId().split(",");
 	rort.getProductOfferingCatalogId().addAll(Arrays.asList(test));
-	
+
 	rort.setProductOrderId(offersBenefitsRequestDto.getProductOrderId());
 	rort.setCatalogID(Optional.ofNullable(offersBenefitsRequestDto.getPlan()).map(x -> x.getId()).orElse(null));
 	rort.setFilterInfo(offeringsRequestParamsFill.getFilterInfo(offersBenefitsRequestDto));

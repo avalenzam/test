@@ -327,8 +327,14 @@ public class Sva {
 	if (Constant.SVA.equalsIgnoreCase(flagType)) {
 
 	    List<RelationMaster> cidBoActive = relationMasterRepository.findBillingOfferActive(productOfferingCatalogId, idComponent);
-
-	    String cidBoCurrentDateString = cidBoActive.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
+	    
+	    List<String> cidBoList = new ArrayList<>();
+	    
+	    cidBoActive.forEach(cidBo -> {
+		cidBoList.add(cidBo.getCidBo());
+	    });
+	    
+	    String cidBoCurrentDateString = cidBoList.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
 
 	    List<String> cidBoBoType = relationMasterRepository.findBillingOfferByBoType(cidBoCurrentDateString);
 
