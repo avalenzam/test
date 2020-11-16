@@ -34,7 +34,7 @@ public class JdbcInstallationFeeRepository implements InstallationFeeRepository{
 		+ " where ORDER_ACTION_TYPE = ?"
 		+ " and OFFER_TYPE  = ?"
 		+ " and UPFRONT_IND = ?"
-		+ " and QUAD  = 'Y'";
+		+ " and QUAD  = 'N'";
 	 
 	List<InstallationFee> boUpfront = jdbcTemplate.query(query,
 			new Object[]{action, lob, upfrontIndId},

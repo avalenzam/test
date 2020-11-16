@@ -157,7 +157,6 @@ public class OfferingsApiController {
 	    httpHeaders.set(Constant.UNICA_TIMESTAMP, unICATimestamp);
 
 	    ResponseType responseType = offerBenefitsServiceI.getOfferBenefitsFi(offersBenefitsRequestDto);
-
 	    return new ResponseEntity<>(responseType, httpHeaders, HttpStatus.OK);
 	} catch (HttpException e) {
 	   
