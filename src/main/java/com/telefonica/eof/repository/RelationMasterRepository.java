@@ -17,5 +17,7 @@ public interface RelationMasterRepository {
     public List<RelationMaster> findSvasByRootCid (String vProductOfferingID );
     public String findRelationId (String productOfferingCatalogId, String parentId );
     public String findRelationIdByrelationCidRoot (String parentId, String productOfferingCatalogId) ;
+    public String findSpsName(String childId);
+    public List<RelationMaster> findBillingOfferActiveDate(String productOfferingCatalogId, String svaIdComponente);
 
 }

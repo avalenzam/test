@@ -107,7 +107,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      */
 
     public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws HttpException {
-//	try {
+	try {
 	    ResponseType responseType = new ResponseType();
 
 	    List<OfferingType> offeringTypeList = new ArrayList<>();
@@ -135,9 +135,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	    responseType.setPaginationInfo(paginationInfo);
 
 	    return responseType;
-//	} catch (Exception e) {
-//	    throw HttpException.HttpExceptionResponse(e);
-//	}
+	} catch (Exception e) {
+	    throw HttpException.HttpExceptionResponse(e);
+	}
     }
 
     /**
@@ -272,7 +272,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 				    productSpecification.setProductType(ProductTypeEnum.DEVICE);
 				} else if (ProductTypeEnumType.SH_EQ.toString().equalsIgnoreCase(childreProductType.toString())) {
 				    productSpecification.setProductType(ProductTypeEnum.CABLETV);
-				}else{
+				} else {
 				    productSpecification
 					    .setProductType(ProductTypeEnum.fromValue(childreProductType.toString().toLowerCase()));
 
@@ -559,8 +559,8 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 		    offeringType.setBundledProductOffering(bundledProductOfferingList);
 		    offeringType.setProductSpecification(productSpecificationList);
-		    offeringType.setAdditionalData(additionalDataList.stream()
-			    .filter(x-> Objects.nonNull(x)).collect(Collectors.toList()));
+		    offeringType
+			    .setAdditionalData(additionalDataList.stream().filter(x -> Objects.nonNull(x)).collect(Collectors.toList()));
 		    offeringType.setCategory(categoryList);
 		    offeringType.setProductOfferingPrice(productOfferingPriceList);
 		    offeringTypeList.add(offeringType);
@@ -799,7 +799,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
 				    billingOffer.getSpsIdAndName().getParentId()));
 			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.NOMBRE_SPS,
-				    ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentName()));
+				    ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getNameParent()));
 
 			    refinedProductType.setProductCharacteristics(productCharacteristicsList);
 			    productSpecification.setRefinedProduct(refinedProductType);
@@ -839,8 +839,8 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
 			    List<ComponentProdOfferPriceType> productPriceList = new ArrayList<>();
 			    ComponentProdOfferPriceType productPrice = new ComponentProdOfferPriceType();
-			    BenefitType benefitType = new BenefitType();
-			    List<CharacteristicBenefitType> characteristicsList = new ArrayList<>();
+			   
+			    
 
 			    productSpecification.setId(billingOffer.getBillingOffer().getChildId());
 			    productSpecification.setName(billingOffer.getBillingOffer().getNameChild());
@@ -853,7 +853,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.SPSID, ValueTypeEnum.STRINGWRAPPER,
 				    billingOffer.getSpsIdAndName().getParentId()));
 			    productCharacteristicsList.add(fillProductCharacteristics(null, Constant.NOMBRE_SPS,
-				    ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getParentName()));
+				    ValueTypeEnum.STRINGWRAPPER, billingOffer.getSpsIdAndName().getNameParent()));
 
 			    refinedProductType.setProductCharacteristics(productCharacteristicsList);
 			    productSpecification.setRefinedProduct(refinedProductType);
@@ -869,18 +869,26 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productPriceList.add(productPrice);
 			    productSpecification.setProductPrice(productPriceList);
 
-			    benefitType.setId(billingOffer.getVasBenefits().getBenefitComponentCid());
-			    benefitType.setName(billingOffer.getNameComp());
-			    benefitType.setDownloadSpeed(billingOffer.getVasBenefits().getSpeed());
+			    if (Objects.nonNull(billingOffer.getVasBenefits())) {
+				
+				 BenefitType benefitType = new BenefitType();
+				 List<CharacteristicBenefitType> characteristicsList = new ArrayList<>();
+				 
+				benefitType.setId(billingOffer.getVasBenefits().getBenefitComponentCid());
+				benefitType.setName(billingOffer.getNameComp());
+				benefitType.setDownloadSpeed(billingOffer.getVasBenefits().getSpeed());
 
-			    characteristicsList
-				    .add(fillCharacteristics(Constant.SPS_ID, billingOffer.getVasBenefits().getBenefitThemePackSpsCid()));
-			    characteristicsList.add(fillCharacteristics(Constant.SPS_NAME, billingOffer.getParentName()));
-			    characteristicsList.add(fillCharacteristics(Constant.BO_NAME, billingOffer.getNameBo()));
-			    characteristicsList.add(fillCharacteristics(Constant.DURATION, billingOffer.getVasBenefits().getDuration()));
-			    benefitType.setCharacteristics(characteristicsList);
+				characteristicsList.add(
+					fillCharacteristics(Constant.SPS_ID, billingOffer.getVasBenefits().getBenefitThemePackSpsCid()));
+				characteristicsList.add(fillCharacteristics(Constant.SPS_NAME, billingOffer.getParentName()));
+				characteristicsList.add(fillCharacteristics(Constant.BO_CODE, billingOffer.getVasBenefits().getBenefitBillingOfferCid()));
+				characteristicsList.add(fillCharacteristics(Constant.BO_NAME, billingOffer.getNameBo()));
+				characteristicsList
+					.add(fillCharacteristics(Constant.DURATION, billingOffer.getVasBenefits().getDuration()));
+				benefitType.setCharacteristics(characteristicsList.stream().filter(x -> Boolean.FALSE.equals(StringUtil.isNullOrEmpty(x.getValue()))).collect(Collectors.toList()));
 
-			    benefitTypeList.add(benefitType);
+				benefitTypeList.add(benefitType);
+			    }
 
 			    productSpecificationList.add(productSpecification);
 
@@ -934,26 +942,6 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
 	productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
 	return productCharacteristics;
-
-	// StringWrapper productCharacteristics = new StringWrapper();
-	// List<ProductSpecCharacteristicValueType>
-	// productSpecCharacteristicValueTypeList = new ArrayList<>();
-	// ProductSpecCharacteristicValueType productSpecCharacteristicValue = new
-	// ProductSpecCharacteristicValueType();
-	//
-	// if (id != null) {
-	// productCharacteristics.setId(id);
-	// productCharacteristics.setName(name);
-	// productCharacteristics.setValueType(enumValue);
-	// productSpecCharacteristicValue.setValue(value);
-	// } else {
-	// productCharacteristics.setName(name);
-	// productCharacteristics.setValueType(enumValue);
-	// productSpecCharacteristicValue.setValue(value);
-	// }
-	// productSpecCharacteristicValueTypeList.add(productSpecCharacteristicValue);
-	// productCharacteristics.setProductSpecCharacteristicValue(productSpecCharacteristicValueTypeList);
-	// return productCharacteristics;
     }
 
     /**
@@ -986,8 +974,11 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
     private CharacteristicBenefitType fillCharacteristics(String key, String value) {
 
 	CharacteristicBenefitType characteristics = new CharacteristicBenefitType();
-	characteristics.setKey(key);
-	characteristics.setValue(value);
+
+	if (Boolean.FALSE.equals(StringUtil.isNullOrEmpty(value))) {
+	    characteristics.setKey(key);
+	    characteristics.setValue(value);
+	}
 
 	return characteristics;
     }

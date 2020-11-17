@@ -6,5 +6,5 @@ import lombok.Data;
 public class Sps {
 
     private String parentId;
-    private String parentName;
+    private String nameParent;
 }

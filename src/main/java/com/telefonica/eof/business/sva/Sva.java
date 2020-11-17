@@ -3,6 +3,7 @@ package com.telefonica.eof.business.sva;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,7 @@ import com.telefonica.eof.commons.Constant;
 import com.telefonica.eof.commons.Util;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.dto.SvaBenefitParamsDto;
+import com.telefonica.eof.entity.BillingOfferMaster;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.PriceProperties;
 import com.telefonica.eof.entity.RelationMaster;
@@ -107,7 +109,7 @@ public class Sva {
 	String upfront = null;
 	if (score != null) {
 	    upfront = upfrontRepository.findUpfront().stream().filter(x -> x.getUpfrontIndDesc().contains(score.toString()))
-		    .map( Upfront::getUpfrontIndId).collect(Collectors.joining());
+		    .map(Upfront::getUpfrontIndId).collect(Collectors.joining());
 	}
 
 	if (Constant.YES.equalsIgnoreCase(upfront)) {
@@ -139,8 +141,6 @@ public class Sva {
 
 			    PriceTypeEnum priceType;
 
-//			    BigDecimal amount;
-
 			    Sps spsIdAndName = getSpsIdAndName(billingOffer.getChildId());
 
 			    PriceProperties priceInfo = pricePropertiesRepository.findPriceInfo(billingOffer.getChildId());
@@ -160,8 +160,8 @@ public class Sva {
 			    } else {
 				priceType = ComponentProdOfferPriceType.PriceTypeEnum.RECURRING;
 			    }
-			    
-			    amount = Util.addIgv(amount);
+
+			    BigDecimal amountIgv = Util.addIgv(amount);
 
 			    SvaBenefitParamsDto svaBenefitParamsDto = new SvaBenefitParamsDto();
 			    svaBenefitParamsDto.setChannelId(offersBenefitsRequestDto.getChannelId());
@@ -188,11 +188,11 @@ public class Sva {
 
 			    }
 			    VasBenefits vasBenefits = vasBenefitsRepository.findSvaBenefits(svaBenefitParamsDto, dataRateFrom, dataRateTo);
-			    String nameComp = componentsMasterRepository
-				    .findNameComponentByCidComponent(vasBenefits.getBenefitComponentCid());
-			    String parentName = relationMasterRepository.findSpsIdAndName(vasBenefits.getBenefitThemePackSpsCid())
-				    .getParentName();
-			    String nameBo = billingOfferMasterRepository.findBillingOfferBycidBo(idComponent).getNameBo();
+			    String nameComp = componentsMasterRepository.findNameComponentByCidComponent(
+				    Objects.nonNull(vasBenefits) ? vasBenefits.getBenefitComponentCid() : null);
+			    String parentName = relationMasterRepository
+				    .findSpsName(Objects.nonNull(vasBenefits) ? vasBenefits.getBenefitThemePackSpsCid() : null);
+			    BillingOfferMaster nameBo = billingOfferMasterRepository.findBillingOfferBycidBo(Objects.nonNull(vasBenefits) ? vasBenefits.getBenefitBillingOfferCid() : null);
 
 			    BillingOfferResponse billingOfferResponse = new BillingOfferResponse();
 
@@ -200,11 +200,11 @@ public class Sva {
 			    billingOfferResponse.setMaxSTBsallowed(maxSTBsallowed);
 			    billingOfferResponse.setSpsIdAndName(spsIdAndName);
 			    billingOfferResponse.setPriceType(priceType);
-			    billingOfferResponse.setAmount(amount);
+			    billingOfferResponse.setAmount(amountIgv);
 			    billingOfferResponse.setVasBenefits(vasBenefits);
 			    billingOfferResponse.setNameComp(nameComp);
 			    billingOfferResponse.setParentName(parentName);
-			    billingOfferResponse.setNameBo(nameBo);
+			    billingOfferResponse.setNameBo(Objects.nonNull(nameBo) ? nameBo.getNameBo() : null);
 			    billingOfferResponse.setRelationId(relationId);
 
 			    billingOfferResponseList.add(billingOfferResponse);
@@ -326,26 +326,29 @@ public class Sva {
 
 	if (Constant.SVA.equalsIgnoreCase(flagType)) {
 
-	    List<RelationMaster> cidBoActive = relationMasterRepository.findBillingOfferActive(productOfferingCatalogId, idComponent);
-	    
+	    List<RelationMaster> cidBoActive = relationMasterRepository.findBillingOfferActiveDate(productOfferingCatalogId, idComponent);
+	    if (cidBoActive != null || cidBoActive.isEmpty()) {
+		cidBoActive = relationMasterRepository.findBillingOfferActive(productOfferingCatalogId, idComponent);
+	    }
 	    List<String> cidBoList = new ArrayList<>();
-	    
-	    cidBoActive.forEach(cidBo -> {
-		cidBoList.add(cidBo.getCidBo());
-	    });
-	    
+
+	    cidBoActive.forEach(cidBo -> cidBoList.add(cidBo.getCidBo()));
+
 	    String cidBoCurrentDateString = cidBoList.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
 
-	    List<String> cidBoBoType = relationMasterRepository.findBillingOfferByBoType(cidBoCurrentDateString);
+	    String cidBoQuery = " WHERE pibo.CID_BO IN (" + cidBoCurrentDateString + ")";
+
+	    List<String> cidBoBoType = relationMasterRepository.findBillingOfferByBoType(cidBoQuery);
 
 	    String cidBoBoTypeString = cidBoBoType.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
+	    String cidBoTypeQuery = " WHERE pibo.CID_BO  in (" + cidBoBoTypeString + ")";
 
 	    if (Constant.BLOQUE_CANALES.equalsIgnoreCase(idComponent)) {
 		String propertyValue = " in ('FULL','HD')";
-		billingOfferList = relationMasterRepository.validateIdComponente(cidBoBoTypeString, propertyValue);
+		billingOfferList = relationMasterRepository.validateIdComponente(cidBoTypeQuery, propertyValue);
 		String spsId = offersPropertiesRepository.findSpsIdByofferCid(productOfferingCatalogId);
 
-		if (spsId != null ) {
+		if (spsId != null) {
 		    String[] arr = spsId.split(";", 0);
 		    String spsPropertyValue = arr[0];
 		    List<String> parentIdList = relationMasterRepository.findParentIdByChildId(spsPropertyValue);
@@ -357,11 +360,14 @@ public class Sva {
 
 	    } else if (idComponent.matches("3197701|3239962|34105211")) {
 		String propertyValue = " is null";
-		billingOfferList = relationMasterRepository.validateIdComponente(cidBoBoTypeString, propertyValue);
+		billingOfferList = relationMasterRepository.validateIdComponente(cidBoTypeQuery, propertyValue);
 	    }
 
 	} else if (Constant.TRUE.equalsIgnoreCase(flagType)) {
-	    billingOfferList = relationMasterRepository.findBillingOfferActive(productOfferingCatalogId, idComponent);
+	    List<RelationMaster> cidBoActive = relationMasterRepository.findBillingOfferActiveDate(productOfferingCatalogId, idComponent);
+	    if (cidBoActive != null || cidBoActive.isEmpty()) {
+		cidBoActive = relationMasterRepository.findBillingOfferActive(productOfferingCatalogId, idComponent);
+	    }
 	}
 
 	return billingOfferList;
@@ -382,8 +388,9 @@ public class Sva {
 
 	List<String> parentIdList = relationMasterRepository.findParentIdByChildId(billingOfferChildId);
 	String parentId = parentIdList.stream().map(Object::toString).collect(Collectors.joining("', '", "'", "'"));
+	String childIdQuery = " where a.child_id in (" + parentId + ")";	
 
-	return relationMasterRepository.findSpsIdAndName(parentId);
+	return  relationMasterRepository.findSpsIdAndName(childIdQuery);
 
     }
 

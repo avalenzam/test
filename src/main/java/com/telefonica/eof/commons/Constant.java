@@ -147,6 +147,7 @@ public class Constant {
     public static final String SPS_ID	= "spsID";
     public static final String SPS_NAME	= "spsName";
     public static final String BO_NAME	= "BOName";
+    public static final String BO_CODE	= "BOCode";
     public static final String BO_ID	= "BOID";
     public static final String NIGHT_ID	= "NightInd";
 
