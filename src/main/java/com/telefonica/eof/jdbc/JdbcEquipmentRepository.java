@@ -27,7 +27,7 @@ public class JdbcEquipmentRepository implements EquipmentRepository {
     @Override
     public String findEquipmentCid (String networkTechnology,String lob) {
 	try {
-	    String query = "select CID"
+	    String query = "select DISTINCT CID"
 		+ " from  EQUIPMENT"
 		+ " where NETWORK_TECHNOLOGY = ?"
 		+ " and LOB = ?"
@@ -45,7 +45,7 @@ public class JdbcEquipmentRepository implements EquipmentRepository {
     @Override
     public List<Equipment> EquipmentTable () {
 	try {
-	    String query = "select CID,LOB, NETWORK_TECHNOLOGY"
+	    String query = "select DISTINCT CID,LOB, NETWORK_TECHNOLOGY"
 		+ " from  EQUIPMENT"
 		+ " where IS_SELLABLE  = 'Y'" ;
 	

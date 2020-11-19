@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.telefonica.eof.ehcache.Equipment;
 import com.telefonica.eof.ehcache.PlanCid;
 import com.telefonica.eof.repository.OffilterBundleRepository;
 /**
@@ -28,7 +27,7 @@ public class JdbcOffilterBundleRepository implements OffilterBundleRepository{
     @Override
     public String findPlanCid(String catalogItemId, String installationAddressDepartment , String dealerId, String storeId) {
 	try {
-	 String query = "select moo.OFFER_CAPTION"
+	 String query = "select DISTINCT moo.OFFER_CAPTION"
 	 	+ " from OFFILTER_BUNDLE ob, MASTER_OF_OFFERS moo"
 	 	+ " where moo.OFFER_CID= ?"
 	 	+ " and ob.DEPARTAMENTO in (?,'*')"
@@ -53,7 +52,7 @@ public class JdbcOffilterBundleRepository implements OffilterBundleRepository{
     @Override
     public List<PlanCid> planCid() {
 	try {
-	 String query = "select moo.OFFER_CAPTION, moo.OFFER_CID, ob.DEPARTAMENTO, ob.DEALER_CODE,ob.STORE_ID "
+	 String query = "select DISTINCT moo.OFFER_CAPTION, moo.OFFER_CID, ob.DEPARTAMENTO, ob.DEALER_CODE,ob.STORE_ID "
 	 	+ " from OFFILTER_BUNDLE ob, MASTER_OF_OFFERS moo"
 	 	+ " where ob.VALIDITY_START_DATE <= CURRENT_DATE"
 	 	+ " and ob.VALIDITY_END_DATE >= CURRENT_DATE"

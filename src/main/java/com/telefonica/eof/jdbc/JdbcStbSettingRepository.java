@@ -24,7 +24,7 @@ public class JdbcStbSettingRepository implements StbSettingRepository{
     @Override
     public String findStbSettingWithSpeed (String channelId, String vProductOfferingID, Integer velocidad ) {
 	try {
-	    String query = "select STB_SETTINGS"
+	    String query = "select DISTINCT STB_SETTINGS"
 		+ " from STB_SETTING"
 		+ " where SALES_CHANNEL in (?, 'All')"
 		+ " and PO_CODE = ?"
@@ -43,7 +43,7 @@ public class JdbcStbSettingRepository implements StbSettingRepository{
     @Override
     public String findStbSettingWithoutSpeed (String channelId, String vProductOfferingID) {
 	try {
-	    String query = "select STB_SETTINGS"
+	    String query = "select DISTINCT STB_SETTINGS"
 		+ " from STB_SETTING"
 		+ " where SALES_CHANNEL in (?, 'All')"
 		+ " and PO_CODE = ?"

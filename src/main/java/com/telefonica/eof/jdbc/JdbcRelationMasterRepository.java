@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.entity.RelationMaster;
 import com.telefonica.eof.entity.Sps;
 import com.telefonica.eof.repository.RelationMasterRepository;
@@ -126,7 +125,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository {
     @Override
     public Sps findSpsIdAndName(String parentId) {
 	try {
-	    String query = "select a.parent_id, a.name_parent" + " from relations_master a" + parentId + " and a.parente_is = 'PR'";
+	    String query = "select DISTINCT a.parent_id, a.name_parent" + " from relations_master a" + parentId + " and a.parente_is = 'PR'";
 
 	    List<Sps> spsList = jdbcTemplate.query(query, new Object[] {}, new BeanPropertyRowMapper<>(Sps.class));
 
@@ -141,7 +140,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository {
     @Override
     public String findSpsName(String childId) {
 	try {
-	    String query = "select parent_id, name_parent" + " from relations_master " + "  where child_id =  ? "
+	    String query = "select DISTINCT parent_id, name_parent" + " from relations_master " + "  where child_id =  ? "
 		    + " and parente_is = 'PR'";
 
 	    return jdbcTemplate.queryForObject(query, new Object[] { childId }, String.class);
@@ -155,7 +154,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository {
     @Override
     public String findSpsDiscountName(String benefitThemePackSpsCid) {
 	try {
-	    String query = "select name_parent" + " from relations_master" + " where parent_id = ?" + " and parente_is = 'PR'";
+	    String query = "select DISTINCT name_parent" + " from relations_master" + " where parent_id = ?" + " and parente_is = 'PR'";
 
 	    return jdbcTemplate.queryForObject(query, new Object[] { benefitThemePackSpsCid }, String.class);
 	} catch (EmptyResultDataAccessException e) {
@@ -167,7 +166,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository {
     @Override
     public Sps findComponentIdAndName(String defSpsBo, String vProductOfferingID) {
 	try {
-	    String query = "select rm.parent_id, rm.name_parent" + " from relations_master rm, BILLING_OFFER_MASTER bim"
+	    String query = "select DISTINCT rm.parent_id, rm.name_parent" + " from relations_master rm, BILLING_OFFER_MASTER bim"
 		    + " where rm.child_id = bim.cid_bo" + " and caption_bo = substr( ? ,1," + " decode(instr(?,';')-1,-1," + " length(?),"
 		    + " instr(?,';')-1))" + " and rm.root_cid = ?" + " and ROWNUM = 1";
 
@@ -185,7 +184,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository {
     @Override
     public List<RelationMaster> findSvasByRootCid(String vProductOfferingID) {
 	try {
-	    String query = "select rm.PARENT_ID, bom.CID_BO, bom.NAME_BO " + " from relations_master rm, BILLING_OFFER_MASTER bom"
+	    String query = "select DISTINCT rm.PARENT_ID, bom.CID_BO, bom.NAME_BO " + " from relations_master rm, BILLING_OFFER_MASTER bom"
 		    + " where rm.root_cid = ?" + " and rm.is_mandatory = '1'" + " and rm.PARENT_ID in ('2723922', '3239962')"
 		    + " and bom.CID_BO = rm.CHILD_ID";
 
@@ -199,7 +198,7 @@ public class JdbcRelationMasterRepository implements RelationMasterRepository {
     @Override
     public String findRelationId(String productOfferingCatalogId, String parentId) {
 	try {
-	    String query = "select RELATION_ID" + " from relations_master" + " where regexp_replace(ROOT_CID, '\\W','') = TRIM(?)"
+	    String query = "select DISTINCT RELATION_ID" + " from relations_master" + " where regexp_replace(ROOT_CID, '\\W','') = TRIM(?)"
 		    + " and CHILD_ID = ?";
 
 	    return jdbcTemplate.queryForObject(query, new Object[] { productOfferingCatalogId, parentId }, String.class);

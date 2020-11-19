@@ -21,7 +21,7 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
     @Override
     public PriceProperties findPriceInfo(String childId) {
 	try {
-	   String query = "select VALUE_ABP , REVENUE_TYPE , NAME_PROP_ABP"
+	   String query = "select DISTINCT VALUE_ABP , REVENUE_TYPE , NAME_PROP_ABP"
 		+ " from PRICE_PROPERTIES"
 		+ " where NAME_PROP_ABP = 'Rate'"
 		+ " and BILLING_OFFER_CID = ?";
@@ -42,7 +42,7 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
     @Override
     public List<PriceProperties> findDiscountPriceDetail (String benefitBillingOfferCid) {
 	try {
-	   String query = "select VALUE_ABP , NAME_PROP_ABP"
+	   String query = "select DISTINCT VALUE_ABP , NAME_PROP_ABP"
 		+ " from PRICE_PROPERTIES"
 		+ " where NAME_PROP_ABP in ('Discount type','Discount value')"
 		+ " and BILLING_OFFER_CID = ?";

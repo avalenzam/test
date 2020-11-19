@@ -28,7 +28,7 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
    @Override
     public BillingOfferMaster findBillingOfferBycidBo(String benefitBillingOfferCid) {
        try {
-	String query = "select CID_BO, NAME_BO, DESCRIPTION_TEXT"
+	String query = "select DISTINCT CID_BO, NAME_BO, DESCRIPTION_TEXT"
 		+ " from BILLING_OFFER_MASTER"
 		+ " where CID_BO = ?" ;
 	

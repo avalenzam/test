@@ -107,7 +107,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      */
 
     public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws HttpException {
-	 try {
+	// try {
 	ResponseType responseType = new ResponseType();
 
 	List<OfferingType> offeringTypeList = new ArrayList<>();
@@ -135,9 +135,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	responseType.setPaginationInfo(paginationInfo);
 
 	return responseType;
-	 } catch (Exception e) {
-	 throw HttpException.HttpExceptionResponse(e);
-	 }
+	// } catch (Exception e) {
+	// throw HttpException.HttpExceptionResponse(e);
+	// }
     }
 
     /**
@@ -158,7 +158,8 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	List<OfferingType> offeringTypeList = new ArrayList<>();
 
 	for (CategoryListType categories : rort.getCategories()) {
-
+	    Boolean isInternet = Boolean.FALSE;
+	    Integer downloadSpeedSum = 0;
 	    for (OfferingTypeOfferType offering : categories.getOfferings()) {
 
 		// TODO ANEXO 3, FILTRAR LAS OFERTA.
@@ -172,9 +173,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			String vProductOfferingID = offering.getCatalogItemId();
 			Map<String, List<OffersProperties>> offersPropertiesMap = cacheOffersPropertiesCharge.getOffersProperties();
 			List<OffersProperties> offersProperties = offersPropertiesMap.get(vProductOfferingID);
-			Boolean isInternet = Boolean.FALSE;
 			String downloadSpeed = null;
-			ProductTypeEnumType productType = null;
 			BigDecimal amount = BigDecimal.valueOf(0);
 
 			for (OfferingTypeOfferType children : offering.getChildren()) {
@@ -186,7 +185,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 				    // TODO VERIFICAR QUE VELOCIODAD Y PRECIO OBTENER, AMDOCS TRAE VARIOS
 				    for (PricingType price : priceList) {
-
+					downloadSpeedSum += Integer.valueOf(price.getDownloadSpeed());
 					downloadSpeed = price.getDownloadSpeed();
 					amount = price.getPrice().getAmount();
 
@@ -210,6 +209,12 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 		    }
 		}
 	    }
+	    // TODO PAGINACION
+	    if (Boolean.FALSE.equals(Util.isEmptyOrNullList(offeringTypeList))) {
+		responseType.setPaginationInfo(fillPaginationInfo(categories.getPaginationInfo(), isInternet, downloadSpeedSum,
+			offersBenefitsRequestDto.getPaginationInfo().getPage()));
+	    }
+
 	}
 
 	responseType.setOfferings(offeringTypeList);
@@ -362,15 +367,13 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 		for (PlanBODetailsType planBo : children.getPlanBoList()) {
 
-		    
-
 		    if (ProductTypeEnumType.BROADBAND.equals(productType)) {
 
 			planBo.getPriceList().forEach(priceList -> {
 
 			    ComponentProdOfferPriceType productPricePo = new ComponentProdOfferPriceType();
 			    List<KeyValueType> additionalDataPlanBoList = new ArrayList<>();
-			    
+
 			    productPricePo.setName(Constant.PRECIO_VELOCIDAD + priceList.getDownloadSpeed() + Constant.MBPS);
 			    productPricePo.setPriceType(PriceTypeEnum.RECURRING);
 			    productPricePo.setRecurringChargePeriod(RecurringChargePeriodEnum.MONTHLY);
@@ -385,15 +388,15 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 			    productPricePo.setAdditionalData(additionalDataPlanBoList);
 			    productPricePo.setProductSpecContainmentID(planBo.getProductSpecContainmentID());
 			    productPricePo.setPricePlanSpecContainmentID(planBo.getPricePlanSpecContainmentID());
-			    
+
 			    productPriceList.add(productPricePo);
 
 			});
 
 		    } else {
 			ComponentProdOfferPriceType productPricePo = new ComponentProdOfferPriceType();
-			    List<KeyValueType> additionalDataPlanBoList = new ArrayList<>();
-			    
+			List<KeyValueType> additionalDataPlanBoList = new ArrayList<>();
+
 			productPricePo.setId(planBo.getBillingOfferId());
 			productPricePo.setCode(planBo.getBillingOfferCode());
 			productPricePo.setName(planBo.getBillingOfferName());
@@ -1054,7 +1057,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      *            variable de la velocidad del internet
      * @return PaginationInfoType: atributos poblados
      */
-    private PaginationInfoType fillPaginationInfo(PagingInfoOutputType paginationInfo, Boolean isInternet, String downloadSpeed,
+    private PaginationInfoType fillPaginationInfo(PagingInfoOutputType paginationInfo, Boolean isInternet, Integer downloadSpeed,
 	    Integer page) {
 
 	PaginationInfoType paginationInfoType = new PaginationInfoType();
@@ -1066,7 +1069,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 	if (Boolean.TRUE.equals(isInternet)) {
 
-	    BigDecimal speed = Optional.ofNullable(downloadSpeed).map(x -> new BigDecimal(x)).orElse(BigDecimal.valueOf(0));
+	    BigDecimal speed = new BigDecimal(downloadSpeed);
 	    totalPages = paginationInfo.getTotalResultsInCategory().add(speed).divide(paginationInfo.getItemsPerCategory());
 	    totalResults = paginationInfo.getTotalResultsInCategory().add(speed);
 	    paginationInfoType.setTotalPages(totalPages.intValue());

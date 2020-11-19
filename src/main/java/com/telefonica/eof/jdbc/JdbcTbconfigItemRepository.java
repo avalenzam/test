@@ -24,7 +24,7 @@ public class JdbcTbconfigItemRepository implements TbconfigItemRepository{
     @Override
     public Integer findParameterValue() {
 	try {
-	  String query = "select PARAMETER_VALUE"
+	  String query = "select DISTINCT PARAMETER_VALUE"
 		+ " from TBCONFIG_ITEM"
 		+ " where PARAMETER_NAME = 'MAX_ALLOWED_STBs_FOR_RISKY_CUSTOMER'" ;
 	

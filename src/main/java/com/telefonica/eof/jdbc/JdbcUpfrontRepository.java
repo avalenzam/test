@@ -28,7 +28,7 @@ public class JdbcUpfrontRepository implements UpfrontRepository{
     @Override
     public List<Upfront> findUpfront () {
 	try {
-	    String query = "select UPFRONT_IND_DESC, UPFRONT_IND_ID"
+	    String query = "select DISTINCT UPFRONT_IND_DESC, UPFRONT_IND_ID"
 		+ " from UPFRONT_IND";
 	
 	 return jdbcTemplate.query(query,

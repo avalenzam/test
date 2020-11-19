@@ -26,7 +26,7 @@ public class JdbcSvaOfferingRepository implements SvaOfferingRepository{
     @Override
     public List<String> findIdComponent(String lobType, String tipoOperation, String flagRetencion) {
 	try {
-	  String query = "SELECT IDCOMPONENTE FROM SVAOffering  WHERE"
+	  String query = "SELECT DISTINCT IDCOMPONENTE FROM SVAOffering  WHERE"
 		+ " LOB_TYPE= ?"
 		+ " AND TIPO_OPERATION IN ('*', ?)"
 		+ " AND FLAG_RETENCIÓN IN (" + flagRetencion + ")"

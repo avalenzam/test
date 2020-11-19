@@ -30,7 +30,7 @@ public class JdbcVasBenefitsRepository implements VasBenefitsRepository {
     public  VasBenefits  findSvaBenefits(SvaBenefitParamsDto svaBenefitParamsDto, String dataRateFrom, String dataRateTo) {
        try {
 	
-	 String query = "SELECT BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
+	 String query = "SELECT DISTINCT BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
 	 	+ " BENEFIT_BILLING_OFFER_CID, SPEED, \"DURATION\""
 	 	+ " FROM VAS_BENEFITS"
 	 	+ " WHERE EFFECTIVE_START_DATE <= CURRENT_DATE"

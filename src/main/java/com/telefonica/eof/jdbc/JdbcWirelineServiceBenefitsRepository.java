@@ -29,7 +29,7 @@ public class JdbcWirelineServiceBenefitsRepository implements WirelineServiceBen
    @Override
     public  List<WirelineServiceBenefits>  findBenefits(DiscountParamsDto discountParamsDto ) {
        try {
-	String query = "select  BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
+	String query = "select DISTINCT BENEFIT_COMPONENT_CID, BENEFIT_THEME_PACK_SPS_CID,"
 	 	+ " BENEFIT_BILLING_OFFER_CID, SPEED, DURATION, NIGHT_IND, LOB"
 	 	+ " from WIRELINE_SERVICE_BENEFITS"
 	 	+ " where EFFECTIVE_START_DATE <= current_date"

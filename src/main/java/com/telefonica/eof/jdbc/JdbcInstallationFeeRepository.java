@@ -29,7 +29,7 @@ public class JdbcInstallationFeeRepository implements InstallationFeeRepository{
     @Override
     public InstallationFee findBoUpfront(String action, String lob, String upfrontIndId) {
 	try {
-	    String query = "select INSTALLATION_FEE_BO, PRODUCT_FOR_INST_FEE"
+	    String query = "select DISTINCT INSTALLATION_FEE_BO, PRODUCT_FOR_INST_FEE"
 		+ " from INSTALLATION_FEE"
 		+ " where ORDER_ACTION_TYPE = ?"
 		+ " and OFFER_TYPE  = ?"

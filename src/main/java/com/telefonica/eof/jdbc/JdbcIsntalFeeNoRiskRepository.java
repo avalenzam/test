@@ -26,7 +26,7 @@ public class JdbcIsntalFeeNoRiskRepository implements InstalFeeNoRiskRepository 
     @Override
     public BigDecimal findRate(String channelId, String installationAddressDepartment) {
 	try {
-	 String query = "SELECT rate"
+	 String query = "SELECT DISTINCT rate"
 		+ " FROM INSTAL_FEE_NO_RISK"
 		+ " where SALE_CHANNEL in (?, 'ALL')"
 		+ " and INSTAL_ADDR_DEPART in (?, 'ALL')"

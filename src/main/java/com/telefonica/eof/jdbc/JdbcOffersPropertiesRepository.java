@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.telefonica.eof.ehcache.Equipment;
 import com.telefonica.eof.entity.OffersProperties;
 import com.telefonica.eof.repository.OffersPropertiesRepository;
 
@@ -32,7 +31,7 @@ public class JdbcOffersPropertiesRepository implements OffersPropertiesRepositor
     public List<OffersProperties> findPropertyValue(String productOfferingCatalogId) {
 
 	try {
-	    String query = "select PROPERTY_VALUE, NAME_OF_PROPERTY" + " from OFFERS_PROPERTIES " + " where OFFER_CID = ?";
+	    String query = "select DISTINCT PROPERTY_VALUE, NAME_OF_PROPERTY" + " from OFFERS_PROPERTIES " + " where OFFER_CID = ?";
 
 	    return jdbcTemplate.query(query, new Object[] { productOfferingCatalogId },
 		    new BeanPropertyRowMapper<>(OffersProperties.class));

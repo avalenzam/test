@@ -24,7 +24,7 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
     @Override
     public Integer findCaptionByvalidValue (String spsSetting) {
 	try {
-	    String query = "select CAPTION"
+	    String query = "select DISTINCT CAPTION"
 		+ " from DOMAIN_WITH_VALID_VALUES"
 		+ " where VALID_VALUE = ?"
 		+ " and DOMAIN_NAME = 'AbsSTBsRank'";
@@ -41,7 +41,7 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
     @Override
     public String findValidValueByCaption (Integer rankSTB) {
 	try {
-	    String query = "select VALID_VALUE"
+	    String query = "select DISTINCT VALID_VALUE"
 		+ " from DOMAIN_WITH_VALID_VALUES"
 		+ " where CAPTION = ?"
 		+ " and DOMAIN_NAME = 'AbsSTBsRank'";

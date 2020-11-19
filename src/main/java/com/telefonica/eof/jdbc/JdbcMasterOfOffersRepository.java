@@ -24,7 +24,7 @@ public class JdbcMasterOfOffersRepository implements MasterOfOffersRepository {
     @Override
     public String findOfferCaption(String productOfferingCatalogId) {
 	try {
-	  String query = "select OFFER_CAPTION"
+	  String query = "select DISTINCT OFFER_CAPTION"
 		+ " from MASTER_OF_OFFERS"
 		+ " where OFFER_CID = ? ";
 	

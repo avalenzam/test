@@ -24,7 +24,7 @@ public class JdbcComponentsMasterRepository implements ComponentsMasterRepositor
     public String findNameComponentByCidComponent(String benefitComponentCid) {
 	
 	try {
-	   String query = "select NAME_COMP"
+	   String query = "select DISTINCT NAME_COMP"
 		+ " from COMPONENTS_MASTER"
 		+ " where CID_COMPONENT = ?" ;
 	

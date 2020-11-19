@@ -92,7 +92,7 @@ class ServiceTest {
 	broadband.setConnection("TV_CATV;INT_GPON;VOIC_VOIP");
 	request.setBroadband(broadband);
 	request.setIsRetention(false);//
-//	request.setProductOfferingCatalogId("32952011");
+	request.setProductOfferingCatalogId("32952011");
 	request.setAction("PR");
 	request.setCommercialAreaId("1");
 	request.setSiteId("61200001");//

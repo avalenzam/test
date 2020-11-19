@@ -24,7 +24,7 @@ public class JdbcRelationOffersXPlanRepository implements RelationOffersXPlanRep
     @Override
     public Integer findPlanCid  (String productOfferingCatalogId) {
 	try {
-	    String query = "select rop.PLAN_CID "  
+	    String query = "select DISTINCT rop.PLAN_CID "  
 		+ "from  RELATION_OFFERS_X_PLAN rop "  
 		+ "inner join RELATIONS_MASTER rm on  rop.RELATION_ID= rm.RELATION_ID "  
 		+ "inner join PROPERTY_IN_BILLING_OFFER pibo on rm.CHILD_ID  =  pibo.CID_BO "

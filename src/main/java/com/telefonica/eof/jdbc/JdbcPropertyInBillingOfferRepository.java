@@ -24,7 +24,7 @@ public class JdbcPropertyInBillingOfferRepository implements PropertyInBillingOf
     @Override
     public Integer findPropertyValueByCidBo(Integer planCid) {
         try {
-            String query = "SELECT PROPERTY_VALUE FROM PROPERTY_IN_BILLING_OFFER"
+            String query = "SELECT DISTINCT PROPERTY_VALUE FROM PROPERTY_IN_BILLING_OFFER"
 		+ " WHERE  CID_BO = ? "
 		+ " and PROPERTY_NAME ='Max STBs allowed'" ;
 	
