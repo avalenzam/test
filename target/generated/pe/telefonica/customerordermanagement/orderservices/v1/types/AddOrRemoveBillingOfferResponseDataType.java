@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para AddOrRemoveBillingOfferResponse_data_type complex type.
+ * <p>Java class for AddOrRemoveBillingOfferResponse_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="AddOrRemoveBillingOfferResponse_data_type"&gt;
@@ -45,7 +45,7 @@ public class AddOrRemoveBillingOfferResponseDataType {
     protected List<ConfigurationItem> configurationItems;
 
     /**
-     * Obtiene el valor de la propiedad orderId.
+     * Gets the value of the orderId property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class AddOrRemoveBillingOfferResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad orderId.
+     * Sets the value of the orderId property.
      * 
      * @param value
      *     allowed object is

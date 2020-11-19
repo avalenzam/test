@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ValidateTokenFnFRequest_data_type complex type.
+ * <p>Java class for ValidateTokenFnFRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ValidateTokenFnFRequest_data_type"&gt;
@@ -52,7 +52,7 @@ public class ValidateTokenFnFRequestDataType {
     protected List<ArgumentsList> arguments;
 
     /**
-     * Obtiene el valor de la propiedad context.
+     * Gets the value of the context property.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class ValidateTokenFnFRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad context.
+     * Sets the value of the context property.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class ValidateTokenFnFRequestDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class ValidateTokenFnFRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is

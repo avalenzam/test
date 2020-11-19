@@ -61,7 +61,7 @@ public class JdbcPricePropertiesRepository implements PricePropertiesRepository 
     @Override
     public BigDecimal findUpfrontPrice (String installationFeeBo) {
 	try {
-	    String query = "select VALUE_ABP"
+	    String query = "select DISTINCT VALUE_ABP"
 		+ " from PRICE_PROPERTIES pp, BILLING_OFFER_MASTER bom"
 		+ " where pp.NAME_PROP_ABP = 'Rate'"
 		+ " and pp.BILLING_OFFER_CID = bom.CID_BO"

@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para RetrieveProductHeaderRequest_type complex type.
+ * <p>Java class for RetrieveProductHeaderRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveProductHeaderRequest_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveProductHeaderRequestType
     protected RetrieveProductHeaderRequestDataType retrieveProductHeaderRequestData;
 
     /**
-     * Obtiene el valor de la propiedad retrieveProductHeaderRequestData.
+     * Gets the value of the retrieveProductHeaderRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveProductHeaderRequestType
     }
 
     /**
-     * Define el valor de la propiedad retrieveProductHeaderRequestData.
+     * Sets the value of the retrieveProductHeaderRequestData property.
      * 
      * @param value
      *     allowed object is

@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para RetrieveCommitmentPenaltyRequest_type complex type.
+ * <p>Java class for RetrieveCommitmentPenaltyRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveCommitmentPenaltyRequest_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveCommitmentPenaltyRequestType
     protected RetrieveCommitmentPenaltyRequestDataType retrieveCommitmentPenaltyRequestData;
 
     /**
-     * Obtiene el valor de la propiedad retrieveCommitmentPenaltyRequestData.
+     * Gets the value of the retrieveCommitmentPenaltyRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveCommitmentPenaltyRequestType
     }
 
     /**
-     * Define el valor de la propiedad retrieveCommitmentPenaltyRequestData.
+     * Sets the value of the retrieveCommitmentPenaltyRequestData property.
      * 
      * @param value
      *     allowed object is

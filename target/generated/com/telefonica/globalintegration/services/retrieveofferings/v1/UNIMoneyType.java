@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- units: Units a quantity is measured in
  * 			
  * 
- * <p>Clase Java para UNIMoneyType complex type.
+ * <p>Java class for UNIMoneyType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="UNIMoneyType"&gt;
@@ -49,7 +49,7 @@ public class UNIMoneyType {
     protected String units;
 
     /**
-     * Obtiene el valor de la propiedad amount.
+     * Gets the value of the amount property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class UNIMoneyType {
     }
 
     /**
-     * Define el valor de la propiedad amount.
+     * Sets the value of the amount property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class UNIMoneyType {
     }
 
     /**
-     * Obtiene el valor de la propiedad units.
+     * Gets the value of the units property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class UNIMoneyType {
     }
 
     /**
-     * Define el valor de la propiedad units.
+     * Sets the value of the units property.
      * 
      * @param value
      *     allowed object is

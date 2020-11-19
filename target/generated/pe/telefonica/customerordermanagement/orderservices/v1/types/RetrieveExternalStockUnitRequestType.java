@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para RetrieveExternalStockUnitRequest_type complex type.
+ * <p>Java class for RetrieveExternalStockUnitRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveExternalStockUnitRequest_type"&gt;
@@ -39,7 +39,7 @@ public class RetrieveExternalStockUnitRequestType
     protected RetrieveExternalStockUnitRequestDataType retrieveExternalStockUnitRequestData;
 
     /**
-     * Obtiene el valor de la propiedad retrieveExternalStockUnitRequestData.
+     * Gets the value of the retrieveExternalStockUnitRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class RetrieveExternalStockUnitRequestType
     }
 
     /**
-     * Define el valor de la propiedad retrieveExternalStockUnitRequestData.
+     * Sets the value of the retrieveExternalStockUnitRequestData property.
      * 
      * @param value
      *     allowed object is

@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FilterCriterion_RetrieveFriendsAndFamilyNumbersRequest complex type.
+ * <p>Java class for FilterCriterion_RetrieveFriendsAndFamilyNumbersRequest complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="FilterCriterion_RetrieveFriendsAndFamilyNumbersRequest"&gt;
@@ -100,7 +100,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     protected String valueDataType;
 
     /**
-     * Obtiene el valor de la propiedad closeParenNumber.
+     * Gets the value of the closeParenNumber property.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad closeParenNumber.
+     * Sets the value of the closeParenNumber property.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad fieldName.
+     * Gets the value of the fieldName property.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad fieldName.
+     * Sets the value of the fieldName property.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad isLogicalAnd.
+     * Gets the value of the isLogicalAnd property.
      * 
      */
     public boolean isIsLogicalAnd() {
@@ -156,7 +156,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad isLogicalAnd.
+     * Sets the value of the isLogicalAnd property.
      * 
      */
     public void setIsLogicalAnd(boolean value) {
@@ -164,7 +164,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad openParenNumber.
+     * Gets the value of the openParenNumber property.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad openParenNumber.
+     * Sets the value of the openParenNumber property.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad operator.
+     * Gets the value of the operator property.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad operator.
+     * Sets the value of the operator property.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad otherValue.
+     * Gets the value of the otherValue property.
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad otherValue.
+     * Sets the value of the otherValue property.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad value.
+     * Gets the value of the value property.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad value.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad valueDataType.
+     * Gets the value of the valueDataType property.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class FilterCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad valueDataType.
+     * Sets the value of the valueDataType property.
      * 
      * @param value
      *     allowed object is

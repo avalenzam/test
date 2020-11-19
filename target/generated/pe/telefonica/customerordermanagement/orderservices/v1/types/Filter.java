@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Filter complex type.
+ * <p>Java class for Filter complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Filter"&gt;
@@ -48,7 +48,7 @@ public class Filter {
     protected BigInteger maxRowCount;
 
     /**
-     * Obtiene el valor de la propiedad filterCriteriaList.
+     * Gets the value of the filterCriteriaList property.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class Filter {
     }
 
     /**
-     * Define el valor de la propiedad filterCriteriaList.
+     * Sets the value of the filterCriteriaList property.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class Filter {
     }
 
     /**
-     * Obtiene el valor de la propiedad sortCriteriaList.
+     * Gets the value of the sortCriteriaList property.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class Filter {
     }
 
     /**
-     * Define el valor de la propiedad sortCriteriaList.
+     * Sets the value of the sortCriteriaList property.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class Filter {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxRowCount.
+     * Gets the value of the maxRowCount property.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class Filter {
     }
 
     /**
-     * Define el valor de la propiedad maxRowCount.
+     * Sets the value of the maxRowCount property.
      * 
      * @param value
      *     allowed object is

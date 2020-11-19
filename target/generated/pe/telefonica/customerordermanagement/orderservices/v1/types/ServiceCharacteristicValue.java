@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ServiceCharacteristicValue complex type.
+ * <p>Java class for ServiceCharacteristicValue complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ServiceCharacteristicValue"&gt;
@@ -81,7 +81,7 @@ public class ServiceCharacteristicValue {
     protected ServiceSpecCharacteristic serviceSpecCharacteristic;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Gets the value of the code property.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Sets the value of the code property.
      * 
      * @param value
      *     allowed object is
@@ -129,7 +129,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -141,7 +141,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -153,7 +153,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Obtiene el valor de la propiedad value.
+     * Gets the value of the value property.
      * 
      * @return
      *     possible object is
@@ -165,7 +165,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad value.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is
@@ -177,7 +177,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Obtiene el valor de la propiedad isMandatory.
+     * Gets the value of the isMandatory property.
      * 
      */
     public boolean isIsMandatory() {
@@ -185,7 +185,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad isMandatory.
+     * Sets the value of the isMandatory property.
      * 
      */
     public void setIsMandatory(boolean value) {
@@ -193,7 +193,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Obtiene el valor de la propiedad isDate.
+     * Gets the value of the isDate property.
      * 
      */
     public boolean isIsDate() {
@@ -201,7 +201,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad isDate.
+     * Sets the value of the isDate property.
      * 
      */
     public void setIsDate(boolean value) {
@@ -209,7 +209,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Obtiene el valor de la propiedad serviceSpecCharacteristic.
+     * Gets the value of the serviceSpecCharacteristic property.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class ServiceCharacteristicValue {
     }
 
     /**
-     * Define el valor de la propiedad serviceSpecCharacteristic.
+     * Sets the value of the serviceSpecCharacteristic property.
      * 
      * @param value
      *     allowed object is

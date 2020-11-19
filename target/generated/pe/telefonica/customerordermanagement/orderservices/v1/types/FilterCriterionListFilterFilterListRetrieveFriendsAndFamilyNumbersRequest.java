@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FilterCriterionList_Filter_FilterList_RetrieveFriendsAndFamilyNumbersRequest complex type.
+ * <p>Java class for FilterCriterionList_Filter_FilterList_RetrieveFriendsAndFamilyNumbersRequest complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="FilterCriterionList_Filter_FilterList_RetrieveFriendsAndFamilyNumbersRequest"&gt;

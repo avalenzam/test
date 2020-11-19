@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FNFDetails complex type.
+ * <p>Java class for FNFDetails complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="FNFDetails"&gt;
@@ -79,7 +79,7 @@ public class FNFDetails {
     protected FNFBODetailsList billingOffersList;
 
     /**
-     * Obtiene el valor de la propiedad instanceID.
+     * Gets the value of the instanceID property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad instanceID.
+     * Sets the value of the instanceID property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class FNFDetails {
     }
 
     /**
-     * Obtiene el valor de la propiedad productSerialNumber.
+     * Gets the value of the productSerialNumber property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad productSerialNumber.
+     * Sets the value of the productSerialNumber property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class FNFDetails {
     }
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Gets the value of the code property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Sets the value of the code property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class FNFDetails {
     }
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class FNFDetails {
     }
 
     /**
-     * Obtiene el valor de la propiedad subType.
+     * Gets the value of the subType property.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad subType.
+     * Sets the value of the subType property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class FNFDetails {
     }
 
     /**
-     * Obtiene el valor de la propiedad destinationList.
+     * Gets the value of the destinationList property.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad destinationList.
+     * Sets the value of the destinationList property.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class FNFDetails {
     }
 
     /**
-     * Obtiene el valor de la propiedad billingOffersList.
+     * Gets the value of the billingOffersList property.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class FNFDetails {
     }
 
     /**
-     * Define el valor de la propiedad billingOffersList.
+     * Sets the value of the billingOffersList property.
      * 
      * @param value
      *     allowed object is

@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveServiceByMaskRequest_data_type complex type.
+ * <p>Java class for RetrieveServiceByMaskRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveServiceByMaskRequest_data_type"&gt;
@@ -49,7 +49,7 @@ public class RetrieveServiceByMaskRequestDataType {
     protected FilterList serviceFilterInfoList;
 
     /**
-     * Obtiene el valor de la propiedad productComponent.
+     * Gets the value of the productComponent property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad productComponent.
+     * Sets the value of the productComponent property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad availableServiceMask.
+     * Gets the value of the availableServiceMask property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad availableServiceMask.
+     * Sets the value of the availableServiceMask property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad implementedServiceMask.
+     * Gets the value of the implementedServiceMask property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad implementedServiceMask.
+     * Sets the value of the implementedServiceMask property.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad serviceFilterInfoList.
+     * Gets the value of the serviceFilterInfoList property.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class RetrieveServiceByMaskRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad serviceFilterInfoList.
+     * Sets the value of the serviceFilterInfoList property.
      * 
      * @param value
      *     allowed object is

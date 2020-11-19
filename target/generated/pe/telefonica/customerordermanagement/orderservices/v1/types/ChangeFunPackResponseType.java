@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Clase Java para ChangeFunPackResponse_type complex type.
+ * <p>Java class for ChangeFunPackResponse_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ChangeFunPackResponse_type"&gt;
@@ -39,7 +39,7 @@ public class ChangeFunPackResponseType
     protected ChangeFunPackResponseDataType changeFunPackResponseData;
 
     /**
-     * Obtiene el valor de la propiedad changeFunPackResponseData.
+     * Gets the value of the changeFunPackResponseData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ChangeFunPackResponseType
     }
 
     /**
-     * Define el valor de la propiedad changeFunPackResponseData.
+     * Sets the value of the changeFunPackResponseData property.
      * 
      * @param value
      *     allowed object is

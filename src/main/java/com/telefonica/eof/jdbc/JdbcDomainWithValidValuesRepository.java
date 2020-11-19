@@ -58,7 +58,7 @@ public class JdbcDomainWithValidValuesRepository implements DomainWithValidValue
     @Override
     public String findNameComponentByvalidValue (String stbSetting) {
 	try {
-	    String query = "select CAPTION"
+	    String query = "select DISTINCT CAPTION"
 		+ " from DOMAIN_WITH_VALID_VALUES"
 		+ " where VALID_VALUE = ?"
 		+ " and DOMAIN_NAME = 'AbsSTBType'";

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RetrieveFriendsAndFamilyNumbersRequest_data_type complex type.
+ * <p>Java class for RetrieveFriendsAndFamilyNumbersRequest_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RetrieveFriendsAndFamilyNumbersRequest_data_type"&gt;
@@ -37,7 +37,7 @@ public class RetrieveFriendsAndFamilyNumbersRequestDataType {
     protected FilterListRetrieveFriendsAndFamilyNumbersRequest serviceFilterInfoList;
 
     /**
-     * Obtiene el valor de la propiedad productComponent.
+     * Gets the value of the productComponent property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class RetrieveFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad productComponent.
+     * Sets the value of the productComponent property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class RetrieveFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad serviceFilterInfoList.
+     * Gets the value of the serviceFilterInfoList property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class RetrieveFriendsAndFamilyNumbersRequestDataType {
     }
 
     /**
-     * Define el valor de la propiedad serviceFilterInfoList.
+     * Sets the value of the serviceFilterInfoList property.
      * 
      * @param value
      *     allowed object is

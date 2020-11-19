@@ -100,30 +100,31 @@ public class Constant {
     public static final String STB_TYPE		  = "STB_Type";
 
     // productCharastericticName
-    public static final String BUSINESS_TYPE		= "businessType";
-    public static final String DISPLAY_NAME		= "displayName";
-    public static final String TYPE			= "type";
-    public static final String RELATION_ID		= "relationId";
-    public static final String CORRELATION_ID		= "correlationId";
-    public static final String PARENT_CATALOG_ITEM_ID	= "parentCatalogItemID";
-    public static final String PARENT_CATALOG_ITEM_NAME	= "parentCatalogItemName";
-    public static final String PARENT_CURRENT_STATUS	= "parentCurrentStatus";
-    public static final String PARENT_ASSIGNED_ID	= "parentAssignedID";
-    public static final String PLAN_TYPE		= "planType";
-    public static final String TOP_RECOMMENDED		= "topRecommended";
-    public static final String COMPATIBLE_WITH_DEVICE	= "compatibleWithDevice";
-    public static final String MIN_NUM_SUBSCRIBERS	= "minNumOfSubscribers";
-    public static final String NUM_SUBSCRIBERS		= "numOfSubscribers";
-    public static final String SHARED_PLAN		= "sharedPlan";
-    public static final String IMAGE			= "image";
-    public static final String BANNER			= "banner";
-    public static final String ID_ASSIGNED_ITEM		= "idAssignedItem";
-    public static final String PRODUCRT_TYPE		= "productType";
-    public static final String SUB_TIPO_EQUIPO		= "Sub Tipo de Equipo";
-    public static final String TIPO_DECODIFICADOR	= "Tipo de Decodificador";
-    public static final String BILLING_OFFER		= "Billing Offer";
-    public static final String SPSID			= "SPSID";
-    public static final String NOMBRE_SPS		= "NombreSPS";
+    public static final String PRODUCTOFFERINGPRODUCTSPECID = "productOfferingProductSpecID";
+    public static final String BUSINESS_TYPE		    = "businessType";
+    public static final String DISPLAY_NAME		    = "displayName";
+    public static final String TYPE			    = "type";
+    public static final String RELATION_ID		    = "relationId";
+    public static final String CORRELATION_ID		    = "correlationId";
+    public static final String PARENT_CATALOG_ITEM_ID	    = "parentCatalogItemID";
+    public static final String PARENT_CATALOG_ITEM_NAME	    = "parentCatalogItemName";
+    public static final String PARENT_CURRENT_STATUS	    = "parentCurrentStatus";
+    public static final String PARENT_ASSIGNED_ID	    = "parentAssignedID";
+    public static final String PLAN_TYPE		    = "planType";
+    public static final String TOP_RECOMMENDED		    = "topRecommended";
+    public static final String COMPATIBLE_WITH_DEVICE	    = "compatibleWithDevice";
+    public static final String MIN_NUM_SUBSCRIBERS	    = "minNumOfSubscribers";
+    public static final String NUM_SUBSCRIBERS		    = "numOfSubscribers";
+    public static final String SHARED_PLAN		    = "sharedPlan";
+    public static final String IMAGE			    = "image";
+    public static final String BANNER			    = "banner";
+    public static final String ID_ASSIGNED_ITEM		    = "idAssignedItem";
+    public static final String PRODUCRT_TYPE		    = "productType";
+    public static final String SUB_TIPO_EQUIPO		    = "Sub Tipo de Equipo";
+    public static final String TIPO_DECODIFICADOR	    = "Tipo de Decodificador";
+    public static final String BILLING_OFFER		    = "Billing Offer";
+    public static final String SPSID			    = "SPSID";
+    public static final String NOMBRE_SPS		    = "NombreSPS";
 
     // productPrice descripcion
     public static final String PLAN_INTERNET	  = "PRECIO DEL PLAN DE INTERNET";

@@ -22,9 +22,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- planInfo: Synonym of KeyValueType (similar concept that SID attribute defined by 'p1:UNIKeyValueType')
  * 			
  * 
- * <p>Clase Java para PlanBODetailsType complex type.
+ * <p>Java class for PlanBODetailsType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="PlanBODetailsType"&gt;
@@ -75,7 +75,7 @@ public class PlanBODetailsType {
     protected String image;
 
     /**
-     * Obtiene el valor de la propiedad billingOfferId.
+     * Gets the value of the billingOfferId property.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Define el valor de la propiedad billingOfferId.
+     * Sets the value of the billingOfferId property.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad billingOfferCode.
+     * Gets the value of the billingOfferCode property.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Define el valor de la propiedad billingOfferCode.
+     * Sets the value of the billingOfferCode property.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad billingOfferName.
+     * Gets the value of the billingOfferName property.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Define el valor de la propiedad billingOfferName.
+     * Sets the value of the billingOfferName property.
      * 
      * @param value
      *     allowed object is
@@ -234,7 +234,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad productSpecContainmentID.
+     * Gets the value of the productSpecContainmentID property.
      * 
      * @return
      *     possible object is
@@ -246,7 +246,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Define el valor de la propiedad productSpecContainmentID.
+     * Sets the value of the productSpecContainmentID property.
      * 
      * @param value
      *     allowed object is
@@ -258,7 +258,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad pricePlanSpecContainmentID.
+     * Gets the value of the pricePlanSpecContainmentID property.
      * 
      * @return
      *     possible object is
@@ -270,7 +270,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Define el valor de la propiedad pricePlanSpecContainmentID.
+     * Sets the value of the pricePlanSpecContainmentID property.
      * 
      * @param value
      *     allowed object is
@@ -282,7 +282,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Obtiene el valor de la propiedad image.
+     * Gets the value of the image property.
      * 
      * @return
      *     possible object is
@@ -294,7 +294,7 @@ public class PlanBODetailsType {
     }
 
     /**
-     * Define el valor de la propiedad image.
+     * Sets the value of the image property.
      * 
      * @param value
      *     allowed object is

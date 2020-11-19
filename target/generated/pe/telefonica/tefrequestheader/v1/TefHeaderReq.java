@@ -29,9 +29,9 @@ import pe.telefonica.customerordermanagement.orderservices.v1.types.ValidateToke
 
 
 /**
- * <p>Clase Java para TefHeaderReq complex type.
+ * <p>Java class for TefHeaderReq complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="TefHeaderReq"&gt;
@@ -79,7 +79,7 @@ public class TefHeaderReq {
     protected TefHeaderReqType tefHeaderReq;
 
     /**
-     * Obtiene el valor de la propiedad tefHeaderReq.
+     * Gets the value of the tefHeaderReq property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class TefHeaderReq {
     }
 
     /**
-     * Define el valor de la propiedad tefHeaderReq.
+     * Sets the value of the tefHeaderReq property.
      * 
      * @param value
      *     allowed object is

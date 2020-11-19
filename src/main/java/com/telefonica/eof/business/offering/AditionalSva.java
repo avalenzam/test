@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.hazelcast.internal.util.StringUtil;
 import com.telefonica.eof.commons.Constant;
+import com.telefonica.eof.commons.Util;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.ehcache.CacheEquipmentCharge;
 import com.telefonica.eof.ehcache.Equipment;
@@ -59,8 +61,7 @@ public class AditionalSva {
     @Autowired
     private DomainWithValidValuesRepository domainWithValidValuesRepository;
     @Autowired
-    private CacheEquipmentCharge cacheEquipmentCharge;
-    
+    private CacheEquipmentCharge	    cacheEquipmentCharge;
 
     /**
      * Método principal de la clase. Obtiene los sva adicionales como parte de la
@@ -76,12 +77,12 @@ public class AditionalSva {
      */
     public AditionalSvaResponse getAditionalSva(String vProductOfferingID, String downloadSpeed,
 	    OffersBenefitsRequestDto offersBenefitsRequestDto, List<OffersProperties> offersProperties) {
-	
+
 	Integer velocidad = Optional.ofNullable(downloadSpeed).map(x -> Integer.parseInt(downloadSpeed)).orElse(0);
-	
+
 	AditionalSvaResponse aditionalSvaResponse = new AditionalSvaResponse();
 
-	OfferDataResponse offerData = getOfferData(velocidad,offersProperties);
+	OfferDataResponse offerData = getOfferData(velocidad, offersProperties);
 
 	ModemResponse modem = getModem(offersBenefitsRequestDto.getNetworkTechnology(), offerData.getLob());
 
@@ -128,8 +129,8 @@ public class AditionalSva {
 	Boolean flagUltraWifi;
 	String lob;
 
-	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB)).map(OffersProperties::getPropertyValue)
-		.collect(Collectors.joining());
+	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB))
+		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	if (Constant.NULL.equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob)) {
 
@@ -197,7 +198,6 @@ public class AditionalSva {
 	String equipmentCid = equipmentMap.get(lob).stream().filter(x -> x.getNetworkTechnology().contains(networkTecnology))
 		.map(Equipment::getCid).collect(Collectors.joining());
 
-
 	String nameComp = null;
 
 	if (!(Constant.NULL.equalsIgnoreCase(equipmentCid) || StringUtil.isNullOrEmpty(equipmentCid))) {
@@ -257,67 +257,68 @@ public class AditionalSva {
 	    if (!(currentOfferBundleLob.contains(Constant.TV) && currentOfferLob.contains(Constant.TV))
 		    && offersBenefitsRequestDto.getFields().contains(Constant.DOWNLOAD_SPEED)) {
 
-		    List<String> fielList = Arrays.asList(offersBenefitsRequestDto.getFields().split(Constant.COMMA));
-		    List<String> downloadSpeedList = new ArrayList<>();
-		    fielList.forEach(item -> 
-			downloadSpeedList.add(Arrays.asList(item.split(Constant.DOBLEPOINT)).get(1))
-		    );
+		List<String> fielList = Arrays.asList(offersBenefitsRequestDto.getFields().split(Constant.COMMA));
+		List<String> downloadSpeedList = new ArrayList<>();
+		fielList.forEach(item -> downloadSpeedList.add(Arrays.asList(item.split(Constant.DOBLEPOINT)).get(1)));
 
-		    for (String downloadSpeed : downloadSpeedList) {
-			String stbCurrentOffer;
-			if (offersBenefitsRequestDto.getCurrentOffering() != null) {
-			    stbCurrentOffer = stbSettingRepository.findStbSettingWithSpeed(offersBenefitsRequestDto.getChannelId(),
-				    vProductOfferingID, Integer.parseInt(downloadSpeed.trim()));
-			} else {
-			    stbCurrentOffer = stbSettingRepository.findStbSettingWithoutSpeed(offersBenefitsRequestDto.getChannelId(),
-				    vProductOfferingID);
-			}
-			List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(Constant.COMMA));
-
-			Integer rankSTB = 0;
-			Integer currentRankSTB = 0;
-			
-			for (String stbSettingNew : stbNewOfferList) {
-			    Integer caption = domainWithValidValuesRepository.findCaptionByvalidValue(stbSettingNew.trim());
-			    if (caption > rankSTB) {
-				rankSTB = caption;
-			    }
-			}
-
-			for (String stbSettingCurrent : stbCurrentOfferList) {
-			    Integer caption = domainWithValidValuesRepository.findCaptionByvalidValue(stbSettingCurrent.trim());
-			    if (caption > rankSTB) {
-				currentRankSTB = caption;
-			    }
-			}
-
-			String stbSettings;
-
-			if (rankSTB > currentRankSTB) {
-
-			    stbSettings = domainWithValidValuesRepository.findValidValueByCaption(rankSTB);
-
-			} else {
-			    stbSettings = null;
-			}
-
-			String caption = domainWithValidValuesRepository.findNameComponentByvalidValue(stbSettings);
-			decosResponse.setCaption(caption);
-			decosResponse.setStbSetting(stbSettings);
-			decosResponseList.add(decosResponse);
+		for (String downloadSpeed : downloadSpeedList) {
+		    String stbCurrentOffer;
+		    if (offersBenefitsRequestDto.getCurrentOffering() != null) {
+			stbCurrentOffer = stbSettingRepository.findStbSettingWithSpeed(offersBenefitsRequestDto.getChannelId(),
+				vProductOfferingID, Integer.parseInt(downloadSpeed.trim()));
+		    } else {
+			stbCurrentOffer = stbSettingRepository.findStbSettingWithoutSpeed(offersBenefitsRequestDto.getChannelId(),
+				vProductOfferingID);
 		    }
+		    List<String> stbCurrentOfferList = Arrays.asList(stbCurrentOffer.split(Constant.COMMA));
+
+		    Integer rankSTB = 0;
+		    Integer currentRankSTB = 0;
+
+		    for (String stbSettingNew : stbNewOfferList) {
+			Integer caption = domainWithValidValuesRepository.findCaptionByvalidValue(stbSettingNew.trim());
+			if (caption > rankSTB) {
+			    rankSTB = caption;
+			}
+		    }
+
+		    for (String stbSettingCurrent : stbCurrentOfferList) {
+			Integer caption = domainWithValidValuesRepository.findCaptionByvalidValue(stbSettingCurrent.trim());
+			if (caption > rankSTB) {
+			    currentRankSTB = caption;
+			}
+		    }
+
+		    String stbSettings;
+
+		    if (rankSTB > currentRankSTB) {
+
+			stbSettings = domainWithValidValuesRepository.findValidValueByCaption(rankSTB);
+
+		    } else {
+			stbSettings = null;
+		    }
+
+		    String caption = domainWithValidValuesRepository.findNameComponentByvalidValue(stbSettings);
+		    decosResponse.setCaption(caption);
+		    decosResponse.setStbSetting(stbSettings);
+		    decosResponseList.add(decosResponse);
+		}
 
 	    }
 	} else {
 
-	    stbNewOfferList.forEach(stbSettings -> {
+	    if (Boolean.FALSE.equals(Util.isEmptyOrNullList(stbNewOfferList))) {
+		stbNewOfferList.forEach(stbSettings -> {
 
-		String caption = domainWithValidValuesRepository.findNameComponentByvalidValue(stbSettings);
-		decosResponse.setCaption(caption);
-		decosResponse.setStbSetting(stbSettings);
-		decosResponseList.add(decosResponse);
+		    String caption = domainWithValidValuesRepository.findNameComponentByvalidValue(stbSettings);
+		    decosResponse.setCaption(caption);
+		    decosResponse.setStbSetting(stbSettings);
+		    decosResponseList.add(decosResponse);
 
-	    });
+		});
+
+	    }
 
 	}
 
@@ -348,18 +349,28 @@ public class AditionalSva {
 	    Sps sps = relationMasterRepository.findComponentIdAndName(defSpsBo, vProductOfferingID);
 	    BillingOfferMaster billingOffer = billingOfferMasterRepository.findBillingOfferBycidBo(bo);
 
-	    channelBlockResponse.setFdIdParent(sps.getParentId());
-	    channelBlockResponse.setFdNameParent(sps.getParentId());
-	    channelBlockResponse.setCidBo( Optional.ofNullable(billingOffer).map(x -> billingOffer.getCidBo()).orElse(null));
-	    channelBlockResponse.setDescriptionText(Optional.ofNullable(billingOffer).map(x -> billingOffer.getDescriptionText()).orElse(null));
-	    channelBlocklist.add(channelBlockResponse);
+	    if (Objects.nonNull(sps) || Objects.nonNull(billingOffer)) {
+
+		channelBlockResponse.setFdIdParent(sps.getParentId());
+		channelBlockResponse.setFdNameParent(sps.getParentId());
+		channelBlockResponse.setCidBo(Optional.ofNullable(billingOffer).map(x -> billingOffer.getCidBo()).orElse(null));
+		channelBlockResponse
+			.setDescriptionText(Optional.ofNullable(billingOffer).map(x -> billingOffer.getDescriptionText()).orElse(null));
+		channelBlocklist.add(channelBlockResponse);
+	    }
+
 	});
 
 	defSpsIdList.forEach(id -> {
+
 	    String nameParent = relationMasterRepository.findSpsDiscountName(id);
-	    channelBlockResponse.setCNameParent(nameParent);
-	    channelBlockResponse.setDefSpsId(id);
-	    channelBlocklist.add(channelBlockResponse);
+
+	    if (Objects.nonNull(nameParent)) {
+		channelBlockResponse.setCNameParent(nameParent);
+		channelBlockResponse.setDefSpsId(id);
+		channelBlocklist.add(channelBlockResponse);
+	    }
+
 	});
 
 	return channelBlocklist;

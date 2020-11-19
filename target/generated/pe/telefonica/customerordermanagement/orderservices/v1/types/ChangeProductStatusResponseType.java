@@ -9,9 +9,9 @@ import pe.telefonica.tefresponseheader.v1.TefHeaderRes;
 
 
 /**
- * <p>Clase Java para ChangeProductStatusResponse_type complex type.
+ * <p>Java class for ChangeProductStatusResponse_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ChangeProductStatusResponse_type"&gt;
@@ -39,7 +39,7 @@ public class ChangeProductStatusResponseType
     protected ChangeProductStatusResponseDataType changeProductStatusResponseData;
 
     /**
-     * Obtiene el valor de la propiedad changeProductStatusResponseData.
+     * Gets the value of the changeProductStatusResponseData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ChangeProductStatusResponseType
     }
 
     /**
-     * Define el valor de la propiedad changeProductStatusResponseData.
+     * Sets the value of the changeProductStatusResponseData property.
      * 
      * @param value
      *     allowed object is

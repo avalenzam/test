@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para SortCriterion_RetrieveFriendsAndFamilyNumbersRequest complex type.
+ * <p>Java class for SortCriterion_RetrieveFriendsAndFamilyNumbersRequest complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="SortCriterion_RetrieveFriendsAndFamilyNumbersRequest"&gt;
@@ -45,7 +45,7 @@ public class SortCriterionRetrieveFriendsAndFamilyNumbersRequest {
     protected boolean isAscending;
 
     /**
-     * Obtiene el valor de la propiedad fieldName.
+     * Gets the value of the fieldName property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class SortCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad fieldName.
+     * Sets the value of the fieldName property.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class SortCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Obtiene el valor de la propiedad isAscending.
+     * Gets the value of the isAscending property.
      * 
      */
     public boolean isIsAscending() {
@@ -77,7 +77,7 @@ public class SortCriterionRetrieveFriendsAndFamilyNumbersRequest {
     }
 
     /**
-     * Define el valor de la propiedad isAscending.
+     * Sets the value of the isAscending property.
      * 
      */
     public void setIsAscending(boolean value) {

@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Clase Java para operationFaultType complex type.
+ * <p>Java class for operationFaultType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="operationFaultType"&gt;
@@ -66,7 +66,7 @@ public class OperationFaultType {
     protected AppDetailType appDetail;
 
     /**
-     * Obtiene el valor de la propiedad exceptionCategory.
+     * Gets the value of the exceptionCategory property.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionCategory.
+     * Sets the value of the exceptionCategory property.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad exceptionCode.
+     * Gets the value of the exceptionCode property.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionCode.
+     * Sets the value of the exceptionCode property.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +114,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad exceptionMessage.
+     * Gets the value of the exceptionMessage property.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionMessage.
+     * Sets the value of the exceptionMessage property.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad exceptionDetail.
+     * Gets the value of the exceptionDetail property.
      * 
      * @return
      *     possible object is
@@ -150,7 +150,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionDetail.
+     * Sets the value of the exceptionDetail property.
      * 
      * @param value
      *     allowed object is
@@ -162,7 +162,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad exceptionSeverity.
+     * Gets the value of the exceptionSeverity property.
      * 
      * @return
      *     possible object is
@@ -174,7 +174,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionSeverity.
+     * Sets the value of the exceptionSeverity property.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +186,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad exceptionType.
+     * Gets the value of the exceptionType property.
      * 
      * @return
      *     possible object is
@@ -198,7 +198,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionType.
+     * Sets the value of the exceptionType property.
      * 
      * @param value
      *     allowed object is
@@ -210,7 +210,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad exceptionProtocol.
+     * Gets the value of the exceptionProtocol property.
      * 
      * @return
      *     possible object is
@@ -222,7 +222,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad exceptionProtocol.
+     * Sets the value of the exceptionProtocol property.
      * 
      * @param value
      *     allowed object is
@@ -234,7 +234,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Obtiene el valor de la propiedad appDetail.
+     * Gets the value of the appDetail property.
      * 
      * @return
      *     possible object is
@@ -246,7 +246,7 @@ public class OperationFaultType {
     }
 
     /**
-     * Define el valor de la propiedad appDetail.
+     * Sets the value of the appDetail property.
      * 
      * @param value
      *     allowed object is

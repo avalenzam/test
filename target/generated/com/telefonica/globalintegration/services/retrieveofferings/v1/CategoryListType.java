@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- offerings: Synonym of OfferingType - RetrieveOffering (similar concept that SID attribute defined by 'p1:OfferingTypeOfferType')
  * 			
  * 
- * <p>Clase Java para CategoryListType complex type.
+ * <p>Java class for CategoryListType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="CategoryListType"&gt;
@@ -58,7 +58,7 @@ public class CategoryListType {
     protected List<OfferingTypeOfferType> offerings;
 
     /**
-     * Obtiene el valor de la propiedad category.
+     * Gets the value of the category property.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class CategoryListType {
     }
 
     /**
-     * Define el valor de la propiedad category.
+     * Sets the value of the category property.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class CategoryListType {
     }
 
     /**
-     * Obtiene el valor de la propiedad currentPlanRelationId.
+     * Gets the value of the currentPlanRelationId property.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class CategoryListType {
     }
 
     /**
-     * Define el valor de la propiedad currentPlanRelationId.
+     * Sets the value of the currentPlanRelationId property.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class CategoryListType {
     }
 
     /**
-     * Obtiene el valor de la propiedad paginationInfo.
+     * Gets the value of the paginationInfo property.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class CategoryListType {
     }
 
     /**
-     * Define el valor de la propiedad paginationInfo.
+     * Sets the value of the paginationInfo property.
      * 
      * @param value
      *     allowed object is

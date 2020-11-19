@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- maxResultCount: Field maxResultCount
  * 			
  * 
- * <p>Clase Java para PagingInfoType complex type.
+ * <p>Java class for PagingInfoType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="PagingInfoType"&gt;
@@ -59,7 +59,7 @@ public class PagingInfoType {
     protected BigDecimal maxResultCount;
 
     /**
-     * Obtiene el valor de la propiedad pageSize.
+     * Gets the value of the pageSize property.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Define el valor de la propiedad pageSize.
+     * Sets the value of the pageSize property.
      * 
      * @param value
      *     allowed object is
@@ -83,7 +83,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Obtiene el valor de la propiedad pageCount.
+     * Gets the value of the pageCount property.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Define el valor de la propiedad pageCount.
+     * Sets the value of the pageCount property.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Obtiene el valor de la propiedad pageNumber.
+     * Gets the value of the pageNumber property.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Define el valor de la propiedad pageNumber.
+     * Sets the value of the pageNumber property.
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxResultCount.
+     * Gets the value of the maxResultCount property.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class PagingInfoType {
     }
 
     /**
-     * Define el valor de la propiedad maxResultCount.
+     * Sets the value of the maxResultCount property.
      * 
      * @param value
      *     allowed object is

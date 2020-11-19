@@ -61,8 +61,11 @@ public class Offerings {
 
 	rort.setProductId(Optional.ofNullable(offersBenefitsRequestDto.getProduct()).map(x -> x.getId()).orElse(null));
 
-	String[] test = offersBenefitsRequestDto.getProductOfferingCatalogId().split(",");
-	rort.getProductOfferingCatalogId().addAll(Arrays.asList(test));
+	if (Boolean.FALSE.equals(StringUtil.isNullOrEmpty(offersBenefitsRequestDto.getProductOfferingCatalogId()))) {
+	    String[] test = offersBenefitsRequestDto.getProductOfferingCatalogId().split(",");
+	    rort.getProductOfferingCatalogId().addAll(Arrays.asList(test));
+
+	}
 
 	rort.setProductOrderId(offersBenefitsRequestDto.getProductOrderId());
 	rort.setCatalogID(Optional.ofNullable(offersBenefitsRequestDto.getPlan()).map(x -> x.getId()).orElse(null));

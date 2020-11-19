@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ActionEnum.
+ * <p>Java class for ActionEnum.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
  * &lt;simpleType name="ActionEnum"&gt;

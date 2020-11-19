@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para Activity complex type.
+ * <p>Java class for Activity complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Activity"&gt;
@@ -111,7 +111,7 @@ public class Activity {
     protected String status;
 
     /**
-     * Obtiene el valor de la propiedad activityNr.
+     * Gets the value of the activityNr property.
      * 
      * @return
      *     possible object is
@@ -123,7 +123,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad activityNr.
+     * Sets the value of the activityNr property.
      * 
      * @param value
      *     allowed object is
@@ -135,7 +135,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad contactMobilePhone.
+     * Gets the value of the contactMobilePhone property.
      * 
      * @return
      *     possible object is
@@ -147,7 +147,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad contactMobilePhone.
+     * Sets the value of the contactMobilePhone property.
      * 
      * @param value
      *     allowed object is
@@ -159,7 +159,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad userName.
+     * Gets the value of the userName property.
      * 
      * @return
      *     possible object is
@@ -171,7 +171,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad userName.
+     * Sets the value of the userName property.
      * 
      * @param value
      *     allowed object is
@@ -183,7 +183,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad requestTime.
+     * Gets the value of the requestTime property.
      * 
      * @return
      *     possible object is
@@ -195,7 +195,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad requestTime.
+     * Sets the value of the requestTime property.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad resolution.
+     * Gets the value of the resolution property.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad resolution.
+     * Sets the value of the resolution property.
      * 
      * @param value
      *     allowed object is
@@ -284,7 +284,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad resolutionDetails.
+     * Gets the value of the resolutionDetails property.
      * 
      * @return
      *     possible object is
@@ -296,7 +296,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad resolutionDetails.
+     * Sets the value of the resolutionDetails property.
      * 
      * @param value
      *     allowed object is
@@ -308,7 +308,7 @@ public class Activity {
     }
 
     /**
-     * Obtiene el valor de la propiedad status.
+     * Gets the value of the status property.
      * 
      * @return
      *     possible object is
@@ -320,7 +320,7 @@ public class Activity {
     }
 
     /**
-     * Define el valor de la propiedad status.
+     * Sets the value of the status property.
      * 
      * @param value
      *     allowed object is

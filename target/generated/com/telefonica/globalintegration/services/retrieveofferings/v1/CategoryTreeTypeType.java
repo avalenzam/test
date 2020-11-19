@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  * 					- subcategories: Next level of categories allocated to the component, intended to allow additional segmentation. A product offering may belong to more than one category/subcategory. Synonym for CategoryTreeType (similar concept that SID attribute defined by 'p1:CategoryTreeTypeType')
  * 			
  * 
- * <p>Clase Java para CategoryTreeTypeType complex type.
+ * <p>Java class for CategoryTreeTypeType complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="CategoryTreeTypeType"&gt;
@@ -55,7 +55,7 @@ public class CategoryTreeTypeType {
     protected CategoryTreeTypeType subcategories;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Obtiene el valor de la propiedad href.
+     * Gets the value of the href property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Define el valor de la propiedad href.
+     * Sets the value of the href property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Obtiene el valor de la propiedad subcategories.
+     * Gets the value of the subcategories property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class CategoryTreeTypeType {
     }
 
     /**
-     * Define el valor de la propiedad subcategories.
+     * Sets the value of the subcategories property.
      * 
      * @param value
      *     allowed object is

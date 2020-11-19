@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para LostAndStolenCode complex type.
+ * <p>Java class for LostAndStolenCode complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="LostAndStolenCode"&gt;
@@ -42,7 +42,7 @@ public class LostAndStolenCode {
     protected String code;
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Gets the value of the code property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class LostAndStolenCode {
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Sets the value of the code property.
      * 
      * @param value
      *     allowed object is

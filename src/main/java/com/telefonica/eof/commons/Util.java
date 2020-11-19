@@ -95,4 +95,25 @@ public class Util {
 	return value.setScale(2, RoundingMode.HALF_UP);
     }
 
+    /**
+     * Valida que una lista no venga null ni vacia
+     * 
+     * @param value,
+     *            lista que se desea validar
+     * @return true si la lista es null o vacia
+     */
+    public static Boolean isEmptyOrNullList(List value1) {
+
+	Boolean result = Boolean.TRUE;
+
+	if (Boolean.FALSE.equals(value1 == null)) {
+	    if (Boolean.FALSE.equals(value1.isEmpty())) {
+		result = Boolean.FALSE;
+	    }
+	}
+
+	return result;
+
+    }
+
 }

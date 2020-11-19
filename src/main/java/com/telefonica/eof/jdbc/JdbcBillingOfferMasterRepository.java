@@ -48,7 +48,7 @@ public class JdbcBillingOfferMasterRepository implements BillingOfferMasterRepos
    @Override
    public String findCidBoBycaptionBo(String installationFeeBo) {
        try {
-	String query = "select CID_BO"
+	String query = "select DISTINCT CID_BO"
 		+ " from BILLING_OFFER_MASTER"
 		+ " where CAPTION_BO = ?" ;
 	return jdbcTemplate.queryForObject(query,

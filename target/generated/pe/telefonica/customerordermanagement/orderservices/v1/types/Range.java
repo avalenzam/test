@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Range complex type.
+ * <p>Java class for Range complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Range"&gt;
@@ -40,7 +40,7 @@ public class Range {
     protected Quantity upperValue;
 
     /**
-     * Obtiene el valor de la propiedad lowerValue.
+     * Gets the value of the lowerValue property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class Range {
     }
 
     /**
-     * Define el valor de la propiedad lowerValue.
+     * Sets the value of the lowerValue property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class Range {
     }
 
     /**
-     * Obtiene el valor de la propiedad upperValue.
+     * Gets the value of the upperValue property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class Range {
     }
 
     /**
-     * Define el valor de la propiedad upperValue.
+     * Sets the value of the upperValue property.
      * 
      * @param value
      *     allowed object is

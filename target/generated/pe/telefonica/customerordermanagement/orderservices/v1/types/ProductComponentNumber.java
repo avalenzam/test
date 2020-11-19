@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ProductComponentNumber complex type.
+ * <p>Java class for ProductComponentNumber complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ProductComponentNumber"&gt;
@@ -42,7 +42,7 @@ public class ProductComponentNumber {
     protected String externalProductID;
 
     /**
-     * Obtiene el valor de la propiedad externalProductID.
+     * Gets the value of the externalProductID property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class ProductComponentNumber {
     }
 
     /**
-     * Define el valor de la propiedad externalProductID.
+     * Sets the value of the externalProductID property.
      * 
      * @param value
      *     allowed object is

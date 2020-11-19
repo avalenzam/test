@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ServiceStatus_RetrieveServiceByMaskResponse complex type.
+ * <p>Java class for ServiceStatus_RetrieveServiceByMaskResponse complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ServiceStatus_RetrieveServiceByMaskResponse"&gt;
@@ -59,7 +59,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     protected String value;
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Gets the value of the code property.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Sets the value of the code property.
      * 
      * @param value
      *     allowed object is
@@ -83,7 +83,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Obtiene el valor de la propiedad isDefault.
+     * Gets the value of the isDefault property.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Define el valor de la propiedad isDefault.
+     * Sets the value of the isDefault property.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Obtiene el valor de la propiedad isObsolete.
+     * Gets the value of the isObsolete property.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Define el valor de la propiedad isObsolete.
+     * Sets the value of the isObsolete property.
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Obtiene el valor de la propiedad value.
+     * Gets the value of the value property.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class ServiceStatusRetrieveServiceByMaskResponse {
     }
 
     /**
-     * Define el valor de la propiedad value.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is

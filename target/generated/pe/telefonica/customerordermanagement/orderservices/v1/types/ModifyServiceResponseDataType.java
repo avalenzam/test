@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ModifyServiceResponse_data_type complex type.
+ * <p>Java class for ModifyServiceResponse_data_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ModifyServiceResponse_data_type"&gt;
@@ -45,7 +45,7 @@ public class ModifyServiceResponseDataType {
     protected ProductOrderOut productOrder;
 
     /**
-     * Obtiene el valor de la propiedad href.
+     * Gets the value of the href property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class ModifyServiceResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad href.
+     * Sets the value of the href property.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class ModifyServiceResponseDataType {
     }
 
     /**
-     * Obtiene el valor de la propiedad productOrder.
+     * Gets the value of the productOrder property.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class ModifyServiceResponseDataType {
     }
 
     /**
-     * Define el valor de la propiedad productOrder.
+     * Sets the value of the productOrder property.
      * 
      * @param value
      *     allowed object is

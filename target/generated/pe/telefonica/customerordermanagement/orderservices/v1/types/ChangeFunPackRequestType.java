@@ -9,9 +9,9 @@ import pe.telefonica.tefrequestheader.v1.TefHeaderReq;
 
 
 /**
- * <p>Clase Java para ChangeFunPackRequest_type complex type.
+ * <p>Java class for ChangeFunPackRequest_type complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ChangeFunPackRequest_type"&gt;
@@ -39,7 +39,7 @@ public class ChangeFunPackRequestType
     protected ChangeFunPackRequestDataType changeFunPackRequestData;
 
     /**
-     * Obtiene el valor de la propiedad changeFunPackRequestData.
+     * Gets the value of the changeFunPackRequestData property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ChangeFunPackRequestType
     }
 
     /**
-     * Define el valor de la propiedad changeFunPackRequestData.
+     * Sets the value of the changeFunPackRequestData property.
      * 
      * @param value
      *     allowed object is
