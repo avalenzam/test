@@ -107,7 +107,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      */
 
     public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws HttpException {
-	// try {
+	 try {
 	ResponseType responseType = new ResponseType();
 
 	List<OfferingType> offeringTypeList = new ArrayList<>();
@@ -135,9 +135,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	responseType.setPaginationInfo(paginationInfo);
 
 	return responseType;
-	// } catch (Exception e) {
-	// throw HttpException.HttpExceptionResponse(e);
-	// }
+	 } catch (Exception e) {
+	 throw HttpException.HttpExceptionResponse(e);
+	 }
     }
 
     /**
