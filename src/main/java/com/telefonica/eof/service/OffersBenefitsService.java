@@ -107,7 +107,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      */
 
     public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws HttpException {
-	 try {
+//	 try {
 	ResponseType responseType = new ResponseType();
 
 	List<OfferingType> offeringTypeList = new ArrayList<>();
@@ -135,9 +135,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	responseType.setPaginationInfo(paginationInfo);
 
 	return responseType;
-	 } catch (Exception e) {
-	 throw HttpException.HttpExceptionResponse(e);
-	 }
+//	 } catch (Exception e) {
+//	 throw HttpException.HttpExceptionResponse(e);
+//	 }
     }
 
     /**
@@ -185,7 +185,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 				    // TODO VERIFICAR QUE VELOCIODAD Y PRECIO OBTENER, AMDOCS TRAE VARIOS
 				    for (PricingType price : priceList) {
-					downloadSpeedSum += Integer.valueOf(price.getDownloadSpeed());
+					downloadSpeedSum += 1;
 					downloadSpeed = price.getDownloadSpeed();
 					amount = price.getPrice().getAmount();
 
@@ -1070,7 +1070,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	if (Boolean.TRUE.equals(isInternet)) {
 
 	    BigDecimal speed = new BigDecimal(downloadSpeed);
-	    totalPages = paginationInfo.getTotalResultsInCategory().add(speed).divide(paginationInfo.getItemsPerCategory());
+	    totalPages = paginationInfo.getTotalResultsInCategory().add(speed).divide(paginationInfo.getItemsPerCategory(), 0, BigDecimal.ROUND_HALF_UP );
 	    totalResults = paginationInfo.getTotalResultsInCategory().add(speed);
 	    paginationInfoType.setTotalPages(totalPages.intValue());
 	    paginationInfoType.setTotalResults(totalResults.intValue());

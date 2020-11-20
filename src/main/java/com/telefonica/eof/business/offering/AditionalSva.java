@@ -193,21 +193,26 @@ public class AditionalSva {
     private ModemResponse getModem(String networkTecnology, String lob) {
 
 	ModemResponse modemResponse = new ModemResponse();
+	
+	if (Boolean.FALSE.equals(StringUtil.isNullOrEmpty(lob)) ||Boolean.FALSE.equals(StringUtil.isNullOrEmpty(networkTecnology)) ) {
+	    Map<String, List<Equipment>> equipmentMap = cacheEquipmentCharge.getEquipment();
 
-	Map<String, List<Equipment>> equipmentMap = cacheEquipmentCharge.getEquipment();
-	String equipmentCid = equipmentMap.get(lob).stream().filter(x -> x.getNetworkTechnology().contains(networkTecnology))
-		.map(Equipment::getCid).collect(Collectors.joining());
+		if (Objects.nonNull(equipmentMap)) {
+		    String equipmentCid = equipmentMap.get(lob).stream().filter(x -> x.getNetworkTechnology().contains(networkTecnology))
+			    .map(Equipment::getCid).collect(Collectors.joining());
 
-	String nameComp = null;
+		    String nameComp = null;
 
-	if (!(Constant.NULL.equalsIgnoreCase(equipmentCid) || StringUtil.isNullOrEmpty(equipmentCid))) {
+		    if (!(Constant.NULL.equalsIgnoreCase(equipmentCid) || StringUtil.isNullOrEmpty(equipmentCid))) {
 
-	    nameComp = componentsMasterRepository.findNameComponentByCidComponent(equipmentCid);
+			nameComp = componentsMasterRepository.findNameComponentByCidComponent(equipmentCid);
+		    }
+
+		    modemResponse.setEquipmentCid(equipmentCid);
+		    modemResponse.setNameComp(nameComp);
+		}
 	}
-
-	modemResponse.setEquipmentCid(equipmentCid);
-	modemResponse.setNameComp(nameComp);
-
+	
 	return modemResponse;
 
     }

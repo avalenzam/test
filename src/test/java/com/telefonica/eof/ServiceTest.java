@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import com.telefonica.eof.business.sva.Sva;
 import com.telefonica.eof.commons.Constant;
+import com.telefonica.eof.commons.Util;
 import com.telefonica.eof.dto.OffersBenefitsRequestDto;
 import com.telefonica.eof.ehcache.CacheOffersPropertiesCharge;
 import com.telefonica.eof.ehcache.CachePlanCidCharge;
@@ -97,7 +98,7 @@ class ServiceTest {
 	request.setCommercialAreaId("1");
 	request.setSiteId("61200001");//
 	request.setSourceType("OFFER");
-	request.setNetworkTechnology("FTTH;HFC;COPPER");
+	request.setNetworkTechnology("FTTH");
 	request.setServiceabilityMaxSpeed("999999");
 	request.setServiceabilityId("1234");
 	paginationInfo.setSize(100);
@@ -157,31 +158,7 @@ class ServiceTest {
 
     }
 
-    @Test
-    void Test() {
 
-	Boolean flagType = Optional.ofNullable(request.getProduct()).map(x -> x.getType().contains("sva")).orElse(null);
-	System.out.println(flagType);
-
-	List<String> productOfferingCatalogIdList = Arrays.asList(request.getProduct().getType().split(","));
-
-	System.err.println(productOfferingCatalogIdList);
-
-	String e = "SVC1001:Missing Mandatory Parameter";
-	HttpException httpException = new HttpException();
-	String soapErrorCode = e.substring(0, 7);
-
-	for (HttpsErrorMessage http : HttpsErrorMessage.values()) {
-	    if (http.getExceptionId().equalsIgnoreCase(soapErrorCode)) {
-
-		httpException.setMessage(http.getMessage());
-	    }
-
-	}
-
-	System.out.println(httpException);
-
-    }
 
     @Test
     void OferingsTest() {
@@ -223,5 +200,15 @@ class ServiceTest {
 	ResponseType offering = offersBenefitsService.getOfferBenefitsFi(request);
 	System.out.println(offering);
     }
+    
+    @Test
+    void Test() {
+	RetrieveOfferingsResponseType rort = offerings.consult(request);
+	 BigDecimal speed = new BigDecimal(1000);
+	    BigDecimal sum = rort.getCategories().get(0).getPaginationInfo().getTotalResultsInCategory().add(speed);
+	    BigDecimal div = Util.roundValue(sum.divide(rort.getCategories().get(0).getPaginationInfo().getItemsPerCategory(), 0, BigDecimal.ROUND_HALF_UP ));
 
+	    System.out.println(div);
+    }
+    
 }
