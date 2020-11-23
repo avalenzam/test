@@ -46,7 +46,7 @@ public class JdbcOffersPropertiesRepository implements OffersPropertiesRepositor
     public String findSpsIdByofferCid(String productOfferingCatalogId) {
 
 	try {
-	    String query = "select property_value" + " from OFFERS_PROPERTIES" + " where OFFER_CID = ?"
+	    String query = "select DISTINCT property_value" + " from OFFERS_PROPERTIES" + " where OFFER_CID = ?"
 		    + " and name_of_property = 'DEF_SPS_ID'";
 
 	    return jdbcTemplate.queryForObject(query, new Object[] { productOfferingCatalogId }, String.class);
@@ -61,7 +61,7 @@ public class JdbcOffersPropertiesRepository implements OffersPropertiesRepositor
     public List<OffersProperties> offersPropertiesTable() {
 
 	try {
-	    String query = "select OFFER_CID, PROPERTY_VALUE, NAME_OF_PROPERTY from OFFERS_PROPERTIES";
+	    String query = "select DISTINCT OFFER_CID, PROPERTY_VALUE, NAME_OF_PROPERTY from OFFERS_PROPERTIES";
 
 	    return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(OffersProperties.class));
 

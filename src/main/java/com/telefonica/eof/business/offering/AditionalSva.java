@@ -127,22 +127,41 @@ public class AditionalSva {
 	OfferDataResponse offerDataResponse = new OfferDataResponse();
 	Boolean flagModemPremium;
 	Boolean flagUltraWifi;
-	String lob;
+	String lob = null;
+	String bundleLob = null;
+	String minSpeedPremium = null;
+	String minSpeedWifi = null;
+	String defSpsId = null;
+	String defSpsBo = null;
 
-	lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.LOB))
-		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
+	for (OffersProperties op : offersProperties) {
 
-	if (Constant.NULL.equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob)) {
+	    if (op.getNameOfProperty().equalsIgnoreCase(Constant.LOB)) {
+		lob = op.getPropertyValue();
+	    } else if (op.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_PREMIUM)) {
+		minSpeedPremium = op.getPropertyValue();
+	    } else if (op.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_WIFI)) {
+		minSpeedWifi = op.getPropertyValue();
+	    } else if (op.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_ID)) {
+		defSpsId = op.getPropertyValue();
+	    } else if (op.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_BO)) {
+		defSpsBo = op.getPropertyValue();
+	    } else if (op.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS)) {
+		bundleLob = op.getPropertyValue();
+	    }
 
-	    lob = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.BUNDLE_LOBS))
-		    .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 	}
 
-	if (lob.matches("Internet|BB")) {
+	if (Constant.NULL.equalsIgnoreCase(lob) || StringUtil.isNullOrEmpty(lob) || lob.contains("null")) {
+	    lob = bundleLob;
+	}
 
-	    String minSpeedPremium = offersProperties.stream()
-		    .filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_PREMIUM)).map(OffersProperties::getPropertyValue)
-		    .collect(Collectors.joining());
+	if (lob.contains("Internet")) {
+
+	    // String minSpeedPremium = offersProperties.stream()
+	    // .filter(x ->
+	    // x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_PREMIUM)).map(OffersProperties::getPropertyValue)
+	    // .collect(Collectors.joining());
 
 	    if (Integer.parseInt(minSpeedPremium) <= velocidad) {
 		flagModemPremium = true;
@@ -150,8 +169,9 @@ public class AditionalSva {
 		flagModemPremium = false;
 	    }
 
-	    String minSpeedWifi = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_WIFI))
-		    .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
+	    // String minSpeedWifi = offersProperties.stream().filter(x ->
+	    // x.getNameOfProperty().equalsIgnoreCase(Constant.MIN_SPEED_WIFI))
+	    // .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	    if (Integer.parseInt(minSpeedWifi) <= velocidad) {
 		flagUltraWifi = true;
@@ -164,11 +184,13 @@ public class AditionalSva {
 	    flagUltraWifi = false;
 	}
 
-	String defSpsId = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_ID))
-		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
-
-	String defSpsBo = offersProperties.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_BO))
-		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
+	// String defSpsId = offersProperties.stream().filter(x ->
+	// x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_ID))
+	// .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
+	//
+	// String defSpsBo = offersProperties.stream().filter(x ->
+	// x.getNameOfProperty().equalsIgnoreCase(Constant.DEF_SPS_BO))
+	// .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
 
 	offerDataResponse.setLob(lob);
 	offerDataResponse.setFlagModemPremium(flagModemPremium);
@@ -193,26 +215,26 @@ public class AditionalSva {
     private ModemResponse getModem(String networkTecnology, String lob) {
 
 	ModemResponse modemResponse = new ModemResponse();
-	
-	if (Boolean.FALSE.equals(StringUtil.isNullOrEmpty(lob)) ||Boolean.FALSE.equals(StringUtil.isNullOrEmpty(networkTecnology)) ) {
+
+	if (Boolean.FALSE.equals(StringUtil.isNullOrEmpty(lob)) || Boolean.FALSE.equals(StringUtil.isNullOrEmpty(networkTecnology))) {
 	    Map<String, List<Equipment>> equipmentMap = cacheEquipmentCharge.getEquipment();
 
-		if (Objects.nonNull(equipmentMap)) {
-		    String equipmentCid = equipmentMap.get(lob).stream().filter(x -> x.getNetworkTechnology().contains(networkTecnology))
-			    .map(Equipment::getCid).collect(Collectors.joining());
+	    if (Objects.nonNull(equipmentMap)) {
+		String equipmentCid = equipmentMap.get(lob).stream().filter(x -> x.getNetworkTechnology().contains(networkTecnology))
+			.map(Equipment::getCid).collect(Collectors.joining());
 
-		    String nameComp = null;
+		String nameComp = null;
 
-		    if (!(Constant.NULL.equalsIgnoreCase(equipmentCid) || StringUtil.isNullOrEmpty(equipmentCid))) {
+		if (!(Constant.NULL.equalsIgnoreCase(equipmentCid) || StringUtil.isNullOrEmpty(equipmentCid))) {
 
-			nameComp = componentsMasterRepository.findNameComponentByCidComponent(equipmentCid);
-		    }
-
-		    modemResponse.setEquipmentCid(equipmentCid);
-		    modemResponse.setNameComp(nameComp);
+		    nameComp = componentsMasterRepository.findNameComponentByCidComponent(equipmentCid);
 		}
+
+		modemResponse.setEquipmentCid(equipmentCid);
+		modemResponse.setNameComp(nameComp);
+	    }
 	}
-	
+
 	return modemResponse;
 
     }

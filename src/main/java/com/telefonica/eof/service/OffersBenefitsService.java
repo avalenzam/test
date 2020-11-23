@@ -107,7 +107,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
      */
 
     public ResponseType getOfferBenefitsFi(OffersBenefitsRequestDto offersBenefitsRequestDto) throws HttpException {
-//	 try {
+	 try {
 	ResponseType responseType = new ResponseType();
 
 	List<OfferingType> offeringTypeList = new ArrayList<>();
@@ -135,9 +135,9 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 	responseType.setPaginationInfo(paginationInfo);
 
 	return responseType;
-//	 } catch (Exception e) {
-//	 throw HttpException.HttpExceptionResponse(e);
-//	 }
+	 } catch (Exception e) {
+	 throw HttpException.HttpExceptionResponse(e);
+	 }
     }
 
     /**
@@ -263,9 +263,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 	    ProductTypeEnumType childreProductType = children.getProductType().get(0);
 
-	    if (ProductTypeEnumType.BROADBAND.equals(childreProductType) || ProductTypeEnumType.SH_EQ.equals(childreProductType)
-		    || ProductTypeEnumType.CABLE_TV.equals(childreProductType) || ProductTypeEnumType.LANDLINE.equals(childreProductType)) {
-
+	  
 		ComposingProductType productSpecification = new ComposingProductType();
 		RefinedProductType refinedProduct = new RefinedProductType();
 		List<ProductSpecCharacteristicType> productCharacteristicsList = new ArrayList<>();
@@ -448,7 +446,7 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 		productSpecification.setRefinedProduct(refinedProduct);
 		productSpecification.setProductPrice(productPriceList);
 		productSpecificationList.add(productSpecification);
-	    }
+	    
 	}
 
 	for (PriceDetailsType priceDetail : offering.getPriceDetails()) {
@@ -729,9 +727,13 @@ public class OffersBenefitsService implements OfferBenefitsServiceI {
 
 	    Map<String, List<OffersProperties>> offersPropertiesMap = cacheOffersPropertiesCharge.getOffersProperties();
 	    List<OffersProperties> propertyValueList = offersPropertiesMap.get(productOfferingCatalogId);
-
-	    String retention = propertyValueList.stream().filter(x -> x.getNameOfProperty().equalsIgnoreCase(Constant.RETENTION))
-		    .map(OffersProperties::getPropertyValue).collect(Collectors.joining());
+	    String retention = null;
+	    
+	    for (OffersProperties propertyValue: propertyValueList) {
+		if (propertyValue.getNameOfProperty().equalsIgnoreCase(Constant.RETENTION)) {
+		    retention = propertyValue.getPropertyValue();
+		}
+	    }
 
 	    String flagRetention;
 

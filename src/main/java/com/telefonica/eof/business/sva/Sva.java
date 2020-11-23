@@ -115,6 +115,8 @@ public class Sva {
 	if (Constant.YES.equalsIgnoreCase(upfront)) {
 	    maxSTBsallowed = tbconfigItemRepository.findParameterValue();
 
+	}else if (planCid != null) {
+	    maxSTBsallowed = propertyInBillingOfferRepository.findPropertyValueByCidBo(planCid);
 	}
 
 	List<String> idComponentList = getAditionalComponent(offersBenefitsRequestDto.getAction(), query, propertyValueList);
@@ -299,8 +301,12 @@ public class Sva {
 
     private List<String> getAditionalComponent(String action, String query, List<OffersProperties> propertyValueList) {
 
-	String propertyValueLT = propertyValueList.stream().filter(x -> x.getNameOfProperty().equals(Constant.LOB_TYPE))
-		.map(OffersProperties::getPropertyValue).collect(Collectors.joining());
+	String propertyValueLT = null; 
+	for (OffersProperties propertyValue: propertyValueList) {
+		if (propertyValue.getNameOfProperty().equalsIgnoreCase(Constant.LOB_TYPE)) {
+		    propertyValueLT = propertyValue.getPropertyValue();
+		}
+	    }
 
 	return svaOfferingRepository.findIdComponent(propertyValueLT, action, query).stream()
 		.filter(x -> x.matches("3196671|3197701|3239962|34105211")).collect(Collectors.toList());
@@ -327,7 +333,7 @@ public class Sva {
 	if (Constant.SVA.equalsIgnoreCase(flagType)) {
 
 	    List<RelationMaster> cidBoActive = relationMasterRepository.findBillingOfferActiveDate(productOfferingCatalogId, idComponent);
-	    if (cidBoActive != null || cidBoActive.isEmpty()) {
+	    if (Util.isEmptyOrNullList(cidBoActive)) {
 		cidBoActive = relationMasterRepository.findBillingOfferActive(productOfferingCatalogId, idComponent);
 	    }
 	    List<String> cidBoList = new ArrayList<>();

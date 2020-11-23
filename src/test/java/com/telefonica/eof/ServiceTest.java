@@ -78,37 +78,60 @@ class ServiceTest {
 	PaginationInfo paginationInfo = new PaginationInfo();
 	Product product = new Product();
 
+//	request.setCategoryId("3195941");
+//	request.setChannelId("CC");
+//	 request.setCustomerId("56843169");
+//	product.setType("landline");//
+//	request.setProduct(product);
+//	request.setCreditLimit(BigDecimal.valueOf(500));//
+//	request.setRegion("15");//
+//	request.setCustomerSegment("R");//
+//	request.setCustomerSubsegment("RNA");//
+//	request.setDealerId("61200");//
+//	request.setCreditScore(9999);
+//	broadband.setMinDlDataRate(60);//
+//	broadband.setConnection("TV_CATV;INT_GPON;VOIC_VOIP");
+//	request.setBroadband(broadband);
+//	request.setIsRetention(false);//
+//	request.setProductOfferingCatalogId("32952011");
+//	request.setAction("PR");
+//	request.setCommercialAreaId("1");
+//	request.setSiteId("61200001");//
+//	request.setSourceType("OFFER");
+//	request.setNetworkTechnology("FTTH");
+//	request.setServiceabilityMaxSpeed("999999");
+//	request.setServiceabilityId("1234");
+//	paginationInfo.setSize(100);
+//	paginationInfo.setPageCount(1);
+//	paginationInfo.setPage(1);
+//	paginationInfo.setMaxResultCount(1);
+//	request.setPaginationInfo(paginationInfo);
+//	request.setSortCriteriaName("NAME");
+//	request.setSortCriteriaAscending(true);
+	
+//	TODO SVA
 	request.setCategoryId("3195941");
+	
 	request.setChannelId("CC");
-	 request.setCustomerId("56843169");
-	product.setType("landline");//
+	product.setType("landline,sva");//
 	request.setProduct(product);
-	request.setCreditLimit(BigDecimal.valueOf(500));//
-	request.setRegion("15");//
-	request.setCustomerSegment("R");//
-	request.setCustomerSubsegment("RNA");//
-	request.setDealerId("61200");//
 	request.setCreditScore(9999);
-	broadband.setMinDlDataRate(60);//
-	broadband.setConnection("TV_CATV;INT_GPON;VOIC_VOIP");
+	request.setCreditLimit(BigDecimal.valueOf(500));
+	request.setSiteId("61200001");
+	request.setRegion("15");
+	request.setCustomerSegment("R");
+	request.setCustomerSubsegment("RNA");
+	request.setDealerId("61200");
+	broadband.setMinDlDataRate(60);
 	request.setBroadband(broadband);
-	request.setIsRetention(false);//
+	request.setIsRetention(false);
 	request.setProductOfferingCatalogId("32952011");
 	request.setAction("PR");
-	request.setCommercialAreaId("1");
-	request.setSiteId("61200001");//
-	request.setSourceType("OFFER");
-	request.setNetworkTechnology("FTTH");
-	request.setServiceabilityMaxSpeed("999999");
-	request.setServiceabilityId("1234");
-	paginationInfo.setSize(100);
-	paginationInfo.setPageCount(1);
-	paginationInfo.setPage(1);
-	paginationInfo.setMaxResultCount(1);
+	request.setNetworkTechnology("HFC");
+	paginationInfo.setMaxResultCount(500);
 	request.setPaginationInfo(paginationInfo);
-	request.setSortCriteriaName("NAME");
-	request.setSortCriteriaAscending(true);
-//	request.setServiceabilityMaxSpeed("500");//
+	request.setCommercialAreaId("1");
+	
 
 
     }
@@ -200,15 +223,6 @@ class ServiceTest {
 	ResponseType offering = offersBenefitsService.getOfferBenefitsFi(request);
 	System.out.println(offering);
     }
-    
-    @Test
-    void Test() {
-	RetrieveOfferingsResponseType rort = offerings.consult(request);
-	 BigDecimal speed = new BigDecimal(1000);
-	    BigDecimal sum = rort.getCategories().get(0).getPaginationInfo().getTotalResultsInCategory().add(speed);
-	    BigDecimal div = Util.roundValue(sum.divide(rort.getCategories().get(0).getPaginationInfo().getItemsPerCategory(), 0, BigDecimal.ROUND_HALF_UP ));
 
-	    System.out.println(div);
-    }
     
 }

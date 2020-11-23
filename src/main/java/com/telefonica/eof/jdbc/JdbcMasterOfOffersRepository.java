@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.telefonica.eof.repository.MasterOfOffersRepository;
+
 /**
  * 
  * @Author: Alexandra Valenza Medrano
@@ -17,27 +18,20 @@ import com.telefonica.eof.repository.MasterOfOffersRepository;
  */
 @Repository
 public class JdbcMasterOfOffersRepository implements MasterOfOffersRepository {
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
     public String findOfferCaption(String productOfferingCatalogId) {
 	try {
-	  String query = "select DISTINCT OFFER_CAPTION"
-		+ " from MASTER_OF_OFFERS"
-		+ " where OFFER_CID = ? ";
-	
-	return	jdbcTemplate.queryForObject(query,
-		new Object[]{productOfferingCatalogId},
-		String.class);  
+	    String query = "select DISTINCT OFFER_CAPTION" + " from MASTER_OF_OFFERS" + " where OFFER_CID = ? ";
+
+	    return jdbcTemplate.queryForObject(query, new Object[] { productOfferingCatalogId }, String.class);
 	} catch (EmptyResultDataAccessException e) {
-		return null;
-   }
-	
-	
-	
+	    return null;
+	}
+
     }
-    
-    
+
 }
